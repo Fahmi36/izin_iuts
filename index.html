@@ -17,6 +17,7 @@
   <link href="../izin/assets/vendors/mdi/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -154,7 +155,7 @@
             <label for="alamatPemohon" class="col-md-6 col-form-label">Lokasi Pemohon :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
-              <button class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Titik di Peta</button>
+              <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Titik di Peta</button>
             </div>
           </div>
           <!-- Modal -->
@@ -168,7 +169,7 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                  <div id="" style="height: 400px;"></div>
+                  <div id="maps" style="height: 400px;"></div>
                 </div>
               </div>
             </div>
@@ -180,24 +181,36 @@
           <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Kondisi Eksisting</label>
             <div class="col-md-6">
-              <select aria-label="statusBangunan" class="text-center form-control" id="kondisi_eksisting" name="kondisi_eksisting">
+              <select required="" onchange="kondisieksis();" aria-label="statusBangunan" class="text-center form-control" id="kondisi_eksisting" name="kondisi_eksisting">
                 
               </select>
+            </div>
+          </div>
+            <div class="form-group row" id="kondisieksis" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Kondisi Eksisting :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Sudah Berapa Lama Mengajukan Izin</label>
             <div class="col-md-6">
-              <select aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
+              <select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
                 
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="lama_izin_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Lama Izin :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="lama_izin" id="lama_izin_input" placeholder="-">
             </div>
           </div>
           <h1 class="judul-ijin" style="margin-top: 40px;">Lengkapi Informasi Kebermanfaatan Usaha</h1>
           <div class="form-group row">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Pemutahiran PBB :</label>
             <div class="col-md-6">
-              <select aria-label="pemutahiranPBB" class="text-center form-control" id="pemutakhiran_pbb" name="pemutahiran_pbb">
+              <select required="" aria-label="pemutahiranPBB" class="text-center form-control" id="pemutakhiran_pbb" name="pemutahiran_pbb">
                 
               </select>
             </div>
@@ -205,23 +218,35 @@
           <div class="form-group row">
             <label for="keterlibatanUMKM" class="col-md-6 col-form-label">Keterlibatan UMKM :</label>
             <div class="col-md-6">
-              <select aria-label="keterlibatanUMKM" class="text-center form-control" id="keterlibatan_umkm" name="keterlibatan_umkm">
+              <select required="" onchange="umkm()" aria-label="keterlibatanUMKM" class="text-center form-control" id="keterlibatan_umkm" name="keterlibatan_umkm">
                 
               </select>
+            </div>
+          </div>
+            <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="perjanjianSewa" class="col-md-6 col-form-label">Perjanjian Sewa :</label>
             <div class="col-md-6">
-              <select aria-label="perjanjianSewa" class="text-center form-control" id="perjanjian_sewa" name="perjanjian_sewa">
+              <select required="" onchange="janjisewa();" aria-label="perjanjianSewa" class="text-center form-control" id="perjanjian_sewa" name="perjanjian_sewa">
                
               </select>
+            </div>
+          </div>
+            <div class="form-group row" id="janji_sewa_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="janji_sewa" id="janji_sewa_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="persetujuanWarga" class="col-md-6 col-form-label">Persetujuan Warga Sekitar :</label>
             <div class="col-md-6">
-              <select aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
+              <select required="" aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
               </select>
             </div>
           </div>
@@ -231,42 +256,48 @@
           <div class="form-group row">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Rekomendasi UMKM :</label>
             <div class="col-md-6">
-              <select aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
+              <select required="" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
               </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sostek :</label>
             <div class="col-md-6">
-              <select aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
+              <select required="" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
               </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="imbEksisting" class="col-md-6 col-form-label">IMB Eksisting :</label>
             <div class="col-md-6">
-              <select aria-label="imbEksisting" class="text-center form-control" id="imb_eksisting" name="imb_eksisting">
+              <select required="" aria-label="imbEksisting" class="text-center form-control" id="imb_eksisting" name="imb_eksisting">
               </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="slfEksisting" class="col-md-6 col-form-label">SLF Eksisting :</label>
             <div class="col-md-6">
-              <select aria-label="slfEksisting" class="text-center form-control" id="slf_eksisting" name="slf_eksisting">
+              <select required="" aria-label="slfEksisting" class="text-center form-control" id="slf_eksisting" name="slf_eksisting">
               </select>
             </div>
           </div>
           <div class="form-group row">
             <label for="volumeSumur" class="col-md-6 col-form-label">Volume Sumur Resapan :</label>
             <div class="col-md-6">
-              <select aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
+              <select required="" onchange="volumesumur()" aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="volume_sumur_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="volume_sumur" id="volume_sumur_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="kondisiSumurR" class="col-md-6 col-form-label">Kondisi Sumur Resapan :</label>
             <div class="col-md-6">
-              <select aria-label="kondisiSumurR" class="text-center form-control" id="kondisi_sumur_r" name="kondisi_sumur_r">
+              <select required="" aria-label="kondisiSumurR" class="text-center form-control" id="kondisi_sumur_r" name="kondisi_sumur_r">
                 
               </select>
             </div>
@@ -274,7 +305,7 @@
           <div class="form-group row">
             <label for="drainase" class="col-md-6 col-form-label">Drainase Disekeliling Tapak :</label>
             <div class="col-md-6">
-              <select aria-label="drainase" class="text-center form-control" id="drainase_disekeliling" name="drainase_disekeliling">
+              <select required="" aria-label="drainase" class="text-center form-control" id="drainase_disekeliling" name="drainase_disekeliling">
                
               </select>
             </div>
@@ -282,7 +313,7 @@
           <div class="form-group row">
             <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Minimum :</label>
             <div class="col-md-6">
-              <select aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
+              <select required="" aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
                 
               </select>
             </div>
@@ -290,15 +321,21 @@
           <div class="form-group row">
             <label for="kondisiKDH" class="col-md-6 col-form-label">Kondisi KDH :</label>
             <div class="col-md-6">
-              <select aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
+              <select required="" onchange="kondisikdh()" aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
                 
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="kondisi_kdh_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="kdh_kondisi" id="kdh_kondisi_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="pengelolaanSampah" class="col-md-6 col-form-label">Pengelolaan Sampah :</label>
             <div class="col-md-6">
-              <select aria-label="pengelolaanSampah" class="text-center form-control" id="pengelolaan_sampah" name="pengelolaan_sampah">
+              <select required="" aria-label="pengelolaanSampah" class="text-center form-control" id="pengelolaan_sampah" name="pengelolaan_sampah">
                 
               </select>
             </div>
@@ -306,7 +343,7 @@
           <div class="form-group row">
             <label for="kondisiParkir" class="col-md-6 col-form-label">Kondisi Parkir :</label>
             <div class="col-md-6">
-              <select aria-label="kondisiParkir" class="text-center form-control" id="kondisi_parkir" name="kondisi_parkir">
+              <select required="" aria-label="kondisiParkir" class="text-center form-control" id="kondisi_parkir" name="kondisi_parkir">
                 
               </select>
             </div>
@@ -326,19 +363,30 @@
             <tbody class="bg-white">
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>Nama Pemohon</td>
+                <td id="nama"></td>
               </tr>
-              <tr>
+              <tr> 
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <td>Nomor Induk Kependudukan</td>
+                <td id="nik"></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
+                <td>Nomor Induk Berusaha</td>
+                <td id="nib"></td>
               </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>NPWP</td>
+                <td id="npwplocal"></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Email</td>
+                <td id="email"></td>
+              </tr>
+              
             </tbody>
           </table>
           <label class="label-table">Data Umum Bangunan</label>
@@ -353,99 +401,49 @@
             <tbody class="bg-white">
               <tr>
                 <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>Nomor Objek Pajak</td>
+                <td id="nop"></td>
               </tr>
               <tr>
                 <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <td>Nomor Registrasi Bangunan</td>
+                <td id="nrb"></td>
               </tr>
               <tr>
                 <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-              </tr>
-            </tbody>
-          </table>
-          <label class="label-table">Administrasi Bangunan</label>
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Nomor</th>
-                <th scope="col">Kriteria</th>
-                <th scope="col">Data Anda</th>
-              </tr>
-            </thead>
-            <tbody class="bg-white">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <td>Luas Lahan</td>
+                <td id="luas_lahan"></td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <th scope="row">4</th>
+                <td>Luas Tapak Bangunan</td>
+                <td id="luastapak"></td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
+                <th scope="row">5</th>
+                <td>Luas Lantai Bangunan</td>
+                <td id="luaslantai"></td>
               </tr>
-            </tbody>
-          </table>
-          <label class="label-table">Kebermanfaatan Usaha</label>
-          <table class="table">
-            <thead class="thead-light">
+
               <tr>
-                <th scope="col">Nomor</th>
-                <th scope="col">Kriteria</th>
-                <th scope="col">Data Anda</th>
-              </tr>
-            </thead>
-            <tbody class="bg-white">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <th scope="row">6</th>
+                <td>Jumlah Lantai Bangunan</td>
+                <td id="jmllantai"></td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
+                <th scope="row">7</th>
+                <td>Status Bangunan</td>
+                <td id="statusbangunan"></td>
               </tr>
               <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-              </tr>
-            </tbody>
-          </table>
-          <label class="label-table">Antisipasi Dampak</label>
-          <table class="table">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Nomor</th>
-                <th scope="col">Kriteria</th>
-                <th scope="col">Data Anda</th>
-              </tr>
-            </thead>
-            <tbody class="bg-white">
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
+                <th scope="row">8</th>
+                <td>Status Kepemilikan Bangunan</td>
+                <td id="statusmilik"></td>
               </tr>
               <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
+                <th scope="row">9</th>
+                <td>Alamat</td>
+                <td id="alamatlocal"></td>
               </tr>
             </tbody>
           </table>
@@ -477,10 +475,13 @@
       </div>
     </section>  
   </footer>
+
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/jquery.easing.min.js"></script>
-  <script src="assets/js/iuts.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+  <script src="https://js.arcgis.com/4.8/"></script>
+  <script src="assets/js/iuts.js"></script>
+  <script src="assets/js/arcgis.js"></script>
 </body>
 </html>

@@ -3,6 +3,25 @@
     const tick = '<div class="answer__tick"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></div>'; 
     let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1><p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p><p>Perkiran Waktu Perizinan Selesai (0) Hari</p><div class="submit__container"><a href="#" class="btn3d btn btn-danger btn-lg">Kembali Ke Halaman Utama</a></div></div>';
     var BASE_URL = 'http://localhost/rest_api_iuts/';
+
+        function kondisieksis() {
+            $("#kondisieksis").removeAttr('style');
+        }
+        function lamaizin() {
+            $("#lama_izin_row").removeAttr('style');
+        }
+        function umkm() {
+            $("#keterlibatan_umkm_row").removeAttr('style');
+        }
+        function janjisewa() {
+            $("#janji_sewa_row").removeAttr('style');
+        }
+        function volumesumur() {
+            $("#volume_sumur_row").removeAttr('style');
+        }
+        function kondisikdh() {
+            $("#kondisi_kdh_row").removeAttr('style');
+        }
     $('.answer__input').on('change', function(e) { 
 
     	if($(this).next().children('.answer__tick').length>0){
@@ -11,18 +30,62 @@
     	$(this).next().append(tick)
     });
 
-
     $('.navigation__btn--right').click(function(e){
 	    // if($('.ijin__step--current input').length == 0){
 	    //  	//console.log('input empty');
 	    //  	return false;
 	   	// }
         localStorage.clear();
-        localStorage.setItem("step", "thirdStep");
+         localStorage.setItem("namapemohon", $("#namaLengkap").val());
+        localStorage.setItem("nik", $("#nomorInKepen").val());
+        localStorage.setItem("nib", $("#nomorInBeru").val());
+        localStorage.setItem("npwp", $("#npwp").val());
+        localStorage.setItem("email", $("#emailAktif").val());
+        localStorage.setItem("nop", $("#nomorObjekPajak").val());
+        localStorage.setItem("nrb", $("#nomorRegistrasiB").val());
+        localStorage.setItem("luas_lahan", $("#luasLahan").val());
+        localStorage.setItem("luas_tapak", $("#luasTapakB").val());
+        localStorage.setItem("luas_lantai", $("#luasLantaiB").val());
+        localStorage.setItem("jml_lantai", $("#jmlLantaiB").val());
+        localStorage.setItem("status_bangunan", $("#status_bangunan").val());
+        localStorage.setItem("status_milik", $("#status_milik").val());
+        localStorage.setItem("alamat", $("#alamatPemohon").val());
+
+        var nama = localStorage.getItem('namapemohon');
+        var nik = localStorage.getItem('nik');
+        var nib = localStorage.getItem('nib');
+        var npwp = localStorage.getItem('npwp');
+        var email = localStorage.getItem('email');
+        var nop = localStorage.getItem('nop');
+        var nrb = localStorage.getItem('nrb');
+        var luas = localStorage.getItem('luas_lahan');
+        var luastapak = localStorage.getItem('luas_tapak');
+        var luaslantai = localStorage.getItem('luas_lantai');
+        var jml_lantai = localStorage.getItem('jml_lantai');
+        var status_bangunan = localStorage.getItem('status_bangunan');
+        var status_milik = localStorage.getItem('status_milik');
+        var alamat = localStorage.getItem('alamat');
+
+
+        $("#nama").text(nama);
+        $("#nik").text(nik);
+        $("#nib").text(nib);
+        $("#npwplocal").text(npwp);
+        $("#email").text(email);
+
+        $("#nop").text(nop);
+        $("#nrb").text(nrb);
+        $("#luas_lahan").text(luas);
+        $("#luastapak").text(luastapak);
+        $("#luaslantai").text(luaslantai);
+        $("#jmllantai").text(jml_lantai);
+        $("#statusbangunan").text(status_bangunan);
+        $("#statusmilik").text(status_milik);
+        $("#alamatlocal").text(alamat);
         var dataPermohonan = JSON.stringify([{test:'1'}]);
         localStorage.setItem("dataPermohonan", dataPermohonan);
-       let currentIndex = Number($('.ijin__step--current').attr('data-question'));
-       if(currentIndex == numberSteps + 1 || disableButtons==true){
+        let currentIndex = Number($('.ijin__step--current').attr('data-question'));
+        if(currentIndex == numberSteps + 1 || disableButtons==true){
 		    //console.log('last')
 		    return false;
 		}
@@ -75,112 +138,135 @@
     	$('.ijin__step--current').keyup(keypressEvent);
     });
     /* end ijin */
-
     /* konfirmasi ijin */
     $(document).on('click', '.submit__container', function(e) {
         var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
-    	swal({
-    		title: "Ajukan Izin", 
-    		text: "Apakah Data Yang Anda Masukkan Sudah Benar", 
-    		type: "warning",
-    		confirmButtonText: "Iya",
-    		cancelButtonText: "Belum",
-    		showCancelButton: true
-    	})
-    	.then((result) => {
-    		if (result.value) {
-                 var dataInput = {
-                    namaLengkap: $("#namaLengkap").val(),
-                    nomorInKepen: $("#nomorInKepen").val(),
-                    nomorInBeru: $("#nomorInBeru").val(),
-                    npwp: $("#npwp").val(),
-                    njop: $("#njop").val(),
-                    no_telp: $("#no_telp").val(),
-                    emailAktif: $("#emailAktif").val(),
-                    nop: $("#nomorObjekPajak").val(),
-                    nrb: $("#nomorRegistrasiB").val(),
-                    luas_lahan: $("#luasLahan").val(),
-                    ltb: $("#luasTapakB").val(),
-                    luas_lantai: $("#luasLantaiB").val(),
-                    jml_lantai: $("#jmlLantaiB").val(),
-                    status_bangunan: $("#status_bangunan").val(),
-                    status_milik: $("#status_milik").val(),
-                    alamat: $("#alamatPemohon").val(),
-                    kondisi_eksisting: $("#kondisi_eksisting").val(),
-                    lama_izin: $("#lama_izin").val(),
-                    pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
-                    keterlibatan_umkm: $("#keterlibatan_umkm").val(),
-                    perjanjian_sewa: $("#perjanjian_sewa").val(),
-                    persetujuan_warga: $("#persetujuan_warga").val(),
-                    rekomendasi_umkm: $("#rekomendasi_umkm").val(),
-                    kajian_sostek: $("#kajian_sostek").val(),
-                    imb_eksisting: $("#imb_eksisting").val(),
-                    slf_eksisting: $("#slf_eksisting").val(),
-                    volumeSumur: $("#volumeSumur").val(),
-                    kondisi_sumur_r: $("#kondisi_sumur_r").val(),
-                    drainase_disekeliling: $("#drainase_disekeliling").val(),
-                    kdh_minimum: $("#kdh_minimum").val(),
-                    kondisi_kdh: $("#kondisi_kdh").val(),
-                    pengelolaan_sampah: $("#pengelolaan_sampah").val(),
-                    kondisi_parkir: $("#kondisi_parkir").val()
-                };
+        swal({
+          title: "Ajukan Izin", 
+          text: "Apakah Data Yang Anda Masukkan Sudah Benar", 
+          type: "warning",
+          confirmButtonText: "Iya",
+          cancelButtonText: "Belum",
+          showCancelButton: true
+      })
+        .then((result) => {
+          if (result.value) {
+           var dataInput = {
+            namaLengkap: $("#namaLengkap").val(),
+            nomorInKepen: $("#nomorInKepen").val(),
+            nomorInBeru: $("#nomorInBeru").val(),
+            npwp: $("#npwp").val(),
+            njop: $("#njop").val(),
+            no_telp: $("#no_telp").val(),
+            emailAktif: $("#emailAktif").val(),
+            nop: $("#nomorObjekPajak").val(),
+            nrb: $("#nomorRegistrasiB").val(),
+            luas_lahan: $("#luasLahan").val(),
+            ltb: $("#luasTapakB").val(),
+            luas_lantai: $("#luasLantaiB").val(),
+            jml_lantai: $("#jmlLantaiB").val(),
+            status_bangunan: $("#status_bangunan").val(),
+            status_milik: $("#status_milik").val(),
+            alamat: $("#alamatPemohon").val(),
+            kondisi_eksisting: $("#kondisi_eksisting").val(),
+            lama_izin: $("#lama_izin").val(),
+            pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
+            keterlibatan_umkm: $("#keterlibatan_umkm").val(),
+            perjanjian_sewa: $("#perjanjian_sewa").val(),
+            persetujuan_warga: $("#persetujuan_warga").val(),
+            rekomendasi_umkm: $("#rekomendasi_umkm").val(),
+            kajian_sostek: $("#kajian_sostek").val(),
+            imb_eksisting: $("#imb_eksisting").val(),
+            slf_eksisting: $("#slf_eksisting").val(),
+            volumeSumur: $("#volumeSumur").val(),
+            kondisi_sumur_r: $("#kondisi_sumur_r").val(),
+            drainase_disekeliling: $("#drainase_disekeliling").val(),
+            kdh_minimum: $("#kdh_minimum").val(),
+            kondisi_kdh: $("#kondisi_kdh").val(),
+            pengelolaan_sampah: $("#pengelolaan_sampah").val(),
+            kondisi_parkir: $("#kondisi_parkir").val(),
+            volume_sumur_input: $("#volume_sumur_input").val(),
+            kdh_kondisi_input: $("#kdh_kondisi_input").val(),
+            janji_sewa_input: $("#janji_sewa_input").val(),
+            keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
+            lama_izin_input: $("#lama_izin_input").val(),
+            detail_kondisi_input: $("#detail_kondisi_input").val(),
+        };
 
-                dataRegis[0].namaLengkap = dataInput.namaLengkap;
-                dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
-                dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
-                dataRegis[0].npwp = dataInput.npwp;
-                dataRegis[0].njop = dataInput.njop;
-                dataRegis[0].no_telp = dataInput.no_telp;
-                dataRegis[0].emailAktif = dataInput.emailAktif;
-                dataRegis[0].nop = dataInput.nop;
-                dataRegis[0].nrb = dataInput.nrb;
-                dataRegis[0].luas_lahan = dataInput.luas_lahan;
-                dataRegis[0].ltb = dataInput.ltb;
-                dataRegis[0].luas_lantai = dataInput.luas_lantai;
-                dataRegis[0].jml_lantai = dataInput.jml_lantai;
-                dataRegis[0].status_bangunan = dataInput.status_bangunan;
-                dataRegis[0].status_milik = dataInput.status_milik;
-                dataRegis[0].alamat = dataInput.alamat;
-                dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
-                dataRegis[0].lama_izin = dataInput.lama_izin;
-                dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
-                dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
-                dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
-                dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
-                dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
-                dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
-                dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
-                dataRegis[0].slf_eksisting = dataInput.slf_eksisting;
-                dataRegis[0].volumeSumur = dataInput.volumeSumur;
-                dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
-                dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
-                dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
-                dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
-                dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
-                dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
+        dataRegis[0].namaLengkap = dataInput.namaLengkap;
+        dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
+        dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
+        dataRegis[0].npwp = dataInput.npwp;
+        dataRegis[0].njop = dataInput.njop;
+        dataRegis[0].no_telp = dataInput.no_telp;
+        dataRegis[0].emailAktif = dataInput.emailAktif;
+        dataRegis[0].nop = dataInput.nop;
+        dataRegis[0].nrb = dataInput.nrb;
+        dataRegis[0].luas_lahan = dataInput.luas_lahan;
+        dataRegis[0].ltb = dataInput.ltb;
+        dataRegis[0].luas_lantai = dataInput.luas_lantai;
+        dataRegis[0].jml_lantai = dataInput.jml_lantai;
+        dataRegis[0].status_bangunan = dataInput.status_bangunan;
+        dataRegis[0].status_milik = dataInput.status_milik;
+        dataRegis[0].alamat = dataInput.alamat;
+        dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
+        dataRegis[0].lama_izin = dataInput.lama_izin;
+        dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
+        dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
+        dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
+        dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
+        dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
+        dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
+        dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
+        dataRegis[0].slf_eksisting = dataInput.slf_eksisting;
+        dataRegis[0].volumeSumur = dataInput.volumeSumur;
+        dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
+        dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
+        dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
+        dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
+        dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
+        dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
+        dataRegis[0].volume_sumur_input = dataInput.volume_sumur_input;
+        dataRegis[0].kdh_kondisi_input = dataInput.kdh_kondisi_input;
+        dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
+        dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
+        dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
+        dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
 
-                localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+        localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+        $.ajax({
+            url: BASE_URL + 'ValidasiController/ValidasiIzin',
+            type: 'POST',
+            dataType: 'json',
+            data:{dataRegist: localStorage.getItem('dataPermohonan')},
+            beforeSend:function() {
 
-                $.ajax({
-                    url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                    type: 'POST',
-                    dataType: 'json',
-                    data:{dataRegist: localStorage.getItem('dataPermohonan')},
-                    beforeSend:function() {
-
-                },
-                success:function(data) {
-                   
+            },
+            success:function(data) {
+                if (data.success) {
+                    e.preventDefault();
+                    $('.ijin').remove();
+                    $(summary).appendTo('.container');
+                    disableButtons=true;
+                    $('.navigation__btn').addClass('navigation__btn--disabled');
+                    swal({
+                        type: 'success',
+                        title: data.msg,
+                        showCancelButton: true
+                    }); 
+                }else{
+                    swal({
+                        type: 'error',
+                        title: data.msg,
+                        showCancelButton: true
+                    });
                 }
-            });
-    			e.preventDefault();
-    			$('.ijin').remove();
-    			$(summary).appendTo('.container');
-    			disableButtons=true;
-    			$('.navigation__btn').addClass('navigation__btn--disabled');                
-    		}
-    	})
-    });
+
+            }
+        });               
+    }
+})
+});
     /* end konfirmasi ijin */
 
     /* animation */
@@ -252,6 +338,8 @@
     })();
     $(document).ready(function() {
         // var BASE_URL = 'http://perizinan.pkkmart.com/iuts/';
+
+        
         $.ajax({
             url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_eksisting',
             type: 'GET',
@@ -260,9 +348,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kondisi_eksisting').html(options);
 
@@ -278,9 +366,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#lama_izin').html(options);
 
@@ -296,9 +384,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#pemutakhiran_pbb').html(options);
 
@@ -314,9 +402,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#volumeSumur').html(options);
 
@@ -332,9 +420,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#keterlibatan_umkm').html(options);
 
@@ -349,9 +437,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#perjanjian_sewa').html(options);
 
@@ -367,9 +455,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#persetujuan_warga').html(options);
 
@@ -383,9 +471,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#rekomendasi_umkm').html(options);
 
@@ -400,9 +488,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kajian_sostek').html(options);
 
@@ -417,9 +505,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#imb_eksisting').html(options);
 
@@ -434,9 +522,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#slf_eksisting').html(options);
 
@@ -451,9 +539,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kondisi_sumur_r').html(options);
 
@@ -468,9 +556,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#drainase_disekeliling').html(options);
 
@@ -486,9 +574,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kdh_minimum').html(options);
 
@@ -504,9 +592,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kondisi_kdh').html(options);
 
@@ -522,9 +610,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#pengelolaan_sampah').html(options);
 
@@ -539,9 +627,9 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled=''>Pilih Salah Satu</option>";
+                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
-                        options += "<option value='"+ data.row[i].if +"'>"+ data.row[i].nama +"</option>";
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#kondisi_parkir').html(options);
 
