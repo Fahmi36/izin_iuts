@@ -3,7 +3,7 @@
     const tick = '<div class="answer__tick"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></div>'; 
     let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1><p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p><p>Perkiran Waktu Perizinan Selesai (0) Hari</p><div class="submit__container"><a href="#" class="btn3d btn btn-danger btn-lg">Kembali Ke Halaman Utama</a></div></div>';
     // var BASE_URL = 'http://localhost/rest_api_iuts/';
-    var BASE_URL = 'http://rest-iuts.pkkmart.com/';
+    var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
         function kondisieksis() {
             $("#kondisieksis").removeAttr('style');
@@ -37,7 +37,7 @@
 	    //  	return false;
 	   	// }
         localStorage.clear();
-         localStorage.setItem("namapemohon", $("#namaLengkap").val());
+        localStorage.setItem("namapemohon", $("#namaLengkap").val());
         localStorage.setItem("nik", $("#nomorInKepen").val());
         localStorage.setItem("nib", $("#nomorInBeru").val());
         localStorage.setItem("npwp", $("#npwp").val());
@@ -51,6 +51,30 @@
         localStorage.setItem("status_bangunan", $("#status_bangunan").val());
         localStorage.setItem("status_milik", $("#status_milik").val());
         localStorage.setItem("alamat", $("#alamatPemohon").val());
+
+        localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting").val());
+        localStorage.setItem("lama_izin", $("#lama_izin").val());
+        localStorage.setItem("pemutakhiran_pbb", $("#pemutakhiran_pbb").val());
+        localStorage.setItem("keterlibatan_umkm", $("#keterlibatan_umkm").val());
+        localStorage.setItem("perjanjian_sewa", $("#perjanjian_sewa").val());
+        localStorage.setItem("persetujuan_warga", $("#persetujuan_warga").val());
+        localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm").val());
+        localStorage.setItem("kajian_sostek", $("#kajian_sostek").val());
+        localStorage.setItem("imb_eksisting", $("#imb_eksisting").val());
+        localStorage.setItem("slf_eksisting", $("#slf_eksisting").val());
+        localStorage.setItem("volumeSumur", $("#volumeSumur").val());
+        localStorage.setItem("kondisi_sumur_r", $("#kondisi_sumur_r").val());
+        localStorage.setItem("drainase_disekeliling", $("#drainase_disekeliling").val());
+        localStorage.setItem("kdh_minimum", $("#kdh_minimum").val());
+        localStorage.setItem("kondisi_kdh", $("#kondisi_kdh").val());
+        localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah").val());
+        localStorage.setItem("kondisi_parkir", $("#kondisi_parkir").val());
+        localStorage.setItem("volume_sumur_input", $("#volume_sumur_input").val());
+        localStorage.setItem("kdh_kondisi_input", $("#kdh_kondisi_input").val());
+        localStorage.setItem("janji_sewa_input", $("#janji_sewa_input").val());
+        localStorage.setItem("keterlibatan_umkm_input", $("#keterlibatan_umkm_input").val());
+        localStorage.setItem("lama_izin_input", $("#lama_izin_input").val());
+        localStorage.setItem("detail_kondisi_input", $("#detail_kondisi_input").val());
 
         var nama = localStorage.getItem('namapemohon');
         var nik = localStorage.getItem('nik');
@@ -66,6 +90,30 @@
         var status_bangunan = localStorage.getItem('status_bangunan');
         var status_milik = localStorage.getItem('status_milik');
         var alamat = localStorage.getItem('alamat');
+
+        var kondisi_eksisting = localStorage.getItem('kondisi_eksisting');
+        var lama_izin = localStorage.getItem('lama_izin');
+        var pemutakhiran_pbb = localStorage.getItem('pemutakhiran_pbb');
+        var keterlibatan_umkm = localStorage.getItem('keterlibatan_umkm');
+        var perjanjian_sewa = localStorage.getItem('perjanjian_sewa');
+        var persetujuan_warga = localStorage.getItem('persetujuan_warga');
+        var rekomendasi_umkm = localStorage.getItem('rekomendasi_umkm');
+        var kajian_sostek = localStorage.getItem('kajian_sostek');
+        var imb_eksisting = localStorage.getItem('imb_eksisting');
+        var slf_eksisting = localStorage.getItem('slf_eksisting');
+        var volumeSumur = localStorage.getItem('volumeSumur');
+        var kondisi_sumur_r = localStorage.getItem('kondisi_sumur_r');
+        var drainase_disekeliling = localStorage.getItem('drainase_disekeliling');
+        var kdh_minimum = localStorage.getItem('kdh_minimum');
+        var kondisi_kdh = localStorage.getItem('kondisi_kdh');
+        var pengelolaan_sampah = localStorage.getItem('pengelolaan_sampah');
+        var kondisi_parkir = localStorage.getItem('kondisi_parkir');
+        var volume_sumur_input = localStorage.getItem('volume_sumur_input');
+        var kdh_kondisi_input = localStorage.getItem('kdh_kondisi_input');
+        var janji_sewa_input = localStorage.getItem('janji_sewa_input');
+        var keterlibatan_umkm_input = localStorage.getItem('keterlibatan_umkm_input');
+        var lama_izin_input = localStorage.getItem('lama_izin_input');
+        var detail_kondisi_input = localStorage.getItem('detail_kondisi_input');
 
 
         $("#nama").text(nama);
@@ -83,6 +131,26 @@
         $("#statusbangunan").text(status_bangunan);
         $("#statusmilik").text(status_milik);
         $("#alamatlocal").text(alamat);
+
+        $("#kondisi_eks_summary").html(kondisi_eksisting+'<br>'+detail_kondisi_input);
+        $("#lama_izin_summary").html(lama_izin+'<br>'+lama_izin_input);
+        $("#pbb_summary").text(pemutakhiran_pbb);
+        $("#keterlibatan_umkm_summary").html(keterlibatan_umkm+'<br>'+keterlibatan_umkm_input);
+        $("#janji_sewa_summary").html(perjanjian_sewa+'<br>'+janji_sewa_input);
+        $("#persetujuan_warga_summary").text(persetujuan_warga);
+
+        $("#rek_umkm_summary").text(rekomendasi_umkm);
+        $("#kajian_sostek_summary").text(kajian_sostek);
+        $("#imb_eksisting_summary").text(imb_eksisting);
+        $("#slf_eksisting_summary").text(slf_eksisting);
+        $("#volume_sumur_summary").html(volumeSumur+'<br>'+volume_sumur_input);
+        $("#kondisi_sumur_summary").text(kondisi_sumur_r);
+        $("#drainase_disekeliling_summary").text(drainase_disekeliling);
+        $("#kdh_minimum_summary").text(kdh_minimum);
+        $("#kondisi_kdh_summary").html(kondisi_kdh+'<br>'+kdh_kondisi_input);
+        $("#pengelolaan_sampah_summary").text(pengelolaan_sampah);
+        $("#kondisi_parkir_summary").text(kondisi_parkir);
+
         var dataPermohonan = JSON.stringify([{test:'1'}]);
         localStorage.setItem("dataPermohonan", dataPermohonan);
         let currentIndex = Number($('.ijin__step--current').attr('data-question'));

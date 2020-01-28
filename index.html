@@ -12,12 +12,12 @@
   <meta name="msapplication-TileColor" content="#fb9006">
   <meta name="msapplication-TileImage" content="../izin/assets/img/favicon/android-chrome-192x192.png">
   <meta name="theme-color" content="#fb9006">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
   <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css">
   <link rel="stylesheet" href="../izin/assets/css/icon.css">
   <link href="../izin/assets/vendors/mdi/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
-  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
 </head>
 <body>
   <canvas id="canvas"></canvas>
@@ -154,8 +154,8 @@
           <div class="form-group row">
             <label for="alamatPemohon" class="col-md-6 col-form-label">Lokasi Pemohon :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
-              <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Titik di Peta</button>
+              <input type="text" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
             </div>
           </div>
           <!-- Modal -->
@@ -238,7 +238,7 @@
             </div>
           </div>
             <div class="form-group row" id="janji_sewa_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Perjanjian Sewa :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="janji_sewa" id="janji_sewa_input" placeholder="-">
             </div>
@@ -289,7 +289,7 @@
             </div>
           </div>
           <div class="form-group row" id="volume_sumur_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Volume Sumur :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="volume_sumur" id="volume_sumur_input" placeholder="-">
             </div>
@@ -327,7 +327,7 @@
             </div>
           </div>
           <div class="form-group row" id="kondisi_kdh_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Kondisi KDH :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="kdh_kondisi" id="kdh_kondisi_input" placeholder="-">
             </div>
@@ -445,6 +445,129 @@
                 <td>Alamat</td>
                 <td id="alamatlocal"></td>
               </tr>
+            </tbody>
+          </table>
+          <label class="label-table">Admininstrasi Bangunan</label>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nomor</th>
+                <th scope="col">Kriteria</th>
+                <th scope="col">Data Anda</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr>
+                <th scope="row">1</th>
+                <td>Kondisi Eksisting</td>
+                <td id="kondisi_eks_summary"></td>
+              </tr>
+              <tr> 
+                <th scope="row">2</th>
+                <td>Lama Mengajukan Izin</td>
+                <td id="lama_izin_summary"></td>
+              </tr>
+            </tbody>
+          </table>
+          <label class="label-table">Informasi Kebermanfaatan Usaha</label>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nomor</th>
+                <th scope="col">Kriteria</th>
+                <th scope="col">Data Anda</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr>
+                <th scope="row">1</th>
+                <td>Pemutahiran PBB</td>
+                <td id="pbb_summary"></td>
+              </tr>
+              <tr> 
+                <th scope="row">2</th>
+                <td>Keterlibatan UMKM</td>
+                <td id="keterlibatan_umkm_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Perjanjian Sewa</td>
+                <td id="janji_sewa_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Persetujuan Warga Sekitar</td>
+                <td id="persetujuan_warga_summary"></td>
+              </tr>
+              
+            </tbody>
+          </table>
+          <label class="label-table">Informasi Antisipasi Dampak/Resiko</label>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Nomor</th>
+                <th scope="col">Kriteria</th>
+                <th scope="col">Data Anda</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white">
+              <tr> 
+                <th scope="row">1</th>
+                <td>Rekomendasi UMKM</td>
+                <td id="rek_umkm_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Kajian Sostek</td>
+                <td id="kajian_sostek_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>IMB Eksisting</td>
+                <td id="imb_eksisting_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>SLF Eksisting</td>
+                <td id="slf_eksisting_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Volume Sumur Resapan</td>
+                <td id="volume_sumur_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">6</th>
+                <td>Kondisi Sumur Resapan</td>
+                <td id="kondisi_sumur_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">7</th>
+                <td>Drainase Disekeliling Tapak</td>
+                <td id="drainase_disekeliling_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">8</th>
+                <td>KDH Minimum</td>
+                <td id="kdh_minimum_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">9</th>
+                <td>Kondisi KDH</td>
+                <td id="kondisi_kdh_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">10</th>
+                <td>Pengelolaan Sampah</td>
+                <td id="pengelolaan_sampah_summary"></td>
+              </tr>
+              <tr>
+                <th scope="row">11</th>
+                <td>Kondisi Parkir</td>
+                <td id="kondisi_parkir_summary"></td>
+              </tr>
+              
             </tbody>
           </table>
           <div class="submit__container">
