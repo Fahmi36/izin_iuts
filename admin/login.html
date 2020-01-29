@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Perizinan IUTS Jakarta</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../assets/img/favicon/site.webmanifest">
+	<meta name="msapplication-TileColor" content="#fb9006">
+	<meta name="msapplication-TileImage" content="assets/img/favicon/android-chrome-192x192.png">
+	<meta name="theme-color" content="#fb9006">
+	<link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+			<form action="javascript:void(0)" method="post" id="proseslogA" class="form">
+				<img src="../assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid img-logo_pemprov">
+				<h1>Admin</h1>
+				<input type="text" placeholder="Masukkan Nama Pengguna" required="" />
+				<input type="password" placeholder="Masukkan Kata Sandi" required=""/>
+				<br>
+				<button type="submit" id="btnLoginP">Masuk</button>
+			</form>
+		</div>
+		<div class="form-container sign-in-container">
+			<form action="javascript:void(0)" method="post" id="proseslogP" class="form">
+				<img src="../assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid img-logo_pemprov">
+				<h1>Pemohon</h1>
+				<input type="email" name="email" id="cek_email" placeholder="Masukkan Alamat Email" required="" />
+				<input type="password" name="token" id="cek_token" placeholder="Masukkan Nomor Token" required="" />
+				<!-- <a href="#">Forgot your password?</a> -->
+				<br>
+				<button type="submit" id="btnLoginP">Masuk</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Masuk ke Dashboard</h1>
+					<p>Sebagai Pemohon</p>
+					<button class="ghost" id="signIn">Pemohon</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Masuk ke Dashboard</h1>
+					<p>Sebagai Admin</p>
+					<button class="ghost" id="signUp">Admin</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+	<script src="assets/js/main.js"></script>
+	<script type="text/javascript">
+		$(document).on('ready', function(){
+			$("#proseslogP").submit(function(event) {
+				$.ajax({
+					url: 'http://rest-iuts.pkkmart.com/UserController/loginPemohon',
+					type: "POST",
+					data: "email , token",
+					dataType: 'json',
+					beforeSend:function () {
+						$("#btnLoginP").addClass('active loader');
+					},
+					success:function(data) {
+						if (data.success == true) {
+						    // console.log(data);
+							localStorage.setItem("id", data.id);
+							localStorage.setItem("nama", data.username);
+							window.location.href = 'dashboard.html';
+						}else{
+							// $("#msg").html(data.msg);
+							// $modal = $('#alert');
+							// $overlay = $('.modal-overlay');
+							// $overlay.addClass('state-show');
+							// $modal.removeClass('state-leave').addClass('state-appear');
+							// alert(data.msg);
+							$("#btnLoginP").removeClass('active loader');
+						}
+					},
+					error:function (e) {
+						$("#btnLoginP").removeClass('active loader');
+						alert(e);
+					}
+				})		
+			});
+
+			$("#proseslogA").submit(function(event) {
+				$.ajax({
+					url: 'http://rest-iuts.pkkmart.com/UserController/loginemail',
+					type: "POST",
+					data: "email, token",
+					dataType: 'json',
+					beforeSend:function () {
+						$("#btnLoginP").addClass('active loader');
+					},
+					success:function(data) {
+						if (data.success == true) {
+						    // console.log(data);
+							localStorage.setItem("id", data.id);
+							localStorage.setItem("nama", data.username);
+							window.location.href = 'dashboard.html';
+						}else{
+							// $("#msg").html(data.msg);
+							// $modal = $('#alert');
+							// $overlay = $('.modal-overlay');
+							// $overlay.addClass('state-show');
+							// $modal.removeClass('state-leave').addClass('state-appear');
+							// alert(data.msg);
+							$("#btnLoginP").removeClass('active loader');
+						}
+					},
+					error:function (e) {
+						$("#btnLoginP").removeClass('active loader');
+						alert(e);
+					}
+				})		
+			});	
+		}); 
+	</script>
+</body>
+</html>
