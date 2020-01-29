@@ -330,6 +330,8 @@
         dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
         dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
         dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
+        dataRegis[0].lat = localStorage.getItem('lat');
+        dataRegis[0].lng = localStorage.getItem('lon');
 
         localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
         $.ajax({
