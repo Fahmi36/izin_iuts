@@ -281,6 +281,7 @@
 	<script src="../assets/js/jquery.dataTables.min.js"></script>
 	<!-- Argon JS -->
 	<script src="../assets/js/argon.js?v=1.0.0"></script>
+  	<script src="../assets/js/mainadmin.js"></script>
 	<script type="text/javascript">
 		jQuery(window).load(function () {
 			jQuery('#loader').fadeOut('slow');
@@ -302,8 +303,8 @@
 			"serverSide": true,
 			"order": [],
 			"ajax": {
-				// 'url' : "http://rest-api.pkkmart.com/BackOffice/getDataSemua",
-				'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
+				'url' : "https://rest-iuts.pkkmart.com/OfficeController/getDataSemua",
+				// 'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
 				'data' : {
 					'status':'1',
 				},

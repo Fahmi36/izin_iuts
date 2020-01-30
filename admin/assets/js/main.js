@@ -9,8 +9,8 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
-var BASE_URL = 'http://localhost/rest_api_iuts/';
-// var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+// var BASE_URL = 'http://localhost/rest_api_iuts/';
+var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 	if (typeof(Storage) !== "undefined") {
 		if (localStorage.getItem('iduser') != null ) {
 			window.location.href = 'dashboard.html';

@@ -1,6 +1,6 @@
 
-var BASE_URL = 'http://localhost/rest_api_iuts/';
-// var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+// var BASE_URL = 'http://localhost/rest_api_iuts/';
+var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 $("#namapemohon").html(localStorage.getItem("nama"));
 $("#namapemohonnav").html(localStorage.getItem("nama"));
 $.ajax({
