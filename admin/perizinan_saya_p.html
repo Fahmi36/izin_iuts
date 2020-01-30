@@ -24,6 +24,7 @@
   <link href="assets/css/argon.css?v=1.0.0" type="text/css" rel="stylesheet">
   <link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" />
   <link href="assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
 </head>
 </head>
 <body>
@@ -97,7 +98,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="">
+              <a class="nav-link" href="timeline.html">
                 <i class="fas fa-calendar-alt text-primary"></i> Timeline Perizinan
               </a>
             </li>
@@ -107,20 +108,20 @@
                 <span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Perizinan Saya</span>
               </a>
 
-              <div class="collapse" id="disposisi">
+              <div class="collapse show" id="disposisi">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_p.html">
+                    <a class="nav-link active" href="perizinan_saya_p.html">
                       Proses <span class="badge badge-default ml-2">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="perizinan_saya_e.html">
                       Expired <span class="badge badge-default ml-2">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">
+                    <a class="nav-link" href="perizinan_saya_s.html">
                       Selesai <span class="badge badge-default ml-2">0</span>
                     </a>
                   </li>
@@ -207,7 +208,7 @@
       </nav>
       <!-- End Top navbar -->
 
-      <div class="header bg-gradient-primary pb-5 pt-5 pt-md-8">
+      <div class="header bg-gradient-primary pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #2193b0 0, #11cdef 100%)!important;">
         <div class="container-fluid">
           <div class="header-body">
             <div class="row">
@@ -222,104 +223,113 @@
       <div class="container-fluid">
         <div class="row mt-4">
           <div class="col-xl-3 col-lg-6">
-            <a href="timeline_pemohon.html" class="text-gray">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="ribbon ribbon-top-right diterima"><span class="bg-success">Diterima</span></div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
-                      <span class="font-weight-bold">Bambang Edhi L</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
-                      <span class="font-weight-bold">27 Januari 2020</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
-                      <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
-                    </div>
+            <div class="card card-stats mb-4 mb-xl-0" data-toggle="modal" data-target="#detailPerizinan" style="cursor: pointer;">
+              <div class="ribbon ribbon-top-right proses"><span class="bg-yellow">Proses</span></div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
+                    <span class="font-weight-bold">Bambang Edhi L</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
+                    <span class="font-weight-bold">27 Januari 2020</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
+                    <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
                   </div>
-                  <p class="mt-3 mb-0 text-darker text-sm">
-                    <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
-                    <span class="text-nowrap">Nomor Token</span>
-                  </p>
                 </div>
+                <p class="mt-3 mb-0 text-darker text-sm">
+                  <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
+                  <span class="text-nowrap">Nomor Token</span>
+                </p>
               </div>
-            </a>
+            </div>
           </div>
-          <div class="col-xl-3 col-lg-6">
-            <a href="timeline_pemohon.html" class="text-gray">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="ribbon ribbon-top-right proses"><span class="bg-yellow">Proses</span></div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
-                      <span class="font-weight-bold">Bambang Edhi L</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
-                      <span class="font-weight-bold">27 Januari 2020</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
-                      <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title" id="exampleModalLongTitle">Detail Permohonan</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="" id="accordion-style-1">
+                  <div class="accordion" id="accordionExample">
+                    <div class="card">
+                      <div class="card-header no-padd" id="headingOne">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Resume
+                          </button>
+                        </h5>
+                      </div>
+
+                      <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-body">
+                          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.<a href="https://www.fiverr.com/sunlimetech/fix-your-bootstrap-html-and-css3-issues" class="ml-3" target="_blank"><strong>View More designs <i class="fa fa-angle-double-right"></i></strong></a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header no-padd" id="headingTwo">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Peta Lokasi
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div class="border p-3">
+                            <span class="d-block h5" align="center">Peta</span>
+                            <input type="hidden" id="lat" >
+                            <input type="hidden" id="long" >
+                            <div id="mapsadmin" style="height: 500px;"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header no-padd" id="headingThree">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Penilaian  
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div id="cardPenilaian">
+                            <center><p class="text-default">Permohonan Anda masih dalam proses penilaian <br> Silakan cek permohonan Anda pada Timeline Perizinan</p></center>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header no-padd" id="headingFour">
+                        <h5 class="mb-0">
+                          <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
+                          </button>
+                        </h5>
+                      </div>
+                      <div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
+                        <div class="card-body">
+                          <div id="review">
+                            <center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <p class="mt-3 mb-0 text-darker text-sm">
-                    <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
-                    <span class="text-nowrap">Nomor Token</span>
-                  </p>
+                  <br>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
                 </div>
               </div>
-            </a>
-          </div>
-          <div class="col-xl-3 col-lg-6">
-            <a href="timeline_pemohon.html" class="text-gray">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="ribbon ribbon-top-right ditolak"><span class="bg-danger">Ditolak</span></div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
-                      <span class="font-weight-bold">Bambang Edhi L</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
-                      <span class="font-weight-bold">27 Januari 2020</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
-                      <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-darker text-sm">
-                    <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
-                    <span class="text-nowrap">Nomor Token</span>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-xl-3 col-lg-6">
-            <a href="timeline_pemohon.html" class="text-gray">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="ribbon ribbon-top-right expired"><span class="bg-primary">Expired</span></div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
-                      <span class="font-weight-bold">Bambang Edhi L</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
-                      <span class="font-weight-bold">27 Januari 2020</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
-                      <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-darker text-sm">
-                    <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
-                    <span class="text-nowrap">Nomor Token</span>
-                  </p>
-                </div>
-              </div>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -356,6 +366,7 @@
   <script src="assets/js/jquery.dataTables.min.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.0.0"></script>
+  <script src="../assets/js/arcgis.js"></script>
   <script type="text/javascript">
     jQuery(window).load(function () {
       jQuery('#loader').fadeOut('slow');

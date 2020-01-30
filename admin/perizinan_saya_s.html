@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Halaman Dashboard Pemohon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+  <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+  <link href="assets/css/style_admin.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="assets/plugins/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="assets/plugins/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
+  <link href="assets/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link href="assets/css/argon.css?v=1.0.0" type="text/css" rel="stylesheet">
+  <link href="assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+</head>
+</head>
+<body>
+  <div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
+    <div class="cssload-container">
+      <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+      <center>Harap Tunggu</center>
+    </div>
+  </div>
+  <div id="app" class="wrapper">
+    <!-- Sidebar -->
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+      <div class="container-fluid">
+        <!-- Toggler -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Brand -->
+        <a class="navbar-brand pt-0" href="#">
+          <img src="../assets/img/logopemprov.png" class="navbar-brand-img" alt=""/>
+          Perizinan IUTS
+        </a>
+        <!-- User -->
+        <ul class="nav align-items-center d-md-none">
+          <li class="nav-item dropdown">
+            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="assets/images/profile-picture.png">
+                </span>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome</h6>
+              </div>
+              <a href="" class="dropdown-item">
+                <i class="ni ni-single-02"></i>
+                <span>User</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a href="" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>Keluar</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+        <!-- Collapse -->
+        <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+          <!-- Collapse header -->
+          <div class="navbar-collapse-header d-md-none">
+            <div class="row">
+              <div class="col-6 collapse-brand">
+                <a href="">
+                  <!-- <img src="{{ asset('argon') }}/img/brand/blue.png"> -->
+                </a>
+              </div>
+              <div class="col-6 collapse-close">
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="dashboard.html">
+                <i class="ni ni-tv-2 text-danger"></i> Dashboard
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="timeline.html">
+                <i class="fas fa-calendar-alt text-primary"></i> Timeline Perizinan
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#disposisi" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="spj">
+                <i class="ni ni-archive-2 text-info"></i>
+                <span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Perizinan Saya</span>
+              </a>
+
+              <div class="collapse show" id="disposisi">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" href="perizinan_saya_p.html">
+                      Proses <span class="badge badge-default ml-2">0</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="perizinan_saya_e.html">
+                      Expired <span class="badge badge-default ml-2">0</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="perizinan_saya_s.html">
+                      Selesai <span class="badge badge-default ml-2">0</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">
+                <i class="fa fa-comments text-yellow"></i> Kontak Kami
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">
+                <i class="ni ni-user-run text-warning"></i> Keluar
+              </a>
+            </li>
+          </ul>
+          <!-- <hr class="my-3">
+          <h6 class="navbar-heading text-muted">Legenda</h6>
+          <ul class="navbar-nav mb-md-3">
+            <li class="nav-item">
+              <a class="nav-link pb-0">
+                <i class="fa fa-square-full text-success"></i> Diterima
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-0">
+                <i class="fa fa-square-full text-yellow"></i> Dalam Proses
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-0">
+                <i class="fa fa-square-full text-danger"></i> Ditolak
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link pb-0">
+                <i class="fa fa-square-full text-primary"></i> Expired
+              </a>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+    </nav>
+    <!-- End Sidebar -->
+
+    <div class="main-content">
+      <!-- Top navbar -->
+      <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div class="container-fluid">
+          <!-- Brand -->
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
+            Halaman Timeline Perizinan
+          </a>
+          <ul class="navbar-nav align-items-center d-none d-md-flex">
+            <li class="nav-item dropdown">
+              <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="https://dcktrp.jakarta.go.id/e-spj/images/profile-picture.png">
+                  </span>
+                  <div class="media-body ml-2 d-none d-lg-block">
+                    <span class="mb-0 text-sm  font-weight-bold">User</span>
+                  </div>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+                <div class=" dropdown-header noti-title">
+                  <h6 class="text-overflow m-0">Welcome</h6>
+                </div>
+                <a href="https://dcktrp.jakarta.go.id/e-spj/profile" class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span>User</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a href="https://dcktrp.jakarta.go.id/e-spj/logout" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Keluar</span>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- End Top navbar -->
+
+      <div class="header bg-gradient-primary pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #2193b0 0, #11cdef 100%)!important;">
+        <div class="container-fluid">
+          <div class="header-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h1 class="text-white">Daftar Perizinan Anda</h1>
+                <h2 class="text-white">Seluruh perizinan yang telah Anda ajukan dan terdata pada sistem kami akan ditampilkan disini.</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row mt-4">
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0" data-toggle="modal" data-target="#detailPerizinan" style="cursor: pointer;">
+              <div class="ribbon ribbon-top-right diterima"><span class="bg-success">Diterima</span></div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
+                    <span class="font-weight-bold">Bambang Edhi L</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
+                    <span class="font-weight-bold">27 Januari 2020</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
+                    <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-darker text-sm">
+                  <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
+                  <span class="text-nowrap">Nomor Token</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-6">
+            <div class="card card-stats mb-4 mb-xl-0" data-toggle="modal" data-target="#detailPerizinan" style="cursor: pointer;">
+              <div class="ribbon ribbon-top-right ditolak"><span class="bg-danger">Ditolak</span></div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
+                    <span class="font-weight-bold">Bambang Edhi L</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
+                    <span class="font-weight-bold">27 Januari 2020</span>
+                    <label class="hr-card"></label>
+                    <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
+                    <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
+                  </div>
+                </div>
+                <p class="mt-3 mb-0 text-darker text-sm">
+                  <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#1235324</span>
+                  <span class="text-nowrap">Nomor Token</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- modal -->
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLongTitle">Detail Permohonan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="" id="accordion-style-1">
+                <div class="accordion" id="accordionExample">
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingOne">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Resume
+                        </button>
+                      </h5>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+                      <div class="card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingTwo">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Peta Lokasi
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <div class="border p-3">
+                          <span class="d-block h5" align="center">Peta</span>
+                          <input type="hidden" id="lat" >
+                          <input type="hidden" id="long" >
+                          <div id="mapsadmin" style="height: 500px;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingThree">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Penilaian  
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <div id="cardPenilaian">
+                          <label>Rincian Nilai Permohonan Anda Sebagai Berikut:</label>
+                          <p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">(Nilai)</span> (Total Nilai Administrasi)</p>
+                          <p class="m-0">Berikut ini adalah rincian nilai administrasi Anda:</p>
+                          <ul class="list-group list-group-flush">
+                            <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">(Nilai)</span></li>
+                            <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">(Nilai)</span></li>
+                            <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">(Nilai)</span></li>
+                            <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">(Nilai)</span></li>
+                          </ul>
+                          <p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">(Nilai)</span> (Total Nilai Teknis)</p>
+                          <p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">(Nilai)</span></li>
+                                <li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">(Nilai)</span></li>
+                                <li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">(Nilai)</span></li>
+                              </ul>
+                            </div>
+                            <div class="col-md-6">
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">(Nilai)</span></li>
+                                <li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">(Nilai)</span></li>
+                                <li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">(Nilai)</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                          <p class="m-0">Nilai akhir permohonan Anda sebesar <span class="badge badge-default">(Nilai)</span> (Nilai Akhir)</p>
+                          <!-- jika diterima -->
+                          <p class="m-0">Perizinan Anda <span class="badge badge-success">Diterima</span></p>
+                          <!-- end diterima -->
+
+                          <!-- jika ditolak -->
+                          <p class="m-0">Perizinan Anda <span class="badge badge-danger">Ditolak</span></p>
+                          <!-- end ditolak -->
+                        </div>
+                        <div class="card mt-3">
+                          <div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
+                            <!-- jika diterima -->
+                            <p class="m-0">
+                              Permohonan Anda <span class="badge badge-success">Diterima</span> oleh Kepala Dinas PMPTSP<br>
+                              Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br>
+                              <label><b>Pada Senin, 3 Februari 2020.</b></label>
+                            </p>
+                            <!-- diterima -->
+
+                            <!-- jika ditolak -->
+                            <p class="m-0">
+                              Permohonan Anda <span class="badge badge-danger">Ditolak</span> oleh Kepala Dinas PMPTSP<br>
+                              Pemohon diharapkan melengkapi dan memperbaiki persyaratan yang memiliki nilai rendah<br>
+                              Silakan ajukan izin kembali apabila syarat benar-benar sudah memenuhi persyaratan yang berlaku
+                            </p>
+                            <!-- end ditolak -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingFour">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <div id="review">
+                          <center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end modal -->
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6">
+              <div class="copyright text-center text-xl-left text-muted">
+                © 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
+              </div>
+            </div>
+            <div class="col-xl-6">
+              <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <li class="nav-item">
+                  <a href="#" class="nav-link" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link" target="_blank">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer -->
+
+      </div>
+    </div>
+  </div>
+  <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+  <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+  <script src="assets/js/sweetalert2@8.js"></script>
+  <script src="assets/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="assets/js/jquery.dataTables.min.js"></script>
+  <!-- Argon JS -->
+  <script src="assets/js/argon.js?v=1.0.0"></script>
+  <script src="../assets/js/arcgis.js"></script>
+  <script type="text/javascript">
+    jQuery(window).load(function () {
+      jQuery('#loader').fadeOut('slow');
+    });
+  </script>
+  <script type="text/javascript">
+    $(".scrollbar").addClass("thin");
+    $(".scrollbar").mouseover(function(){
+      $(this).removeClass("thin");
+    });
+    $(".scrollbar").mouseout(function(){
+      $(this).addClass("thin");
+    });
+    $(".scrollbar").scroll(function () {
+      $(".scrollbar").addClass("thin");
+    });
+  </script>
+</body>
+</html>
