@@ -110,18 +110,18 @@
               <div class="collapse" id="disposisi">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_p.html">
-                      Proses <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(0)" href="javascript:void(0);" class="nav-link">
+                      Proses <span class="badge badge-default ml-2" id="countproses">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">
-                      Expired <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(3)" href="javascript:void(0);" class="nav-link">
+                      Expired <span class="badge badge-default ml-2" id="countexpired">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="">
-                      Selesai <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(1)"  href="javascript:void(0);" class="nav-link">
+                      Selesai <span class="badge badge-default ml-2" id="countselesai">0</span>
                     </a>
                   </li>
                 </ul>
@@ -133,7 +133,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" id="logout" href="javascript:void(0);">
                 <i class="ni ni-user-run text-warning"></i> Keluar
               </a>
             </li>
@@ -183,7 +183,7 @@
                     <img alt="Image placeholder" src="https://dcktrp.jakarta.go.id/e-spj/images/profile-picture.png">
                   </span>
                   <div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold">User</span>
+                    <span class="mb-0 text-sm  font-weight-bold" id="namapemohonnav"></span>
                   </div>
                 </div>
               </a>
@@ -191,12 +191,12 @@
                 <div class=" dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome</h6>
                 </div>
-                <a href="https://dcktrp.jakarta.go.id/e-spj/profile" class="dropdown-item">
+                <a class="dropdown-item">
                   <i class="ni ni-single-02"></i>
-                  <span>User</span>
+                  <span id="namapemohon"></span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="https://dcktrp.jakarta.go.id/e-spj/logout" class="dropdown-item">
+                <a  id="logout" href="javascript:void(0);" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Keluar</span>
                 </a>
@@ -220,35 +220,8 @@
         </div>
       </div>
       <div class="container-fluid">
-        <div class="row mt-4">
-          <div id="izinnya"></div>
-          <div class="col-xl-3 col-lg-6">
-            <a href="timeline_pemohon" class="text-default">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="ribbon ribbon-top-right diterima">
-                  <span class="bg-success">Di Proses</span>
-                </div>
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5>
-                      <span class="font-weight-bold">Fahmi Fauzi</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5>
-                      <span class="font-weight-bold">2020-01-28 15:34:06</span>
-                      <label class="hr-card"></label>
-                      <h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5>
-                      <span class="font-weight-bold">Izin Usaha Toko Swalayan</span>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-darker text-sm">
-                    <span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#</span>
-                    <span class="text-nowrap">Nomor Token</span>
-                  </p>
-                </div>
-              </div>
-            </a>
-          </div>
+        <div class="row mt-4" id="izinnya">
+        
         </div>
 
         <!-- Footer -->
