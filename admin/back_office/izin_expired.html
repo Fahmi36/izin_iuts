@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Content-Language" content="en">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Halaman Dashboard Pemohon</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+	<meta name="description" content="This is an example dashboard created using build-in elements and components.">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
+	<link rel="manifest" href="../../assets/img/favicon/site.webmanifest">
+	<link href="../assets/css/style_admin.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+	<link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+	<!-- Icons -->
+	<link href="../assets/plugins/nucleo/css/nucleo.css" rel="stylesheet">
+	<link href="../assets/plugins/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
+	<link href="../assets/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+	<!-- Argon CSS -->
+	<link href="../assets/css/argon.css?v=1.0.0" type="text/css" rel="stylesheet">
+	<link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+	<link href="../assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+</head>
+<body>
+	<div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
+		<div class="cssload-container">
+			<div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
+			<center>Harap Tunggu</center>
+		</div>
+	</div>
+	<div id="app" class="wrapper">
+		<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
+			<div class="container-fluid">
+				<!-- Toggler -->
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<!-- Brand -->
+				<a class="navbar-brand pt-0" href="#">
+					<img src="../../assets/img/logopemprov.png" class="navbar-brand-img" alt=""/>
+					Perizinan IUTS
+				</a>
+				<!-- User -->
+				<ul class="nav align-items-center d-md-none">
+					<li class="nav-item dropdown">
+						<a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<div class="media align-items-center">
+								<span class="avatar avatar-sm rounded-circle">
+									<img alt="Image placeholder" src="../assets/images/profile-picture.png">
+
+								</span>
+							</div>
+						</a>
+						<div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+							<div class=" dropdown-header noti-title">
+								<h6 class="text-overflow m-0">Welcome</h6>
+							</div>
+							<a href="" class="dropdown-item">
+								<i class="ni ni-single-02"></i>
+								<span>User</span>
+							</a>
+							<div class="dropdown-divider"></div>
+							<a href="" class="dropdown-item">
+								<i class="ni ni-user-run"></i>
+								<span>Keluar</span>
+							</a>
+						</div>
+					</li>
+				</ul>
+				<!-- Collapse -->
+				<div class="collapse navbar-collapse" id="sidenav-collapse-main">
+					<!-- Collapse header -->
+					<div class="navbar-collapse-header d-md-none">
+						<div class="row">
+							<div class="col-6 collapse-brand">
+								<a href="">
+									<!-- <img src="{{ asset('argon') }}/img/brand/blue.png"> -->
+								</a>
+							</div>
+							<div class="col-6 collapse-close">
+								<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle sidenav">
+									<span></span>
+									<span></span>
+								</button>
+							</div>
+						</div>
+					</div>
+					<ul class="navbar-nav">
+						<li class="nav-item">
+							<a class="nav-link" href="dashboard_admin.html">
+								<i class="ni ni-tv-2 text-danger"></i> Dashboard
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link collapsed" href="#disposisi" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="spj">
+								<i class="ni ni-archive-2 text-info"></i>
+								<span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Daftar Perizinan</span>
+							</a>
+
+							<div class="collapse show" id="disposisi">
+								<ul class="nav nav-sm flex-column">
+									<li class="nav-item">
+										<a class="nav-link" href="semua_izin.html">
+											Semua Izin IUTS <span class="badge badge-default ml-2">0</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="izin_diterima.html">
+											Diterima <span class="badge badge-default ml-2">0</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="izin_ditolak.html">
+											Ditolak <span class="badge badge-default ml-2">0</span>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link active" href="izin_expired.html">
+											Expired <span class="badge badge-default ml-2">0</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="statistik.html">
+								<i class="fas fa-calendar-alt text-primary"></i> Statistik
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link collapsed" href="#tugas" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="IUTS">
+								<i class="ni ni-archive-2 text-default"></i>
+								<span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Tugas</span>
+							</a>
+
+							<div class="collapse" id="tugas">
+								<ul class="nav nav-sm flex-column">
+									<li class="nav-item">
+										<a class="nav-link" href="#">
+											Verifikasi
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">
+											Penerbitan SK
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">
+											Laporan
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="#">
+											Kontak Kami
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="contact.html">
+								<i class="fa fa-phone text-yellow"></i> Kotak Surat
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="javascript:void(0)" id="logout">
+								<i class="ni ni-user-run text-warning"></i> Keluar
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="main-content">
+			<!-- Top navbar -->
+			<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+				<div class="container-fluid">
+					<!-- Brand -->
+					<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
+						Halaman Perizinan Expired
+					</a>
+					<ul class="navbar-nav align-items-center d-none d-md-flex">
+						<li class="nav-item dropdown">
+							<a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<div class="media align-items-center">
+									<span class="avatar avatar-sm rounded-circle">
+										<img alt="Image placeholder" src="https://dcktrp.jakarta.go.id/e-spj/images/profile-picture.png">
+									</span>
+									<div class="media-body ml-2 d-none d-lg-block">
+										<span class="mb-0 text-sm  font-weight-bold">User</span>
+									</div>
+								</div>
+							</a>
+							<div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+								<div class=" dropdown-header noti-title">
+									<h6 class="text-overflow m-0">Welcome</h6>
+								</div>
+								<a href="https://dcktrp.jakarta.go.id/e-spj/profile" class="dropdown-item">
+									<i class="ni ni-single-02"></i>
+									<span>User</span>
+								</a>
+								<div class="dropdown-divider"></div>
+								<a href="https://dcktrp.jakarta.go.id/e-spj/logout" class="dropdown-item">
+									<i class="ni ni-user-run"></i>
+									<span>Keluar</span>
+								</a>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="header bg-gradient-default pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #f5365c 0, #f56036 100%)!important;">
+			</div>
+			<div class="container-fluid pb-5 mt--6">
+				<div class="row">
+					<div class="col-md-12 mt-2">
+						<div class="card bg-secondary shadow">
+							<div class="card-header bg-white border-0 mb-0">
+								<div class="row align-items-center ">
+									<h3 class="pl-3 mb-0">Perizinan Expired</h3>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="semua_izin" class="table table-striped table-no-bordered" style="width:100%">
+										<thead>
+											<tr>
+												<th>Nomor Token</th>
+												<th>Nama Pemohon</th>
+												<th>Email</th>
+												<th>NPWP</th>
+												<th>Tanggal mengajukan</th>
+												<th>Tanggal Update</th>
+												<th>Status</th>
+												<th class="disabled-sorting">Detail</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Adasd</td>
+												<td>Asep</td>
+												<td>Asep@gmu.com</td>
+												<td>123123</td>
+												<td>22 Januari 2020</td>
+												<td>23 Januari 2020</td>
+												<td>Expired</td>
+												<td>
+													<a href="#" data-toggle="modal" class="btn btn-icon btn-sm btn-default">
+														<span class="btn-inner--icon"><i class="fa fa-info-circle text-white"></i></span>
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>  
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Footer -->
+				<footer class="footer">
+					<div class="row align-items-center justify-content-xl-between">
+						<div class="col-xl-6">
+							<div class="copyright text-center text-xl-left text-muted">
+								© 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
+							</div>
+						</div>
+						<div class="col-xl-6">
+							<ul class="nav nav-footer justify-content-center justify-content-xl-end">
+								<li class="nav-item">
+									<a href="#" class="nav-link" target="_blank">About Us</a>
+								</li>
+								<li class="nav-item">
+									<a href="#" class="nav-link" target="_blank">Blog</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</footer>
+				<!-- End Footer -->
+			</div>
+		</div>
+	</div>
+	<script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+	<script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+	<script src="../assets/js/sweetalert2@8.js"></script>
+	<script src="../assets/js/gijgo.min.js" type="text/javascript"></script>
+	<script src="../assets/js/jquery.dataTables.min.js"></script>
+	<!-- Argon JS -->
+	<script src="../assets/js/argon.js?v=1.0.0"></script>
+	<script type="text/javascript">
+		jQuery(window).load(function () {
+			jQuery('#loader').fadeOut('slow');
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+        	$('#semua_izin').DataTable();
+   		});
+	</script>
+	<script type="text/javascript">
+		$(".scrollbar").addClass("thin");
+		$(".scrollbar").mouseover(function(){
+			$(this).removeClass("thin");
+		});
+		$(".scrollbar").mouseout(function(){
+			$(this).addClass("thin");
+		});
+		$(".scrollbar").scroll(function () {
+			$(".scrollbar").addClass("thin");
+		});
+	</script>
+</body>
+</html>
