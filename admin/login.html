@@ -20,8 +20,8 @@
 			<form action="javascript:void(0)" method="post" id="proseslogA" class="form">
 				<img src="../assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid img-logo_pemprov">
 				<h1>Admin</h1>
-				<input type="text" placeholder="Masukkan Nama Pengguna" required="" />
-				<input type="password" placeholder="Masukkan Kata Sandi" required=""/>
+				<input type="text" id="cek_email_admin" placeholder="Masukkan Nama Pengguna" required="" />
+				<input type="password" id="cek_token_admin" placeholder="Masukkan Kata Sandi" required=""/>
 				<br>
 				<button type="submit" id="btnLoginP">Masuk</button>
 			</form>
@@ -54,72 +54,5 @@
 	</div>
 	<script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
 	<script src="assets/js/main.js"></script>
-	<script type="text/javascript">
-		$(document).on('ready', function(){
-			$("#proseslogP").submit(function(event) {
-				$.ajax({
-					url: 'http://rest-iuts.pkkmart.com/UserController/loginPemohon',
-					type: "POST",
-					data: "email , token",
-					dataType: 'json',
-					beforeSend:function () {
-						$("#btnLoginP").addClass('active loader');
-					},
-					success:function(data) {
-						if (data.success == true) {
-						    // console.log(data);
-							localStorage.setItem("id", data.id);
-							localStorage.setItem("nama", data.username);
-							window.location.href = 'dashboard.html';
-						}else{
-							// $("#msg").html(data.msg);
-							// $modal = $('#alert');
-							// $overlay = $('.modal-overlay');
-							// $overlay.addClass('state-show');
-							// $modal.removeClass('state-leave').addClass('state-appear');
-							// alert(data.msg);
-							$("#btnLoginP").removeClass('active loader');
-						}
-					},
-					error:function (e) {
-						$("#btnLoginP").removeClass('active loader');
-						alert(e);
-					}
-				})		
-			});
-
-			$("#proseslogA").submit(function(event) {
-				$.ajax({
-					url: 'http://rest-iuts.pkkmart.com/UserController/loginemail',
-					type: "POST",
-					data: "email, token",
-					dataType: 'json',
-					beforeSend:function () {
-						$("#btnLoginP").addClass('active loader');
-					},
-					success:function(data) {
-						if (data.success == true) {
-						    // console.log(data);
-							localStorage.setItem("id", data.id);
-							localStorage.setItem("nama", data.username);
-							window.location.href = 'dashboard.html';
-						}else{
-							// $("#msg").html(data.msg);
-							// $modal = $('#alert');
-							// $overlay = $('.modal-overlay');
-							// $overlay.addClass('state-show');
-							// $modal.removeClass('state-leave').addClass('state-appear');
-							// alert(data.msg);
-							$("#btnLoginP").removeClass('active loader');
-						}
-					},
-					error:function (e) {
-						$("#btnLoginP").removeClass('active loader');
-						alert(e);
-					}
-				})		
-			});	
-		}); 
-	</script>
 </body>
 </html>
