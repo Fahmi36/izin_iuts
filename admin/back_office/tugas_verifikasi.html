@@ -102,7 +102,7 @@
 								<span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Daftar Perizinan</span>
 							</a>
 
-							<div class="collapse show" id="disposisi">
+							<div class="collapse" id="disposisi">
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
 										<a class="nav-link" href="semua_izin.html">
@@ -120,7 +120,7 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" href="izin_expired.html">
+										<a class="nav-link" href="izin_expired.html">
 											Expired <span class="badge badge-default ml-2">0</span>
 										</a>
 									</li>
@@ -138,10 +138,10 @@
 								<span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Tugas</span>
 							</a>
 
-							<div class="collapse" id="tugas">
+							<div class="collapse show" id="tugas">
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
-										<a class="nav-link" href="tugas_verifikasi.html">
+										<a class="nav-link active" href="#">
 											Tugas Anda
 										</a>
 									</li>
@@ -178,7 +178,7 @@
 				<div class="container-fluid">
 					<!-- Brand -->
 					<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-						Halaman Perizinan Expired
+						Halaman Tugas Verifikasi
 					</a>
 					<ul class="navbar-nav align-items-center d-none d-md-flex">
 						<li class="nav-item dropdown">
@@ -218,7 +218,7 @@
 						<div class="card bg-secondary shadow">
 							<div class="card-header bg-white border-0 mb-0">
 								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Perizinan Expired</h3>
+									<h3 class="pl-3 mb-0">Tugas Anda</h3>
 								</div>
 							</div>
 							<div class="card-body">
@@ -231,8 +231,6 @@
 												<th>Email</th>
 												<th>NPWP</th>
 												<th>Tanggal mengajukan</th>
-												<th>Tanggal Update</th>
-												<th>Status</th>
 												<th class="disabled-sorting">Detail</th>
 											</tr>
 										</thead>
@@ -243,11 +241,9 @@
 												<td>Asep@gmu.com</td>
 												<td>123123</td>
 												<td>22 Januari 2020</td>
-												<td>23 Januari 2020</td>
-												<td>Expired</td>
 												<td>
-													<a href="#" data-toggle="modal" class="btn btn-icon btn-sm btn-default">
-														<span class="btn-inner--icon"><i class="fa fa-info-circle text-white"></i></span>
+													<a href="#" data-toggle="modal" data-target="#detailVerifikasi" class="btn btn-icon btn-sm btn-success">
+														Verifikasi
 													</a>
 												</td>
 											</tr>
@@ -258,6 +254,63 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- modal verifikasi -->
+				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailVerifikasi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLongTitle">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>	
+							<div class="modal-body">
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Persyaratan</th>
+											<th scope="col">Kategori</th>
+											<th scope="col">Nilai</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Kelengkapan Administrasi</td>
+											<td>> 90%</td>
+											<td>3</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Sudah berapa lama mengajukan izin</td>
+											<td>< 1 Bulan</td>
+											<td>0</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Status NPWP</td>
+											<td>Lunas</td>
+											<td>1</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Status PBB</td>
+											<td>Belum Lunas</td>
+											<td>0</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+								<button type="submit" class="btn btn-success">Verifikasi</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end modal verifikasi -->
 
 				<!-- Footer -->
 				<footer class="footer">
