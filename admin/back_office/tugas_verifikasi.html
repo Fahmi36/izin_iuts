@@ -142,12 +142,7 @@
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
 										<a class="nav-link active" href="#">
-											Verifikasi
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="#">
-											Penerbitan SK
+											Tugas Anda
 										</a>
 									</li>
 									<li class="nav-item">
@@ -223,7 +218,7 @@
 						<div class="card bg-secondary shadow">
 							<div class="card-header bg-white border-0 mb-0">
 								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Verifikasi</h3>
+									<h3 class="pl-3 mb-0">Tugas Anda</h3>
 								</div>
 							</div>
 							<div class="card-body">
@@ -247,7 +242,7 @@
 												<td>123123</td>
 												<td>22 Januari 2020</td>
 												<td>
-													<a href="#" data-toggle="modal" class="btn btn-icon btn-sm btn-success">
+													<a href="#" data-toggle="modal" data-target="#detailVerifikasi" class="btn btn-icon btn-sm btn-success">
 														Verifikasi
 													</a>
 												</td>
@@ -259,6 +254,63 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- modal verifikasi -->
+				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailVerifikasi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLongTitle">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>	
+							<div class="modal-body">
+								<table class="table">
+									<thead class="thead-light">
+										<tr>
+											<th scope="col">No</th>
+											<th scope="col">Persyaratan</th>
+											<th scope="col">Kategori</th>
+											<th scope="col">Nilai</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td>Kelengkapan Administrasi</td>
+											<td>> 90%</td>
+											<td>3</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Sudah berapa lama mengajukan izin</td>
+											<td>< 1 Bulan</td>
+											<td>0</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Status NPWP</td>
+											<td>Lunas</td>
+											<td>1</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td>Status PBB</td>
+											<td>Belum Lunas</td>
+											<td>0</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+								<button type="submit" class="btn btn-success">Verifikasi</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end modal verifikasi -->
 
 				<!-- Footer -->
 				<footer class="footer">
