@@ -227,7 +227,7 @@
                 <i class="fa fa-user-edit" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Pemohon</p>
               </li>
-              <li role="presentation" class="">
+              <li role="presentation" class="active">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Administrasi</p>
               </li>
@@ -252,7 +252,66 @@
             <div class="card mt-4">
               <div class="card-body">
                 <label>Keterangan :</label>
-                <p>Anda mengajukan izin pada Tanggal 27 Januari 2020 pukul 14.14 WIB</p>
+                <!-- pemohon -->
+                <div id="ket_pemohon">
+                  <p>Anda mengajukan izin pada Tanggal 27 Januari 2020 pukul 14.14 WIB</p>
+                </div>
+                <!-- end pemohon -->
+
+                <!-- admin administrasi -->
+                <div id="ket_admin1">
+                  <p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">(Total Nilai Administrasi)</span></p>
+                  <p>Berikut ini adalah rincian nilai administrasi Anda :</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">(Nilai)</span></li>
+                  </ul>
+                </div>
+                <!-- end admin administrasi -->  
+
+                <!-- admin teknis -->
+                <div id="ket_teknis">
+                  <p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">(Nilai)</span> (Total Nilai Teknis)</p>
+                  <p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- end admin teknis -->
+
+                <!-- admin administrasi 2 -->
+                <div id="ket_admin2">
+                  <p class="m-0">Nilai akhir permohonan Anda sebesar <span class="badge badge-default">(Nilai)</span> (Nilai Akhir)</p>
+                  <p>Perizinan Anda <span class="badge badge-success">Diterima</span></p>
+                  <p>
+                    Permohonan Anda <span class="badge badge-success">Diterima</span> oleh Kepala Dinas PMPTSP<br>
+                    Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br>
+                    <label><b>Pada Senin, 3 Februari 2020.</b></label>
+                  </p>
+                </div>
+                <!-- end admin administrasi 2 -->
+
+                <!-- pemohon selesai -->
+                <div id="ket_pemohon-selesai">
+                  <p class="m-0">Anda telah mengambil izin pada Tanggal 3 Februari 2020</p>
+                </div>
+                <!-- end pemohon selesai -->
+
               </div>
             </div>
           </div>

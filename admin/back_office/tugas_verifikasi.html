@@ -92,7 +92,7 @@
 					</div>
 					<ul class="navbar-nav">
 						<li class="nav-item">
-							<a class="nav-link active" href="dashboard_admin.html">
+							<a class="nav-link" href="dashboard_admin.html">
 								<i class="ni ni-tv-2 text-danger"></i> Dashboard
 							</a>
 						</li>
@@ -138,10 +138,10 @@
 								<span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Tugas</span>
 							</a>
 
-							<div class="collapse" id="tugas">
+							<div class="collapse show" id="tugas">
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
-										<a class="nav-link" href="#">
+										<a class="nav-link active" href="#">
 											Verifikasi
 										</a>
 									</li>
@@ -183,7 +183,7 @@
 				<div class="container-fluid">
 					<!-- Brand -->
 					<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-						Halaman Dashboard
+						Halaman Tugas Verifikasi
 					</a>
 					<ul class="navbar-nav align-items-center d-none d-md-flex">
 						<li class="nav-item dropdown">
@@ -216,26 +216,46 @@
 				</div>
 			</nav>
 			<div class="header bg-gradient-default pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #f5365c 0, #f56036 100%)!important;">
-				<div class="container-fluid">
-					<div class="header-body">
-						<div class="row">
-							<div class="col-md-12">
-								<h1 class="text-white">Selamat Datang di Halaman Dashboard Anda</h1>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-			<div class="container-fluid">
+			<div class="container-fluid pb-5 mt--6">
 				<div class="row">
-					<div class="col-md-12 mt-4">
-						<div class="card" style="padding-left: 20px;border-left: solid 2px #f5365c !important;border-radius:2px;background-color: transparent;border:none;">
-							<div class="title">
-								- Daftar Izin adalah fitur untuk melihat seluruh daftar perizinan yang pemohon ajukan<br>
-								- Statistik adalah fitur untuk melihat statistik perizinan yang ditampilkan dalam bentuk chart<br>
-								- Tugas adalah fitur untuk mengerjakan tugas Anda<br>
-								- Kotak Surat adalah fitur bertukar pesan sesama admin atau admin dengan atasan<br>
-								- Notifikasi adalah fitur pengingat permohonan baru yang harus Anda proses</div>
+					<div class="col-md-12 mt-2">
+						<div class="card bg-secondary shadow">
+							<div class="card-header bg-white border-0 mb-0">
+								<div class="row align-items-center ">
+									<h3 class="pl-3 mb-0">Verifikasi</h3>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="semua_izin" class="table table-striped table-no-bordered" style="width:100%">
+										<thead>
+											<tr>
+												<th>Nomor Token</th>
+												<th>Nama Pemohon</th>
+												<th>Email</th>
+												<th>NPWP</th>
+												<th>Tanggal mengajukan</th>
+												<th class="disabled-sorting">Detail</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Adasd</td>
+												<td>Asep</td>
+												<td>Asep@gmu.com</td>
+												<td>123123</td>
+												<td>22 Januari 2020</td>
+												<td>
+													<a href="#" data-toggle="modal" class="btn btn-icon btn-sm btn-success">
+														Verifikasi
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>  
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -276,6 +296,11 @@
 		jQuery(window).load(function () {
 			jQuery('#loader').fadeOut('slow');
 		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+        	$('#semua_izin').DataTable();
+   		});
 	</script>
 	<script type="text/javascript">
 		$(".scrollbar").addClass("thin");
