@@ -1,6 +1,6 @@
 
-// var BASE_URL = 'http://localhost/rest_api_iuts/';
-var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+var BASE_URL = 'http://localhost/rest_api_iuts/';
+// var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 $("#namapemohon").html(localStorage.getItem("nama"));
 $("#namapemohonnav").html(localStorage.getItem("nama"));
 $.ajax({
@@ -118,6 +118,39 @@ timeline = {
 		}
 	})
 	},
+		datapesan:function() {
+		var datas = {id:localStorage.getItem("iduser")};
+		$.ajax({
+			url: BASE_URL + 'UserController/detailPesan',
+			type: 'POST',
+			data: datas,
+			dataType : 'json',
+			success:function(data) {
+				var pengirim = [];
+				var penerima = [];
+				var pesan = [];
+				var tanggal = [];
+				for(var coba in data.row){
+					pengirim.push(data.row[coba].id_pengirim);
+					penerima.push(data.row[coba].id_penerima);
+					pesan.push(data.row[coba].pesan);
+					tanggal.push(data.row[coba].created_at);
+				}
+				// console.log(nama.length);
+				if (pesan.length == 0) {
+					$("#pesanrow").html('<p>Belum ada pesan</p>');
+				}
+				for (var i = 0; i < pesan.length; i++) {
+					if (pengirim[i]===localStorage.getItem("iduser")) {
+						$("#detailpesan").append("<div class='chat-message chat-message-sender'><div class='chat-message-wrapper'><div class='chat-message-content'><p>"+pesan[i]+"</p></div><div class='chat-details'><span class='chat-message-localisation font-size-small'>Time</span><span class='chat-message-read-status font-size-small'>- Date</span></div></div></div>");
+					}else if(penerima[i]===localStorage.getItem("iduser")){
+						$("#detailpesan").append("<div class='chat-message chat-message-recipient'><img class='chat-image chat-image-default img-thumbnail' src='assets/images/profile-picture.png'/><div class='chat-message-wrapper'><div class='chat-message-content'><p>"+pesan[i]+"</p></div><div class='chat-details'><span class='chat-message-localization font-size-small'>Time</span><span class='chat-message-read-status font-size-small'>- Date</span></div></div></div>");
+					}
+				}
+		}
+	})
+	},
+
 	// end view data
 };
 $("#logout").click(function(event) {

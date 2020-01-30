@@ -27,6 +27,144 @@
 </head>
 </head>
 <body>
+  <style type="text/css">
+
+    .padding {
+      padding: 20px;
+    }
+
+    .clearfix {
+      display: table;
+      overflow: hidden;
+    }
+    .clearfix:before {
+      content: " ";
+      display: block;
+    }
+
+    .font-size-small {
+      font-size: 0.65em;
+    }
+
+    .chat-wrapper {
+      min-width: 400px;
+      width: 100%;
+      display: table;
+      overflow: hidden;
+    }
+    .chat-wrapper:before {
+      content: " ";
+      display: block;
+    }
+    .chat-wrapper .chat-content {
+      background-color: #fff;
+    }
+    .chat-wrapper .chat-image {
+      float: left;
+      -webkit-border-radius: 50%;
+      -ms-border-radius: 50%;
+      -moz-border-radius: 50%;
+      -o-border-radius: 50%;
+      border-radius: 50%;
+    }
+    .chat-wrapper .chat-image.chat-image-default {
+      width: 60px;
+      height: 60px;
+    }
+    .chat-wrapper .chat-message {
+      margin-bottom: 20px;
+      width: 100%;
+      display: table;
+      overflow: hidden;
+    }
+    .chat-wrapper .chat-message:before {
+      content: " ";
+      display: block;
+    }
+    .chat-wrapper .chat-message:last-of-type {
+      margin-bottom: 0;
+    }
+    .chat-wrapper .chat-message .chat-message-wrapper {
+      max-width: 70%;
+      display: table;
+      margin: 0 20px;
+      padding-top: 10px;
+      position: relative;
+    }
+    .chat-wrapper .chat-message .chat-message-wrapper:before {
+      content: " ";
+      display: block;
+      width: 0;
+      height: 0;
+      border: 12px solid transparent;
+      top: 17px;
+      position: absolute;
+      z-index: 2;
+    }
+    .chat-wrapper .chat-message .chat-message-wrapper p {
+      padding: 6px 20px;
+      color: #fff;
+      border-top: 1px solid;
+    }
+    .chat-wrapper .chat-message .chat-message-wrapper p:first-of-type {
+      border-top: 0 !important;
+    }
+    .chat-wrapper .chat-message.chat-message-recipient .chat-message-wrapper,
+    .chat-wrapper .chat-message.chat-message-recipient .chat-message-content {
+      float: left;
+    }
+    .chat-wrapper .chat-message.chat-message-recipient .chat-message-wrapper:before {
+      left: -20px;
+      border-right-color: #f1f1f1;
+    }
+    .chat-wrapper .chat-message.chat-message-recipient p {
+      background-color: #f1f1f1;
+      color: #555;
+    }
+    .chat-wrapper .chat-message.chat-message-sender .chat-message-wrapper,
+    .chat-wrapper .chat-message.chat-message-sender .chat-message-content {
+      float: right;
+    }
+    .chat-wrapper .chat-message.chat-message-sender .chat-message-wrapper:before {
+      right: -20px;
+      border-left-color: #42a5f5;
+    }
+    .chat-wrapper .chat-message.chat-message-sender p {
+      background: #42a5f5;
+      border-top-color: #76acc5;
+    }
+    .chat-wrapper .chat-message.chat-message-sender img {
+      float: right;
+    }
+    .chat-wrapper .chat-message .chat-message-content {
+      display: table;
+      overflow: hidden;
+      -webkit-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -o-border-radius: 4px;
+      border-radius: 4px;
+    }
+    .chat-wrapper .chat-message .chat-message-content:before {
+      content: " ";
+      display: block;
+    }
+    .chat-wrapper .chat-message .chat-details {
+      clear: both;
+      width: 100%;
+      display: table;
+      overflow: hidden;
+    }
+    .chat-wrapper .chat-message .chat-details:before {
+      content: " ";
+      display: block;
+    }
+    .chat-wrapper .chat-message .chat-details span {
+      margin-right: 4px;
+      color: #bbb;
+    }
+
+  </style>
   <div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
     <div class="cssload-container">
       <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
@@ -133,7 +271,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">
+              <a class="nav-link" href="javascript:void(0)" id="logout">
                 <i class="ni ni-user-run text-warning"></i> Keluar
               </a>
             </li>
@@ -232,73 +370,84 @@
               </div>
               <div class="card-body">
                 <form action="javascript:void(0);" id="kirimpesan">
-                  <hr class="my-4">
-                  <!-- Description -->
-                  <div class="pl-lg-4">
-                    <div class="form-group focused">
-                      <label>Pesan</label>
-                      <textarea rows="4" name="pesan" id="pesan" class="form-control form-control-alternative" placeholder="Masukkan Pesan Anda..."></textarea>
+                  <div class='chat-wrapper' id="pesanrow">
+                    <div class='chat-message padding' id="detailpesan">
+
                     </div>
                   </div>
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-warning" style="float: right;">Kirim</button>
-                  </div>
-                </form>
+                  <form>
+                    <hr class="my-4">
+                    <!-- Description -->
+                    <div class="pl-lg-4">
+                      <div class="form-group focused">
+                        <label>Pesan</label>
+                        <textarea rows="4" name="pesan" id="pesan" class="form-control form-control-alternative" placeholder="Masukkan Pesan Anda..."></textarea>
+                      </div>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-warning" style="float: right;">Kirim</button>
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+
+          <!-- Footer -->
+          <footer class="footer">
+            <div class="row align-items-center justify-content-xl-between">
+              <div class="col-xl-6">
+                <div class="copyright text-center text-xl-left text-muted">
+                  © 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
+                </div>
+              </div>
+              <div class="col-xl-6">
+                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" target="_blank">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link" target="_blank">Blog</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </footer>
+          <!-- End Footer -->
+
         </div>
-
-        <!-- Footer -->
-        <footer class="footer">
-          <div class="row align-items-center justify-content-xl-between">
-            <div class="col-xl-6">
-              <div class="copyright text-center text-xl-left text-muted">
-                © 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
-              </div>
-            </div>
-            <div class="col-xl-6">
-              <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                <li class="nav-item">
-                  <a href="#" class="nav-link" target="_blank">About Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link" target="_blank">Blog</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </footer>
-        <!-- End Footer -->
-
       </div>
     </div>
-  </div>
-  <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-  <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
-  <script src="assets/js/sweetalert2@8.js"></script>
-  <script src="assets/js/gijgo.min.js" type="text/javascript"></script>
-  <script src="assets/js/jquery.dataTables.min.js"></script>
-  <!-- Argon JS -->
-  <script src="assets/js/argon.js?v=1.0.0"></script>
+    <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="assets/js/sweetalert2@8.js"></script>
+    <script src="assets/js/gijgo.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.dataTables.min.js"></script>
+    <!-- Argon JS -->
+    <script src="assets/js/argon.js?v=1.0.0"></script>
     <script src="assets/js/mainadmin.js"></script>
-  <script type="text/javascript">
-    jQuery(window).load(function () {
-      jQuery('#loader').fadeOut('slow');
-    });
-  </script>
-  <script type="text/javascript">
-    $(".scrollbar").addClass("thin");
-    $(".scrollbar").mouseover(function(){
-      $(this).removeClass("thin");
-    });
-    $(".scrollbar").mouseout(function(){
-      $(this).addClass("thin");
-    });
-    $(".scrollbar").scroll(function () {
+    <script type="text/javascript">
+
+      timeline.datapesan();
+      jQuery(window).load(function () {
+        jQuery('#loader').fadeOut('slow');
+      });
+      setInterval(function(){
+        timeline.datapesan();
+      }, 10000);
+    </script>
+    <script type="text/javascript">
       $(".scrollbar").addClass("thin");
-    });
-  </script>
-</body>
-</html>
+      $(".scrollbar").mouseover(function(){
+        $(this).removeClass("thin");
+      });
+      $(".scrollbar").mouseout(function(){
+        $(this).addClass("thin");
+      });
+      $(".scrollbar").scroll(function () {
+        $(".scrollbar").addClass("thin");
+      });
+    </script>
+  </body>
+  </html>
