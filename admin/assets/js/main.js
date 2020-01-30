@@ -9,8 +9,8 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
-// var BASE_URL = 'http://localhost/rest_api_iuts/';
-var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+var BASE_URL = 'http://localhost/rest_api_iuts/';
+// var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 	if (typeof(Storage) !== "undefined") {
 		if (localStorage.getItem('iduser') != null ) {
 			window.location.href = 'dashboard.html';
@@ -82,11 +82,11 @@ $(document).ready(function() {
 			success:function(data) {
 				if (data.success == true) {
 						    // console.log(data);
-						    localStorage.setItem("idadmin", data.id);
-						    localStorage.setItem("namaadmin", data.username);
-						    localStorage.setItem("level", data.level);
-						    localStorage.setItem("posisi", data.posisi);
-						    window.location.href = 'dashboardadmin.html';
+						    localStorage.setItem("idadmin", data.row[0].id);
+						    localStorage.setItem("namaadmin", data.row[0].username);
+						    localStorage.setItem("level", data.row[0].level);
+						    localStorage.setItem("posisi", data.row[0].posisi);
+						    window.location.href = 'back_office/dashboard_admin.html';
 						}else{
 							// $("#msg").html(data.msg);
 							// $modal = $('#alert');

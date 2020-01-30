@@ -22,7 +22,8 @@
 	<link href="../assets/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 	<!-- Argon CSS -->
 	<link href="../assets/css/argon.css?v=1.0.0" type="text/css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+	
+	<link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 	<link href="../assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 </head>
@@ -188,7 +189,7 @@
 										<img alt="Image placeholder" src="https://dcktrp.jakarta.go.id/e-spj/images/profile-picture.png">
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-										<span class="mb-0 text-sm  font-weight-bold">User</span>
+                    <span class="mb-0 text-sm  font-weight-bold" id="namapemohonnav">User</span>
 									</div>
 								</div>
 							</a>
@@ -196,15 +197,15 @@
 								<div class=" dropdown-header noti-title">
 									<h6 class="text-overflow m-0">Welcome</h6>
 								</div>
-								<a href="https://dcktrp.jakarta.go.id/e-spj/profile" class="dropdown-item">
-									<i class="ni ni-single-02"></i>
-									<span>User</span>
-								</a>
-								<div class="dropdown-divider"></div>
-								<a href="https://dcktrp.jakarta.go.id/e-spj/logout" class="dropdown-item">
-									<i class="ni ni-user-run"></i>
-									<span>Keluar</span>
-								</a>
+								 <a class="dropdown-item">
+                  <i class="ni ni-single-02"></i>
+                  <span id="namapemohon"></span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a  id="logout" href="javascript:void(0);" class="dropdown-item">
+                  <i class="ni ni-user-run"></i>
+                  <span>Keluar</span>
+                </a>
 							</div>
 						</li>
 					</ul>
@@ -234,7 +235,6 @@
 												<th>Email</th>
 												<th>Status</th>
 												<th>Tanggal mengajukan</th>
-												<th>Tanggal Update</th>
 											</tr>
 										</thead>
 										<tfoot>
@@ -303,37 +303,39 @@
 			"order": [],
 			"ajax": {
 				// 'url' : "http://rest-api.pkkmart.com/BackOffice/getDataSemua",
-        		'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
-        		'type' : 'POST',
-    		},
+				'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
+				'data' : {
+					'status':'1',
+				},
+				'type' : 'POST',
+			},
 
-    		"columns": [
-    		{
-		    	"class":          "details-control",
-		    	"data":           null,
-		    	"orderable":      false,
-		    	"defaultContent": ""
-		    },
+			"columns": [
+			{
+				"class":          "details-control",
+				"data":           null,
+				"orderable":      false,
+				"defaultContent": ""
+			},
 
-		    { "data": "no"},
-		    { "data": "nama" },
-		    { "data": "npwp" },
-		    { "data": "code" },
-		    { "data": "email" },
-		    { "data": "status" },
-		    { "data": "tanggal" },
-		    { "data": "update" },
+			{ "data": "no"},
+			{ "data": "nama" },
+			{ "data": "npwp" },
+			{ "data": "code" },
+			{ "data": "email" },
+			{ "data": "status" },
+			{ "data": "tanggal" },
 
-		    ],
-		    "columnDefs": [ {
-		    	"targets": 0,
-		    	"data" : 'id',
-		    	"render": function ( data, type, row, meta ) {
-		    		return '<button class="btn btn-success" onclick="detailexpired('+data.idbangunan+','+data.id_pemohon+');">Verifikasi</button>';
-		    	}
-		    } ],
-		    "order": [[1, 'asc']]
-});
-</script>
+			],
+			"columnDefs": [ {
+				"targets": 0,
+				"data" : 'id',
+				"render": function ( data, type, row, meta ) {
+					return '<button class="btn btn-success" onclick="detailsemua('+data.code+');">Detail</button>';
+				}
+			} ],
+			"order": [[1, 'asc']]
+		});
+	</script>
 </body>
 </html>
