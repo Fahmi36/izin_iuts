@@ -191,12 +191,12 @@
                 <div class=" dropdown-header noti-title">
                   <h6 class="text-overflow m-0">Welcome</h6>
                 </div>
-                <a href="https://dcktrp.jakarta.go.id/e-spj/profile" class="dropdown-item">
+                <a class="dropdown-item">
                   <i class="ni ni-single-02"></i>
-                  <span>User</span>
+                  <span id="namapemohon"></span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="https://dcktrp.jakarta.go.id/e-spj/logout" class="dropdown-item">
+                <a  id="logout" href="javascript:void(0);" class="dropdown-item">
                   <i class="ni ni-user-run"></i>
                   <span>Keluar</span>
                 </a>
@@ -223,27 +223,27 @@
         <div class="row mt-4">
           <div class="col-md-12">
             <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
-              <li role="presentation" class="active">
+              <li role="presentation" onclick="pemohon();" class="active">
                 <i class="fa fa-user-edit" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Pemohon</p>
               </li>
-              <li role="presentation" class="active">
+              <li role="presentation" onclick="adminitrasi();" class="active">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Administrasi</p>
               </li>
-              <li role="presentation" class="">
+              <li role="presentation" onclick="adminteknis()" class="">
                 <i class="fa fa-users-cog" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Teknis</p>
               </li>
-              <li role="presentation" class="">
+              <li role="presentation" onclick="pemohon()" class="">
                 <i class="fa fa-user-tie" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">kepala Dinas</p>
               </li>
-              <li role="presentation" class="">
+              <li role="presentation" onclick="adminstrasiselanjutnya()" class="">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Administrasi</p>
               </li>
-              <li role="presentation" class="">
+              <li role="presentation" onclick="pemohonselajutnya()" class="">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Pemohon</p>
               </li>

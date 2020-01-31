@@ -18,6 +18,57 @@ function filterizin(id) {
 	localStorage.setItem("typestatus",id);
 	window.location.href = 'perizinan_saya_s.html';
 }
+function detailtugas(code) {
+	$.ajax({
+		url: BASE_URL + 'OfficeController/getBangunan',
+		type: 'POST',
+		dataType: 'json',
+		data: {code: code},
+		success:function(data) {
+			if (data.success) {
+				$('#detailVerifikasi').modal('show');
+				$('#codebangunan').val(code);
+
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_sumur',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#kondisi_sumur_r').html(options);
+
+						}
+					}
+				});
+			}
+		}
+	});
+}
+function KirimValidasi() {
+	$.ajax({
+		url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_sumur',
+		type: 'GET',
+		dataType: 'json',
+		beforeSend: function () {
+		},
+		success: function (data) {
+			if (data.success) {
+				var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+				for (var i in data.row) {
+					options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+				}
+				$('#kondisi_sumur_r').html(options);
+
+			}
+		}
+	});
+}
 timeline = {
 	// start view data
 	dataview:function() {
@@ -64,7 +115,7 @@ timeline = {
 						var css = 'expired';
 						var warna = 'primary';
 					}
-					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+code[i]+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 				}
 			}
 		})
@@ -113,7 +164,7 @@ timeline = {
 						var css = 'expired';
 						var warna = 'primary';
 					}
-					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+code[i]+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 				}
 			}
 		})
@@ -153,6 +204,22 @@ timeline = {
 
 	// end view data
 };
+function lihatpemohon(code) {
+	$.ajax({
+		url: BASE_URL + 'UserController/detailPermohonan',
+		type: 'POST',
+		dataType: 'json',
+		data: {code: code},
+		success:function(data) {
+			if (data.success) {
+				console.log(data);
+				localStorage.setItem("code",code);
+				// window.location.href = 'timeline_pemohon.html';
+			}
+		}
+	})
+	
+}
 $("#logout").click(function(event) {
 	localStorage.clear();
 	window.location.href = '/';
@@ -191,30 +258,30 @@ $("#kirimpesan").submit(function (event) {
 });
 if (typeof(Storage) !== "undefined") {
 	if (localStorage.getItem('iduser') === null && localStorage.getItem('idadmin') === null) {
-			window.location.href = '../login.html';
-		}
-	}else{
-		navigator.sayswho= (function(){
-			var ua= navigator.userAgent, tem, 
-			M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
-			if(/trident/i.test(M[1])){
-				tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
-				return 'IE '+(tem[1] || '');
-			}
-			if(M[1]=== 'Chrome'){
-				tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
-				if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
-			}
-			M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
-			if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
-			return M.join(' ');
-		})();
-		alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
+		window.location.href = '../login.html';
 	}
-	function datePHPJS(format, timestamp) {
+}else{
+	navigator.sayswho= (function(){
+		var ua= navigator.userAgent, tem, 
+		M= ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
+		if(/trident/i.test(M[1])){
+			tem=  /\brv[ :]+(\d+)/g.exec(ua) || [];
+			return 'IE '+(tem[1] || '');
+		}
+		if(M[1]=== 'Chrome'){
+			tem= ua.match(/\b(OPR|Edge)\/(\d+)/);
+			if(tem!= null) return tem.slice(1).join(' ').replace('OPR', 'Opera');
+		}
+		M= M[2]? [M[1], M[2]]: [navigator.appName, navigator.appVersion, '-?'];
+		if((tem= ua.match(/version\/(\d+)/i))!= null) M.splice(1, 1, tem[1]);
+		return M.join(' ');
+	})();
+	alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
+}
+function datePHPJS(format, timestamp) {
 
-		var that = this;
-		var jsdate, f;
+	var that = this;
+	var jsdate, f;
 	// Keep this here (works, but for code commented-out below for file size reasons)
 	// var tal= [];
 	var txt_words = [
