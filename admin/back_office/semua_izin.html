@@ -106,12 +106,12 @@
 							<div class="collapse show" id="disposisi">
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
-										<a class="nav-link" href="semua_izin.html">
+										<a class="nav-link active" href="semua_izin.html">
 											Semua Izin IUTS <span class="badge badge-default ml-2">0</span>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" href="izin_diterima.html">
+										<a class="nav-link" href="izin_diterima.html">
 											Diterima <span class="badge badge-default ml-2">0</span>
 										</a>
 									</li>
@@ -189,7 +189,7 @@
 										<img alt="Image placeholder" src="https://dcktrp.jakarta.go.id/e-spj/images/profile-picture.png">
 									</span>
 									<div class="media-body ml-2 d-none d-lg-block">
-                    <span class="mb-0 text-sm  font-weight-bold" id="namapemohonnav">User</span>
+										<span class="mb-0 text-sm  font-weight-bold" id="namapemohonnav">User</span>
 									</div>
 								</div>
 							</a>
@@ -197,15 +197,15 @@
 								<div class=" dropdown-header noti-title">
 									<h6 class="text-overflow m-0">Welcome</h6>
 								</div>
- <a class="dropdown-item">
-                  <i class="ni ni-single-02"></i>
-                  <span id="namapemohon"></span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a  id="logout" href="javascript:void(0);" class="dropdown-item">
-                  <i class="ni ni-user-run"></i>
-                  <span>Keluar</span>
-                </a>
+								<a class="dropdown-item">
+									<i class="ni ni-single-02"></i>
+									<span id="namapemohon"></span>
+								</a>
+								<div class="dropdown-divider"></div>
+								<a  id="logout" href="javascript:void(0);" class="dropdown-item">
+									<i class="ni ni-user-run"></i>
+									<span>Keluar</span>
+								</a>
 							</div>
 						</li>
 					</ul>
@@ -281,7 +281,7 @@
 	<script src="../assets/js/jquery.dataTables.min.js"></script>
 	<!-- Argon JS -->
 	<script src="../assets/js/argon.js?v=1.0.0"></script>
-  	<script src="../assets/js/mainadmin.js"></script>
+	<script src="../assets/js/mainadmin.js"></script>
 	<script type="text/javascript">
 		jQuery(window).load(function () {
 			jQuery('#loader').fadeOut('slow');
@@ -306,34 +306,34 @@
 				'url' : "https://rest-iuts.pkkmart.com/OfficeController/getDataSemua",
         		// 'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
         		'type' : 'POST',
-    		},
+        	},
 
-    		"columns": [
-    		{
-		    	"class":          "details-control",
-		    	"data":           null,
-		    	"orderable":      false,
-		    	"defaultContent": ""
-		    },
+        	"columns": [
+        	{
+        		"class":          "details-control",
+        		"data":           null,
+        		"orderable":      false,
+        		"defaultContent": ""
+        	},
 
-		    { "data": "no"},
-		    { "data": "nama" },
-		    { "data": "npwp" },
-		    { "data": "code" },
-		    { "data": "email" },
-		    { "data": "status" },
-		    { "data": "tanggal" },
+        	{ "data": "no"},
+        	{ "data": "nama" },
+        	{ "data": "npwp" },
+        	{ "data": "code" },
+        	{ "data": "email" },
+        	{ "data": "status" },
+        	{ "data": "tanggal" },
 
-		    ],
-		    "columnDefs": [ {
-		    	"targets": 0,
-		    	"data" : 'id',
-		    	"render": function ( data, type, row, meta ) {
-		    		return '<button class="btn btn-success" onclick="detailsemua('+data.code+');">Detail</button>';
-		    	}
-		    } ],
-		    "order": [[1, 'asc']]
-});
-</script>
+        	],
+        	"columnDefs": [ {
+        		"targets": 0,
+        		"data" : 'id',
+        		"render": function ( data, type, row, meta ) {
+        			return '<button class="btn btn-success" onclick="detailsemua('+data.code+');">Detail</button>';
+        		}
+        	} ],
+        	"order": [[1, 'asc']]
+        });
+    </script>
 </body>
 </html>

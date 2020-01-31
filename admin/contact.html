@@ -375,79 +375,78 @@
 
                     </div>
                   </div>
-                  <form>
-                    <hr class="my-4">
-                    <!-- Description -->
-                    <div class="pl-lg-4">
-                      <div class="form-group focused">
-                        <label>Pesan</label>
-                        <textarea rows="4" name="pesan" id="pesan" class="form-control form-control-alternative" placeholder="Masukkan Pesan Anda..."></textarea>
-                      </div>
+                  <hr class="my-4">
+                  <!-- Description -->
+                  <div class="pl-lg-4">
+                    <div class="form-group focused">
+                      <label>Pesan</label>
+                      <textarea rows="4" name="pesan" id="pesan" class="form-control form-control-alternative" placeholder="Masukkan Pesan Anda..."></textarea>
                     </div>
-                    <div class="text-center">
-                      <button type="submit" class="btn btn-warning" style="float: right;">Kirim</button>
-                    </div>
-                  </form>
-                </div>
+                  </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-warning" style="float: right;">Kirim</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Footer -->
-          <footer class="footer">
-            <div class="row align-items-center justify-content-xl-between">
-              <div class="col-xl-6">
-                <div class="copyright text-center text-xl-left text-muted">
-                  © 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
-                </div>
-              </div>
-              <div class="col-xl-6">
-                <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-                  <li class="nav-item">
-                    <a href="#" class="nav-link" target="_blank">About Us</a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link" target="_blank">Blog</a>
-                  </li>
-                </ul>
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="row align-items-center justify-content-xl-between">
+            <div class="col-xl-6">
+              <div class="copyright text-center text-xl-left text-muted">
+                © 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
               </div>
             </div>
-          </footer>
-          <!-- End Footer -->
+            <div class="col-xl-6">
+              <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+                <li class="nav-item">
+                  <a href="#" class="nav-link" target="_blank">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link" target="_blank">Blog</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer -->
 
-        </div>
       </div>
     </div>
-    <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-    <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="assets/js/sweetalert2@8.js"></script>
-    <script src="assets/js/gijgo.min.js" type="text/javascript"></script>
-    <script src="assets/js/jquery.dataTables.min.js"></script>
-    <!-- Argon JS -->
-    <script src="assets/js/argon.js?v=1.0.0"></script>
-    <script src="assets/js/mainadmin.js"></script>
-    <script type="text/javascript">
+  </div>
+  <script src="assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+  <script src="assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+  <script src="assets/js/sweetalert2@8.js"></script>
+  <script src="assets/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="assets/js/jquery.dataTables.min.js"></script>
+  <!-- Argon JS -->
+  <script src="assets/js/argon.js?v=1.0.0"></script>
+  <script src="assets/js/mainadmin.js"></script>
+  <script type="text/javascript">
 
+    timeline.datapesan();
+    jQuery(window).load(function () {
+      jQuery('#loader').fadeOut('slow');
+    });
+    setInterval(function(){
       timeline.datapesan();
-      jQuery(window).load(function () {
-        jQuery('#loader').fadeOut('slow');
-      });
-      setInterval(function(){
-        timeline.datapesan();
-      }, 10000);
-    </script>
-    <script type="text/javascript">
+    }, 10000);
+  </script>
+  <script type="text/javascript">
+    $(".scrollbar").addClass("thin");
+    $(".scrollbar").mouseover(function(){
+      $(this).removeClass("thin");
+    });
+    $(".scrollbar").mouseout(function(){
+      $(this).addClass("thin");
+    });
+    $(".scrollbar").scroll(function () {
       $(".scrollbar").addClass("thin");
-      $(".scrollbar").mouseover(function(){
-        $(this).removeClass("thin");
-      });
-      $(".scrollbar").mouseout(function(){
-        $(this).addClass("thin");
-      });
-      $(".scrollbar").scroll(function () {
-        $(".scrollbar").addClass("thin");
-      });
-    </script>
-  </body>
-  </html>
+    });
+  </script>
+</body>
+</html>

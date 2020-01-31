@@ -64,12 +64,12 @@ timeline = {
 						var css = 'expired';
 						var warna = 'primary';
 					}
-						$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 				}
-		}
-	})
+			}
+		})
 	},
-		dataizin:function() {
+	dataizin:function() {
 		var datas = {id:localStorage.getItem("iduser"),status:localStorage.getItem("typestatus"),start:0,offset:99};
 		$.ajax({
 			url: BASE_URL + 'UserController/listPermohonan',
@@ -113,12 +113,12 @@ timeline = {
 						var css = 'expired';
 						var warna = 'primary';
 					}
-						$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="timeline_pemohon" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 				}
-		}
-	})
+			}
+		})
 	},
-		datapesan:function() {
+	datapesan:function() {
 		var datas = {id:localStorage.getItem("iduser")};
 		$.ajax({
 			url: BASE_URL + 'UserController/detailPesan',
@@ -147,8 +147,8 @@ timeline = {
 						$("#detailpesan").append("<div class='chat-message chat-message-recipient'><img class='chat-image chat-image-default img-thumbnail' src='assets/images/profile-picture.png'/><div class='chat-message-wrapper'><div class='chat-message-content'><p>"+pesan[i]+"</p></div><div class='chat-details'><span class='chat-message-localization font-size-small'>Time</span><span class='chat-message-read-status font-size-small'>- Date</span></div></div></div>");
 					}
 				}
-		}
-	})
+			}
+		})
 	},
 
 	// end view data
@@ -189,8 +189,8 @@ $("#kirimpesan").submit(function (event) {
 		}
 	});
 });
-	if (typeof(Storage) !== "undefined") {
-		if (localStorage.getItem('iduser') === null && localStorage.getItem('idadmin') === null) {
+if (typeof(Storage) !== "undefined") {
+	if (localStorage.getItem('iduser') === null && localStorage.getItem('idadmin') === null) {
 			window.location.href = '../login.html';
 		}
 	}else{
@@ -211,10 +211,10 @@ $("#kirimpesan").submit(function (event) {
 		})();
 		alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 	}
-function datePHPJS(format, timestamp) {
+	function datePHPJS(format, timestamp) {
 
-	var that = this;
-	var jsdate, f;
+		var that = this;
+		var jsdate, f;
 	// Keep this here (works, but for code commented-out below for file size reasons)
 	// var tal= [];
 	var txt_words = [
