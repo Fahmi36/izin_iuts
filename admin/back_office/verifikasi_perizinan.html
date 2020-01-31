@@ -25,9 +25,15 @@
 	
 	<link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 	<link href="../assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
 </head>
 </head>
 <body>
+	<style type="text/css">
+		.col-form-label{
+			padding-bottom: 0;
+		}
+	</style>
 	<div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
 		<div class="cssload-container">
 			<div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
@@ -184,7 +190,7 @@
 				<div class="container-fluid">
 					<!-- Brand -->
 					<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-						Halaman Tugas Verifikasi
+						Halaman Verifikasi Perizinan
 					</a>
 					<ul class="navbar-nav align-items-center d-none d-md-flex">
 						<li class="nav-item dropdown">
@@ -224,118 +230,128 @@
 						<div class="card bg-secondary shadow">
 							<div class="card-header bg-white border-0 mb-0">
 								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Verifikasi</h3>
+									<h3 class="pl-3 mb-0">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h3>
 								</div>
 							</div>
 							<div class="card-body">
-								<div class="table-responsive">
-									<table id="tabelnyaerror" class="table table-striped table-no-bordered" style="width:100%">
-										<thead>
-											<tr>
-												<th>Aksi</th>
-												<th>Nomor Token</th>
-												<th>Nama Pemohon</th>
-												<th>NPWP</th>
-												<th>Code</th>
-												<th>Email</th>
-												<th>Status</th>
-												<th>Tanggal mengajukan</th>
-											</tr>
-										</thead>
-										<tfoot>
-											<tr>
-
-											</tr>
-										</tfoot>
-									</table>  
-								</div>
+								<form>
+									<div class="row">
+										<div class="col-md-7">
+											<table class="table bg-white">
+												<thead class="thead-light">
+													<tr>
+														<th scope="col">No</th>
+														<th scope="col">Persyaratan</th>
+														<th scope="col">Kategori</th>
+														<th scope="col">Nilai</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<th scope="row">1</th>
+														<td>Kelengkapan Administrasi</td>
+														<td>
+															<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin">
+																<option disabled selected>Pilih Salah Satu</option>
+																<option value="<50%"><50%</option>
+																<option value=">50%">>50%</option>
+																<option value=">90%">>90%</option>
+															</select>
+														</td>
+														<td>3</td>
+													</tr>
+													<tr>
+														<th scope="row">2</th>
+														<td>Sudah berapa lama mengajukan izin</td>
+														<td>
+															<select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
+																<option disabled="" selected="">Pilih Salah Satu</option>
+																<option value="1">Kurang Dari 1 Bulan</option>
+																<option value="2">Lebih Dari 1 Bulan</option>
+																<option value="3">Lebih Dari 3 Bulan</option>
+																<option value="4">Lebih dari 6 Bulan</option>
+															</select>
+														</td>
+														<td>0</td>
+													</tr>
+													<tr>
+														<th scope="row">3</th>
+														<td>Status NPWP</td>
+														<td>
+															<select aria-label="" class="text-center form-control" id="statusNPWP" name="statusNPWP">
+																<option disabled selected>Pilih Salah Satu</option>
+																<option value="Lunas">Lunas</option>
+																<option value="Belum Lunas">Belum Lunas</option>
+															</select>
+														</td>
+														<td>1</td>
+													</tr>
+													<tr>
+														<th scope="row">3</th>
+														<td>Status PBB</td>
+														<td>
+															<select aria-label="" class="text-center form-control" id="statusPBB" name="statusPBB">
+																<option disabled selected>Pilih Salah Satu</option>
+																<option value="Lunas">Lunas</option>
+																<option value="Belum Lunas">Belum Lunas</option>
+															</select>
+														</td>
+														<td>0</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+										<div class="col-md-5">
+											<label class="font-weight-bold">Detail Pemohon</label>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Nomor Token :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Nama Pemohon :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">NIB :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">NPWP :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Status Zonasi :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Alamat :</label>
+												<label class="col-md-6 col-form-label">(Data)</label>
+											</div>
+										</div>
+										<div class="col-md-12">
+											<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
+											<label>Kolom Komentar Admin</label>
+											<div class="form-group">
+												<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
+											</div>
+											<input type="checkbox" id="sayaSetuju">
+											<label for="sayaSetuju">Saya setuju bahwa nilai yang saya masukan benar</label>
+											<button class="btn btn-warning" type="submit" id="btnKirim" disabled="">Kirim</button>
+										</div>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailVerifikasi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="exampleModalLongTitle">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>	
-							<div class="modal-body">
-								<table class="table">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">No</th>
-											<th scope="col">Persyaratan</th>
-											<th scope="col">Kategori</th>
-											<th scope="col">Nilai</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Kelengkapan Administrasi</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="<50%"><50%</option>
-													<option value=">50%">>50%</option>
-													<option value=">90%">>90%</option>
-												</select>
-											</td>
-											<td>3</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Sudah berapa lama mengajukan izin</td>
-											<td>
-												<select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
-													<option disabled="" selected="">Pilih Salah Satu</option>
-													<option value="1">Kurang Dari 1 Bulan</option>
-													<option value="2">Lebih Dari 1 Bulan</option>
-													<option value="3">Lebih Dari 3 Bulan</option>
-													<option value="4">Lebih dari 6 Bulan</option>
-												</select>
-											</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Status NPWP</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="statusNPWP" name="statusNPWP">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="Lunas">Lunas</option>
-													<option value="Belum Lunas">Belum Lunas</option>
-												</select>
-											</td>
-											<td>1</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Status PBB</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="statusPBB" name="statusPBB">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="Lunas">Lunas</option>
-													<option value="Belum Lunas">Belum Lunas</option>
-												</select>
-											</td>
-											<td>0</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<input type="text" id="codebangunan" name="code" >
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-								<button type="submit" class="btn btn-success">Verifikasi</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end modal verifikasi -->
 				
 				<!-- Footer -->
 				<footer class="footer">
@@ -370,6 +386,8 @@
 	<!-- Argon JS -->
 	<script src="../assets/js/argon.js?v=1.0.0"></script>
 	<script src="../assets/js/mainadmin.js"></script>
+	<script src="https://js.arcgis.com/4.8/"></script>
+	<script src="../../assets/js/arcgis.js"></script>
 	<script type="text/javascript">
 		jQuery(window).load(function () {
 			jQuery('#loader').fadeOut('slow');
@@ -386,45 +404,13 @@
 		$(".scrollbar").scroll(function () {
 			$(".scrollbar").addClass("thin");
 		});
-		$("#tabelnyaerror").DataTable({
-			"processing": true,
-			"serverSide": true,
-			"order": [],
-			"ajax": {
-				'url' : "https://rest-iuts.pkkmart.com/OfficeController/getDataJalan",
-				// 'url' : "http://localhost/rest_api_iuts/OfficeController/getDataJalan",
-				'data' : {
-					'level':localStorage.getItem('level'),
-				},
-				'type' : 'POST',
-			},
-
-			"columns": [
-			{
-				"class":          "details-control",
-				"data":           null,
-				"orderable":      false,
-				"defaultContent": ""
-			},
-
-			{ "data": "no"},
-			{ "data": "nama" },
-			{ "data": "npwp" },
-			{ "data": "code" },
-			{ "data": "email" },
-			{ "data": "status" },
-			{ "data": "tanggal" },
-
-			],
-			"columnDefs": [ {
-				"targets": 0,
-				"data" : 'id',
-				"render": function ( data, type, row, meta ) {
-					return '<button class="btn btn-success" onclick="detailtugas('+data.code+');">Verifikasi</button>';
-				}
-			} ],
-			"order": [[1, 'asc']]
-		});
+		$('#sayaSetuju').on('click',function () {
+	        if ($('#sayaSetuju').is(':checked')) {
+	            $('#btnKirim').removeAttr('disabled');	            
+	        }else{
+	            $('#btnKirim').attr('disabled', 'disabled');
+	        }
+	    });
 	</script>
 </body>
 </html>

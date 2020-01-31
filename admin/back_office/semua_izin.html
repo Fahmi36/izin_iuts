@@ -143,7 +143,12 @@
 								<ul class="nav nav-sm flex-column">
 									<li class="nav-item">
 										<a class="nav-link" href="tugas_verifikasi.html">
-											Tugas Anda
+											Verifikasi
+										</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="TerbitSK.html">
+											Terbit SK
 										</a>
 									</li>
 									<li class="nav-item">
@@ -179,7 +184,7 @@
 				<div class="container-fluid">
 					<!-- Brand -->
 					<a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-						Halaman Perizinan Diterima
+						Halaman Semua Perizinan
 					</a>
 					<ul class="navbar-nav align-items-center d-none d-md-flex">
 						<li class="nav-item dropdown">
@@ -211,7 +216,7 @@
 					</ul>
 				</div>
 			</nav>
-			<div class="header bg-gradient-default pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #f5365c 0, #f56036 100%)!important;">
+			<div class="header bg-gradient-default pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #2193b0 0, #11cdef 100%)!important;">
 			</div>
 			<div class="container-fluid pb-5 mt--6">
 				<div class="row">
@@ -219,7 +224,7 @@
 						<div class="card bg-secondary shadow">
 							<div class="card-header bg-white border-0 mb-0">
 								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Perizinan Diterima</h3>
+									<h3 class="pl-3 mb-0">Semua Perizinan</h3>
 								</div>
 							</div>
 							<div class="card-body">
@@ -248,6 +253,164 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- modal -->
+				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+					<div class="modal-dialog modal-lg">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="exampleModalLongTitle">Detail Permohonan</h4>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="" id="accordion-style-1">
+								<div class="accordion" id="accordionExample">
+									<div class="card">
+										<div class="card-header no-padd" id="headingOne">
+											<h5 class="mb-0">
+												<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+													<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Resume
+												</button>
+											</h5>
+										</div>
+
+										<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+											<div class="card-body">
+												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-header no-padd" id="headingTwo">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+													<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Peta Lokasi
+												</button>
+											</h5>
+										</div>
+										<div id="collapseTwo" class="collapse fade" aria-labelledby="headingTwo" data-parent="#accordionExample">
+											<div class="card-body">
+												<div class="border p-3">
+													<span class="d-block h5" align="center">Peta</span>
+													<input type="hidden" id="lat" >
+													<input type="hidden" id="long" >
+													<div id="mapsadmin" style="height: 500px;"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-header no-padd" id="headingThree">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+													<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Penilaian  
+												</button>
+											</h5>
+										</div>
+										<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
+											<div class="card-body">
+												<div id="cardPenilaian">
+													<label><b>Rincian Nilai Permohonan Anda Sebagai Berikut:</b></label>
+													<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">(Nilai)</span></p>
+													<p class="m-0">Berikut ini adalah rincian nilai administrasi Anda:</p>
+													<ul class="list-group list-group-flush mb-3">
+														<li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">(Nilai)</span></li>
+														<li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">(Nilai)</span></li>
+														<li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">(Nilai)</span></li>
+														<li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">(Nilai)</span></li>
+													</ul>
+													<p class="m-0">Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">(Nilai)</span></p>
+													<p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p>
+													<div class="row">
+														<div class="col-md-6">
+															<ul class="list-group list-group-flush mb-3">
+																<li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">(Nilai)</span></li>
+																<li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">(Nilai)</span></li>
+																<li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">(Nilai)</span></li>
+															</ul>
+														</div>
+														<div class="col-md-6">
+															<ul class="list-group list-group-flush">
+																<li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">(Nilai)</span></li>
+																<li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">(Nilai)</span></li>
+																<li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">(Nilai)</span></li>
+															</ul>
+														</div>
+													</div>
+													<p class="m-0 text-center">Nilai akhir permohonan Anda sebesar <span class="badge badge-default">(Nilai)</span></p>
+													<!-- jika diterima -->
+													<p class="m-0 text-center">Perizinan Anda <span class="badge badge-success">Diterima</span></p>
+													<!-- end diterima -->
+
+													<!-- jika ditolak -->
+													<p class="m-0 text-center">Perizinan Anda <span class="badge badge-danger">Ditolak</span></p>
+													<!-- end ditolak -->
+												</div>
+												<div class="card mt-3">
+													<div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
+														<!-- jika diterima -->
+														<p class="m-0">
+															Permohonan Anda <span class="badge badge-success">Diterima</span> oleh Kepala Dinas PMPTSP<br>
+															Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br>
+															<label><b>Pada Senin, 3 Februari 2020.</b></label>
+														</p>
+														<!-- diterima -->
+
+														<!-- jika ditolak -->
+														<p class="m-0">
+															Permohonan Anda <span class="badge badge-danger">Ditolak</span> oleh Kepala Dinas PMPTSP<br>
+															Pemohon diharapkan melengkapi dan memperbaiki persyaratan yang memiliki nilai rendah<br>
+															Silakan ajukan izin kembali apabila syarat benar-benar sudah memenuhi persyaratan yang berlaku
+														</p>
+														<!-- end ditolak -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-header no-padd" id="headingFour">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+													<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
+												</button>
+											</h5>
+										</div>
+										<div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
+											<div class="card-body">
+												<div id="review">
+													<center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="card">
+										<div class="card-header no-padd" id="headingFive">
+											<h5 class="mb-0">
+												<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+													<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Timeline Pemohon
+												</button>
+											</h5>
+										</div>
+										<div id="collapseFive" class="collapse fade" aria-labelledby="headingFive" data-parent="#accordionExample">
+											<div class="card-body">
+												<div id="confirm_sk">
+													<p class="text-default p-10 font-weight-bold text-center">Nanti</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<br>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end modal -->
 
 				<!-- Footer -->
 				<footer class="footer">
