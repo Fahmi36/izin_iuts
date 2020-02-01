@@ -18,6 +18,28 @@ function filterizin(id) {
 	localStorage.setItem("typestatus",id);
 	window.location.href = 'perizinan_saya_s.html';
 }
+function pemohon() {
+	$.ajax({
+		url: BASE_URL + 'UserController/getTimelinePemohon',
+		type: 'POST',
+		dataType: 'json',
+		data: {code:localStorage.getItem('idbangunanuser')},
+		success:function(data) {
+			if (data.success) {
+				var status = [];
+				var tgl = [];
+				for(var coba in data.row){
+					status.push(data.row[coba].status_jalan);
+					tgl.push(data.row[coba].created_at);
+				}
+				if (data.rowCount > 0) {
+					$('#ket_pemohon').removeAttr('style');
+					$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(data.row[0].created_at))+'</p>');
+			}
+			}
+		}
+	});
+}
 function adminitrasi() {
 	$.ajax({
 		url: BASE_URL + 'UserController/detailPemohonAdministrasi',
@@ -37,10 +59,14 @@ function adminitrasi() {
 					skorpbb.push(data.row[coba].skorpbb);
 					skornpwp.push(data.row[coba].skornpwp);
 					skoradministrasi.push(data.row[coba].skoradministrasi);
+					var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
+					var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
+					var skorakumulasi = skoradmin/2;
+					var totalakhir = skorakumulasi*skortotal;
 				}
 				if (data.rowCount > 0) {
-					$('#ket_admin1').removeAttr('style');
-					$('#ket_admin1').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+skoradministrasi[0]+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
+					$('#ket_pemohon').removeAttr('style');
+					$('#ket_pemohon').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
 
 					
 				}
@@ -62,6 +88,7 @@ function adminteknis() {
 				var skortataruang = [];
 				var skorpenglahan = [];
 				var skormanfaat = [];
+				var skorjarakusaha = [];
 				for(var coba in data.row){
 					skorjarakpasar.push(data.row[coba].skorjarakpasar);
 					skorrenjalan.push(data.row[coba].skorrenjalan);
@@ -71,9 +98,11 @@ function adminteknis() {
 					skorpenglahan.push(data.row[coba].skorpenglahan);
 					skormanfaat.push(data.row[coba].skormanfaat);
 				}
+				var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skortataruang)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
+				var skorakumulasi = parseFloat(skor)/6;
 				if (data.rowCount > 0) {
-					$('#ket_teknis').removeAttr('style');
-					$('#ket_teknis').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
+					$('#ket_pemohon').removeAttr('style');
+					$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+String(skorakumulasi).substr(0, 4)+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
 				}
 			}
 		}
@@ -89,17 +118,14 @@ function kepaladinas() {
 			if (data.success) {
 				var skor_akhir = [];
 				var status = [];
-				var skorjalaneksis = [];
-				var skortataruang = [];
-				var skorpenglahan = [];
-				var skormanfaat = [];
+				var tgl = [];
 				for(var coba in data.row){
 					skor_akhir.push(data.row[coba].skor_akhir);
 					status.push(data.row[coba].status);
 					tgl.push(data.row[coba].tanggal);
 				}
 				if (data.rowCount > 0) {
-					$('#ket_admin2').removeAttr('style');
+					$('#ket_pemohon').removeAttr('style');
 					if (status[0] == '1') {
 						var statuskepaladinas = 'Di Terima';
 					}else{
@@ -110,7 +136,7 @@ function kepaladinas() {
 					}else{
 						var tanggal = tgl[0];
 					}
-					$('#ket_admin2').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+					$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
 				}
 			}
 		}
@@ -129,13 +155,13 @@ function pemohonselajutnya() {
 					tgl_ambil.push(data.row[coba].tgl_ambil);
 				}
 				if (data.rowCount > 0) {
-					$('#ket_admin2').removeAttr('style');
+					$('#ket_pemohon').removeAttr('style');
 					if (tgl_ambil[0] == '0000-00-00' || tgl_ambil[0] == null) {
 						var tgl = 'Silakan Selesai Kan Permohonan Anda';
 					}else{
 						var tgl = tgl_ambil[0];
 					}
-					$('#ket_admin2').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
+					$('#ket_pemohon').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
 				}
 			}
 		}
@@ -195,7 +221,9 @@ timeline = {
 				var code = [];
 				var tanggal = [];
 				var tujuan = [];
+				var id_bangunan = [];
 				for(var coba in data.row){
+					id_bangunan.push(data.row[coba].id_bangunan);
 					nama.push(data.row[coba].nama);
 					status.push(data.row[coba].status);
 					email.push(data.row[coba].email);
@@ -207,7 +235,7 @@ timeline = {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}
 				for (var i = 0; i < nama.length; i++) {
-					console.log(status[i]);
+					// console.log(status[i]);
 					if (status[i] == '0') {
 						var statuscard = 'Di Proses';
 						var warna = 'yellow';
@@ -321,9 +349,13 @@ timeline = {
 										skoradministrasi.push(data.row[coba].skoradministrasi);
 									}
 
+									var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
+									var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
+									var skorakumulasi = skoradmin/2;
+									var totalakhir = skorakumulasi*skortotal;
 									if (data.rowCount > 0) {
-										$('#ket_admin1').removeAttr('style');
-										$('#ket_admin1').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+skoradministrasi[0]+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
+										$('#ket_pemohon').removeAttr('style');
+										$('#ket_pemohon').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
 									}
 								}
 							}
@@ -347,6 +379,7 @@ timeline = {
 									var skortataruang = [];
 									var skorpenglahan = [];
 									var skormanfaat = [];
+									var skorjarakusaha = [];
 									for(var coba in data.row){
 										skorjarakpasar.push(data.row[coba].skorjarakpasar);
 										skorrenjalan.push(data.row[coba].skorrenjalan);
@@ -356,10 +389,11 @@ timeline = {
 										skorpenglahan.push(data.row[coba].skorpenglahan);
 										skormanfaat.push(data.row[coba].skormanfaat);
 									}
-
+									var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skortataruang)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
+									var skorakumulasi = parseFloat(skor)/6;
 									if (data.rowCount > 0) {
-										$('#ket_teknis').removeAttr('style');
-										$('#ket_teknis').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>'); 
+										$('#ket_pemohon').removeAttr('style');
+										$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+String(skorakumulasi).substr(0, 4)+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>'); 
 									}
 								}
 							}
@@ -378,10 +412,7 @@ timeline = {
 								if (data.success) {
 									var skor_akhir = [];
 									var status = [];
-									var skorjalaneksis = [];
-									var skortataruang = [];
-									var skorpenglahan = [];
-									var skormanfaat = [];
+									var tgl = [];
 									for(var coba in data.row){
 										skor_akhir.push(data.row[coba].skor_akhir);
 										status.push(data.row[coba].status);
@@ -389,7 +420,7 @@ timeline = {
 									}
 
 									if (data.rowCount > 0) {
-										$('#ket_admin2').removeAttr('style');
+										$('#ket_pemohon').removeAttr('style');
 										if (status[0] == '1') {
 											var statuskepaladinas = 'Di Terima';
 										}else{
@@ -400,7 +431,7 @@ timeline = {
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_admin2').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
 									}
 								}
 							}
@@ -420,10 +451,7 @@ timeline = {
 								if (data.success) {
 									var skor_akhir = [];
 									var status = [];
-									var skorjalaneksis = [];
-									var skortataruang = [];
-									var skorpenglahan = [];
-									var skormanfaat = [];
+									var tgl = [];
 									for(var coba in data.row){
 										skor_akhir.push(data.row[coba].skor_akhir);
 										status.push(data.row[coba].status);
@@ -431,7 +459,7 @@ timeline = {
 									}
 
 									if (data.rowCount > 0) {
-										$('#ket_admin2').removeAttr('style');
+										$('#ket_pemohon').removeAttr('style');
 										if (status[0] == '1') {
 											var statuskepaladinas = 'Di Terima';
 										}else{
@@ -442,7 +470,7 @@ timeline = {
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_admin2').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
 									}
 								}
 							}
@@ -468,13 +496,13 @@ timeline = {
 									}
 
 									if (data.rowCount > 0) {
-										$('#ket_admin2').removeAttr('style');
+										$('#ket_pemohon').removeAttr('style');
 										if (tgl_ambil[0] == '0000-00-00' || tgl_ambil[0] == null) {
 											var tgl = 'Silakan Selesai Kan Permohonan Anda';
 										}else{
 											var tgl = tgl_ambil[0];
 										}
-										$('#ket_admin2').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
 									}
 								}
 							}

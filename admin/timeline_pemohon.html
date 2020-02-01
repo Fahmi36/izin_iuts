@@ -109,19 +109,19 @@
 
               <div class="collapse" id="disposisi">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_p.html">
-                      Proses <span class="badge badge-default ml-2">0</span>
+                                    <li class="nav-item">
+                    <a onclick="filterizin(0)" href="javascript:void(0);" class="nav-link">
+                      Proses <span class="badge badge-default ml-2" id="countproses">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_e.html">
-                      Expired <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(3)" href="javascript:void(0);" class="nav-link">
+                      Expired <span class="badge badge-default ml-2" id="countexpired">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_s.html">
-                      Selesai <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(1)"  href="javascript:void(0);" class="nav-link">
+                      Selesai <span class="badge badge-default ml-2" id="countselesai">0</span>
                     </a>
                   </li>
                 </ul>
@@ -193,7 +193,7 @@
                 </div>
                 <a class="dropdown-item">
                   <i class="ni ni-single-02"></i>
-                  <span id="namapemohon"></span>
+                  <span id="namapemohon"></span> 
                 </a>
                 <div class="dropdown-divider"></div>
                 <a  id="logout" href="javascript:void(0);" class="dropdown-item">
@@ -269,28 +269,6 @@
                   
                 </div>
                 <!-- end pemohon -->
-
-                <!-- admin administrasi -->
-                <div id="ket_admin1" style="display: none;">
-                  
-                </div>
-                <!-- end admin administrasi -->  
-
-                <!-- admin teknis -->
-                <div id="ket_teknis" style="display: none;">
-                  
-                </div>
-                <!-- end admin teknis -->
-
-                <!-- admin administrasi 2 -->
-                <div id="ket_admin2" style="display: none;">
-                  
-                </div>
-                <!-- end admin administrasi 2 -->
-
-                <!-- pemohon selesai -->
-                <div id="ket_pemohon-selesai" style="display: none;">
-                </div>
                 <!-- end pemohon selesai -->
 
               </div>
