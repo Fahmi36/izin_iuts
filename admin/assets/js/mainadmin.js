@@ -1,175 +1,228 @@
-
 // var BASE_URL = 'http://localhost/rest_api_iuts/';
 var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 $("#namapemohon").html(localStorage.getItem("nama"));
 $("#namapemohonnav").html(localStorage.getItem("nama"));
-$.ajax({
-	url: BASE_URL + 'UserController/countside',
-	type: 'POST',
-	dataType: 'json',
-	data: {id: localStorage.getItem("iduser")},
-	success:function(data) {
-		$("#countproses").html(data.pending);
-		$("#countselesai").html(data.selesai);
-		$("#countexpired").html(data.expired);
-	}
-});
-function filterizin(id) {
-	localStorage.setItem("typestatus",id);
-	window.location.href = 'perizinan_saya_s.html';
-}
-function detailtugas(code) {
+function detailtugas(id) {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/getBangunan',
 		type: 'POST',
 		dataType: 'json',
-		data: {code: code},
+		data: {code: id},
 		success:function(data) {
 			if (data.success) {
-				$('#detailVerifikasi').modal('show');
-				$('#codebangunan').val(code);
-
-				$.ajax({
-					url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_sumur',
-					type: 'GET',
-					dataType: 'json',
-					beforeSend: function () {
-					},
-					success: function (data) {
-						if (data.success) {
-							var options = "<option disabled='' selected>Pilih Salah Satu</option>";
-							for (var i in data.row) {
-								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
-							}
-							$('#kondisi_sumur_r').html(options);
-
-						}
-					}
-				});
+				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
+					localStorage.setItem("idbangunanadmin",id);
+					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
+					window.location.href = 'tugasdinas.html';
+				}else if(localStorage.getItem("level") ==2){// Admin Teknis
+					localStorage.setItem("idbangunanadmin",id);
+					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
+					window.location.href = 'formtugasteknis.html';
+				}else if(localStorage.getItem("level") ==3){ // Administrasi
+					localStorage.setItem("idbangunanadmin",id);
+					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
+					window.location.href = 'formtugas.html';
+				}
 			}
 		}
 	});
 }
 function KirimValidasi() {
-					$.ajax({
-					url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_sumur',
-					type: 'GET',
-					dataType: 'json',
-					beforeSend: function () {
-					},
-					success: function (data) {
-						if (data.success) {
-							var options = "<option disabled='' selected>Pilih Salah Satu</option>";
-							for (var i in data.row) {
-								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
-							}
-							$('#kondisi_sumur_r').html(options);
+	$.ajax({
+		url: BASE_URL + 'ValidasiController/getallSelect?table=kondisi_sumur',
+		type: 'GET',
+		dataType: 'json',
+		beforeSend: function () {
+		},
+		success: function (data) {
+			if (data.success) {
+				var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+				for (var i in data.row) {
+					options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+				}
+				$('#kondisi_sumur_r').html(options);
 
-						}
-					}
-				});
+			}
+		}
+	});
+}
+function terimadinas() {
+	$.ajax({
+		url: BASE_URL + 'OfficeController/InsertAdminDinas',
+		type: 'POST',
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skor:$('#totalakhir2').val(),status:'1'},
+		dataType: 'json',
+		beforeSend: function () {
+		},
+		success: function (data) {
+			Swal.fire(
+					'Berhasil Verifikasi',
+					);
+		}
+	});
+}
+function tolakdinas() {
+	$.ajax({
+		url: BASE_URL + 'OfficeController/InsertAdminDinas',
+		type: 'POST',
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skor:$('#totalakhir2').val(),status:'0'},
+		dataType: 'json',
+		beforeSend: function () {
+		},
+		success: function (data) {
+			Swal.fire(
+					'Berhasil Tolak Data',
+					);
+		}
+	});
 }
 timeline = {
 	// start view data
-	dataview:function() {
-		var datas = {id:localStorage.getItem("iduser"),start:0,offset:99};
+	datadetailadmin:function() {
+		var datas = {id:localStorage.getItem("idbangunanadmin")};
 		$.ajax({
-			url: BASE_URL + 'UserController/listPermohonan',
+			url: BASE_URL + 'OfficeController/detailBangunanDinas',
 			type: 'POST',
 			data: datas,
 			dataType : 'json',
 			success:function(data) {
-				var nama = [];
-				var status = [];
-				var email = [];
+				var skorlengkap = [];
+				var skorwaktu = [];
+				var skorpbb = [];
+				var skornpwp = [];
+				var skorrenjalan = [];
+				var skorjalaneksis = [];
+				var skortataruang = [];
+				var skorjarakusaha = [];
+				var skorpenglahan = [];
+				var skorkondisieksis = [];
+				var skotpempbb = [];
+				var skorketumkm = [];
+				var skorsewa = [];
+				var skorwarga = [];
+				var skorrekumkm = [];
+				var skorslf = [];
+				var skorimb = [];
+				var skorkajian = [];
+				var skorvolsumur = [];
+				var skordrainase = [];
+				var skorkondisisumur = [];
+				var skorkdhmini = [];
 				var code = [];
-				var tanggal = [];
+				var nama = [];
+				var nib = [];
+				var npwp = [];
+				var tgl = [];
+				var alamat = [];
+				var ketadmin = [];
+				var ketteknis = [];
+				var skoradministrasi = [];
+				var skormanfaat = [];
+				var skordampak = [];
+				var skortax = [];
+				var skorjarakpasar = [];
 				for(var coba in data.row){
-					nama.push(data.row[coba].nama);
-					status.push(data.row[coba].status);
-					email.push(data.row[coba].email);
+					skorlengkap.push(data.row[coba].skorlengkap);
+					skorwaktu.push(data.row[coba].skorwaktu);
+					skorpbb.push(data.row[coba].skorpbb);
+					skornpwp.push(data.row[coba].skornpwp);
+					skorrenjalan.push(data.row[coba].skorrenjalan);
+					skorjalaneksis.push(data.row[coba].skorjalaneksis);
+					skortataruang.push(data.row[coba].skortataruang);
+					skorjarakusaha.push(data.row[coba].skorjarakusaha);
+					skorpenglahan.push(data.row[coba].skorpenglahan);
+					skorkondisieksis.push(data.row[coba].skorkondisieksis);
+					skotpempbb.push(data.row[coba].skotpempbb);
+					skorketumkm.push(data.row[coba].skorketumkm);
+					skorsewa.push(data.row[coba].skorsewa);
+					skorwarga.push(data.row[coba].skorwarga);
+					skorrekumkm.push(data.row[coba].skorrekumkm);
+					skorslf.push(data.row[coba].skorslf);
+					skorimb.push(data.row[coba].skorimb);
+					skorkajian.push(data.row[coba].skorkajian);
+					skorvolsumur.push(data.row[coba].skorvolsumur);
+					skordrainase.push(data.row[coba].skordrainase);
+					skorkondisisumur.push(data.row[coba].skorkondisisumur);
+					skorkdhmini.push(data.row[coba].skorkdhmini);
+					skorjarakpasar.push(data.row[coba].skorjarakpasar);
 					code.push(data.row[coba].code);
-					tanggal.push(data.row[coba].created_at);
-				}
+					nama.push(data.row[coba].nama);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					tgl.push(data.row[coba].tgl);
+					alamat.push(data.row[coba].alamat);
+					ketadmin.push(data.row[coba].ketadmin);
+					ketteknis.push(data.row[coba].ketteknis);
 
-				// console.log(nama.length);
-				if (nama.length == 0) {
-					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
-				}
-				for (var i = 0; i < nama.length; i++) {
-					console.log(email[i]);
-					if (status[i] == '0') {
-						var statuscard = 'Di Proses';
-						var warna = 'yellow';
-						var css = 'proses';
-					}else if(status[i] == '1'){
-						var statuscard = 'Di Terima';
-						var warna = 'success';
-						var css = 'diterima';
-					}else if(status[i] == '2'){
-						var statuscard = 'Di Tolak';
-						var warna = 'danger';
-						var css = 'ditolak';
-					}else if (status[i] == '3') {
-						var statuscard = 'Expired';
-						var css = 'expired';
-						var warna = 'primary';
-					}
-						$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+code[i]+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
-				}
-		}
-	})
-	},
-		dataizin:function() {
-		var datas = {id:localStorage.getItem("iduser"),status:localStorage.getItem("typestatus"),start:0,offset:99};
-		$.ajax({
-			url: BASE_URL + 'UserController/listPermohonan',
-			type: 'POST',
-			data: datas,
-			dataType : 'json',
-			success:function(data) {
-				var nama = [];
-				var status = [];
-				var email = [];
-				var code = [];
-				var tanggal = [];
-				var tujuan = [];
-				for(var coba in data.row){
-					nama.push(data.row[coba].nama);
-					status.push(data.row[coba].status);
-					email.push(data.row[coba].email);
-					code.push(data.row[coba].code);
-					tanggal.push(data.row[coba].created_at);
+					skoradministrasi.push(data.row[coba].skoradministrasi);
+					skormanfaat.push(data.row[coba].skormanfaat);
+					skordampak.push(data.row[coba].skordampak);
+					skortax.push(data.row[coba].skortax);
+
 				}
 				// console.log(nama.length);
-				if (nama.length == 0) {
+				$('#nilailengkap').text(skorlengkap);
+				$('#nilaiizin').text(skorwaktu);
+				$('#nilaieksiting').text(skorkondisieksis);
+
+				$('#nilaipbb').text(skorpbb);
+				$('#nilainpwp').text(skornpwp);
+
+				$('#pempbb').text(skotpempbb);
+				$('#ketumkm').text(skorketumkm);
+				$('#persewa').text(skorsewa);
+
+				$('#penglahan').text(skorpenglahan);
+				$('#setwarga').text(skorwarga);
+				$('#eksismadai').text(skorjalaneksis);
+
+				$('#jarakpasar').text(skorjarakpasar);
+				$('#renjalan').text(skorrenjalan);
+				$('#rekumkm').text(skorrekumkm);
+				$('#slfeksis').text(skorslf);
+				$('#kondisisumur').text(skorkondisisumur);
+				$('#drainasesek').text(skordrainase);
+				$('#tataruang').text(skortataruang);
+				$('#kajiansostek').text(skorkajian);
+				$('#imbeksis').text(skorimb);
+				$('#jarakusaha').text(skorjarakusaha);
+				$('#sumurserap').text(skorvolsumur);
+				$('#kdhmini').text(skorkdhmini);
+
+				var totaladmin = parseFloat(skorlengkap)+parseFloat(skorwaktu)+parseFloat(skorkondisieksis);
+				var totalmanfaat = parseFloat(skotpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
+				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
+				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
+
+				var hasiladmin = parseFloat(totaladmin/3);
+				var hasilmanfaat = parseFloat(totalmanfaat/6);
+				var hasildampak = parseFloat(totaldampak/12);
+
+				$('#totaladminis').text(String(hasiladmin).substr(0, 4));
+				$('#totalmanfaat').text(String(hasilmanfaat).substr(0, 4));
+				$('#totaldampak').text(String(hasildampak).substr(0, 4));
+				$('#totaltax').text(totaltax);
+
+				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)*parseFloat(totaltax);
+
+				$('#totalakhir').text(String(total).substr(0, 4));
+				$('#totalakhir2').val(String(total).substr(0, 4));
+
+				$('#idnya').text(code);
+				$('#idnya').text(nama);
+				$('#idnya').text(nib);
+				$('#idnya').text(npwp);
+				$('#idnya').text(tgl);
+				$('#idnya').text(alamat);
+				$('#idnya').text(ketadmin);
+				$('#idnya').text(ketteknis);
+				if (nama.length != 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
-				}
-				for (var i = 0; i < nama.length; i++) {
-					console.log(status[i]);
-					if (status[i] == '0') {
-						var statuscard = 'Di Proses';
-						var warna = 'yellow';
-						var css = 'proses';
-					}else if(status[i] == '1'){
-						var statuscard = 'Di Terima';
-						var warna = 'success';
-						var css = 'diterima';
-					}else if(status[i] == '2'){
-						var statuscard = 'Di Tolak';
-						var warna = 'danger';
-						var css = 'ditolak';
-					}else if (status[i] == '3') {
-						var statuscard = 'Expired';
-						var css = 'expired';
-						var warna = 'primary';
-					}
-						$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+code[i]+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
-				}
-		}
+				}		
+			}
 	})
 	},
-		datapesan:function() {
+		datadetailPemohon:function() {
 		var datas = {id:localStorage.getItem("iduser")};
 		$.ajax({
 			url: BASE_URL + 'UserController/detailPesan',
@@ -181,11 +234,13 @@ timeline = {
 				var penerima = [];
 				var pesan = [];
 				var tanggal = [];
+				var id = [];
 				for(var coba in data.row){
 					pengirim.push(data.row[coba].id_pengirim);
 					penerima.push(data.row[coba].id_penerima);
 					pesan.push(data.row[coba].pesan);
 					tanggal.push(data.row[coba].created_at);
+					id.push(data.row[coba].id_pesan);
 				}
 				// console.log(nama.length);
 				if (pesan.length == 0) {
@@ -201,36 +256,22 @@ timeline = {
 		}
 	})
 	},
-
 	// end view data
 };
-function lihatpemohon(code) {
-	$.ajax({
-		url: BASE_URL + 'UserController/detailPermohonan',
-		type: 'POST',
-		dataType: 'json',
-		data: {code: code},
-		success:function(data) {
-			if (data.success) {
-				console.log(data);
-				localStorage.setItem("code",code);
-				// window.location.href = 'timeline_pemohon.html';
-			}
-		}
-	})
-	
-}
 $("#logout").click(function(event) {
 	localStorage.clear();
 	window.location.href = '/';
 });
-$("#kirimpesan").submit(function (event) {
+$("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
-		url: BASE_URL + 'UserController/SendMessage',
+		url: BASE_URL + 'OfficeController/InsertAdministrasi',
 		type: "POST",
 		dataType:'json',
-		data: {id:localStorage.getItem('iduser'),pesan:$('#pesan').val()},
+		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),kelengkapan_admin:$("#kelengkapan_admin").val(),lama_mengajukan:$('#lama_izin').val(),statusNPWP:$('#statusNPWP').val(),statusPBB:$('#statusPBB').val(),keterangan:$("#keterangan").val()},
+		// contentType: false,
+		// cache: false,
+		// processData: false,
 		beforeSend:function(argument) {
 			$(".loader-overlay").removeAttr('style');
 		},
@@ -241,10 +282,10 @@ $("#kirimpesan").submit(function (event) {
 					);
 			}else{
 				Swal.fire(
-					'Silakan Menunggu Balasan dari petugas',
+					'Berhasil Verifikasi',
 					);
 
-				$("#kirimpesan")[0].reset();
+				$("#inputadministrasi")[0].reset();
 			}
 
 		},
@@ -256,8 +297,388 @@ $("#kirimpesan").submit(function (event) {
 		}
 	});
 });
+
+$("#inputadminteknis").submit(function (event) {
+	var data = new FormData($(this)[0]);
+	$.ajax({
+		url: BASE_URL + 'OfficeController/InsertAdminTeknis',
+		type: "POST",
+		dataType:'json',
+		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),lahansekitar:$("#lahansekitar").val(),rencanajalan:$('#rencanajalan').val(),eksitingjalan:$('#eksitingjalan').val(),tataruang:$('#tataruang').val(),statususaha:$('#statususaha').val(),statuspasar:$('#statuspasar').val(),keterangan:$("#keterangan").val()},
+		// contentType: false,
+		// cache: false,
+		// processData: false,
+		beforeSend:function(argument) {
+			$(".loader-overlay").removeAttr('style');
+		},
+		success: function (response) {
+			if (response.success == false) {
+				Swal.fire(
+					''+response.msg+'',
+					);
+			}else{
+				Swal.fire(
+					'Berhasil Verifikasi',
+					);
+
+				$("#inputadminteknis")[0].reset();
+			}
+
+		},
+		error: function () {
+			Swal.fire(
+				'"'+response.msg+'"',
+				'Hubungi Tim Terkait',
+				);
+		}
+	});
+});
+
+
+				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
+					$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#kelengkapan_admin').html(options);
+
+						}
+					}
+				});				
+
+				}else if(localStorage.getItem("level") ==2){// Admin Teknis
+					$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=penggunaan_lahan',
+					type: 'GET', 
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#lahansekitar').html(options);
+
+						}
+					}
+				});				
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=rencana_jalan',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#rencanajalan').html(options);
+
+						}
+					}
+				});				
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=jalan_eksisting',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#eksitingjalan').html(options);
+
+						}
+					}
+				});
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=tata_ruang',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#tataruang').html(options);
+
+						}
+					}
+				});
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=jarak_usaha',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#statususaha').html(options);
+
+						}
+					}
+				});
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=jarak_pasar',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#statuspasar').html(options);
+
+						}
+					}
+				});
+				function ceklahan() {
+	        		$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#lahansekitar").val(),table:'penggunaan_lahan'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilailahan').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekrencanajalan() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#rencanajalan").val(),table:'rencana_jalan'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaijalan').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekjalan() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#eksitingjalan").val(),table:'jalan_eksisting'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaiekstingjalan').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cektata() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#tataruang").val(),table:'tata_ruang'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaitata').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekusaha() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#statususaha").val(),table:'jarak_usaha'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaiusaha').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekpasar() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#statuspasar").val(),table:'jarak_pasar'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaipasar').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				}else if(localStorage.getItem("level") ==3){ // Administrasi
+					$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#kelengkapan_admin').html(options);
+
+						}
+					}
+				});				
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=lama_izin',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#lama_izin').html(options);
+
+						}
+					}
+				});				
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=status_npwp',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#statusNPWP').html(options);
+
+						}
+					}
+				});
+				$.ajax({
+					url: BASE_URL + 'ValidasiController/getallSelect?table=status_pbb',
+					type: 'GET',
+					dataType: 'json',
+					beforeSend: function () {
+					},
+					success: function (data) {
+						if (data.success) {
+							var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
+							for (var i in data.row) {
+								options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+							}
+							$('#statusPBB').html(options);
+
+						}
+					}
+				});
+				function cekKelengkapan() {
+	        		$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#kelengkapan_admin").val(),table:'kelengkapan_admin'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaiadmin').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekLama() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#lama_izin").val(),table:'lama_izin'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaiizin').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function ceknpwp() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#statusNPWP").val(),table:'status_npwp'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilainpwp').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				function cekPbb() {
+					$.ajax({
+						url: BASE_URL + 'ValidasiController/getNilai',
+						type: 'GET',
+						dataType: 'json',
+						data:{id:$("#statusPBB").val(),table:'status_pbb'},
+						beforeSend: function () {
+						},
+						success: function (data) {
+							if (data.success) {
+								$('#nilaipbb').html(data.row[0].skor);
+							}
+						}
+					});
+				}
+				}
 	if (typeof(Storage) !== "undefined") {
-		if (localStorage.getItem('iduser') === null && localStorage.getItem('idadmin') === null) {
+		if (localStorage.getItem('idadmin') === null) {
 			window.location.href = '../login.html';
 		}
 	}else{
@@ -278,198 +699,3 @@ $("#kirimpesan").submit(function (event) {
 		})();
 		alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 	}
-function datePHPJS(format, timestamp) {
-
-	var that = this;
-	var jsdate, f;
-	// Keep this here (works, but for code commented-out below for file size reasons)
-	// var tal= [];
-	var txt_words = [
-	'Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur',
-	'January', 'February', 'March', 'April', 'May', 'June',
-	'July', 'August', 'September', 'October', 'November', 'December'
-	];
-	// trailing backslash -> (dropped)
-	// a backslash followed by any character (including backslash) -> the character
-	// empty string -> empty string
-	var formatChr = /\\?(.?)/gi;
-	var formatChrCb = function (t, s) {
-		return f[t] ? f[t]() : s;
-	};
-	var _pad = function (n, c) {
-		n = String(n);
-		while (n.length < c) {
-			n = '0' + n;
-		}
-		return n;
-	};
-	f = {
-		// Day
-		d: function () { // Day of month w/leading 0; 01..31
-			return _pad(f.j(), 2);
-		},
-		D: function () { // Shorthand day name; Mon...Sun
-			return f.l()
-			.slice(0, 3);
-		},
-		j: function () { // Day of month; 1..31
-			return jsdate.getDate();
-		},
-		l: function () { // Full day name; Monday...Sunday
-			return txt_words[f.w()] + 'day';
-		},
-		N: function () { // ISO-8601 day of week; 1[Mon]..7[Sun]
-			return f.w() || 7;
-		},
-		S: function () { // Ordinal suffix for day of month; st, nd, rd, th
-			var j = f.j();
-			var i = j % 10;
-			if (i <= 3 && parseInt((j % 100) / 10, 10) == 1) {
-				i = 0;
-			}
-			return ['st', 'nd', 'rd'][i - 1] || 'th';
-		},
-		w: function () { // Day of week; 0[Sun]..6[Sat]
-			return jsdate.getDay();
-		},
-		z: function () { // Day of year; 0..365
-			var a = new Date(f.Y(), f.n() - 1, f.j());
-			var b = new Date(f.Y(), 0, 1);
-			return Math.round((a - b) / 864e5);
-		},
-		// Week
-		W: function () { // ISO-8601 week number
-			var a = new Date(f.Y(), f.n() - 1, f.j() - f.N() + 3);
-			var b = new Date(a.getFullYear(), 0, 4);
-			return _pad(1 + Math.round((a - b) / 864e5 / 7), 2);
-		},
-		// Month
-		F: function () { // Full month name; January...December
-			return txt_words[6 + f.n()];
-		},
-		m: function () { // Month w/leading 0; 01...12
-			return _pad(f.n(), 2);
-		},
-		M: function () { // Shorthand month name; Jan...Dec
-			return f.F()
-			.slice(0, 3);
-		},
-		n: function () { // Month; 1...12
-			return jsdate.getMonth() + 1;
-		},
-		t: function () { // Days in month; 28...31
-			return (new Date(f.Y(), f.n(), 0))
-			.getDate();
-		},
-		// Year
-		L: function () { // Is leap year?; 0 or 1
-			var j = f.Y();
-			return j % 4 === 0 & j % 100 !== 0 | j % 400 === 0;
-		},
-		o: function () { // ISO-8601 year
-			var n = f.n();
-			var W = f.W();
-			var Y = f.Y();
-			return Y + (n === 12 && W < 9 ? 1 : n === 1 && W > 9 ? -1 : 0);
-		},
-		Y: function () { // Full year; e.g. 1980...2010
-			return jsdate.getFullYear();
-		},
-		y: function () { // Last two digits of year; 00...99
-			return f.Y()
-			.toString()
-			.slice(-2);
-		},
-		// Time
-		a: function () { // am or pm
-			return jsdate.getHours() > 11 ? 'pm' : 'am';
-		},
-		A: function () { // AM or PM
-			return f.a()
-			.toUpperCase();
-		},
-		B: function () { // Swatch Internet time; 000..999
-			var H = jsdate.getUTCHours() * 36e2;
-			// Hours
-			var i = jsdate.getUTCMinutes() * 60;
-			// Minutes
-			var s = jsdate.getUTCSeconds(); // Seconds
-			return _pad(Math.floor((H + i + s + 36e2) / 86.4) % 1e3, 3);
-		},
-		g: function () { // 12-Hours; 1..12
-			return f.G() % 12 || 12;
-		},
-		G: function () { // 24-Hours; 0..23
-			return jsdate.getHours();
-		},
-		h: function () { // 12-Hours w/leading 0; 01..12
-			return _pad(f.g(), 2);
-		},
-		H: function () { // 24-Hours w/leading 0; 00..23
-			return _pad(f.G(), 2);
-		},
-		i: function () { // Minutes w/leading 0; 00..59
-			return _pad(jsdate.getMinutes(), 2);
-		},
-		s: function () { // Seconds w/leading 0; 00..59
-			return _pad(jsdate.getSeconds(), 2);
-		},
-		u: function () { // Microseconds; 000000-999000
-			return _pad(jsdate.getMilliseconds() * 1000, 6);
-		},
-		// Timezone
-		e: function () { // Timezone identifier; e.g. Atlantic/Azores, ...
-			// The following works, but requires inclusion of the very large
-			// timezone_abbreviations_list() function.
-			/*              return that.date_default_timezone_get();
-			*/
-			throw 'Not supported (see source code of date() for timezone on how to add support)';
-		},
-		I: function () { // DST observed?; 0 or 1
-			// Compares Jan 1 minus Jan 1 UTC to Jul 1 minus Jul 1 UTC.
-			// If they are not equal, then DST is observed.
-			var a = new Date(f.Y(), 0);
-			// Jan 1
-			var c = Date.UTC(f.Y(), 0);
-			// Jan 1 UTC
-			var b = new Date(f.Y(), 6);
-			// Jul 1
-			var d = Date.UTC(f.Y(), 6); // Jul 1 UTC
-			return ((a - c) !== (b - d)) ? 1 : 0;
-		},
-		O: function () { // Difference to GMT in hour format; e.g. +0200
-			var tzo = jsdate.getTimezoneOffset();
-			var a = Math.abs(tzo);
-			return (tzo > 0 ? '-' : '+') + _pad(Math.floor(a / 60) * 100 + a % 60, 4);
-		},
-		P: function () { // Difference to GMT w/colon; e.g. +02:00
-			var O = f.O();
-			return (O.substr(0, 3) + ':' + O.substr(3, 2));
-		},
-		T: function () { // Timezone abbreviation; e.g. EST, MDT, ...
-			return 'UTC';
-		},
-		Z: function () { // Timezone offset in seconds (-43200...50400)
-			return -jsdate.getTimezoneOffset() * 60;
-		},
-		// Full Date/Time
-		c: function () { // ISO-8601 date.
-			return 'Y-m-d\\TH:i:sP'.replace(formatChr, formatChrCb);
-		},
-		r: function () { // RFC 2822
-			return 'D, d M Y H:i:s O'.replace(formatChr, formatChrCb);
-		},
-		U: function () { // Seconds since UNIX epoch
-			return jsdate / 1000 | 0;
-		}
-	};
-	this.date = function (format, timestamp) {
-		that = this;
-		jsdate = (timestamp === undefined ? new Date() : // Not provided
-				(timestamp instanceof Date) ? new Date(timestamp) : // JS Date()
-					new Date(timestamp * 1000) // UNIX timestamp (auto-convert to int)
-					);
-		return format.replace(formatChr, formatChrCb);
-	};
-	return this.date(format, timestamp);
-}

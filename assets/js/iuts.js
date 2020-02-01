@@ -59,23 +59,43 @@
         localStorage.setItem("status_milik", $("#status_milik").val());
         localStorage.setItem("alamat", $("#alamatPemohon").val());
 
-        localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting option:selected").text());
-        localStorage.setItem("lama_izin", $("#lama_izin option:selected").text());
-        localStorage.setItem("pemutakhiran_pbb", $("#pemutakhiran_pbb option:selected").text());
-        localStorage.setItem("keterlibatan_umkm", $("#keterlibatan_umkm option:selected").text());
-        localStorage.setItem("perjanjian_sewa", $("#perjanjian_sewa option:selected").text());
-        localStorage.setItem("persetujuan_warga", $("#persetujuan_warga option:selected").text());
-        localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm option:selected").text());
-        localStorage.setItem("kajian_sostek", $("#kajian_sostek option:selected").text());
-        localStorage.setItem("imb_eksisting", $("#imb_eksisting option:selected").text());
-        localStorage.setItem("slf_eksisting", $("#slf_eksisting option:selected").text());
-        localStorage.setItem("volumeSumur", $("#volumeSumur option:selected").text());
-        localStorage.setItem("kondisi_sumur_r", $("#kondisi_sumur_r option:selected").text());
-        localStorage.setItem("drainase_disekeliling", $("#drainase_disekeliling option:selected").text());
-        localStorage.setItem("kdh_minimum", $("#kdh_minimum option:selected").text());
-        localStorage.setItem("kondisi_kdh", $("#kondisi_kdh option:selected").text());
-        localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah option:selected").text());
-        localStorage.setItem("kondisi_parkir", $("#kondisi_parkir option:selected").text());
+        // localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting option:selected").text());
+        // localStorage.setItem("lama_izin", $("#lama_izin option:selected").text());
+        // localStorage.setItem("pemutakhiran_pbb", $("#pemutakhiran_pbb option:selected").text());
+        // localStorage.setItem("keterlibatan_umkm", $("#keterlibatan_umkm option:selected").text());
+        // localStorage.setItem("perjanjian_sewa", $("#perjanjian_sewa option:selected").text());
+        // localStorage.setItem("persetujuan_warga", $("#persetujuan_warga option:selected").text());
+        // localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm option:selected").text());
+        // localStorage.setItem("kajian_sostek", $("#kajian_sostek option:selected").text());
+        // localStorage.setItem("imb_eksisting", $("#imb_eksisting option:selected").text());
+        // localStorage.setItem("slf_eksisting", $("#slf_eksisting option:selected").text());
+        // localStorage.setItem("volumeSumur", $("#volumeSumur option:selected").text());
+        // localStorage.setItem("kondisi_sumur_r", $("#kondisi_sumur_r option:selected").text());
+        // localStorage.setItem("drainase_disekeliling", $("#drainase_disekeliling option:selected").text());
+        // localStorage.setItem("kdh_minimum", $("#kdh_minimum option:selected").text());
+        // localStorage.setItem("kondisi_kdh", $("#kondisi_kdh option:selected").text());
+        // localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah option:selected").text());
+        // localStorage.setItem("kondisi_parkir", $("#kondisi_parkir option:selected").text());
+
+
+        localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting").val());
+        localStorage.setItem("lama_izin", $("#lama_izin").val());
+        localStorage.setItem("pemutakhiran_pbb", $("#pemutakhiran_pbb").val());
+        localStorage.setItem("keterlibatan_umkm", $("#keterlibatan_umkm").val());
+        localStorage.setItem("perjanjian_sewa", $("#perjanjian_sewa").val());
+        localStorage.setItem("persetujuan_warga", $("#persetujuan_warga").val());
+        localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm").val());
+        localStorage.setItem("kajian_sostek", $("#kajian_sostek").val());
+        localStorage.setItem("imb_eksisting", $("#imb_eksisting").val());
+        localStorage.setItem("slf_eksisting", $("#slf_eksisting").val());
+        localStorage.setItem("volumeSumur", $("#volumeSumur").val());
+        localStorage.setItem("kondisi_sumur_r", $("#kondisi_sumur_r").val());
+        localStorage.setItem("drainase_disekeliling", $("#drainase_disekeliling").val());
+        localStorage.setItem("kdh_minimum", $("#kdh_minimum").val());
+        localStorage.setItem("kondisi_kdh", $("#kondisi_kdh").val());
+        localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah").val());
+        localStorage.setItem("kondisi_parkir", $("#kondisi_parkir").val());
+
         localStorage.setItem("volume_sumur_input", $("#volume_sumur_input").val());
         localStorage.setItem("kdh_kondisi_input", $("#kdh_kondisi_input").val());
         localStorage.setItem("janji_sewa_input", $("#janji_sewa_input").val());
@@ -448,7 +468,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option readonly='' value='-' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -466,7 +486,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -484,7 +504,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -502,7 +522,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -520,7 +540,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -537,7 +557,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -555,7 +575,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -571,7 +591,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -588,7 +608,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -605,7 +625,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -622,7 +642,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -639,7 +659,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -656,7 +676,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -674,7 +694,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -692,7 +712,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -710,7 +730,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
@@ -727,7 +747,7 @@
             },
             success: function (data) {
                 if (data.success) {
-                    var options = "<option disabled='' selected>Pilih Salah Satu</option>";
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
                     for (var i in data.row) {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
