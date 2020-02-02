@@ -110,7 +110,19 @@ function tolakdinas() {
 	});
 }
 function printsk() {
-	window.open('printsk.html','_blank');
+	$.ajax({
+		url: BASE_URL + 'OfficeController/downloadpdf',
+		type: 'POST',
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skor:$('#totalakhir2').val(),status:'0'},
+		dataType: 'json',
+		beforeSend: function () {
+		},
+		success: function (data) {
+			Swal.fire(
+				'Download sK',
+				);
+		}
+	});
 }
 timeline = {
 	datadetailprint:function() {
