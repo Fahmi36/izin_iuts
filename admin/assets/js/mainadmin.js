@@ -118,9 +118,7 @@ function printsk() {
 		beforeSend: function () {
 		},
 		success: function (data) {
-			Swal.fire(
-				'Download sK',
-				);
+			window.open(BASE_URL+'OfficeController/downloadpdf','_blank');
 		}
 	});
 }
