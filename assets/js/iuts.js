@@ -6,7 +6,11 @@
     var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
         function kondisieksis() {
-            $("#kondisieksis").removeAttr('style');
+            if ($("#kondisi_eksisting option:selected").val() != 1 &&  $("#kondisi_eksisting option:selected").val() != 2) {
+                $("#kondisieksis").removeAttr('style');
+            }else{
+                $("#kondisieksis").attr('style', 'display:none');
+            }
         }
         function lamaizin() {
             $("#lama_izin_row").removeAttr('style');
@@ -106,6 +110,7 @@
         localStorage.setItem("keterlibatan_umkm_input", $("#keterlibatan_umkm_input").val());
         localStorage.setItem("lama_izin_input", $("#lama_izin_input").val());
         localStorage.setItem("detail_kondisi_input", $("#detail_kondisi_input").val());
+        localStorage.setItem("alamat_lengkap", $("#alamatLengkap").val());
 
         var nama = localStorage.getItem('namapemohon');
         var nik = localStorage.getItem('nik');
@@ -120,7 +125,7 @@
         var jml_lantai = localStorage.getItem('jml_lantai');
         var status_bangunan = localStorage.getItem('status_bangunan');
         var status_milik = localStorage.getItem('status_milik');
-        var alamat = localStorage.getItem('alamat');
+        var alamat = localStorage.getItem('alamat_lengkap');
 
         var kondisi_eksisting = localStorage.getItem('kondisi_eksisting');
         var lama_izin = localStorage.getItem('lama_izin');
@@ -145,6 +150,8 @@
         var keterlibatan_umkm_input = localStorage.getItem('keterlibatan_umkm_input');
         var lama_izin_input = localStorage.getItem('lama_izin_input');
         var detail_kondisi_input = localStorage.getItem('detail_kondisi_input');
+        var alamat_lengkap = localStorage.getItem('alamat_lengkap');
+
 
 
         $("#nama").text(nama);
@@ -257,6 +264,7 @@
       }).then((result) => {
             if (result.value) {
                 $('#pilihLokasi').modal('hide');
+                console.log(localStorage.getItem('lat'));
             }
     });
     });
@@ -313,6 +321,11 @@
             keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
             lama_izin_input: $("#lama_izin_input").val(),
             detail_kondisi_input: $("#detail_kondisi_input").val(),
+            lat: $('#lat').val(),
+            lng: $('#lon').val(),
+            subzona: $('#subzona').val(),
+            idsubblok: $('#idsubblok').val(),
+            alamat_lengkap: $("#alamatLengkap").val(),
         };
 
         dataRegis[0].namaLengkap = dataInput.namaLengkap;
@@ -355,10 +368,11 @@
         dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
         dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
         
-        dataRegis[0].lat = localStorage.getItem('lat');
-        dataRegis[0].lng = localStorage.getItem('lon');
-        dataRegis[0].subzona = localStorage.getItem('subzona');
-        dataRegis[0].idsubblok = localStorage.getItem('idsubblok');
+        dataRegis[0].lat = dataInput.lat;
+        dataRegis[0].lng = dataInput.lng;
+        dataRegis[0].subzona = dataInput.subzona;
+        dataRegis[0].idsubblok = dataInput.idsubblok;
+        dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
 
         localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
         $.ajax({

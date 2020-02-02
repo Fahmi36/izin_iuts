@@ -27,6 +27,7 @@ function detailtugas(id) {
 		}
 	});
 }
+
 function detailSuratsk(id) {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/getBangunan',
@@ -289,6 +290,8 @@ timeline = {
 				var alamat = [];
 				var ketadmin = [];
 				var ketteknis = [];
+				var zona = [];
+				var kode_sublok = [];
 				var skoradministrasi = [];
 				var skormanfaat = [];
 				var skordampak = [];
@@ -326,6 +329,8 @@ timeline = {
 					alamat.push(data.row[coba].alamat);
 					ketadmin.push(data.row[coba].ketadmin);
 					ketteknis.push(data.row[coba].ketteknis);
+					zona.push(data.row[coba].zona);
+					kode_sublok.push(data.row[coba].kode_sublok);
 
 					skoradministrasi.push(data.row[coba].skoradministrasi);
 					skormanfaat.push(data.row[coba].skormanfaat);
@@ -383,14 +388,16 @@ timeline = {
 
 				$('#catatan').text(ketadmin);
 
-				$('#idnya').text(code);
-				$('#idnya').text(nama);
-				$('#idnya').text(nib);
-				$('#idnya').text(npwp);
-				$('#idnya').text(tgl);
-				$('#idnya').text(alamat);
-				$('#idnya').text(ketadmin);
-				$('#idnya').text(ketteknis);
+				$('#tokenbangunan').text(code);
+				$('#namabangunan').text(nama);
+				$('#nibpemohon').text(nib);
+				$('#npwppemohon').text(npwp);
+				$('#tglpemohon').text(tgl);
+				$('#zonasi').text(zona);
+				$('#kodesublock').text(kode_sublok);
+				$('#alamatpemohon').text(alamat);
+				$('#ketadministrasi').text(ketadmin);
+				$('#ketadminteknis').text(ketteknis);
 				if (nama.length != 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}		
@@ -398,38 +405,44 @@ timeline = {
 		})
 },
 datadetailPemohon:function() {
-	var datas = {id:localStorage.getItem("iduser")};
+	var datas = {code:localStorage.getItem("idbangunanadmin")};
 	$.ajax({
-		url: BASE_URL + 'UserController/detailPesan',
+		url: BASE_URL + 'OfficeController/getBangunanDetail',
 		type: 'POST',
-		data: datas,
-		dataType : 'json',
+		dataType: 'json',
+		data: datas
 		success:function(data) {
-			var pengirim = [];
-			var penerima = [];
-			var pesan = [];
-			var tanggal = [];
-			var id = [];
-			for(var coba in data.row){
-				pengirim.push(data.row[coba].id_pengirim);
-				penerima.push(data.row[coba].id_penerima);
-				pesan.push(data.row[coba].pesan);
-				tanggal.push(data.row[coba].created_at);
-				id.push(data.row[coba].id_pesan);
-			}
-				// console.log(nama.length);
-				if (pesan.length == 0) {
-					$("#pesanrow").html('<p>Belum ada pesan</p>');
+			if (data.success) {
+				var code = [];
+				var nama = [];
+				var nib = [];
+				var npwp = [];
+				var tgl = [];
+				var alamat = [];
+				var zona = [];
+				var kode_sublok = [];
+				for(var coba in data.row){
+					code.push(data.row[coba].code);
+					nama.push(data.row[coba].nama);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					alamat.push(data.row[coba].alamat);
+					zona.push(data.row[coba].zona);
+					kode_sublok.push(data.row[coba].kode_sublok);
+					tgl.push(data.row[coba].created_at);
+
 				}
-				for (var i = 0; i < pesan.length; i++) {
-					if (pengirim[i]===localStorage.getItem("iduser")) {
-						$("#detailpesan").append("<div class='chat-message chat-message-sender'><div class='chat-message-wrapper'><div class='chat-message-content'><p>"+pesan[i]+"</p></div><div class='chat-details'><span class='chat-message-localisation font-size-small'>Time</span><span class='chat-message-read-status font-size-small'>- Date</span></div></div></div>");
-					}else if(penerima[i]===localStorage.getItem("iduser")){
-						$("#detailpesan").append("<div class='chat-message chat-message-recipient'><img class='chat-image chat-image-default img-thumbnail' src='assets/images/profile-picture.png'/><div class='chat-message-wrapper'><div class='chat-message-content'><p>"+pesan[i]+"</p></div><div class='chat-details'><span class='chat-message-localization font-size-small'>Time</span><span class='chat-message-read-status font-size-small'>- Date</span></div></div></div>");
-					}
-				}
+				$('#tokenbangunan').text(code);
+				$('#namabangunan').text(nama);
+				$('#nibpemohon').text(nib);
+				$('#npwppemohon').text(npwp);
+				$('#tglpemohon').text(tgl);
+				$('#zonasi').text(zona);
+				$('#kodesublock').text(kode_sublok);
+				$('#alamatpemohon').text(alamat);
 			}
-		})
+		}
+	});
 },
 	// end view data
 };

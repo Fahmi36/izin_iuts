@@ -155,7 +155,12 @@
           <div class="form-group row">
             <label for="alamatPemohon" class="col-md-6 col-form-label">Lokasi Pemohon :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lat" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lng" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="subzona" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="idsubblok" placeholder="Masukan Alamat Pemohon">
+              <input type="text" class="form-control" name="lokasi_pemohon" id="alamatLengkap" placeholder="Masukan Alamat Pemohon">
               <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
             </div>
           </div>
@@ -191,7 +196,7 @@
             </div>
           </div>
             <div class="form-group row" id="kondisieksis" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Kondisi Eksisting :</label>
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
             </div>
@@ -228,7 +233,7 @@
             </div>
           </div>
             <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Detail Keterlibatan UMKM :</label>
+            <label for="jmlLantaiB" class="col-md-6 col-form-label"> Jumlah Keterlibatan UMKM :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
             </div>
@@ -265,7 +270,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sostek :</label>
+            <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sosek :</label>
             <div class="col-md-6">
               <select required="" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
               </select>
@@ -288,7 +293,7 @@
           <div class="form-group row">
             <label for="volumeSumur" class="col-md-6 col-form-label">Volume Sumur Resapan :</label>
             <div class="col-md-6">
-              <select required="" onchange="volumesumur()" aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
+              <select required="" aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
               </select>
             </div>
           </div>
@@ -325,7 +330,7 @@
           <div class="form-group row">
             <label for="kondisiKDH" class="col-md-6 col-form-label">Kondisi KDH :</label>
             <div class="col-md-6">
-              <select required="" onchange="kondisikdh()" aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
+              <select required="" aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
                 
               </select>
             </div>
