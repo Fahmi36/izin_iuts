@@ -383,7 +383,7 @@ timeline = {
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
 				$('#totaltax').text(totaltax);
 
-				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4))/parseFloat(3);
+				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
 				var akumulasi = parseFloat(total/3)
 				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
 				console.log(akumulasi);
