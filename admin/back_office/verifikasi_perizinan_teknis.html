@@ -227,255 +227,266 @@
 			<div class="container-fluid pb-5 mt--6">
 				<div class="row">
 					<div class="col-md-12 mt-2">
-						<div class="card bg-secondary shadow">
-							<div class="card-header bg-white border-0 mb-0">
-								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h3>
-								</div>
-							</div>
-							<div class="card-body">
-								<form>
-									<div class="row">
-										<div class="col-md-7">
-											<table class="table bg-white">
-												<thead class="thead-light">
-													<tr>
-														<th scope="col">No</th>
-														<th scope="col">Persyaratan</th>
-														<th scope="col">Kategori</th>
-														<th scope="col">Nilai</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<th scope="row">1</th>
-														<td>Penggunanan Lahan Sekitar</td>
-														<td>
-															<select aria-label="" onchange="penggunaanLahanChange()" class="text-center form-control" id="penggunaan_lahan" name="penggunaan_lahan">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">> 10% LU Hunian</option>
-																<option value="2"><= 10% LU Hunian</option>
-																<option value="1"><= 20% LU bukan Hunian</option>
-																<option value="0">>20% LU bukan Hunian</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_peng_lahan" id="skor_peng_lahan" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">2</th>
-														<td>Rencana Jalan Memadai</td>
-														<td>
-															<select required="" onchange="rencanaJalanChange()" aria-label="statusBangunan" class="text-center form-control" id="rencana_jalan" name="rencana_jalan">
-																<option disabled="" selected="">Pilih Salah Satu</option>
-																<option value="3">>= 20 m</option>
-																<option value="2">>= 15 m</option>
-																<option value="1">>= 12 m</option>
-																<option value="0">< 12 m</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_ren_jalan" id="skor_ren_jalan" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">3</th>
-														<td>Jalan Eksisting Memadai</td>
-														<td>
-															<select aria-label="" onchange="jalanEksistingChange()" class="text-center form-control" id="jalan_eksisting" name="jalan_eksisting">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">6 Mobil</option>
-																<option value="2">4 Mobil</option>
-																<option value="1">2 Mobil</option>
-																<option value="0">Tidak Memadai</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_jalan_eks" id="skor_jalan_eks" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">3</th>
-														<td>Kesesuaian Rencana Tata Ruang</td>
-														<td>
-															<select aria-label="" onchange="rencanaTataChange()" class="text-center form-control" id="rencana_tata_r" name="rencana_tata_r">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">Diizinkan</option>
-																<option value="2">Diizinkan Bersyarat</option>
-																<option value="1">Diizinkan Terbatas</option>
-																<option value="0">Tidak Diizinkan</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_rencana_tata" id="skor_rencana_tata" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">4</th>
-														<td>Jarak ke Usaha Sejenis</td>
-														<td>
-															<select aria-label="" onchange="jarakUsahaChange()" class="text-center form-control" id="jarak_u_sejenis" name="jarak_u_sejenis">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">< 3 Usaha sejenis dalam radius 200 m</option>
-																<option value="2"><= 5 Usaha sejenis dalam radius 200 m</option>
-																<option value="1"><= 7 Usaha sejenis dalam radius 200 m</option>
-																<option value="0">> 7 Usaha sejenis dalam radius 200 m</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_jarak_u" id="skor_jarak_u" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">5</th>
-														<td>Jarak Terhadap Pasar Tradional</td>
-														<td>
-															<select aria-label="" onchange="jarakPasarChange()" class="text-center form-control" id="jarak_pasar_t" name="jarak_pasar_t">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">>= 400 m</option>
-																<option value="2"><400 m</option>
-																<option value="1">>= 200 m</option>
-																<option value="0">< 200 m</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_jarak_p" id="skor_jarak_p" style="width: 35px;"></td>
-													</tr>
-												</tbody>
-											</table>
+						<div class="row">
+							<div class="col-md-7">
+								<div class="card bg-secondary shadow">
+									<div class="card-header bg-white border-0 mb-0">
+										<div class="row align-items-center ">
+											<h3 class="pl-3 mb-0">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h3>
 										</div>
-										<div class="col-md-5">
-											<label class="font-weight-bold">Detail Pemohon</label>
+									</div>
+									<div class="card-body">
+										<form action="javascript:void(0);" method="post" id="inputadministrasi">
+											<input type="hidden" id="codebangunan" name="id_bangunan">
+											<div class="table-responsive">
+												<table class="table bg-white">
+													<thead class="thead-light">
+														<tr>
+															<th scope="col">No</th>
+															<th scope="col">Persyaratan</th>
+															<th scope="col">Kategori</th>
+															<th scope="col">Nilai</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">1</th>
+															<td>Penggunanan Lahan Sekitar</td>
+															<td>
+																<select aria-label="" onchange="penggunaanLahanChange()" class="text-center form-control" id="penggunaan_lahan" name="penggunaan_lahan">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">> 10% LU Hunian</option>
+																	<option value="2"><= 10% LU Hunian</option>
+																	<option value="1"><= 20% LU bukan Hunian</option>
+																	<option value="0">>20% LU bukan Hunian</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_peng_lahan" id="skor_peng_lahan" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">2</th>
+															<td>Rencana Jalan Memadai</td>
+															<td>
+																<select required="" onchange="rencanaJalanChange()" aria-label="statusBangunan" class="text-center form-control" id="rencana_jalan" name="rencana_jalan">
+																	<option disabled="" selected="">Pilih Salah Satu</option>
+																	<option value="3">>= 20 m</option>
+																	<option value="2">>= 15 m</option>
+																	<option value="1">>= 12 m</option>
+																	<option value="0">< 12 m</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_ren_jalan" id="skor_ren_jalan" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">3</th>
+															<td>Jalan Eksisting Memadai</td>
+															<td>
+																<select aria-label="" onchange="jalanEksistingChange()" class="text-center form-control" id="jalan_eksisting" name="jalan_eksisting">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">6 Mobil</option>
+																	<option value="2">4 Mobil</option>
+																	<option value="1">2 Mobil</option>
+																	<option value="0">Tidak Memadai</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_jalan_eks" id="skor_jalan_eks" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">3</th>
+															<td>Kesesuaian Rencana Tata Ruang</td>
+															<td>
+																<select aria-label="" onchange="rencanaTataChange()" class="text-center form-control" id="rencana_tata_r" name="rencana_tata_r">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">Diizinkan</option>
+																	<option value="2">Diizinkan Bersyarat</option>
+																	<option value="1">Diizinkan Terbatas</option>
+																	<option value="0">Tidak Diizinkan</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_rencana_tata" id="skor_rencana_tata" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">4</th>
+															<td>Jarak ke Usaha Sejenis</td>
+															<td>
+																<select aria-label="" onchange="jarakUsahaChange()" class="text-center form-control" id="jarak_u_sejenis" name="jarak_u_sejenis">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">< 3 Usaha sejenis dalam radius 200 m</option>
+																	<option value="2"><= 5 Usaha sejenis dalam radius 200 m</option>
+																	<option value="1"><= 7 Usaha sejenis dalam radius 200 m</option>
+																	<option value="0">> 7 Usaha sejenis dalam radius 200 m</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_jarak_u" id="skor_jarak_u" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">5</th>
+															<td>Jarak Terhadap Pasar Tradional</td>
+															<td>
+																<select aria-label="" onchange="jarakPasarChange()" class="text-center form-control" id="jarak_pasar_t" name="jarak_pasar_t">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">>= 400 m</option>
+																	<option value="2"><400 m</option>
+																		<option value="1">>= 200 m</option>
+																		<option value="0">< 200 m</option>
+																	</select>
+																</td>
+																<td><input type="text" class="form-control" name="skor_jarak_p" id="skor_jarak_p" style="width: 35px;"></td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="col-md-12">
+													<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
+													<label>Kolom Komentar</label>
+													<div class="form-group">
+														<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
+													</div>
+													<input type="checkbox" id="sayaSetuju">
+													<label for="sayaSetuju">Saya setuju bahwa nilai yang saya masukan benar</label>
+													<button class="btn btn-warning" type="submit" id="btnKirim" disabled="">Kirim</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-5">
+									<div class="card bg-secondary shadow">
+										<div class="card-header bg-white border-0 mb-0">
+											<div class="row align-items-center ">
+												<h3 class="pl-3 mb-0">Detail Pemohon</h3>
+											</div>
+										</div>
+										<div class="card-body">
 											<div class="row">
 												<label class="col-md-6 col-form-label">Nomor Token :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="tokenbangunan"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Nama Pemohon :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="namabangunan"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">NIB :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="nibpemohon"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">NPWP :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="npwppemohon"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="tglpemohon"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Status Zonasi :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="zonasi"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="kodesublock"></label>
 											</div>
 											<div class="row">
 												<label class="col-md-6 col-form-label">Alamat :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
+												<label class="col-md-6 col-form-label" id="alamatpemohon"></label>
 											</div>
-										</div>
-										<div class="col-md-12">
-											<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
-											<label>Kolom Komentar</label>
-											<div class="form-group">
-												<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
-											</div>
-											<input type="checkbox" id="sayaSetuju">
-											<label for="sayaSetuju">Saya setuju bahwa nilai yang saya masukan benar</label>
-											<button class="btn btn-warning" type="submit" id="btnKirim" disabled="">Kirim</button>
 										</div>
 									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
+
+					<!-- Footer -->
+					<footer class="footer">
+						<div class="row align-items-center justify-content-xl-between">
+							<div class="col-xl-6">
+								<div class="copyright text-center text-xl-left text-muted">
+									© 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
+								</div>
+							</div>
+							<div class="col-xl-6">
+								<ul class="nav nav-footer justify-content-center justify-content-xl-end">
+									<li class="nav-item">
+										<a href="#" class="nav-link" target="_blank">About Us</a>
+									</li>
+									<li class="nav-item">
+										<a href="#" class="nav-link" target="_blank">Blog</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</footer>
+					<!-- End Footer -->
 				</div>
-				
-				<!-- Footer -->
-				<footer class="footer">
-					<div class="row align-items-center justify-content-xl-between">
-						<div class="col-xl-6">
-							<div class="copyright text-center text-xl-left text-muted">
-								© 2020 <a href="#" class="font-weight-bold ml-1" target="_blank">Perizinan IUTS</a>
-							</div>
-						</div>
-						<div class="col-xl-6">
-							<ul class="nav nav-footer justify-content-center justify-content-xl-end">
-								<li class="nav-item">
-									<a href="#" class="nav-link" target="_blank">About Us</a>
-								</li>
-								<li class="nav-item">
-									<a href="#" class="nav-link" target="_blank">Blog</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</footer>
-				<!-- End Footer -->
 			</div>
 		</div>
-	</div>
-	<script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
-	<script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="../assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
-	<script src="../assets/js/sweetalert2@8.js"></script>
-	<script src="../assets/js/gijgo.min.js" type="text/javascript"></script>
-	<script src="../assets/js/jquery.dataTables.min.js"></script>
-	<!-- Argon JS -->
-	<script src="../assets/js/argon.js?v=1.0.0"></script>
-	<script src="../assets/js/mainadmin.js"></script>
-	<script src="https://js.arcgis.com/4.8/"></script>
-	<script src="../../assets/js/arcgis.js"></script>
-	<script type="text/javascript">
-		jQuery(window).load(function () {
-			jQuery('#loader').fadeOut('slow');
-		});
-	</script>
-	<script type="text/javascript">
-		$(".scrollbar").addClass("thin");
-		$(".scrollbar").mouseover(function(){
-			$(this).removeClass("thin");
-		});
-		$(".scrollbar").mouseout(function(){
-			$(this).addClass("thin");
-		});
-		$(".scrollbar").scroll(function () {
+		<script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+		<script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="../assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+		<script src="../assets/js/sweetalert2@8.js"></script>
+		<script src="../assets/js/gijgo.min.js" type="text/javascript"></script>
+		<script src="../assets/js/jquery.dataTables.min.js"></script>
+		<!-- Argon JS -->
+		<script src="../assets/js/argon.js?v=1.0.0"></script>
+		<script src="../assets/js/mainadmin.js"></script>
+		<script src="https://js.arcgis.com/4.8/"></script>
+		<script src="../../assets/js/arcgis.js"></script>
+		<script type="text/javascript">
+			timeline.datadetailPemohon();
+			jQuery(window).load(function () {
+				jQuery('#loader').fadeOut('slow');
+			});
+		</script>
+		<script type="text/javascript">
 			$(".scrollbar").addClass("thin");
-		});
-		$('#sayaSetuju').on('click',function () {
-	        if ($('#sayaSetuju').is(':checked')) {
-	            $('#btnKirim').removeAttr('disabled');	            
-	        }else{
-	            $('#btnKirim').attr('disabled', 'disabled');
-	        }
-	    });
-	</script>
-	<script type="text/javascript">
-		function penggunaanLahanChange() {
-	        var selObj = document.getElementById("penggunaan_lahan");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_peng_lahan").value = selValue;	    
-	    }
-	    function rencanaJalanChange() {
-	        var selObj = document.getElementById("rencana_jalan");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_ren_jalan").value = selValue;	    
-	    }
-	    function jalanEksistingChange() {
-	        var selObj = document.getElementById("jalan_eksisting");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_jalan_eks").value = selValue;	    
-	    }
-	    function rencanaTataChange() {
-	        var selObj = document.getElementById("rencana_tata_r");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_rencana_tata").value = selValue;	    
-	    }
-	    function jarakUsahaChange() {
-	        var selObj = document.getElementById("jarak_u_sejenis");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_jarak_u").value = selValue;	    
-	    }
-	    function jarakPasarChange() {
-	        var selObj = document.getElementById("jarak_pasar_t");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_jarak_p").value = selValue;	    
-	    }
-	</script>
-</body>
-</html>
+			$(".scrollbar").mouseover(function(){
+				$(this).removeClass("thin");
+			});
+			$(".scrollbar").mouseout(function(){
+				$(this).addClass("thin");
+			});
+			$(".scrollbar").scroll(function () {
+				$(".scrollbar").addClass("thin");
+			});
+			$('#sayaSetuju').on('click',function () {
+				if ($('#sayaSetuju').is(':checked')) {
+					$('#btnKirim').removeAttr('disabled');	            
+				}else{
+					$('#btnKirim').attr('disabled', 'disabled');
+				}
+			});
+		</script>
+		<script>
+			function penggunaanLahanChange() {
+				var selObj = document.getElementById("penggunaan_lahan");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_peng_lahan").value = selValue;	    
+			}
+			function rencanaJalanChange() {
+				var selObj = document.getElementById("rencana_jalan");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_ren_jalan").value = selValue;	    
+			}
+			function jalanEksistingChange() {
+				var selObj = document.getElementById("jalan_eksisting");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_jalan_eks").value = selValue;	    
+			}
+			function rencanaTataChange() {
+				var selObj = document.getElementById("rencana_tata_r");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_rencana_tata").value = selValue;	    
+			}
+			function jarakUsahaChange() {
+				var selObj = document.getElementById("jarak_u_sejenis");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_jarak_u").value = selValue;	    
+			}
+			function jarakPasarChange() {
+				var selObj = document.getElementById("jarak_pasar_t");
+				var selValue = selObj.options[selObj.selectedIndex].value;
+				document.getElementById("skor_jarak_p").value = selValue;	    
+			}		</script>
+	</body>
+	</html>
