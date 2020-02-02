@@ -238,8 +238,9 @@ timeline = {
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
 				$('#totaltax').text(totaltax);
 
-				var total = (parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/parseFloat(3));
-				var totalasli = parseFloat(totaltax) * parseFloat(total);
+				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak);
+				var akumulasi = parseFloat(total/3)
+				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
 
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
@@ -382,8 +383,9 @@ timeline = {
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
 				$('#totaltax').text(totaltax);
 
-				var total = (parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/parseFloat(3));
-				var totalasli = parseFloat(totaltax) * parseFloat(total);
+				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/parseFloat(3);
+				var akumulasi = parseFloat(total/3)
+				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
 
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
