@@ -238,10 +238,11 @@ timeline = {
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
 				$('#totaltax').text(totaltax);
 
-				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)*parseFloat(totaltax);
+				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/3;
+				var totalasli = parseFloat(totaltax) * parseFloat(total);
 
-				$('#totalakhir').text(String(total).substr(0, 4));
-				$('#totalakhir2').val(String(total).substr(0, 4));
+				$('#totalakhir').text(String(totalasli).substr(0, 4));
+				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
 				
 				window.print();
@@ -381,10 +382,11 @@ timeline = {
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
 				$('#totaltax').text(totaltax);
 
-				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)*parseFloat(totaltax);
+				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/3;
+				var totalasli = parseFloat(totaltax) * parseFloat(total);
 
-				$('#totalakhir').text(String(total).substr(0, 4));
-				$('#totalakhir2').val(String(total).substr(0, 4));
+				$('#totalakhir').text(String(totalasli).substr(0, 4));
+				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
 				$('#catatan').text(ketadmin);
 
