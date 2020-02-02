@@ -266,7 +266,7 @@
                           <span class="d-block h5" align="center">Peta</span>
                           <input type="hidden" id="lat" >
                           <input type="hidden" id="long" >
-                          <div id="mapsadmin" style="height: 500px;"></div>
+                          <div id="maps" style="width: 100%;height: 500px;"></div>
                         </div>
                       </div>
                     </div>
@@ -281,10 +281,17 @@
                     </div>
                     <div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
                       <div class="card-body">
+                        <label><b>Rincian Nilai Permohonan Anda Sebagai Berikut:</b></label>
                         <div id="cardPenilaian">
 
                         </div>
-                        <div id="cardteknis">
+                        <div id="cardReturn">
+
+                        </div>
+                        <div id="cardDampak">
+
+                        </div>
+                        <div id="cardTaxClearance">
 
                         </div>
                         <div id="ket_dinas">
@@ -297,53 +304,53 @@
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card">
-                  <div class="card-header no-padd" id="headingFour">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                        <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
-                    <div class="card-body">
-                      <div id="review">
-                        <center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingFour">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <div id="review">
+                          <center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="card">
-                  <div class="card-header no-padd" id="headingFive">
-                    <h5 class="mb-0">
-                      <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                        <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Konfirmasi Serah Terima SK
-                      </button>
-                    </h5>
-                  </div>
-                  <div id="collapseFive" class="collapse fade" aria-labelledby="headingFive" data-parent="#accordionExample">
-                    <div class="card-body">
-                      <div id="confirm_sk">
-                        <p class="text-default p-10 font-weight-bold text-center">Serah Terima Surat Keputusan</p>
-                        <div class="card">
-                          <div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
-                            <p>Upload foto bukti serah terima Surat Keputusan</p>
-                            <input type="file" name="fileBukti" class="mb-3">
-                            <p>Dengan ini, saya menyatakan bahwa saya sudah menerima Surat Keputusan Izin Usaha Toko Swalayan dan data yang saya berikan seluruhnya benar.<br>
-                            Saya berjanji akan mematuhi persyaratan yang diberikan oleh PMPTSP dan apabila saya melanggar persyaratan tersebut saya siap menerima segala konsekuensi yang diberikan oleh PMPTSP.</p>
-                            <button class="btn btn-success">Konfirmasi</button>
+                  <div class="card">
+                    <div class="card-header no-padd" id="headingFive">
+                      <h5 class="mb-0">
+                        <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Konfirmasi Serah Terima SK
+                        </button>
+                      </h5>
+                    </div>
+                    <div id="collapseFive" class="collapse fade" aria-labelledby="headingFive" data-parent="#accordionExample">
+                      <div class="card-body">
+                        <div id="confirm_sk">
+                          <p class="text-default p-10 font-weight-bold text-center">Serah Terima Surat Keputusan</p>
+                          <div class="card">
+                            <div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
+                              <p>Upload foto bukti serah terima Surat Keputusan</p>
+                              <input type="file" name="fileBukti" class="mb-3">
+                              <p>Dengan ini, saya menyatakan bahwa saya sudah menerima Surat Keputusan Izin Usaha Toko Swalayan dan data yang saya berikan seluruhnya benar.<br>
+                              Saya berjanji akan mematuhi persyaratan yang diberikan oleh PMPTSP dan apabila saya melanggar persyaratan tersebut saya siap menerima segala konsekuensi yang diberikan oleh PMPTSP.</p>
+                              <button class="btn btn-success">Konfirmasi</button>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
+                <br>
               </div>
-              <br>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-            </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
@@ -383,6 +390,8 @@
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.0.0"></script>
   <script src="assets/js/mainuser.js"></script>
+  <script src="https://js.arcgis.com/4.8/"></script>
+  <script src="assets/js/mapsadmin.js"></script>
   <script type="text/javascript">
 
     timeline.dataizin();
