@@ -13,15 +13,15 @@ function detailtugas(id) {
 				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'tugasdinas.html';
+					window.location.href = 'verifikasi_perizinan_kadis.html';
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'formtugasteknis.html';
+					window.location.href = 'verifikasi_perizinan_teknis.html';
 				}else if(localStorage.getItem("level") ==3){ // Administrasi
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'formtugas.html';
+					window.location.href = 'verifikasi_perizinan.html';
 				}
 			}
 		}
@@ -39,7 +39,7 @@ function detailSuratsk(id) {
 				if(localStorage.getItem("level") ==3){ // Administrasi
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'suratsk.html';
+					window.location.href = 'surat_sk.html';
 				}
 			}
 		}
@@ -467,7 +467,7 @@ datadetailPemohon:function() {
 };
 $("#logout").click(function(event) {
 	localStorage.clear();
-	window.location.href = '/';
+	window.location.href = '../login.html';
 });
 $("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);
@@ -543,7 +543,8 @@ $("#inputadminteknis").submit(function (event) {
 
 
 				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
-					$.ajax({
+				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>'); 
+				$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
 						type: 'GET',
 						dataType: 'json',
@@ -562,6 +563,7 @@ $("#inputadminteknis").submit(function (event) {
 					});				
 
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
+				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>');	
 					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=penggunaan_lahan',
 						type: 'GET', 
@@ -755,6 +757,7 @@ $("#inputadminteknis").submit(function (event) {
 						});
 					}
 				}else if(localStorage.getItem("level") ==3){ // Administrasi
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <li class="nav-item"> <a class="nav-link" href="tugas_sk.html"> Terbit SK </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Laporan </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Kontak Kami </a> </li> </ul>');
 					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
 						type: 'GET',
@@ -886,7 +889,7 @@ $("#inputadminteknis").submit(function (event) {
 				}
 				if (typeof(Storage) !== "undefined") {
 					if (localStorage.getItem('idadmin') === null) {
-						window.location.href = '../login.html';
+						// window.location.href = '../login.html';
 					}
 				}else{
 					navigator.sayswho= (function(){

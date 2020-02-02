@@ -21,12 +21,12 @@
         function janjisewa() {
             $("#janji_sewa_row").removeAttr('style');
         }
-        function volumesumur() {
-            $("#volume_sumur_row").removeAttr('style');
-        }
-        function kondisikdh() {
-            $("#kondisi_kdh_row").removeAttr('style');
-        }
+        // function volumesumur() {
+        //     $("#volume_sumur_row").removeAttr('style');
+        // }
+        // function kondisikdh() {
+        //     $("#kondisi_kdh_row").removeAttr('style');
+        // }
     $('.answer__input').on('change', function(e) { 
 
     	if($(this).next().children('.answer__tick').length>0){

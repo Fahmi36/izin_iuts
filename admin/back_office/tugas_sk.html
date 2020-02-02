@@ -253,89 +253,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailVerifikasi" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-					<div class="modal-dialog modal-lg">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h4 class="modal-title" id="exampleModalLongTitle">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h4>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">×</span>
-								</button>
-							</div>	
-							<div class="modal-body">
-								<table class="table">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">No</th>
-											<th scope="col">Persyaratan</th>
-											<th scope="col">Kategori</th>
-											<th scope="col">Nilai</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td>Kelengkapan Administrasi</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="<50%"><50%</option>
-													<option value=">50%">>50%</option>
-													<option value=">90%">>90%</option>
-												</select>
-											</td>
-											<td>3</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>Sudah berapa lama mengajukan izin</td>
-											<td>
-												<select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
-													<option disabled="" selected="">Pilih Salah Satu</option>
-													<option value="1">Kurang Dari 1 Bulan</option>
-													<option value="2">Lebih Dari 1 Bulan</option>
-													<option value="3">Lebih Dari 3 Bulan</option>
-													<option value="4">Lebih dari 6 Bulan</option>
-												</select>
-											</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Status NPWP</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="statusNPWP" name="statusNPWP">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="Lunas">Lunas</option>
-													<option value="Belum Lunas">Belum Lunas</option>
-												</select>
-											</td>
-											<td>1</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td>Status PBB</td>
-											<td>
-												<select aria-label="" class="text-center form-control" id="statusPBB" name="statusPBB">
-													<option disabled selected>Pilih Salah Satu</option>
-													<option value="Lunas">Lunas</option>
-													<option value="Belum Lunas">Belum Lunas</option>
-												</select>
-											</td>
-											<td>0</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-							<input type="text" id="codebangunan" name="code" >
-							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-								<button type="submit" class="btn btn-success">Verifikasi</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- end modal verifikasi -->
 				
 				<!-- Footer -->
 				<footer class="footer">
@@ -391,10 +308,10 @@
 			"serverSide": true,
 			"order": [],
 			"ajax": {
-				'url' : "https://rest-iuts.pkkmart.com/OfficeController/getDataJalan",
-				// 'url' : "http://localhost/rest_api_iuts/OfficeController/getDataJalan",
+				'url' : "https://rest-iuts.pkkmart.com/OfficeController/getDataSemua",
+				// 'url' : "http://localhost/rest_api_iuts/OfficeController/getDataSemua",
 				'data' : {
-					'level':localStorage.getItem('level'),
+					'status':'1',
 				},
 				'type' : 'POST',
 			},
@@ -420,7 +337,7 @@
 				"targets": 0,
 				"data" : 'id',
 				"render": function ( data, type, row, meta ) {
-					return '<button class="btn btn-success" onclick="detailtugas('+data.code+');">Verifikasi</button>';
+					return '<button class="btn btn-success" onclick="detailSuratsk('+"'"+data.id_bangunan+"'"+');">Detail</button>';
 				}
 			} ],
 			"order": [[1, 'asc']]
