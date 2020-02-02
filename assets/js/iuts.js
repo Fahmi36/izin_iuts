@@ -6,7 +6,17 @@
     var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
         function kondisieksis() {
-            $("#kondisieksis").removeAttr('style');
+            // $("#kondisieksis").removeAttr('style');
+            // $('#kondisieksis').hide(); 
+            $('#kondisi_eksisting').change(function(){
+                if($('#kondisi_eksisting').val() == '3' ) {
+                    $("#kondisieksis").html('<label for="jmlLantaiB" class="col-md-6 col-form-label">Lama waktu peroperasi :</label> <div class="col-md-6"> <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-"> </div>');
+                } else if($('#kondisi_eksisting').val() == '4' ){
+                    $("#kondisieksis").html('<label for="jmlLantaiB" class="col-md-6 col-form-label">Lama waktu peroperasi :</label> <div class="col-md-6"> <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-"> </div>');
+                } else{
+                    $('#kondisieksis').html(''); 
+                }
+            });
         }
         function lamaizin() {
             $("#lama_izin_row").removeAttr('style');
@@ -17,12 +27,12 @@
         function janjisewa() {
             $("#janji_sewa_row").removeAttr('style');
         }
-        function volumesumur() {
-            $("#volume_sumur_row").removeAttr('style');
-        }
-        function kondisikdh() {
-            $("#kondisi_kdh_row").removeAttr('style');
-        }
+        // function volumesumur() {
+        //     $("#volume_sumur_row").removeAttr('style');
+        // }
+        // function kondisikdh() {
+        //     $("#kondisi_kdh_row").removeAttr('style');
+        // }
     $('.answer__input').on('change', function(e) { 
 
     	if($(this).next().children('.answer__tick').length>0){
