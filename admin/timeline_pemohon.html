@@ -109,19 +109,19 @@
 
               <div class="collapse" id="disposisi">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_p.html">
-                      Proses <span class="badge badge-default ml-2">0</span>
+                                    <li class="nav-item">
+                    <a onclick="filterizin(0)" href="javascript:void(0);" class="nav-link">
+                      Proses <span class="badge badge-default ml-2" id="countproses">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_e.html">
-                      Expired <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(3)" href="javascript:void(0);" class="nav-link">
+                      Expired <span class="badge badge-default ml-2" id="countexpired">0</span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="perizinan_saya_s.html">
-                      Selesai <span class="badge badge-default ml-2">0</span>
+                    <a onclick="filterizin(1)"  href="javascript:void(0);" class="nav-link">
+                      Selesai <span class="badge badge-default ml-2" id="countselesai">0</span>
                     </a>
                   </li>
                 </ul>
@@ -133,7 +133,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="javascript:void(0)" id="logout">
+              <a class="nav-link" href="javascript:void(0);" id="logout">
                 <i class="ni ni-user-run text-warning"></i> Keluar
               </a>
             </li>
@@ -193,7 +193,7 @@
                 </div>
                 <a class="dropdown-item">
                   <i class="ni ni-single-02"></i>
-                  <span id="namapemohon"></span>
+                  <span id="namapemohon"></span> 
                 </a>
                 <div class="dropdown-divider"></div>
                 <a  id="logout" href="javascript:void(0);" class="dropdown-item">
@@ -223,29 +223,41 @@
         <div class="row mt-4">
           <div class="col-md-12">
             <ul class="nav nav-tabs process-model more-icon-preocess" role="tablist">
-              <li role="presentation" onclick="pemohon();" class="active">
+              <li role="presentation" id="pemohon" class="active">
+                <a href="javascript:void(0);" onclick="pemohon();">
                 <i class="fa fa-user-edit" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Pemohon</p>
+                </a>
               </li>
-              <li role="presentation" onclick="adminitrasi();" class="active">
+              <li role="presentation" id="adminitrasi" class="">
+                <a href="javascript:void(0);" onclick="adminitrasi();">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Administrasi</p>
+              </a>
               </li>
-              <li role="presentation" onclick="adminteknis()" class="">
+              <li role="presentation" id="adminteknis" class="">
+                <a href="javascript:void(0);" onclick="adminteknis()">
                 <i class="fa fa-users-cog" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Teknis</p>
+              </a>
               </li>
-              <li role="presentation" onclick="pemohon()" class="">
+              <li role="presentation" id="kepaladinas" class="">
+                <a href="javascript:void(0);" onclick="kepaladinas()">
                 <i class="fa fa-user-tie" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">kepala Dinas</p>
+              </a>
               </li>
-              <li role="presentation" onclick="adminstrasiselanjutnya()" class="">
+              <li role="presentation" id="adminstrasiselanjutnya" class="">
+                <a href="javascript:void(0);" onclick="kepaladinas()">
                 <i class="fas fa-clipboard-check" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Admin Administrasi</p>
+              </a>
               </li>
-              <li role="presentation" onclick="pemohonselajutnya()" class="">
+              <li role="presentation" id="pemohonselajutnya" class="">
+                <a href="javascript:void(0);" onclick="pemohonselajutnya()">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 <p style="margin-bottom: 0;">Pemohon</p>
+              </a>
               </li>
             </ul>
 
@@ -253,63 +265,10 @@
               <div class="card-body">
                 <label>Keterangan :</label>
                 <!-- pemohon -->
-                <div id="ket_pemohon">
-                  <p>Anda mengajukan izin pada Tanggal 27 Januari 2020 pukul 14.14 WIB</p>
+                <div id="ket_pemohon" style="display: none;">
+                  
                 </div>
                 <!-- end pemohon -->
-
-                <!-- admin administrasi -->
-                <div id="ket_admin1">
-                  <p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">(Total Nilai Administrasi)</span></p>
-                  <p>Berikut ini adalah rincian nilai administrasi Anda :</p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">(Nilai)</span></li>
-                    <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">(Nilai)</span></li>
-                    <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">(Nilai)</span></li>
-                    <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">(Nilai)</span></li>
-                  </ul>
-                </div>
-                <!-- end admin administrasi -->  
-
-                <!-- admin teknis -->
-                <div id="ket_teknis">
-                  <p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">(Nilai)</span> (Total Nilai Teknis)</p>
-                  <p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">(Nilai)</span></li>
-                        <li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">(Nilai)</span></li>
-                        <li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">(Nilai)</span></li>
-                      </ul>
-                    </div>
-                    <div class="col-md-6">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">(Nilai)</span></li>
-                        <li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">(Nilai)</span></li>
-                        <li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">(Nilai)</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <!-- end admin teknis -->
-
-                <!-- admin administrasi 2 -->
-                <div id="ket_admin2">
-                  <p class="m-0">Nilai akhir permohonan Anda sebesar <span class="badge badge-default">(Nilai)</span> (Nilai Akhir)</p>
-                  <p>Perizinan Anda <span class="badge badge-success">Diterima</span></p>
-                  <p>
-                    Permohonan Anda <span class="badge badge-success">Diterima</span> oleh Kepala Dinas PMPTSP<br>
-                    Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br>
-                    <label><b>Pada Senin, 3 Februari 2020.</b></label>
-                  </p>
-                </div>
-                <!-- end admin administrasi 2 -->
-
-                <!-- pemohon selesai -->
-                <div id="ket_pemohon-selesai">
-                  <p class="m-0">Anda telah mengambil izin pada Tanggal 3 Februari 2020</p>
-                </div>
                 <!-- end pemohon selesai -->
 
               </div>
@@ -350,7 +309,9 @@
   <script src="assets/js/jquery.dataTables.min.js"></script>
   <!-- Argon JS -->
   <script src="assets/js/argon.js?v=1.0.0"></script>
+  <script src="assets/js/mainuser.js"></script>
   <script type="text/javascript">
+    timeline.datatimeline();
     jQuery(window).load(function () {
       jQuery('#loader').fadeOut('slow');
     });

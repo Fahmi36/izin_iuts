@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Language" content="en">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Halaman Dashboard Pemohon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+  <meta name="description" content="This is an example dashboard created using build-in elements and components.">
+  <meta name="msapplication-tap-highlight" content="no">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="../../assets/img/favicon/site.webmanifest">
+  <link href="../assets/css/style_admin.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <link href="../assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="../assets/plugins/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="../assets/plugins/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
+  <link href="../assets/plugins/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <!-- Argon CSS -->
+  <link href="../assets/css/argon.css?v=1.0.0" type="text/css" rel="stylesheet">
+  
+  <link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+  <link href="../assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div id="app" class="wrapper">
+      <div class="header bg-gradient-default pb-5 pt-5 pt-md-8" style="background: linear-gradient(87deg, #f5365c 0, #f56036 100%)!important;">
+      </div>
+      <div class="container-fluid pb-5 mt--6">
+        <div class="row">
+          <div class="col-md-12 mt-2">
+            <div class="card bg-secondary shadow">
+              <div class="card-header bg-white border-0 mb-0">
+                <div class="row align-items-center ">
+                  <h3 class="pl-3 mb-0"></h3>
+                </div>
+              </div>
+              <div class="card mt-4">
+              <div class="card-body">
+                <label>Rincian Nilai Permohonan ini Sebagai Berikut :</label>
+
+                <!-- admin administrasi -->
+                <div id="ket_admin1">
+                  <p class="m-0">Nilai permohonan pada kategori Admin Administrasi Bangunan sebesar <span class="badge badge-default" id="totaladminis"></span></p>
+                  <p>Berikut ini adalah rincian nilai :</p>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default" id="nilailengkap">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default" id="nilaiizin">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Kondisi Eksisting: <span class="badge badge-default" id="nilaieksiting">(Nilai)</span></li>
+                  </ul>
+                </div>
+                <!-- end admin administrasi -->  
+ <br>
+                <hr>
+                 <div id="ket_teknis">
+                  <p>Nilai permohonan pada return/manfaat <span class="badge badge-default" id="totalmanfaat">(Nilai)</span></p>
+                  <p class="m-0">Berikut ini adalah rincian nilai</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Pemutakhiran PBB: <span class="badge badge-default" id="pempbb">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Keterlibatan UMKM: <span class="badge badge-default" id="ketumkm">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Perjanjian Sewa: <span class="badge badge-default" id="persewa">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default" id="penglahan">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Persetujuan Warga: <span class="badge badge-default" id="setwarga">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default" id="eksismadai">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- admin teknis -->
+ <br>
+                <hr>
+                <div id="ket_teknis">
+                  <p>Nilai permohonan pada Kategori Dampak /Resiko sebesar <span class="badge badge-default" id="totaldampak">(Nilai)</span></p>
+                  <p class="m-0">Berikut ini adalah rincian nilai :</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default" id="jarakpasar">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default" id="renjalan">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Adanya rekomendasi UMKM: <span class="badge badge-default" id="rekumkm">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- SLF Eksisting: <span class="badge badge-default" id="slfeksis">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Volume Sumur Resapan: <span class="badge badge-default" id="sumurserap">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Drainase Sekeliling Tapak: <span class="badge badge-default" id="drainasesek">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item p-1">- Sesuai Tata Ruang: <span class="badge badge-default" id="tataruang">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Kajian Sostek: <span class="badge badge-default" id="kajiansostek">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- IMB Eksisting: <span class="badge badge-default" id="imbeksis">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Jarak Ke usaha sejenis: <span class="badge badge-default" id="jarakusaha">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- Kondisi Sumur Resapan: <span class="badge badge-default" id="kondisisumur">(Nilai)</span></li>
+                        <li class="list-group-item p-1">- KDH Minimum: <span class="badge badge-default" id="kdhmini">(Nilai)</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <!-- end admin teknis -->
+
+                 <br>
+                <hr>
+
+                <!-- admin administrasi 2 -->
+                  <div id="ket_admin2">
+                    <p>Nilai permohonan pada Kategori Tax Clearance Sebesar <span class="badge badge-default" id="totaltax">(Nilai)</span></p>
+                    <p class="m-0">Berikut ini adalah rincian nilai</p>
+                        <ul class="list-group list-group-flush">
+                    <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default" id="nilainpwp">(Nilai)</span></li>
+                    <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default" id="nilaipbb">(Nilai)</span></li>
+                  </ul>
+                </div>
+                <!-- end admin administrasi 2 -->
+                <h3><b>Nilai Akhir Permohonan Ini Sebesar <span id="totalakhir"></span> </b></h3>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>        
+      </div>
+    </div>
+  <script src="../assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+  <script src="../assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/plugins/fancybox/dist/jquery.fancybox.min.js"></script>
+  <script src="../assets/js/sweetalert2@8.js"></script>
+  <script src="../assets/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="../assets/js/jquery.dataTables.min.js"></script>
+  <!-- Argon JS -->
+  <script src="../assets/js/argon.js?v=1.0.0"></script>
+  <script src="../assets/js/mainadmin.js"></script>
+  <script type="text/javascript">
+    timeline.datadetailprint();
+    jQuery(window).load(function () {
+      jQuery('#loader').fadeOut('slow');
+    });
+  </script>
+  <script type="text/javascript">
+    $(".scrollbar").addClass("thin");
+    $(".scrollbar").mouseover(function(){
+      $(this).removeClass("thin");
+    });
+    $(".scrollbar").mouseout(function(){
+      $(this).addClass("thin");
+    });
+    $(".scrollbar").scroll(function () {
+      $(".scrollbar").addClass("thin");
+    });
+  </script>
+</body>
+</html>4
