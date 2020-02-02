@@ -104,8 +104,7 @@
         // localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah").val());
         // localStorage.setItem("kondisi_parkir", $("#kondisi_parkir").val());
 
-        localStorage.setItem("volume_sumur_input", $("#volume_sumur_input").val());
-        localStorage.setItem("kdh_kondisi_input", $("#kdh_kondisi_input").val());
+
         localStorage.setItem("janji_sewa_input", $("#janji_sewa_input").val());
         localStorage.setItem("keterlibatan_umkm_input", $("#keterlibatan_umkm_input").val());
         localStorage.setItem("lama_izin_input", $("#lama_izin_input").val());
@@ -144,8 +143,6 @@
         var kondisi_kdh = localStorage.getItem('kondisi_kdh');
         var pengelolaan_sampah = localStorage.getItem('pengelolaan_sampah');
         var kondisi_parkir = localStorage.getItem('kondisi_parkir');
-        var volume_sumur_input = localStorage.getItem('volume_sumur_input');
-        var kdh_kondisi_input = localStorage.getItem('kdh_kondisi_input');
         var janji_sewa_input = localStorage.getItem('janji_sewa_input');
         var keterlibatan_umkm_input = localStorage.getItem('keterlibatan_umkm_input');
         var lama_izin_input = localStorage.getItem('lama_izin_input');
@@ -315,8 +312,6 @@
             kondisi_kdh: $("#kondisi_kdh").val(),
             pengelolaan_sampah: $("#pengelolaan_sampah").val(),
             kondisi_parkir: $("#kondisi_parkir").val(),
-            volume_sumur_input: $("#volume_sumur_input").val(),
-            kdh_kondisi_input: $("#kdh_kondisi_input").val(),
             janji_sewa_input: $("#janji_sewa_input").val(),
             keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
             lama_izin_input: $("#lama_izin_input").val(),
@@ -361,8 +356,6 @@
         dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
         dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
         dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
-        dataRegis[0].volume_sumur_input = dataInput.volume_sumur_input;
-        dataRegis[0].kdh_kondisi_input = dataInput.kdh_kondisi_input;
         dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
         dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
         dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
