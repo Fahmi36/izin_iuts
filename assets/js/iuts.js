@@ -322,7 +322,7 @@
             lama_izin_input: $("#lama_izin_input").val(),
             detail_kondisi_input: $("#detail_kondisi_input").val(),
             lat: $('#lat').val(),
-            lng: $('#lon').val(),
+            lng: $('#lng').val(),
             subzona: $('#subzona').val(),
             idsubblok: $('#idsubblok').val(),
             alamat_lengkap: $("#alamatLengkap").val(),
