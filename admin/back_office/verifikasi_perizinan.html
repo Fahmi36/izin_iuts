@@ -227,133 +227,144 @@
 			<div class="container-fluid pb-5 mt--6">
 				<div class="row">
 					<div class="col-md-12 mt-2">
-						<div class="card bg-secondary shadow">
-							<div class="card-header bg-white border-0 mb-0">
-								<div class="row align-items-center ">
-									<h3 class="pl-3 mb-0">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h3>
-								</div>
-							</div>
-							<div class="card-body">
-								<form>
-									<div class="row">
-										<div class="col-md-7">
-											<table class="table bg-white">
-												<thead class="thead-light">
-													<tr>
-														<th scope="col">No</th>
-														<th scope="col">Persyaratan</th>
-														<th scope="col">Kategori</th>
-														<th scope="col">Nilai</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<th scope="row">1</th>
-														<td>Kelengkapan Administrasi</td>
-														<td>
-															<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin" onchange="kelengkapanAdminChange()">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">>= 90%</option>
-																<option value="2">>= 60%</option>
-																<option value="1">>= 30%</option>
-																<option value="0">< 30%</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_admin" id="skor_admin" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">2</th>
-														<td>Sudah berapa lama mengajukan izin</td>
-														<td>
-															<select required="" onchange="lamaizin();" aria-label="" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
-																<option disabled="" selected="">Pilih Salah Satu</option>
-																<option value="3">>= 6 Bulan</option>
-																<option value="2">>= 3 Bulan</option>
-																<option value="1">>= 1 Bulan</option>
-																<option value="0">< 1 Bulan</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_lama_izin" id="skor_lama_i" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">3</th>
-														<td>Status NPWP</td>
-														<td>
-															<select aria-label="" onchange="statusNPWPChange();" class="text-center form-control" id="statusNPWP" name="statusNPWP">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="1">Lunas</option>
-																<option value="0">Belum Lunas</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_npwp" id="skor_npwp" style="width: 35px;"></td>
-													</tr>
-													<tr>
-														<th scope="row">4</th>
-														<td>Status PBB</td>
-														<td>
-															<select aria-label="" onchange="statusPBBChange();" class="text-center form-control" id="statusPBB" name="statusPBB">
-																<option disabled selected>Pilih Salah Satu</option>
-																<option value="1">Lunas</option>
-																<option value="0">Belum Lunas</option>
-															</select>
-														</td>
-														<td><input type="text" class="form-control" name="skor_pbb" id="skor_pbb" style="width: 35px;"></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-										<div class="col-md-5">
-											<label class="font-weight-bold">Detail Pemohon</label>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Nomor Token :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Nama Pemohon :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">NIB :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">NPWP :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Status Zonasi :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-											<div class="row">
-												<label class="col-md-6 col-form-label">Alamat :</label>
-												<label class="col-md-6 col-form-label">(Data)</label>
-											</div>
-										</div>
-										<div class="col-md-12">
-											<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
-											<label>Kolom Komentar</label>
-											<div class="form-group">
-												<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
-											</div>
-											<input type="checkbox" id="sayaSetuju">
-											<label for="sayaSetuju">Saya setuju bahwa nilai yang saya masukan benar</label>
-											<button class="btn btn-warning" type="submit" id="btnKirim" disabled="">Kirim</button>
+						<div class="row">
+							<div class="col-md-7">
+								<div class="card bg-secondary shadow">
+									<div class="card-header bg-white border-0 mb-0">
+										<div class="row align-items-center ">
+											<h3 class="pl-3 mb-0">Verifikasi Kelengkapan dan Kebenaran Administrasi Pemohon</h3>
 										</div>
 									</div>
-								</form>
+									<div class="card-body">
+										<form action="javascript:void(0);" method="post" id="inputadministrasi">
+											<input type="hidden" id="codebangunan" name="id_bangunan">
+											<div class="table-responsive">
+												<table class="table bg-white">
+													<thead class="thead-light">
+														<tr>
+															<th scope="col">No</th>
+															<th scope="col">Persyaratan</th>
+															<th scope="col">Kategori</th>
+															<th scope="col">Nilai</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<th scope="row">1</th>
+															<td>Kelengkapan Administrasi</td>
+															<td>
+																<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin" onchange="kelengkapanAdminChange()">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="3">>= 90%</option>
+																	<option value="2">>= 60%</option>
+																	<option value="1">>= 30%</option>
+																	<option value="0">< 30%</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_admin" id="skor_admin" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">2</th>
+															<td>Sudah berapa lama mengajukan izin</td>
+															<td>
+																<select required="" onchange="lamaizin();" aria-label="" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
+																	<option disabled="" selected="">Pilih Salah Satu</option>
+																	<option value="3">>= 6 Bulan</option>
+																	<option value="2">>= 3 Bulan</option>
+																	<option value="1">>= 1 Bulan</option>
+																	<option value="0">< 1 Bulan</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_lama_izin" id="skor_lama_i" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">3</th>
+															<td>Status NPWP</td>
+															<td>
+																<select aria-label="" onchange="statusNPWPChange();" class="text-center form-control" id="statusNPWP" name="statusNPWP">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="1">Lunas</option>
+																	<option value="0">Belum Lunas</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_npwp" id="skor_npwp" style="width: 35px;"></td>
+														</tr>
+														<tr>
+															<th scope="row">4</th>
+															<td>Status PBB</td>
+															<td>
+																<select aria-label="" onchange="statusPBBChange();" class="text-center form-control" id="statusPBB" name="statusPBB">
+																	<option disabled selected>Pilih Salah Satu</option>
+																	<option value="1">Lunas</option>
+																	<option value="0">Belum Lunas</option>
+																</select>
+															</td>
+															<td><input type="text" class="form-control" name="skor_pbb" id="skor_pbb" style="width: 35px;"></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div class="col-md-12">
+												<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
+												<label>Kolom Komentar</label>
+												<div class="form-group">
+													<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
+												</div>
+												<input type="checkbox" id="sayaSetuju">
+												<label for="sayaSetuju">Saya setuju bahwa nilai yang saya masukan benar</label>
+												<button class="btn btn-warning" type="submit" id="btnKirim" disabled="">Kirim</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-5">
+								<div class="card bg-secondary shadow">
+									<div class="card-header bg-white border-0 mb-0">
+										<div class="row align-items-center ">
+											<h3 class="pl-3 mb-0">Detail Pemohon</h3>
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<label class="col-md-6 col-form-label">Nomor Token :</label>
+											<label class="col-md-6 col-form-label" id="tokenbangunan"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">Nama Pemohon :</label>
+											<label class="col-md-6 col-form-label" id="namabangunan"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">NIB :</label>
+											<label class="col-md-6 col-form-label" id="nibpemohon"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">NPWP :</label>
+											<label class="col-md-6 col-form-label" id="npwppemohon"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
+											<label class="col-md-6 col-form-label" id="tglpemohon"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">Status Zonasi :</label>
+											<label class="col-md-6 col-form-label" id="zonasi"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
+											<label class="col-md-6 col-form-label" id="kodesublock"></label>
+										</div>
+										<div class="row">
+											<label class="col-md-6 col-form-label">Alamat :</label>
+											<label class="col-md-6 col-form-label" id="alamatpemohon"></label>
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!-- Footer -->
 				<footer class="footer">
 					<div class="row align-items-center justify-content-xl-between">
@@ -390,6 +401,7 @@
 	<script src="https://js.arcgis.com/4.8/"></script>
 	<script src="../../assets/js/arcgis.js"></script>
 	<script type="text/javascript">
+    	timeline.datadetailPemohon();
 		jQuery(window).load(function () {
 			jQuery('#loader').fadeOut('slow');
 		});
@@ -406,34 +418,34 @@
 			$(".scrollbar").addClass("thin");
 		});
 		$('#sayaSetuju').on('click',function () {
-	        if ($('#sayaSetuju').is(':checked')) {
-	            $('#btnKirim').removeAttr('disabled');	            
-	        }else{
-	            $('#btnKirim').attr('disabled', 'disabled');
-	        }
-	    });
+			if ($('#sayaSetuju').is(':checked')) {
+				$('#btnKirim').removeAttr('disabled');	            
+			}else{
+				$('#btnKirim').attr('disabled', 'disabled');
+			}
+		});
 	</script>
 	<script>
-    	function kelengkapanAdminChange() {
-	        var selObj = document.getElementById("kelengkapan_admin");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_admin").value = selValue;	    
-	    }
-	    function lamaizin() {
-	        var selObj = document.getElementById("lama_izin");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_lama_i").value = selValue;	    
-	    }
-	    function statusNPWPChange() {
-	        var selObj = document.getElementById("statusNPWP");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_npwp").value = selValue;	    
-	    }
-	    function statusPBBChange() {
-	        var selObj = document.getElementById("statusPBB");
-	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_pbb").value = selValue;	    
-	    }
+		function kelengkapanAdminChange() {
+			var selObj = document.getElementById("kelengkapan_admin");
+			var selValue = selObj.options[selObj.selectedIndex].value;
+			document.getElementById("skor_admin").value = selValue;	    
+		}
+		function lamaizin() {
+			var selObj = document.getElementById("lama_izin");
+			var selValue = selObj.options[selObj.selectedIndex].value;
+			document.getElementById("skor_lama_i").value = selValue;	    
+		}
+		function statusNPWPChange() {
+			var selObj = document.getElementById("statusNPWP");
+			var selValue = selObj.options[selObj.selectedIndex].value;
+			document.getElementById("skor_npwp").value = selValue;	    
+		}
+		function statusPBBChange() {
+			var selObj = document.getElementById("statusPBB");
+			var selValue = selObj.options[selObj.selectedIndex].value;
+			document.getElementById("skor_pbb").value = selValue;	    
+		}
 	</script>
 </body>
 </html>

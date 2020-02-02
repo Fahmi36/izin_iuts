@@ -236,7 +236,8 @@
 										</div>
 									</div>
 									<div class="card-body">
-										<form>
+										<form action="javascript:void(0);" method="post" id="inputadministrasi">
+											<input type="hidden" id="codebangunan" name="id_bangunan">
 											<div id="cardPenilaian">
 												<label><b>Rincian Nilai Permohonan Anda Sebagai Berikut:</b></label>
 												<p class="m-0">Nilai permohonan ini pada kategori Administrasi Bangunan sebesar <span class="badge badge-default" id="totaladminis">(Nilai)</span></p>
@@ -299,13 +300,15 @@
 												<!-- end diterima -->	
 											</div>
 
-											<div >
+											<div>
+												<input type="hidden" id="codebangunan" name="id_bangunan">
+                								<input type="hidden" id="totalakhir2">
 												<div id="maps" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
-												<label>Kolom Komentar</label>
+												<label for="keterangan">Kolom Komentar</label>
 												<div class="form-group">
-													<textarea class="form-control" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
+													<textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Masukkan Pesan Anda"></textarea>
 												</div>
-												<button class="btn btn-success"  onclick="terimadinas()" type="submit">Terima</button>
+												<button class="btn btn-success" onclick="terimadinas()" type="submit">Terima</button>
 												<button class="btn btn-danger" onclick="tolakdinas()" type="submit">Tolak</button>
 											</div>
 										</form>
@@ -319,40 +322,42 @@
 											<h3 class="pl-3 mb-0">Detail Pemohon</h3>
 										</div>
 									</div>
-									<div class="card-body">
-										<div class="row">
-											<label class="col-md-6 col-form-label">Nomor Token :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
+									<form action="javascript:void(0);" method="post" id="inputadministrasi">
+										<div class="card-body">
+											<div class="row">
+												<label class="col-md-6 col-form-label">Nomor Token :</label>
+												<label class="col-md-6 col-form-label" id="tokenbangunan"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Nama Pemohon :</label>
+												<label class="col-md-6 col-form-label" id="namabangunan"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">NIB :</label>
+												<label class="col-md-6 col-form-label" id="nibpemohon"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">NPWP :</label>
+												<label class="col-md-6 col-form-label" id="npwppemohon"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
+												<label class="col-md-6 col-form-label" id="tglpemohon"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Status Zonasi :</label>
+												<label class="col-md-6 col-form-label" id="zonasi"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
+												<label class="col-md-6 col-form-label" id="kodesublock"></label>
+											</div>
+											<div class="row">
+												<label class="col-md-6 col-form-label">Alamat :</label>
+												<label class="col-md-6 col-form-label" id="alamatpemohon"></label>
+											</div>
 										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">Nama Pemohon :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">NIB :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">NPWP :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">Status Zonasi :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">Kode Sub Blok :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-										<div class="row">
-											<label class="col-md-6 col-form-label">Alamat :</label>
-											<label class="col-md-6 col-form-label">(Data)</label>
-										</div>
-									</div>
+									</form>
 								</div>
 								<div class="card bg-secondary shadow mt-4">
 									<div class="card-header bg-white border-0 mb-0">
