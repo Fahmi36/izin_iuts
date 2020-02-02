@@ -292,6 +292,7 @@ timeline = {
 				var alamat = [];
 				var ketadmin = [];
 				var ketteknis = [];
+				var ketdinas = [];
 				var zona = [];
 				var kode_sublok = [];
 				var skoradministrasi = [];
@@ -331,6 +332,7 @@ timeline = {
 					alamat.push(data.row[coba].alamat);
 					ketadmin.push(data.row[coba].ketadmin);
 					ketteknis.push(data.row[coba].ketteknis);
+					ketdinas.push(data.row[coba].ketdinas);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
 
@@ -391,7 +393,7 @@ timeline = {
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
-				$('#catatan').text(ketadmin);
+				$('#catatan').text(ketdinas);
 
 				$('#tokenbangunan').text(code);
 				$('#namabangunan').text(nama);
