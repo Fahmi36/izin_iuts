@@ -249,55 +249,87 @@
 												<tbody>
 													<tr>
 														<th scope="row">1</th>
-														<td>Kelengkapan Administrasi</td>
+														<td>Penggunanan Lahan Sekitar</td>
 														<td>
-															<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin" onchange="kelengkapanAdminChange()">
+															<select aria-label="" onchange="penggunaanLahanChange()" class="text-center form-control" id="penggunaan_lahan" name="penggunaan_lahan">
 																<option disabled selected>Pilih Salah Satu</option>
-																<option value="3">>= 90%</option>
-																<option value="2">>= 60%</option>
-																<option value="1">>= 30%</option>
-																<option value="0">< 30%</option>
+																<option value="3">> 10% LU Hunian</option>
+																<option value="2"><= 10% LU Hunian</option>
+																<option value="1"><= 20% LU bukan Hunian</option>
+																<option value="0">>20% LU bukan Hunian</option>
 															</select>
 														</td>
-														<td><input type="text" class="form-control" name="skor_admin" id="skor_admin" style="width: 35px;"></td>
+														<td><input type="text" class="form-control" name="skor_peng_lahan" id="skor_peng_lahan" style="width: 35px;"></td>
 													</tr>
 													<tr>
 														<th scope="row">2</th>
-														<td>Sudah berapa lama mengajukan izin</td>
+														<td>Rencana Jalan Memadai</td>
 														<td>
-															<select required="" onchange="lamaizin();" aria-label="" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
+															<select required="" onchange="rencanaJalanChange()" aria-label="statusBangunan" class="text-center form-control" id="rencana_jalan" name="rencana_jalan">
 																<option disabled="" selected="">Pilih Salah Satu</option>
-																<option value="3">>= 6 Bulan</option>
-																<option value="2">>= 3 Bulan</option>
-																<option value="1">>= 1 Bulan</option>
-																<option value="0">< 1 Bulan</option>
+																<option value="3">>= 20 m</option>
+																<option value="2">>= 15 m</option>
+																<option value="1">>= 12 m</option>
+																<option value="0">< 12 m</option>
 															</select>
 														</td>
-														<td><input type="text" class="form-control" name="skor_lama_izin" id="skor_lama_i" style="width: 35px;"></td>
+														<td><input type="text" class="form-control" name="skor_ren_jalan" id="skor_ren_jalan" style="width: 35px;"></td>
 													</tr>
 													<tr>
 														<th scope="row">3</th>
-														<td>Status NPWP</td>
+														<td>Jalan Eksisting Memadai</td>
 														<td>
-															<select aria-label="" onchange="statusNPWPChange();" class="text-center form-control" id="statusNPWP" name="statusNPWP">
+															<select aria-label="" onchange="jalanEksistingChange()" class="text-center form-control" id="jalan_eksisting" name="jalan_eksisting">
 																<option disabled selected>Pilih Salah Satu</option>
-																<option value="1">Lunas</option>
-																<option value="0">Belum Lunas</option>
+																<option value="3">6 Mobil</option>
+																<option value="2">4 Mobil</option>
+																<option value="1">2 Mobil</option>
+																<option value="0">Tidak Memadai</option>
 															</select>
 														</td>
-														<td><input type="text" class="form-control" name="skor_npwp" id="skor_npwp" style="width: 35px;"></td>
+														<td><input type="text" class="form-control" name="skor_jalan_eks" id="skor_jalan_eks" style="width: 35px;"></td>
+													</tr>
+													<tr>
+														<th scope="row">3</th>
+														<td>Kesesuaian Rencana Tata Ruang</td>
+														<td>
+															<select aria-label="" onchange="rencanaTataChange()" class="text-center form-control" id="rencana_tata_r" name="rencana_tata_r">
+																<option disabled selected>Pilih Salah Satu</option>
+																<option value="3">Diizinkan</option>
+																<option value="2">Diizinkan Bersyarat</option>
+																<option value="1">Diizinkan Terbatas</option>
+																<option value="0">Tidak Diizinkan</option>
+															</select>
+														</td>
+														<td><input type="text" class="form-control" name="skor_rencana_tata" id="skor_rencana_tata" style="width: 35px;"></td>
 													</tr>
 													<tr>
 														<th scope="row">4</th>
-														<td>Status PBB</td>
+														<td>Jarak ke Usaha Sejenis</td>
 														<td>
-															<select aria-label="" onchange="statusPBBChange();" class="text-center form-control" id="statusPBB" name="statusPBB">
+															<select aria-label="" onchange="jarakUsahaChange()" class="text-center form-control" id="jarak_u_sejenis" name="jarak_u_sejenis">
 																<option disabled selected>Pilih Salah Satu</option>
-																<option value="1">Lunas</option>
-																<option value="0">Belum Lunas</option>
+																<option value="3">< 3 Usaha sejenis dalam radius 200 m</option>
+																<option value="2"><= 5 Usaha sejenis dalam radius 200 m</option>
+																<option value="1"><= 7 Usaha sejenis dalam radius 200 m</option>
+																<option value="0">> 7 Usaha sejenis dalam radius 200 m</option>
 															</select>
 														</td>
-														<td><input type="text" class="form-control" name="skor_pbb" id="skor_pbb" style="width: 35px;"></td>
+														<td><input type="text" class="form-control" name="skor_jarak_u" id="skor_jarak_u" style="width: 35px;"></td>
+													</tr>
+													<tr>
+														<th scope="row">5</th>
+														<td>Jarak Terhadap Pasar Tradional</td>
+														<td>
+															<select aria-label="" onchange="jarakPasarChange()" class="text-center form-control" id="jarak_pasar_t" name="jarak_pasar_t">
+																<option disabled selected>Pilih Salah Satu</option>
+																<option value="3">>= 400 m</option>
+																<option value="2"><400 m</option>
+																<option value="1">>= 200 m</option>
+																<option value="0">< 200 m</option>
+															</select>
+														</td>
+														<td><input type="text" class="form-control" name="skor_jarak_p" id="skor_jarak_p" style="width: 35px;"></td>
 													</tr>
 												</tbody>
 											</table>
@@ -413,26 +445,36 @@
 	        }
 	    });
 	</script>
-	<script>
-    	function kelengkapanAdminChange() {
-	        var selObj = document.getElementById("kelengkapan_admin");
+	<script type="text/javascript">
+		function penggunaanLahanChange() {
+	        var selObj = document.getElementById("penggunaan_lahan");
 	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_admin").value = selValue;	    
+	        document.getElementById("skor_peng_lahan").value = selValue;	    
 	    }
-	    function lamaizin() {
-	        var selObj = document.getElementById("lama_izin");
+	    function rencanaJalanChange() {
+	        var selObj = document.getElementById("rencana_jalan");
 	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_lama_i").value = selValue;	    
+	        document.getElementById("skor_ren_jalan").value = selValue;	    
 	    }
-	    function statusNPWPChange() {
-	        var selObj = document.getElementById("statusNPWP");
+	    function jalanEksistingChange() {
+	        var selObj = document.getElementById("jalan_eksisting");
 	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_npwp").value = selValue;	    
+	        document.getElementById("skor_jalan_eks").value = selValue;	    
 	    }
-	    function statusPBBChange() {
-	        var selObj = document.getElementById("statusPBB");
+	    function rencanaTataChange() {
+	        var selObj = document.getElementById("rencana_tata_r");
 	        var selValue = selObj.options[selObj.selectedIndex].value;
-	        document.getElementById("skor_pbb").value = selValue;	    
+	        document.getElementById("skor_rencana_tata").value = selValue;	    
+	    }
+	    function jarakUsahaChange() {
+	        var selObj = document.getElementById("jarak_u_sejenis");
+	        var selValue = selObj.options[selObj.selectedIndex].value;
+	        document.getElementById("skor_jarak_u").value = selValue;	    
+	    }
+	    function jarakPasarChange() {
+	        var selObj = document.getElementById("jarak_pasar_t");
+	        var selValue = selObj.options[selObj.selectedIndex].value;
+	        document.getElementById("skor_jarak_p").value = selValue;	    
 	    }
 	</script>
 </body>

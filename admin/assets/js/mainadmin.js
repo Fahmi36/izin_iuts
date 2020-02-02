@@ -258,7 +258,7 @@ $("#kirimpesan").submit(function (event) {
 });
 if (typeof(Storage) !== "undefined") {
 	if (localStorage.getItem('iduser') === null && localStorage.getItem('idadmin') === null) {
-		window.location.href = '../login.html';
+		// window.location.href = '../login.html';
 	}
 }else{
 	navigator.sayswho= (function(){
