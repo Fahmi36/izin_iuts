@@ -244,7 +244,7 @@ timeline = {
 
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
-
+				console.log(akumulasi);
 				
 				window.print();
 				if (nama.length != 0) {
@@ -386,7 +386,7 @@ timeline = {
 				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak)/parseFloat(3);
 				var akumulasi = parseFloat(total/3)
 				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
-
+				console.log(akumulasi);
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
