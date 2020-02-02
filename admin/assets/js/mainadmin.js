@@ -39,7 +39,7 @@ function detailSuratsk(id) {
 				if(localStorage.getItem("level") ==3){ // Administrasi
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'suratsk.html';
+					window.location.href = 'surat_sk.html';
 				}
 			}
 		}
@@ -455,7 +455,7 @@ datadetailPemohon:function() {
 };
 $("#logout").click(function(event) {
 	localStorage.clear();
-	window.location.href = '/';
+	window.location.href = '../login.html';
 });
 $("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);

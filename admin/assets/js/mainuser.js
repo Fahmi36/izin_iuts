@@ -815,7 +815,7 @@ function lihatpemohon(code) {
 }
 if (typeof(Storage) !== "undefined") {
 	if (localStorage.getItem('iduser') === null) {
-		window.location.href = 'login.html';
+		// window.location.href = 'login.html';
 	}
 }else{
 	navigator.sayswho= (function(){
