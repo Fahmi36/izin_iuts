@@ -250,8 +250,8 @@ require([
         location : locateBtn.graphic.geometry
       });
 
-      localStorage.setItem('lat', evt.position.coords.latitude);
-      localStorage.setItem('lon', evt.position.coords.longitude);
+      $('#lat').val(evt.position.coords.latitude);
+      $('#lng').val(evt.position.coords.longitude);
 
 
         var asasa = {
@@ -316,8 +316,8 @@ require([
       var lon = Math.round(event.result.feature.geometry.longitude * 1000000)/ 1000000;
 
       
-      localStorage.setItem('lat', lat);
-      localStorage.setItem('lon', lon);
+      $('#lat').val(lat);
+      $('#lng').val(lon);
       var point = {
         type: "point",
         longitude: lon ,
@@ -391,8 +391,9 @@ require([
       var lon = Math.round(event.mapPoint.longitude * 1000000) / 1000000;
 
       
-      localStorage.setItem('lat', lat);
-      localStorage.setItem('lon', lon);
+      
+      $('#lat').val(lat);
+      $('#lng').val(lon);
       view.popup.open({
         // Di matikan Karena title sekarang pakai alamat
         // title: "Koordinat [" + lat + ", " + lon + "]",
@@ -461,15 +462,13 @@ require([
           symbol: makerSymbol
         })
         view.graphics.add(pointGraphic);
-        $('#lat').val(lat);
-        $('#lon').val(lon);
-      localStorage.setItem('lat', lat);
-      localStorage.setItem('lon', lon);
+      $('#lat').val(lat);
+      $('#lng').val(lon);
         if (event.action == 'end') {
           if (results[0].graphic.attributes == null) {
            view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KTB']+'</td></tr></tbody></table>';
-           $("#zona").val(results[1].graphic.attributes['ZONA']);
-           $("#subzona").val(results[1].graphic.attributes['SUB_ZONA']);
+           $("#subzona").val(results[1].graphic.attributes['ZONA']);
+           $("#idsubblok").val(results[1].graphic.attributes['SUB_BLOK']);
            var izinkan = results[1].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[1].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[1].graphic.attributes['TERBATAS'].split(',');
@@ -477,8 +476,8 @@ require([
 
          }else{
            view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KTB']+'</td></tr></tbody></table>';
-           $("#zona").val(results[0].graphic.attributes['ZONA']);
-           $("#subzona").val(results[0].graphic.attributes['SUB_ZONA']);
+           $("#subzona").val(results[0].graphic.attributes['ZONA']);
+           $("#idsubblok").val(results[0].graphic.attributes['SUB_BLOK']);
            var izinkan = results[0].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[0].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[0].graphic.attributes['TERBATAS'].split(',');
@@ -519,15 +518,15 @@ require([
        localStorage.setItem('b_terbatas', t_batas);
        localStorage.setItem('b_terbatasbersyarat', t_bersyarat);
 
-       localStorage.setItem('zona', evt[1].graphic.attributes['ZONA']);
-       localStorage.setItem('subzona', evt[1].graphic.attributes['SUB_ZONA']);
-       localStorage.setItem('idsubblok', evt[1].graphic.attributes['SUB_BLOK']);
+       $('#subzona').val(evt[1].graphic.attributes['ZONA']);
+       $('#idsubblok').val(evt[1].graphic.attributes['SUB_BLOK']);
 
      }else{
 
        view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KTB']+'</td></tr></tbody></table>';
-       $("#zona").val(evt[0].graphic.attributes['ZONA']);
-       $("#subzona").val(evt[0].graphic.attributes['SUB_ZONA']);
+       
+       $('#subzona').val(evt[0].graphic.attributes['ZONA']);
+       $('#idsubblok').val(evt[0].graphic.attributes['SUB_BLOK']);
        var izinkan = evt[0].graphic.attributes['DIIZINKAN'].split(',');
        var b_syarat = evt[0].graphic.attributes['BERSYARAT'].split(',');
        var t_batas = evt[0].graphic.attributes['TERBATAS'].split(',');

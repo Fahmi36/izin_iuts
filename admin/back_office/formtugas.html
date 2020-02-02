@@ -275,7 +275,7 @@
                         <td id="nilaipbb">-</td>
                       </tr>
                     </tbody>
-                  </table>
+                  </table> 
                   <div class="form-group focused">
                     <label class="form-control-label" for="keterangan">Masukan Keterangan</label>
                     <textarea class="form-control" name="keterangan" id="keterangan" required=""></textarea>
@@ -296,8 +296,40 @@
                 </div>
               </div>
               <form action="javascript:void(0);" method="post" id="inputadministrasi">
-                <input type="hidden" id="codebangunan" name="id_bangunan">
               <div class="card-body">
+                <label class="font-weight-bold">Detail Pemohon</label>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Nomor Token :</label>
+                        <label class="col-md-6 col-form-label" id="tokenbangunan">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Nama Pemohon :</label>
+                        <label class="col-md-6 col-form-label" id="namabangunan">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">NIB :</label>
+                        <label class="col-md-6 col-form-label" id="nibpemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">NPWP :</label>
+                        <label class="col-md-6 col-form-label" id="npwppemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
+                        <label class="col-md-6 col-form-label" id="tglpemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Status Zonasi :</label>
+                        <label class="col-md-6 col-form-label" id="zonasi">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Kode Sub Blok :</label>
+                        <label class="col-md-6 col-form-label" id="kodesublock">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Alamat :</label>
+                        <label class="col-md-6 col-form-label" id="alamatpemohon">(Data)</label>
+                      </div>
               </div>
             </form>
           </div>
@@ -337,6 +369,7 @@
   <script src="../assets/js/argon.js?v=1.0.0"></script>
   <script src="../assets/js/mainadmin.js"></script>
   <script type="text/javascript">
+    timeline.datadetailPemohon();
     jQuery(window).load(function () {
       jQuery('#loader').fadeOut('slow');
     });

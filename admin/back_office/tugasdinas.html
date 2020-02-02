@@ -319,7 +319,7 @@
                   <a onclick="tolakdinas()" class="btn btn-success pull-right">Tolak</a>
                 </div>
             </div>
-          </div>
+          </div> 
           <div class="col-md-5 mt-2">
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0 mb-0">
@@ -328,8 +328,46 @@
                 </div>
               </div>
               <form action="javascript:void(0);" method="post" id="inputadministrasi">
-                <input type="hidden" id="codebangunan" name="id_bangunan">
                 <div class="card-body">
+                  <label class="font-weight-bold">Detail Pemohon</label>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Nomor Token :</label>
+                        <label class="col-md-6 col-form-label" id="tokenbangunan">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Nama Pemohon :</label>
+                        <label class="col-md-6 col-form-label" id="namabangunan">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">NIB :</label>
+                        <label class="col-md-6 col-form-label" id="nibpemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">NPWP :</label>
+                        <label class="col-md-6 col-form-label" id="npwppemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label>
+                        <label class="col-md-6 col-form-label" id="tglpemohon">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Status Zonasi :</label>
+                        <label class="col-md-6 col-form-label" id="zonasi">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Kode Sub Blok :</label>
+                        <label class="col-md-6 col-form-label" id="kodesublock">(Data)</label>
+                      </div>
+                      <div class="row">
+                        <label class="col-md-6 col-form-label">Alamat :</label>
+                        <label class="col-md-6 col-form-label" id="alamatpemohon">(Data)</label>
+                      </div>
+
+                      <label class="font-weight-bold mt-5">Komentar Admin Administrasi</label>
+                      <p id="ketadministrasi">Permohonan sempurna tidak ada kendala</p>
+
+                      <label class="font-weight-bold mt-3">Komentar Admin Teknis</label>
+                      <p id="ketadminteknis">Permohonan sempurna tidak ada kendala</p>
                 </div>
               </form>
             </div>
@@ -387,4 +425,4 @@
     });
   </script>
 </body>
-</html>4
+</html>
