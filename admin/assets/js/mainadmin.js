@@ -387,6 +387,7 @@ timeline = {
 				var akumulasi = parseFloat(total/3)
 				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
 				console.log(akumulasi);
+				console.log(total);
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
