@@ -410,7 +410,7 @@ datadetailPemohon:function() {
 		url: BASE_URL + 'OfficeController/getBangunanDetail',
 		type: 'POST',
 		dataType: 'json',
-		data: datas
+		data: datas,
 		success:function(data) {
 			if (data.success) {
 				var code = [];
