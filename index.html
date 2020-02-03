@@ -644,7 +644,28 @@
       </div>
     </form>
   </div>
-
+<div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="display: block;">
+        <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
+      </div>
+      <div class="modal-body">
+        <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
+        <p class="text-danger">
+          1. Bangunan telah diregistrasi<br>
+          2. Memiliki Nomor izin Berusaha<br>
+          3. Memiliki NPWP dan NOP<br>
+          4. Telah melakukan pelunasan pajak<br>
+        </p>
+        <p>Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
+        <center><button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button></center>
+        <p class="m-0">Belum registrasi bangunan? Registrasi terlebih dahulu <a href="">Disini</a></p>
+        <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="">Disini</a></p>
+      </div>
+    </div>
+  </div>
+</div>
   <footer class="bottom">
     <section class="bottom__container">
       <div class="progress">
@@ -664,5 +685,8 @@
   <script src="assets/js/iuts.js"></script>
   <script src="https://js.arcgis.com/4.8/"></script>
   <script src="assets/js/arcgis.js"></script>
+  <script type="text/javascript">
+    $('#kelengkapan').modal('show');
+  </script>
 </body>
 </html>
