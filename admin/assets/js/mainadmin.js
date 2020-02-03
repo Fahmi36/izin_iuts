@@ -116,11 +116,10 @@ function printsk() {
 		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skor:$('#totalakhir2').val(),status:'0'},
 		dataType: 'json',
 		beforeSend: function () {
+			
+			window.open(BASE_URL+'OfficeController/downloadpdf','_blank');
 		},
 		success: function (data) {
-			Swal.fire(
-				'Download sK',
-				);
 		}
 	});
 }
