@@ -178,11 +178,11 @@
         $("#kajian_sostek_summary").text(kajian_sostek);
         $("#imb_eksisting_summary").text(imb_eksisting);
         $("#slf_eksisting_summary").text(slf_eksisting);
-        $("#volume_sumur_summary").html(volumeSumur+'<br>'+volume_sumur_input);
+        $("#volume_sumur_summary").html(volumeSumur);
         $("#kondisi_sumur_summary").text(kondisi_sumur_r);
         $("#drainase_disekeliling_summary").text(drainase_disekeliling);
         $("#kdh_minimum_summary").text(kdh_minimum);
-        $("#kondisi_kdh_summary").html(kondisi_kdh+'<br>'+kdh_kondisi_input);
+        $("#kondisi_kdh_summary").html(kondisi_kdh);
         $("#pengelolaan_sampah_summary").text(pengelolaan_sampah);
         $("#kondisi_parkir_summary").text(kondisi_parkir);
 
