@@ -253,53 +253,33 @@
 															<th scope="row">1</th>
 															<td>Kelengkapan Administrasi</td>
 															<td>
-																<select aria-label="" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin" onchange="kelengkapanAdminChange()">
-																	<option disabled selected>Pilih Salah Satu</option>
-																	<option value="3">>= 90%</option>
-																	<option value="2">>= 60%</option>
-																	<option value="1">>= 30%</option>
-																	<option value="0">< 30%</option>
-																</select>
+																<select aria-label="" onchange="cekKelengkapan()" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin"></select>
 															</td>
-															<td><input type="text" class="form-control" name="skor_admin" id="skor_admin" style="width: 35px;"></td>
+															<td id="nilaiadmin">-</td>
 														</tr>
 														<tr>
 															<th scope="row">2</th>
 															<td>Sudah berapa lama mengajukan izin</td>
 															<td>
-																<select required="" onchange="lamaizin();" aria-label="" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
-																	<option disabled="" selected="">Pilih Salah Satu</option>
-																	<option value="3">>= 6 Bulan</option>
-																	<option value="2">>= 3 Bulan</option>
-																	<option value="1">>= 1 Bulan</option>
-																	<option value="0">< 1 Bulan</option>
-																</select>
+																<select required="" onchange="cekLama();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan"></select>
 															</td>
-															<td><input type="text" class="form-control" name="skor_lama_izin" id="skor_lama_i" style="width: 35px;"></td>
+															<td id="nilaiizin">-</td>
 														</tr>
 														<tr>
 															<th scope="row">3</th>
 															<td>Status NPWP</td>
 															<td>
-																<select aria-label="" onchange="statusNPWPChange();" class="text-center form-control" id="statusNPWP" name="statusNPWP">
-																	<option disabled selected>Pilih Salah Satu</option>
-																	<option value="1">Lunas</option>
-																	<option value="0">Belum Lunas</option>
-																</select>
+																<select aria-label="" onchange="ceknpwp()" class="text-center form-control" id="statusNPWP" name="statusNPWP"></select>
 															</td>
-															<td><input type="text" class="form-control" name="skor_npwp" id="skor_npwp" style="width: 35px;"></td>
+															<td id="nilainpwp"></td>
 														</tr>
 														<tr>
 															<th scope="row">4</th>
 															<td>Status PBB</td>
 															<td>
-																<select aria-label="" onchange="statusPBBChange();" class="text-center form-control" id="statusPBB" name="statusPBB">
-																	<option disabled selected>Pilih Salah Satu</option>
-																	<option value="1">Lunas</option>
-																	<option value="0">Belum Lunas</option>
-																</select>
+																<select aria-label="" onchange="cekPbb()" class="text-center form-control" id="statusPBB" name="statusPBB"></select>
 															</td>
-															<td><input type="text" class="form-control" name="skor_pbb" id="skor_pbb" style="width: 35px;"></td>
+															<td id="nilaipbb">-</td>
 														</tr>
 													</tbody>
 												</table>
@@ -425,7 +405,7 @@
 			}
 		});
 	</script>
-	<script>
+	<!-- <script>
 		function kelengkapanAdminChange() {
 			var selObj = document.getElementById("kelengkapan_admin");
 			var selValue = selObj.options[selObj.selectedIndex].value;
@@ -446,6 +426,6 @@
 			var selValue = selObj.options[selObj.selectedIndex].value;
 			document.getElementById("skor_pbb").value = selValue;	    
 		}
-	</script>
+	</script> -->
 </body>
 </html>

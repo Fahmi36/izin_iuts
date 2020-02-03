@@ -124,7 +124,7 @@ function printsk() {
 		}
 	});
 }
-timeline = {
+timeline = {		
 	datadetailprint:function() {
 		var datas = {id:localStorage.getItem("idbangunanadmin")};
 		$.ajax({
@@ -543,8 +543,8 @@ $("#inputadminteknis").submit(function (event) {
 
 
 				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
-				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>'); 
-				$.ajax({
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>'); 
+					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
 						type: 'GET',
 						dataType: 'json',
@@ -563,7 +563,7 @@ $("#inputadminteknis").submit(function (event) {
 					});				
 
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
-				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>');	
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>');	
 					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=penggunaan_lahan',
 						type: 'GET', 
