@@ -46,6 +46,32 @@
         localStorage.clear();
         location.reload();
     }
+    function npwpchecking() {
+        $.ajax({
+                url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
+                type: 'GET',
+                dataType: 'json',
+                success:function(data) {
+                    if (data.features[0].attributes == '') {
+
+                    }else{
+                        $.getScript("https://iuts.pkkmart.com/assets/scripts/arcgis.js", function() {
+                            });
+                        $("#status_bangunan").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
+                        $("#status_bangunan").val(data.features[0].attributes.nama_toko_anda);
+                        $("#status_bangunan").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
+                        $("#status_bangunan").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
+                        $("#status_bangunan").val(data.features[0].attributes.pilih_status_kepemilikan_tempat);
+                        $("#nomorObjekPajak").val(data.features[0].attributes.field_23);
+                        $("#status_bangunan").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
+                        localStorage.setItem('lat',data.features[0].geometry.y);
+                        localStorage.setItem('lng',data.features[0].geometry.x);
+                        localStorage.setItem('wkid',data.spatialReference.wkid);
+                        $("#alamatLengkap").val(data.features[0].attributes.masukkan_alamat_anda);
+                    }
+                }
+            })
+    }
     $('.navigation__btn--right').click(function(e){
 	    // if($('.ijin__step--current input').length == 0){
 	    //  	//console.log('input empty');

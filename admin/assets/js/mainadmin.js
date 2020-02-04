@@ -382,7 +382,7 @@ timeline = {
 				$('#jarakusaha').text(skorjarakusaha);
 				$('#sumurserap').text(skorvolsumur);
 				$('#kdhmini').text(skorkdhmini);
-
+ 
 				var totaladmin = parseFloat(skorlengkap)+parseFloat(skorwaktu)+parseFloat(skorkondisieksis);
 				var totalmanfaat = parseFloat(skotpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
 				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
@@ -400,15 +400,20 @@ timeline = {
 				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
 				var akumulasi = parseFloat(total/3)
 				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
-				// if (status[0] == '1') {
-				// 	var statuskepaladinas = 'Di Terima';
-				// }else{
-				// 	var statuskepaladinas = 'Di Tolak';
-				// }
-				console.log(akumulasi);
-				console.log(total);
+
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
+
+				if (parseFloat(totalasli) < 1.5) {
+						var statuswebsite = 'Di Tolak';
+					}else if (parseFloat(totalasli) < 2.5) {
+						var statuswebsite = 'Di Terima Dengan Catatan';
+					}else if(parseFloat(totalasli) > 2.5) {
+						var statuswebsite = 'Di Terima';
+					}
+					
+				$('#statusweb').text(statuswebsite);
+
 
 				$('#catatan').text(ketdinas);
 
@@ -423,7 +428,7 @@ timeline = {
 				$('#ketadministrasi').text(ketadmin);
 				$('#ketadminteknis').text(ketteknis);
 				// $('#status').text(statuskepaladinas);
-				if (nama.length != 0) {
+				if (nama.length == 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}		
 			}
@@ -446,6 +451,8 @@ datadetailPemohon:function() {
 				var alamat = [];
 				var zona = [];
 				var kode_sublok = [];
+				var lat = [];
+				var lon = [];
 				for(var coba in data.row){
 					code.push(data.row[coba].code);
 					nama.push(data.row[coba].nama);
@@ -454,6 +461,8 @@ datadetailPemohon:function() {
 					alamat.push(data.row[coba].alamat);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
+					lat.push(data.row[coba].lat);
+					lon.push(data.row[coba].lon);
 					tgl.push(data.row[coba].created_at);
 
 				}
@@ -465,6 +474,10 @@ datadetailPemohon:function() {
 				$('#zonasi').text(zona);
 				$('#kodesublock').text(kode_sublok);
 				$('#alamatpemohon').text(alamat);
+				$('#lat').val(lat);
+				$('#long').val(lon);
+				$.getScript("https://iuts.pkkmart.com/admin/assets/scripts/mapsadmin.js", function() {
+                            });
 			}
 		}
 	});
