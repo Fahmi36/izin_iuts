@@ -69,23 +69,38 @@ function Detailpemohon(id) {
 									var skorpbb = [];
 									var skornpwp = [];
 									var skoradministrasi = [];
+									var code = [];
+									var nama = [];
+									var nib = [];
+									var npwp = [];
+									var tgl = [];
+									var alamat = [];
+									var zona = [];
+									var kode_sublok = [];
 									for(var coba in data.row){
 										skorlengkap.push(data.row[coba].skorlengkap);
 										skorwaktu.push(data.row[coba].skorwaktu);
 										skorpbb.push(data.row[coba].skorpbb);
 										skornpwp.push(data.row[coba].skornpwp);
 										skoradministrasi.push(data.row[coba].skoradministrasi);
+										code.push(data.row[coba].code);
+										nama.push(data.row[coba].nama);
+										nib.push(data.row[coba].nib);
+										npwp.push(data.row[coba].npwp);
+										alamat.push(data.row[coba].alamat);
+										zona.push(data.row[coba].zona);
+										kode_sublok.push(data.row[coba].kode_sublok);
+										tgl.push(data.row[coba].created_at);
 									}
-
 									var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
 									var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
 									var skorakumulasi = skoradmin/2;
 									var totalakhir = skorakumulasi*skortotal;
 									if (data.rowCount > 0) {
-										$('#cardPenilaian').removeAttr('style');
-										// $('#cardPenilaian').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
-										$('#cardPenilaian').html('<p class="m-0">Nilai permohonan ini pada kategori Administrasi Bangunan sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Kondisi Eksisting: <span class="badge badge-default">'+skoreksisting[0]+'</span></li> </ul>')								
+										$('#cardPenilaian').removeAttr('style'); 
+										$('#cardPenilaian').html('<p class="m-0">Nilai permohonan ini pada kategori Administrasi Bangunan sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Kondisi Eksisting: <span class="badge badge-default">'+skoreksisting[0]+'</span></li> </ul>');					
 									}
+									$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 								} 
 							}
 						});
@@ -420,7 +435,7 @@ function pemohonselajutnya() {
 }
 $("#logout").click(function(event) {
 	localStorage.clear();
-	window.location.href = '/';
+	window.location.href = 'login.html';
 });
 
 timeline = {

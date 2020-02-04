@@ -123,7 +123,7 @@ function printsk() {
 		}
 	});
 }
-timeline = {
+timeline = {		
 	datadetailprint:function() {
 		var datas = {id:localStorage.getItem("idbangunanadmin")};
 		$.ajax({
@@ -299,6 +299,7 @@ timeline = {
 				var nama = [];
 				var nib = [];
 				var npwp = [];
+				var status = [];
 				var tgl = [];
 				var alamat = [];
 				var ketadmin = [];
@@ -399,6 +400,11 @@ timeline = {
 				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
 				var akumulasi = parseFloat(total/3)
 				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
+				// if (status[0] == '1') {
+				// 	var statuskepaladinas = 'Di Terima';
+				// }else{
+				// 	var statuskepaladinas = 'Di Tolak';
+				// }
 				console.log(akumulasi);
 				console.log(total);
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
@@ -416,6 +422,7 @@ timeline = {
 				$('#alamatpemohon').text(alamat);
 				$('#ketadministrasi').text(ketadmin);
 				$('#ketadminteknis').text(ketteknis);
+				// $('#status').text(statuskepaladinas);
 				if (nama.length != 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}		
@@ -542,8 +549,8 @@ $("#inputadminteknis").submit(function (event) {
 
 
 				if (localStorage.getItem("level") ==1 ) { // Kepala dinas
-				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>'); 
-				$.ajax({
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>'); 
+					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
 						type: 'GET',
 						dataType: 'json',
@@ -562,7 +569,7 @@ $("#inputadminteknis").submit(function (event) {
 					});				
 
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
-				$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>');	
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <a class="nav-link" href="#"> Laporan </a> </li> </ul>');	
 					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=penggunaan_lahan',
 						type: 'GET', 

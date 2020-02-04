@@ -9,9 +9,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
   <meta name="description" content="This is an example dashboard created using build-in elements and components.">
   <meta name="msapplication-tap-highlight" content="no">
-  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../iuts/assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../iuts/assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../iuts/assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="assets/img/favicon/site.webmanifest">
   <link href="assets/css/style_admin.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -44,7 +44,7 @@
         </button>
         <!-- Brand -->
         <a class="navbar-brand pt-0" href="#">
-          <img src="../assets/img/logopemprov.png" class="navbar-brand-img" alt=""/>
+          <img src="../iuts/assets/img/logopemprov.png" class="navbar-brand-img" alt=""/>
           Perizinan IUTS
         </a>
         <!-- User -->
@@ -66,7 +66,7 @@
                 <span>User</span>
               </a>
               <div class="dropdown-divider"></div>
-              <a href="" class="dropdown-item">
+              <a href="javascript:void(0)" id="logout" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Keluar</span>
               </a>
@@ -248,7 +248,7 @@
 
                     <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
                       <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <div id="cardReview"></div>
                       </div>
                     </div>
                   </div>
@@ -294,12 +294,14 @@
                         <div id="cardTaxClearance">
 
                         </div>
-                        <div id="ket_dinas">
+                        <center>
+                          <div id="ket_dinas">
 
-                        </div>
-                        <div id="ket_selsai">
+                          </div>
+                          <div id="ket_selsai">
 
-                        </div>
+                          </div>
+                        </center>
 
                       </div>
                     </div>
@@ -308,7 +310,7 @@
                     <div class="card-header no-padd" id="headingFour">
                       <h5 class="mb-0">
                         <button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Petugas
+                          <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Ulasan Kepala Dinas
                         </button>
                       </h5>
                     </div>
@@ -393,7 +395,6 @@
   <script src="https://js.arcgis.com/4.8/"></script>
   <script src="assets/js/mapsadmin.js"></script>
   <script type="text/javascript">
-
     timeline.dataizin();
     jQuery(window).load(function () {
       jQuery('#loader').fadeOut('slow');
