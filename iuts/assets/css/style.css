@@ -257,7 +257,6 @@
       width: 100px;
       margin-bottom:15px;
       display: inline-block;
-      margin-right: 15px;
       margin-top: 10%;
     }
     .navigation__btn--disabled {
@@ -350,6 +349,26 @@
     @media(max-width: 768px) {
       .modal-dialog {
         min-height: calc(100vh - 20px);
+        max-width: 100% !important;
+      }
+      .ijin__step {
+        width: 100%;
+      }
+      .position-btnreset {
+        right: 2% !important;
+      }
+      .col-form-label {
+        text-align: left;
+      }
+      .bottom__container {
+        display: block;
+      }
+      .progress {
+        width: 100%;
+        margin-bottom: 8px;
+      }
+      .navigation__btn {
+        width: 50%;
       }
     }
     .position-btnreset {

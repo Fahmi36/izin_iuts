@@ -1,5 +1,7 @@
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
+const admin = document.getElementById('loginAdmin');
+const user = document.getElementById('loginUser');
 const container = document.getElementById('container');
 
 signUpButton.addEventListener('click', () => {
@@ -7,6 +9,14 @@ signUpButton.addEventListener('click', () => {
 });
 
 signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+
+admin.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+user.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
 // var BASE_URL = 'http://localhost/rest_api_iuts/';

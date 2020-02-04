@@ -453,3 +453,48 @@ footer a {
             transform: translateY(-700px) rotate(600deg);
   }
 }
+.btnAdmin{
+	display: none;
+}
+.resMob{
+	display: none;
+}
+@media(max-width: 768px){
+	.sign-up-container {
+		width: 100%;
+	}
+	.sign-in-container {
+		width: 100%;
+	}
+	.overlay-container{
+		display: none;
+	}
+	.resMob{
+		display: block;
+	}
+	.container{
+		border-radius: 0;
+		box-shadow: none;
+		min-height: 100%;
+	}
+	.container.right-panel-active .sign-up-container {
+		transform: translateX(0%);
+	}
+	#btnLoginP {
+		width: 100%;
+	}
+	p{
+		margin: 13px;
+	}
+	button{
+		width: 100%;
+	}
+	.btnAdmin{
+		border:solid 1px #FF416C !important;
+		color: #FF416C;
+		background-color: transparent;
+	}
+	.btnAdmin{
+		display: block;
+	}
+}
