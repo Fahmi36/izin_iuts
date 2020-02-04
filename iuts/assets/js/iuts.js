@@ -55,7 +55,7 @@
                     if (data.features[0].attributes == '') {
 
                     }else{
-                        $.getScript(BASE_URL + "assets/scripts/arcgis.js", function() {
+                        $.getScript("https://iuts.pkkmart.com/assets/scripts/arcgis.js", function() {
                             });
                         $("#status_bangunan").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
                         $("#status_bangunan").val(data.features[0].attributes.nama_toko_anda);
