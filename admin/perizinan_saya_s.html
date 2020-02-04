@@ -244,7 +244,7 @@
                           <i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Resume
                         </button>
                       </h5>
-                    </div>
+                    </div> 
 
                     <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
                       <div class="card-body">
@@ -282,26 +282,15 @@
                     <div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
                       <div class="card-body">
                         <label><b>Rincian Nilai Permohonan Anda Sebagai Berikut:</b></label>
-                        <div id="cardPenilaian">
+                        <div id="ket_administrasi">
 
                         </div>
-                        <div id="cardReturn">
+                        <div id="ket_teknis">
 
                         </div>
-                        <div id="cardDampak">
+                        <div id="ket_dinas">
 
                         </div>
-                        <div id="cardTaxClearance">
-
-                        </div>
-                        <center>
-                          <div id="ket_dinas">
-
-                          </div>
-                          <div id="ket_selsai">
-
-                          </div>
-                        </center>
 
                       </div>
                     </div>
@@ -335,13 +324,16 @@
                         <div id="confirm_sk">
                           <p class="text-default p-10 font-weight-bold text-center">Serah Terima Surat Keputusan</p>
                           <div class="card">
+                            <form id="serahForm" method="post" enctype="multipart/form-data" accept-charset="utf-8">
                             <div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
                               <p>Upload foto bukti serah terima Surat Keputusan</p>
-                              <input type="file" name="fileBukti" class="mb-3">
+                              <input type="file" name="file" class="mb-3">
+                              <input type="hidden" name="idbangunan" id="idbangunan" class="mb-3">
                               <p>Dengan ini, saya menyatakan bahwa saya sudah menerima Surat Keputusan Izin Usaha Toko Swalayan dan data yang saya berikan seluruhnya benar.<br>
                               Saya berjanji akan mematuhi persyaratan yang diberikan oleh PMPTSP dan apabila saya melanggar persyaratan tersebut saya siap menerima segala konsekuensi yang diberikan oleh PMPTSP.</p>
-                              <button class="btn btn-success">Konfirmasi</button>
+                              <button type="submit" class="btn btn-success">Konfirmasi</button>
                             </div>
+                            </form>
                           </div>
                         </div>
                       </div>
