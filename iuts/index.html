@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Perizinan IUTS Jakarta</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/img/favicon/site.webmanifest">
+  <meta name="msapplication-TileColor" content="#fb9006">
+  <meta name="msapplication-TileImage" content="assets/img/favicon/android-chrome-192x192.png">
+  <meta name="theme-color" content="#fb9006">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="assets/css/icon.css">
+  <link href="assets/css/materialdesignicons.css" media="all" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <div class="container">
+    <div class="position-btnreset">
+      <button id="buttonbacktohome" class="btn btn3d btn-white resetDataLocal" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-home"></i></button>
+      <button id="buttonreload" class="btn btn3d btn-white btnRefresh" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-reload"></i></button> 
+    </div>
+    <form class="ijin">
+      <center><div class="img-jkt"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
+      <div class="ijin__inner">
+        <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step no-background">
+          <h1 class="judul-ijin">Izin Usaha Toko Swalayan</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="answer navigation__btn--right">
+            <label class="btn3d btn btn-danger btn-lg">Ajukan Izin</label>
+          </div>
+        </div>
+        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
+          <h1 class="judul-ijin">Lengkapi Identitas Pemohon</h1>
+          <div class="form-group row">
+            <label for="namaLengkap" class="col-md-6 col-form-label">Nama Lengkap :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nomorInKepen" class="col-md-6 col-form-label">Nomor Induk Kependudukan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nomorInBeru" class="col-md-6 col-form-label">Nomor Induk Berusaha :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="npwp" class="col-md-6 col-form-label">NPWP :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="npwp" name="npwp" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="njop" class="col-md-6 col-form-label">NJOP :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="njop" name="njop" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="no-telp" class="col-md-6 col-form-label">Nomor Telepon Aktif :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="emailAktif" class="col-md-6 col-form-label">Email Aktif :</label>
+            <div class="col-md-6">
+              <input type="email" class="form-control" id="emailAktif" name="email" placeholder="-">
+            </div>
+          </div>
+        </div>
+        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
+          <h1 class="judul-ijin">Lengkapi Data Umum Bangunan</h1>
+          <div class="form-group row">
+            <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nomorRegistrasiB" class="col-md-6 col-form-label">Nomor Registrasi Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="nrb" id="nomorRegistrasiB" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="luasLahan" class="col-md-6 col-form-label">Luas Lahan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="luas_lahan" id="luasLahan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="luasTapakB" class="col-md-6 col-form-label">Luas Tapak Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="ltb" id="luasTapakB" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="luasLantaiB" class="col-md-6 col-form-label">Luas Lantai Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="luas_lantai" id="luasLantaiB" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Lantai Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="jum_lantaiB" id="jmlLantaiB" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Bangunan yang akan Digunakan Usaha :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="statusBangunan" class="text-center form-control" id="status_bangunan" name="status_bangunan">
+                <option readonly='' selected value="-">Pilih Salah Satu</option>
+                <option value="Hak Milik">Hak Milik</option>
+                <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
+                <option value="Hak Pakai">Hak Pakai</option>
+                <option value="Hak Guna Usaha">Hak Guna Usaha</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Kepemilikan Lahan :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="statusBangunan" class="text-center form-control" id="status_milik" name="status_kepem_lahan">
+                <option readonly='' selected value="-">Pilih Salah Satu</option>
+                <option value="Hak Milik">Hak Milik</option>
+                <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
+                <option value="Hak Pakai">Hak Pakai</option>
+                <option value="Hak Pengelola">Hak Pengelola</option>
+                <option value="Girik/Verpounding/Surat Tanah Lainnya">Girik/Verpounding/Surat Tanah Lainnya</option>
+                <option value="Milik Pemerintah Provinsi DKI Jakarta">Milik Pemerintah Provinsi DKI Jakarta</option>
+                <option value="Tidak Ada">Tidak Ada</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamatPemohon" class="col-md-6 col-form-label">Lokasi Pemohon :</label>
+            <div class="col-md-6">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lat" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lng" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="subzona" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_pemohon" id="idsubblok" placeholder="Masukan Alamat Pemohon">
+              <input type="text" class="form-control" name="lokasi_pemohon" id="alamatLengkap" placeholder="Masukan Alamat Pemohon">
+              <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal fade" id="pilihLokasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" style="max-width: 90%;">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Pilih Lokasi Anda</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div id="maps" style="width: 100%;height: 500px;"></div>
+                </div>
+                <div class="modal-footer">
+                  <button id="btn-modalmaps" type="button" class="btn btn-primary">Sudah Sesuai ?</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end Modal -->
+        </div>
+        <div data-question="4" class="ijin__step--4 ijin__step mb-150">
+          <h1 class="judul-ijin">Lengkapi Administrasi Bangunan</h1>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Kondisi Eksisting</label>
+            <div class="col-md-6">
+              <select required="" onchange="kondisieksis();" aria-label="statusBangunan" class="text-center form-control" id="kondisi_eksisting" name="kondisi_eksisting">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row" id="kondisieksis" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Sudah Berapa Lama Mengajukan Izin</label>
+            <div class="col-md-6">
+              <select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row" id="lama_izin_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Waktu mengajukan izin :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="lama_izin" id="lama_izin_input" placeholder="-">
+            </div>
+          </div>
+          <h1 class="judul-ijin" style="margin-top: 40px;">Lengkapi Informasi Kebermanfaatan Usaha</h1>
+          <div class="form-group row">
+            <label for="pemutahiranPBB" class="col-md-6 col-form-label">Pemutahiran PBB :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="pemutahiranPBB" class="text-center form-control" id="pemutakhiran_pbb" name="pemutahiran_pbb">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="keterlibatanUMKM" class="col-md-6 col-form-label">Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <select required="" onchange="umkm()" aria-label="keterlibatanUMKM" class="text-center form-control" id="keterlibatan_umkm" name="keterlibatan_umkm">
+                
+              </select>
+            </div>
+          </div>
+            <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Keterlibatan UMKM :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="perjanjianSewa" class="col-md-6 col-form-label">Perjanjian Sewa :</label>
+            <div class="col-md-6">
+              <select required="" onchange="janjisewa();" aria-label="perjanjianSewa" class="text-center form-control" id="perjanjian_sewa" name="perjanjian_sewa">
+               
+              </select>
+            </div>
+          </div>
+            <div class="form-group row" id="janji_sewa_row" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Perjanjian Sewa :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="janji_sewa" id="janji_sewa_input" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="persetujuanWarga" class="col-md-6 col-form-label">Persetujuan Warga Sekitar :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
+              </select>
+            </div>
+          </div>
+        </div>
+        <div data-question="5" class="ijin__step--5 ijin__step mb-150">
+          <h1 class="judul-ijin">Lengkapi Informasi Antisipasi Dampak/Resiko</h1>
+          <div class="form-group row">
+            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Rekomendasi UMKM :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sosek :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="imbEksisting" class="col-md-6 col-form-label">IMB Eksisting :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="imbEksisting" class="text-center form-control" id="imb_eksisting" name="imb_eksisting">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="slfEksisting" class="col-md-6 col-form-label">SLF Eksisting :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="slfEksisting" class="text-center form-control" id="slf_eksisting" name="slf_eksisting">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="volumeSumur" class="col-md-6 col-form-label">Volume Sumur Resapan :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kondisiSumurR" class="col-md-6 col-form-label">Kondisi Sumur Resapan :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kondisiSumurR" class="text-center form-control" id="kondisi_sumur_r" name="kondisi_sumur_r">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="drainase" class="col-md-6 col-form-label">Drainase Disekeliling Tapak :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="drainase" class="text-center form-control" id="drainase_disekeliling" name="drainase_disekeliling">
+               
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Minimum :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kondisiKDH" class="col-md-6 col-form-label">Kondisi KDH :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pengelolaanSampah" class="col-md-6 col-form-label">Pengelolaan Sampah :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="pengelolaanSampah" class="text-center form-control" id="pengelolaan_sampah" name="pengelolaan_sampah">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kondisiParkir" class="col-md-6 col-form-label">Kondisi Parkir :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kondisiParkir" class="text-center form-control" id="kondisi_parkir" name="kondisi_parkir">
+                
+              </select>
+            </div>
+          </div>
+        </div>
+        <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin">Ringkasan Pemohon</h1>
+          <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne5">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion5" href="#identitasP" aria-expanded="true" aria-controls="identitasP">
+                    Identitas Pemohon
+                  </a>
+                </h4> 
+              </div>
+              <div id="identitasP" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne5">
+                <div class="panel-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Nomor</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Nama Pemohon</td>
+                        <td id="nama"></td>
+                      </tr>
+                      <tr> 
+                        <th scope="row">2</th>
+                        <td>Nomor Induk Kependudukan</td>
+                        <td id="nik"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Nomor Induk Berusaha</td>
+                        <td id="nib"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>NPWP</td>
+                        <td id="npwplocal"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Email</td>
+                        <td id="email"></td>
+                      </tr>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#dataUmum5" aria-expanded="false" aria-controls="dataUmum5">
+                    Data Umum Bangunan
+                  </a>
+                </h4>
+              </div>
+              <div id="dataUmum5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo5">
+                <div class="panel-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Nomor</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Nomor Objek Pajak</td>
+                        <td id="nop"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Nomor Registrasi Bangunan</td>
+                        <td id="nrb"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Luas Lahan</td>
+                        <td id="luas_lahan"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Luas Tapak Bangunan</td>
+                        <td id="luastapak"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Luas Lantai Bangunan</td>
+                        <td id="luaslantai"></td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Jumlah Lantai Bangunan</td>
+                        <td id="jmllantai"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Status Bangunan</td>
+                        <td id="statusbangunan"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Status Kepemilikan Bangunan</td>
+                        <td id="statusmilik"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Alamat</td>
+                        <td id="alamatlocal"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#adminBang5" aria-expanded="false" aria-controls="adminBang5">
+                    Admininstrasi Bangunan
+                  </a>
+                </h4>
+              </div>
+              <div id="adminBang5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree5">
+                <div class="panel-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Nomor</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Kondisi Eksisting</td>
+                        <td id="kondisi_eks_summary"></td>
+                      </tr>
+                      <tr> 
+                        <th scope="row">2</th>
+                        <td>Lama Mengajukan Izin</td>
+                        <td id="lama_izin_summary"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#informasiUsaha5" aria-expanded="false" aria-controls="informasiUsaha5">
+                    Informasi Kebermanfaatan Usaha
+                  </a>
+                </h4>
+              </div>
+              <div id="informasiUsaha5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour5">
+                <div class="panel-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Nomor</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Pemutahiran PBB</td>
+                        <td id="pbb_summary"></td>
+                      </tr>
+                      <tr> 
+                        <th scope="row">2</th>
+                        <td>Keterlibatan UMKM</td>
+                        <td id="keterlibatan_umkm_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Perjanjian Sewa</td>
+                        <td id="janji_sewa_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Persetujuan Warga Sekitar</td>
+                        <td id="persetujuan_warga_summary"></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#informasiDampak5" aria-expanded="false" aria-controls="informasiDampak5">
+                    Informasi Antisipasi Dampak/Resiko
+                  </a>
+                </h4>
+              </div>
+              <div id="informasiDampak5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive5">
+                <div class="panel-body">
+                  <table class="table">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Nomor</th>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr> 
+                        <th scope="row">1</th>
+                        <td>Rekomendasi UMKM</td>
+                        <td id="rek_umkm_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Kajian Sostek</td>
+                        <td id="kajian_sostek_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>IMB Eksisting</td>
+                        <td id="imb_eksisting_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>SLF Eksisting</td>
+                        <td id="slf_eksisting_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Volume Sumur Resapan</td>
+                        <td id="volume_sumur_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Kondisi Sumur Resapan</td>
+                        <td id="kondisi_sumur_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Drainase Disekeliling Tapak</td>
+                        <td id="drainase_disekeliling_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>KDH Minimum</td>
+                        <td id="kdh_minimum_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Kondisi KDH</td>
+                        <td id="kondisi_kdh_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Pengelolaan Sampah</td>
+                        <td id="pengelolaan_sampah_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">11</th>
+                        <td>Kondisi Parkir</td>
+                        <td id="kondisi_parkir_summary"></td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="submit__container">
+            <a href="#" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
+          </div>
+        </div>
+        <!-- <div data-question="7" class="ijin__step--7 ijin__step ijin__summary">
+          <h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1>
+          <div id="summary"></div>
+          <div class="submit__container">
+            <a href="#" class="submit btn">Selesai</a>
+          </div> 
+          <p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p>
+          <p>Perkiran Waktu Perizinan Selesai (0) Hari</p>
+        </div> -->
+      </div>
+    </form>
+  </div>
+<div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
+  <div class="modal-dialog" role="document" style="max-width: 600px;">
+    <div class="modal-content">
+      <div class="modal-header" style="display: block;">
+        <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
+      </div>
+      <div class="modal-body" style="padding: 2rem;">
+        <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
+        <p class="text-danger">
+          1. Bangunan telah diregistrasi<br>
+          2. Memiliki Nomor izin Berusaha<br>
+          3. Memiliki NPWP dan NOP<br>
+          4. Telah melakukan pelunasan pajak<br>
+        </p>
+        <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
+        <center>
+          <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
+          <p class="m-0">Belum registrasi bangunan? Registrasi terlebih dahulu <a href="https://jakartasatu.jakarta.go.id/regbangunan/login" target="_blank">Disini</a></p>
+          <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+  <footer class="bottom">
+    <section class="bottom__container">
+      <div class="progress">
+        <div class="progress__inner"></div>
+      </div>
+      <div class="navigation">
+        <div class="navigation__btn navigation__btn--left ">Kembali</div>
+        <div class="navigation__btn navigation__btn--right">Selanjutnya</div>
+      </div>
+    </section>  
+  </footer>
+
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+  <script src="assets/js/iuts.js"></script>
+  <script src="https://js.arcgis.com/4.8/"></script>
+  <script src="assets/js/arcgis.js"></script>
+  <script type="text/javascript">
+    $('#kelengkapan').modal('show');
+  </script>
+</body>
+</html>
