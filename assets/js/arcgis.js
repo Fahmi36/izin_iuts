@@ -207,8 +207,8 @@ require([
     //  url: "https://jakartasatu.jakarta.go.id/publik/rest/services/DCKTRP/OPS_Pulau_Seribu/FeatureServer/0",
      
     //  URL lama
-     url: "http://jakartasatu.jakarta.go.id/server/rest/services/JakartaSatu/Peta_Ops_V2_View/FeatureServer/3",
-     // url: "http://tataruang.jakarta.go.id/server/rest/services/peta_operasional/Peta_Ops_V2_View/FeatureServer/3",
+     // url: "http://jakartasatu.jakarta.go.id/server/rest/services/JakartaSatu/Peta_Ops_V2_View/FeatureServer/3",
+     url: "http://tataruang.jakarta.go.id/server/rest/services/peta_operasional/Peta_Ops_V2_View/FeatureServer/3",
      // Testing Jika Tata ruang lama di buka
      // definitionExpression : "KECAMATAN = 'GAMBIR'",
      popupTemplate : template,
@@ -231,6 +231,52 @@ require([
     // End Setting tombol locate
 
     // Mulai action jika menekan tombol locate
+
+    view.whenLayerView(parksLayer)
+    .then(function(results) {
+
+          console.log(parksLayer);
+          console.log(results);
+      var point = {
+        type: "point",
+        longitude: 106.827130, 
+        latitude: -6.175876,
+      };
+
+      var pointGraphic = new Graphic({
+        geometry: point,
+        symbol: makerSymbol,
+        popupTemplate : template,        // popupTemplate: template,
+      });
+      view.graphics.add(pointGraphic);
+
+      $('#lat').val('-6.175876');
+      $('#lng').val('106.827130');
+
+
+        var asasa = {
+          x: results.view.graphics.items[0].geometry.x,
+          y: results.view.graphics.items[0].geometry.y,
+          spatialReference:{
+            wkid: results.view.graphics.items[0].geometry.spatialReference.wkid,
+          }
+        };
+        var coba = view.toScreen(asasa);
+        view.when(function() {
+          view.hitTest(coba).then(({ results }) => {
+          console.log(results);
+          clickpoint(results);
+        }).catch(function(error) {
+          view.popup.title = "Alamat Tidak di Temukan";
+          view.popup.content = 'Zona tidak di ketahui , Silakan pilih lokasi terdekat';
+
+        });
+});
+        
+    })
+    .catch(function(error) {
+      // An error occurred during the layerview creation
+    });
     locateBtn.on("locate", function(evt){
       var point = {
         type: "point",
