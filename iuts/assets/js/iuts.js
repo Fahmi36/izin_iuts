@@ -55,6 +55,8 @@
                     if (data.features[0].attributes == '') {
 
                     }else{
+                        $.getScript(BASE_URL + "assets/scripts/arcgis.js", function() {
+                            });
                         $("#status_bangunan").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
                         $("#status_bangunan").val(data.features[0].attributes.nama_toko_anda);
                         $("#status_bangunan").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
@@ -65,8 +67,6 @@
                         localStorage.setItem('lat',data.features[0].geometry.y);
                         localStorage.setItem('lng',data.features[0].geometry.x);
                         localStorage.setItem('wkid',data.spatialReference.wkid);
-                        console.log(data.features[0].geometry.y);
-                        console.log(data.spatialReference.wkid);
                         $("#alamatLengkap").val(data.features[0].attributes.masukkan_alamat_anda);
                     }
                 }
@@ -77,7 +77,6 @@
 	    //  	//console.log('input empty');
 	    //  	return false;
 	   	// }
-
         localStorage.clear();
         localStorage.setItem("namapemohon", $("#namaLengkap").val());
         localStorage.setItem("nik", $("#nomorInKepen").val());

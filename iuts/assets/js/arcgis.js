@@ -71,21 +71,24 @@ require([
 
     // Start setting maps
 
-    if (localStorage.getItem('lat') != null) {
-    var view = new MapView({
+    console.log(localStorage.getItem('lng'));
+    if (localStorage.getItem('lat') == null) {
+      var view = new MapView({
       container: "maps",
       map: map,
-      center: [localStorage.getItem('lng'), localStorage.getItem('lat')],
-      zoom: 17
+      center: [106.819,-6.173021],
+      zoom:17,
     });
-  }else{
-     var view = new MapView({
+    }else{
+      var view = new MapView({
       container: "maps",
       map: map,
-      center: [106.827130, -6.175876],
+      center: [parseFloat(localStorage.getItem('lng')),parseFloat(localStorage.getItem('lat'))],
       zoom: 17
     });
-  }
+    }
+      
+
     // end Setting maps
 
     // Start symbol , setting jika ingin mengganti Simbol
@@ -241,45 +244,69 @@ require([
     // End Setting tombol locate
 
     // Mulai action jika menekan tombol locate
-    if (localStorage.getItem('lat') != null) {
-      view.whenLayerView(parksLayer)
-      .then(function(results) {
 
-        console.log(parksLayer);
-        console.log(results);
+    if (localStorage.getItem('lat') != null) {
+       var points = [
+        [parseFloat(localStorage.getItem('lng')),parseFloat(localStorage.getItem('lat'))]
+        ];
+        view.popup.open({
+          // Di matikan Karena title sekarang pakai alamat
+          // title: "Koordinat [" + lat + ", " + lon + "]",
+          location: points[0]
+        });
+      view.whenLayerView(parksLayer).then(function(layarpak) {
+
+        // console.log(localStorage.getItem('lng'))
+        // console.log(layarpak.view.viewpoint.targetGeometry);
         var point = {
           type: "point",
-          longitude: localStorage.getItem('lng'), 
-          latitude: localStorage.getItem('lat'),
+          longitude: parseFloat(localStorage.getItem('lng')), 
+          latitude: parseFloat(localStorage.getItem('lat')),
         };
 
         var pointGraphic = new Graphic({
           geometry: point,
-          symbol: makerSymbol,
-        popupTemplate : template,        // popupTemplate: template,
+          symbol: makerSymbol,        // popupTemplate: template,
       });
         view.graphics.add(pointGraphic);
+
+        locatorTask.locationToAddress(layarpak.view.viewpoint.targetGeometry).then(function(response){
+        // Di matikan Karena blm ada permintaan / kecamatan
+        // view.popup.title = response.address;
+        // map.add(parksLayer);
+        // console.log(response);
+        $("#alamatPemohon").val(response.address);
+        localStorage.setItem('alamat', response.address);
+        localStorage.setItem('kec', response.attributes.City.toUpperCase());
         var asasa = {
-          x: localStorage.getItem('lng'),
-          y: localStorage.getItem('lat'),
+          x: response.location.x,
+          y: response.location.y,
           spatialReference:{
-            wkid: localStorage.getItem('wkid'),
-          }
+            wkid: response.location.spatialReference.wkid,
+          },
+           mapPoint: point,
+          graphic: pointGraphic
         };
-        var coba = view.toScreen(asasa);
+          var coba = view.toScreen(asasa);
           view.hitTest(coba).then(({ results }) => {
-            console.log(results);
+          // console.log(results);
             clickpoint(results);
           }).catch(function(error) {
             view.popup.title = "Alamat Tidak di Temukan";
             view.popup.content = 'Zona tidak di ketahui , Silakan pilih lokasi terdekat';
 
           });
+      }).catch(function(err) {
+        view.popup.content =
+        "Tidak ada lokasi yang ditemukan";
+      });
+           
       })
       .catch(function(error) {
       // An error occurred during the layerview creation
     });
     }
+     
     locateBtn.on("locate", function(evt){
       var point = {
         type: "point",
@@ -325,6 +352,7 @@ require([
         // map.add(parksLayer);
         $("#alamatPemohon").val(response.address);
         localStorage.setItem('alamat', response.address);
+        localStorage.setItem('kec', response.attributes.City.toUpperCase());
       }).catch(function(err) {
         view.popup.content =
         "Tidak ada lokasi yang ditemukan";
@@ -413,6 +441,7 @@ require([
             $("#alamatPemohon").val(response.address);
 
             localStorage.setItem('alamat', response.address);
+          localStorage.setItem('kec', response.attributes.City.toUpperCase());
             view.popup.title = response.address;
           }).catch(function(err) {
             view.popup.content =
@@ -456,6 +485,7 @@ require([
           $("#alamatPemohon").val(response.address);
 
           localStorage.setItem('alamat', response.address);
+          localStorage.setItem('kec', response.attributes.City.toUpperCase());
           view.popup.title = response.address;
           // Di matikan Karena blm ada permintaan / kecamatan
           // parksLayer.definitionExpression = "KECAMATAN = '"+response.attributes.City.toUpperCase()+"'";
