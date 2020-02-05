@@ -106,19 +106,33 @@
           </div>
         </div>
         <div data-question="3" class="ijin__step--3 ijin__step mb-150">
-          <h1 class="judul-ijin">Lengkapi Data Umum Bangunan</h1>
+          <h1 class="judul-ijin">Lengkapi Data Administrasi dan Bangunan</h1>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Kondisi Eksisting</label>
+            <div class="col-md-6">
+              <select required="" onchange="kondisieksis();" aria-label="statusBangunan" class="text-center form-control" id="kondisi_eksisting" name="kondisi_eksisting">
+                
+              </select>
+            </div>
+          </div>
+          <div class="form-group row" id="kondisieksis" style="display: none;">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
+            </div>
+          </div>
           <div class="form-group row">
             <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak Daerah:</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
             </div>
           </div>
-          <div class="form-group row">
+          <!-- <div class="form-group row">
             <label for="nomorRegistrasiB" class="col-md-6 col-form-label">Nomor Registrasi Bangunan :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="nrb" id="nomorRegistrasiB" placeholder="-">
             </div>
-          </div>
+          </div> -->
           <div class="form-group row">
             <label for="luasLahan" class="col-md-6 col-form-label">Luas Lahan :</label>
             <div class="col-md-6">
@@ -204,12 +218,12 @@
               <input type="text" class="form-control" name="nama_badan_usaha" id="nama_badan_usaha" placeholder="-">
             </div>
           </div>
-          <div class="form-group row">
+          <!-- <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Kontak Pemohon (E-mail/Nomor telepon)</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="kontak_pemohon" id="kontak_pemohon" placeholder="-">
             </div>
-          </div>
+          </div> -->
           <div class="form-group row">
             <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
             <div class="col-md-6">
@@ -244,7 +258,7 @@
           <!-- end Modal -->
         </div>
         <div data-question="4" class="ijin__step--4 ijin__step mb-150">
-          <h1 class="judul-ijin">Lengkapi Administrasi Bangunan</h1>
+          <!-- <h1 class="judul-ijin">Lengkapi Administrasi Bangunan</h1>
           <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Kondisi Eksisting</label>
             <div class="col-md-6">
@@ -253,27 +267,27 @@
               </select>
             </div>
           </div>
-          <!-- <div class="form-group row" id="kondisieksis" style="display: none;">
+          <div class="form-group row" id="kondisieksis" style="display: none;">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
             </div>
-          </div>
-          <div class="form-group row">
+          </div> -->
+          <!-- <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Sudah Berapa Lama Mengajukan Izin</label>
             <div class="col-md-6">
               <select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
                 
               </select>
             </div>
-          </div> -->
+          </div>
           <div class="form-group row" id="lama_izin_row" style="display: none;">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Waktu mengajukan izin :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="lama_izin" id="lama_izin_input" placeholder="-">
             </div>
-          </div>
-          <h1 class="judul-ijin" style="margin-top: 40px;">Lengkapi Informasi Kebermanfaatan Usaha</h1>
+          </div> -->
+          <h1 class="judul-ijin">Lengkapi Informasi Kebermanfaatan Usaha</h1>
           <div class="form-group row">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Pemutahiran PBB :</label>
             <div class="col-md-6">
@@ -519,67 +533,57 @@
                       </tr>
                       <tr>
                         <th scope="row">2</th>
-                        <td>Nomor Registrasi Bangunan</td>
-                        <td id="nrb"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
                         <td>Luas Lahan</td>
                         <td id="luas_lahan"></td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
+                        <th scope="row">3</th>
                         <td>Luas Tapak Bangunan</td>
                         <td id="luastapak"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
+                        <th scope="row">4</th>
                         <td>Luas Lantai Usaha</td>
                         <td id="luaslantai"></td>
                       </tr>
 
                       <tr>
-                        <th scope="row">6</th>
+                        <th scope="row">5</th>
                         <td>Jumlah Lantai Bangunan</td>
                         <td id="jmllantai"></td>
                       </tr>
                       <tr>
-                        <th scope="row">7</th>
+                        <th scope="row">6</th>
                         <td>Status Bangunan</td>
                         <td id="statusbangunan"></td>
                       </tr>
                       <tr>
-                        <th scope="row">8</th>
+                        <th scope="row">7</th>
                         <td>Status Kepemilikan Lahan</td>
                         <td id="statusmilik"></td>
                       </tr>
                       <tr>
-                        <th scope="row">9</th>
+                        <th scope="row">8</th>
                         <td>Nama Toko</td>
                         <td id="namatoko"></td>
                       </tr>
                       <tr>
-                        <th scope="row">10</th>
+                        <th scope="row">9</th>
                         <td>Kelompok Usaha</td>
                         <td id="kelompokusaha"></td>
                       </tr>
                       <tr>
-                        <th scope="row">11</th>
+                        <th scope="row">10</th>
                         <td>Peruntukkan Toko</td>
                         <td id="peruntukantoko"></td>
                       </tr>
                       <tr>
-                        <th scope="row">12</th>
+                        <th scope="row">11</th>
                         <td>Nama Badan Usaha</td>
                         <td id="namausaha"></td>
                       </tr>
                       <tr>
                         <th scope="row">12</th>
-                        <td>Kontak Pemohon</td>
-                        <td id="kontakpemohon"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">9</th>
                         <td>Alamat</td>
                         <td id="alamatlocal"></td>
                       </tr>
