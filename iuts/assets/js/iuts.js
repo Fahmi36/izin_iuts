@@ -83,17 +83,21 @@
 
                         $.getScript("https://iuts.pkkmart.com/assets/scripts/arcgis.js", function() {
                             });
-                        $("#status_bangunan").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
-                        $("#status_bangunan").val(data.features[0].attributes.nama_toko_anda);
-                        $("#status_bangunan").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
-                        $("#status_bangunan").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
+                        $("#nama_toko").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
+                        $("#nama_toko").val(data.features[0].attributes.nama_toko_anda);
+                        $("#nama_usaha").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
+                        $("#peruntukan_toko").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
                         $("#status_bangunan").val(data.features[0].attributes.pilih_status_kepemilikan_tempat);
                         $("#nomorObjekPajak").val(data.features[0].attributes.field_23);
-                        $("#status_bangunan").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
+
+                        $("#rekomendasi_umkm").val(data.features[0].attributes.rekomendasi_dinas_kumkmp);
+                        $("#imb_eksisting").val(data.features[0].attributes.masukkan_nomor_imb_toko_anda);
+                        
                         localStorage.setItem('lat',data.features[0].geometry.y);
                         localStorage.setItem('lng',data.features[0].geometry.x);
                         localStorage.setItem('wkid',data.spatialReference.wkid);
                         $("#alamatLengkap").val(data.features[0].attributes.masukkan_alamat_anda);
+                        $("#alamat_perusahaan").val(data.features[0].attributes.masukkan_alamat_objek_pajak_1);
                     }
                 }
             })
@@ -141,7 +145,6 @@
         localStorage.setItem("kondisi_kdh", $("#kondisi_kdh option:selected").text());
         localStorage.setItem("pengelolaan_sampah", $("#pengelolaan_sampah option:selected").text());
         localStorage.setItem("kondisi_parkir", $("#kondisi_parkir option:selected").text());
-
 
         // localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting").val());
         // localStorage.setItem("lama_izin", $("#lama_izin").val());
@@ -350,10 +353,15 @@
             npwp_perusahaan: $("#npwp_perusahaan").val(),
             alamat_perusahaan: $("#alamat_perusahaan").val(),
             njop: $("#njop").val(),
+            barang_jasa: $("#barang_jasa").val(),
             no_telp: $("#no_telp").val(),
             emailAktif: $("#emailAktif").val(),
             nop: $("#nomorObjekPajak").val(),
             nrb: $("#nomorRegistrasiB").val(),
+            nama_toko: $("#nama_toko").val(),
+            nama_badan_usaha: $("#nama_badan_usaha").val(),
+            kelompok: $("#kelompok").val(),
+            peruntukan_toko: $("#peruntukan_toko").val(),
             luas_lahan: $("#luasLahan").val(),
             ltb: $("#luasTapakB").val(),
             luas_lantai: $("#luasLantaiB").val(),
@@ -383,10 +391,11 @@
             lama_izin_input: $("#lama_izin_input").val(),
             detail_kondisi_input: $("#detail_kondisi_input").val(),
             lat: $('#lat').val(),
-            lng: $('#lng').val(),
+            lng: $('#lng').val(), 
             subzona: $('#subzona').val(),
             idsubblok: $('#idsubblok').val(),
             alamat_lengkap: $("#alamatLengkap").val(),
+            kecamatan: $("#kecamatan").val(),
         };
 
         dataRegis[0].namaLengkap = dataInput.namaLengkap;
@@ -396,10 +405,16 @@
         dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
         dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
         dataRegis[0].njop = dataInput.njop;
+        dataRegis[0].barang_jasa = dataInput.barang_jasa;
         dataRegis[0].no_telp = dataInput.no_telp;
         dataRegis[0].emailAktif = dataInput.emailAktif;
+
         dataRegis[0].nop = dataInput.nop;
         dataRegis[0].nrb = dataInput.nrb;
+
+        dataRegis[0].nama_toko = dataInput.nama_toko;
+        dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
+
         dataRegis[0].luas_lahan = dataInput.luas_lahan;
         dataRegis[0].ltb = dataInput.ltb;
         dataRegis[0].luas_lantai = dataInput.luas_lantai;
@@ -407,6 +422,17 @@
         dataRegis[0].status_bangunan = dataInput.status_bangunan;
         dataRegis[0].status_milik = dataInput.status_milik;
         dataRegis[0].alamat = dataInput.alamat;
+
+        dataRegis[0].kelompok = dataInput.kelompok;
+        dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
+
+        dataRegis[0].lat = dataInput.lat;
+        dataRegis[0].lng = dataInput.lng;
+        dataRegis[0].subzona = dataInput.subzona;
+        dataRegis[0].idsubblok = dataInput.idsubblok;
+        dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
+        dataRegis[0].kecamatan = dataInput.kecamatan;
+
         dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
         dataRegis[0].lama_izin = dataInput.lama_izin;
         dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
@@ -428,12 +454,6 @@
         dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
         dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
         dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
-        
-        dataRegis[0].lat = dataInput.lat;
-        dataRegis[0].lng = dataInput.lng;
-        dataRegis[0].subzona = dataInput.subzona;
-        dataRegis[0].idsubblok = dataInput.idsubblok;
-        dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
 
         localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
         $.ajax({
