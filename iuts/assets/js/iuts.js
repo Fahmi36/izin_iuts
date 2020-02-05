@@ -21,6 +21,9 @@
     function janjisewa() {
         $("#janji_sewa_row").removeAttr('style');
     }
+    function luaslantai() {
+        $("#luas_lantai_row").removeAttr('style');
+    }
         // function volumesumur() {
         //     $("#volume_sumur_row").removeAttr('style');
         // }
@@ -85,7 +88,7 @@
                         });
                         $("#kelompok_usaha").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
                         $("#nama_toko").val(data.features[0].attributes.nama_toko_anda);
-                        $("#nama_usaha").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
+                        $("#nama_badan_usaha").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
                         $("#peruntukan_toko").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
                         $("#status_bangunan").val(data.features[0].attributes.pilih_status_kepemilikan_tempat);
                         $("#nomorObjekPajak").val(data.features[0].attributes.field_23);
@@ -126,10 +129,11 @@
         localStorage.setItem("kelompok_usaha", $("#kelompok_usaha").val());
         localStorage.setItem("peruntukan_toko", $("#peruntukan_toko").val());
         localStorage.setItem("kontak_pemohon", $("#kontak_pemohon").val());
-        localStorage.setItem("nama_usaha", $("#nama_usaha").val());
+        localStorage.setItem("nama_badan_usaha", $("#nama_badan_usaha").val());
         localStorage.setItem("luas_lahan", $("#luasLahan").val());
         localStorage.setItem("luas_tapak", $("#luasTapakB").val());
         localStorage.setItem("luas_lantai", $("#luasLantaiB").val());
+        localStorage.setItem("luas_lantai_input", $("#luas_lantai_input").val());
         localStorage.setItem("jml_lantai", $("#jmlLantaiB").val());
         localStorage.setItem("status_bangunan", $("#status_bangunan").val());
         localStorage.setItem("status_milik", $("#status_milik").val());
@@ -194,12 +198,13 @@
         var nama_toko = localStorage.getItem('nama_toko');
         var kelompok_usaha = localStorage.getItem('kelompok_usaha');
         var peruntukan_toko = localStorage.getItem('peruntukan_toko');
-        var nama_usaha = localStorage.getItem('nama_usaha');
+        var nama_badan_usaha = localStorage.getItem('nama_badan_usaha');
         var kontak_pemohon = localStorage.getItem('kontak_pemohon');
         var nrb = localStorage.getItem('nrb');
         var luas = localStorage.getItem('luas_lahan');
         var luastapak = localStorage.getItem('luas_tapak');
         var luaslantai = localStorage.getItem('luas_lantai');
+        var luas_lantai_input = localStorage.getItem('luas_lantai_input');
         var jml_lantai = localStorage.getItem('jml_lantai');
         var status_bangunan = localStorage.getItem('status_bangunan');
         var status_milik = localStorage.getItem('status_milik');
@@ -245,12 +250,12 @@
         $("#namatoko").text(nama_toko);
         $("#kelompokusaha").text(kelompok_usaha);
         $("#peruntukantoko").text(peruntukan_toko);
-        $("#namausaha").text(nama_usaha);
+        $("#namausaha").text(nama_badan_usaha);
         $("#kontakpemohon").text(kontak_pemohon);
         $("#nrb").text(nrb);
         $("#luas_lahan").text(luas);
         $("#luastapak").text(luastapak);
-        $("#luaslantai").text(luaslantai);
+        $("#luaslantai").html(luaslantai+'<br>'+luas_lantai_input);
         $("#jmllantai").text(jml_lantai);
         $("#statusbangunan").text(status_bangunan);
         $("#statusmilik").text(status_milik);
@@ -388,6 +393,7 @@
             luas_lahan: $("#luasLahan").val(),
             ltb: $("#luasTapakB").val(),
             luas_lantai: $("#luasLantaiB").val(),
+            luas_lantai_input: $("#luas_lantai_input").val(),
             jml_lantai: $("#jmlLantaiB").val(),
             kontak_pemohon: $("#kontak_pemohon").val(),
             status_bangunan: $("#status_bangunan").val(),
@@ -444,6 +450,7 @@
         dataRegis[0].luas_lahan = dataInput.luas_lahan;
         dataRegis[0].ltb = dataInput.ltb;
         dataRegis[0].luas_lantai = dataInput.luas_lantai;
+        dataRegis[0].luas_lantai_input = dataInput.luas_lantai_input;
         dataRegis[0].jml_lantai = dataInput.jml_lantai;
         dataRegis[0].status_bangunan = dataInput.status_bangunan;
         dataRegis[0].status_milik = dataInput.status_milik;
