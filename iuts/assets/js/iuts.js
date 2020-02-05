@@ -48,13 +48,39 @@
     }
     function npwpchecking() {
         $.ajax({
-                url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
+        url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
+        type: 'GET',
+        dataType: 'json',
+        success:function(data) {
+            $.ajax({
+                url: BASE_URL + "ApiController/ApiPajakNPWP",
                 type: 'GET',
                 dataType: 'json',
-                success:function(data) {
+                data : {npwp:$('#npwp').val()},
+                success:function(response) {
+                    if (response.pesan == 'Data Tidak ditemukan') {
+
+                    }else if (response.pesan == 'Panjang Karakter Kurang dari 15') {
+
+                    }else if (response.errorCode == '32') {
+
+                    }else if (response.msg == 'Server Sedang Bermasasalah') {
+
+                    }else{
+                        for (var i =0; i < data.length; i++) {
+                            if (data[i].NOPD) {
+
+                            }else{
+                                
+                            }
+                        }  
+                    }    
+                }
+            });
                     if (data.features[0].attributes == '') {
 
                     }else{
+
                         $.getScript("https://iuts.pkkmart.com/assets/scripts/arcgis.js", function() {
                             });
                         $("#status_bangunan").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
