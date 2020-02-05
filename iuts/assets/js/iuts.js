@@ -46,7 +46,7 @@
         localStorage.clear();
         location.reload();
     }
-    function npwpchecking() {
+    function nikchecking() {
         $.ajax({
         url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
         type: 'GET',
@@ -54,9 +54,9 @@
         success:function(data) {
             $.ajax({
                 url: BASE_URL + "ApiController/ApiPajakNPWP",
-                type: 'GET',
+                type: 'POST',
                 dataType: 'json',
-                data : {npwp:$('#npwp').val()},
+                data : {nik:$('#nomorInKepen').val()},
                 success:function(response) {
                     if (response.pesan == 'Data Tidak ditemukan') {
 
@@ -115,11 +115,18 @@
         // localStorage.setItem("npwp_pemohon", $("#npwp_pemohon").val());
         localStorage.setItem("npwp_perusahaan", $("#npwp_perusahaan").val());
         localStorage.setItem("jabatan", $("#jabatan").val());
+        localStorage.setItem("njop", $("#njop").val());
+        localStorage.setItem("no_telp", $("#no_telp").val());
         localStorage.setItem("email", $("#emailAktif").val());
         localStorage.setItem("alamat_perusahaan", $("#alamat_perusahaan").val());
         localStorage.setItem("nop", $("#nomorObjekPajak").val());
         localStorage.setItem("barang_jasa", $("#barang_jasa").val());
         localStorage.setItem("nrb", $("#nomorRegistrasiB").val());
+        localStorage.setItem("nama_toko", $("#nama_toko").val());
+        localStorage.setItem("kelompok_usaha", $("#kelompok_usaha").val());
+        localStorage.setItem("peruntukan_toko", $("#peruntukan_toko").val());
+        localStorage.setItem("kontak_pemohon", $("#kontak_pemohon").val());
+        localStorage.setItem("nama_usaha", $("#nama_usaha").val());
         localStorage.setItem("luas_lahan", $("#luasLahan").val());
         localStorage.setItem("luas_tapak", $("#luasTapakB").val());
         localStorage.setItem("luas_lantai", $("#luasLantaiB").val());
@@ -178,10 +185,17 @@
         // var npwp_pemohon = localStorage.getItem('npwppemohon');
         var npwp_perusahaan = localStorage.getItem('npwp_perusahaan');
         var jabatan = localStorage.getItem('jabatan');
+        var njop = localStorage.getItem('njop');
+        var no_telp = localStorage.getItem('no_telp');
         var alamat_perusahaan = localStorage.getItem('alamat_perusahaan');
         var barang_jasa = localStorage.getItem('barang_jasa');
         var email = localStorage.getItem('email');
         var nop = localStorage.getItem('nop');
+        var nama_toko = localStorage.getItem('nama_toko');
+        var kelompok_usaha = localStorage.getItem('kelompok_usaha');
+        var peruntukan_toko = localStorage.getItem('peruntukan_toko');
+        var nama_usaha = localStorage.getItem('nama_usaha');
+        var kontak_pemohon = localStorage.getItem('kontak_pemohon');
         var nrb = localStorage.getItem('nrb');
         var luas = localStorage.getItem('luas_lahan');
         var luastapak = localStorage.getItem('luas_tapak');
@@ -221,10 +235,18 @@
         $("#nib").text(nib);
         $("#npwplocal").text(npwp);
         $("#npwpperusahaan").text(npwp_perusahaan);
+        $("#jabatanlocal").text(jabatan);
+        $("#njoplocal").text(njop);
+        $("#nomortelp").text(no_telp);
         $("#alamatperusahaan").text(alamat_perusahaan);
         $("#email").text(email);
 
         $("#nop").text(nop);
+        $("#namatoko").text(nama_toko);
+        $("#kelompokusaha").text(kelompok_usaha);
+        $("#peruntukantoko").text(peruntukan_toko);
+        $("#namausaha").text(nama_usaha);
+        $("#kontakpemohon").text(kontak_pemohon);
         $("#nrb").text(nrb);
         $("#luas_lahan").text(luas);
         $("#luastapak").text(luastapak);
@@ -349,6 +371,7 @@
             namaLengkap: $("#namaLengkap").val(),
             nomorInKepen: $("#nomorInKepen").val(),
             nomorInBeru: $("#nomorInBeru").val(),
+            jabatan: $("#jabatan").val(),
             npwp: $("#npwp").val(),
             npwp_perusahaan: $("#npwp_perusahaan").val(),
             alamat_perusahaan: $("#alamat_perusahaan").val(),
@@ -360,12 +383,13 @@
             nrb: $("#nomorRegistrasiB").val(),
             nama_toko: $("#nama_toko").val(),
             nama_badan_usaha: $("#nama_badan_usaha").val(),
-            kelompok: $("#kelompok").val(),
+            kelompok: $("#kelompok_usaha").val(),
             peruntukan_toko: $("#peruntukan_toko").val(),
             luas_lahan: $("#luasLahan").val(),
             ltb: $("#luasTapakB").val(),
             luas_lantai: $("#luasLantaiB").val(),
             jml_lantai: $("#jmlLantaiB").val(),
+            kontak_pemohon: $("#kontak_pemohon").val(),
             status_bangunan: $("#status_bangunan").val(),
             status_milik: $("#status_milik").val(),
             alamat: $("#alamatPemohon").val(),
@@ -375,6 +399,8 @@
             keterlibatan_umkm: $("#keterlibatan_umkm").val(),
             perjanjian_sewa: $("#perjanjian_sewa").val(),
             persetujuan_warga: $("#persetujuan_warga").val(),
+            barang_jasa: $("#barang_jasa").val(),
+            jumlah_atm: $("#jumlah_atm").val(),
             rekomendasi_umkm: $("#rekomendasi_umkm").val(),
             kajian_sostek: $("#kajian_sostek").val(),
             imb_eksisting: $("#imb_eksisting").val(),
@@ -398,9 +424,11 @@
             kecamatan: $("#kecamatan").val(),
         };
 
+        /*identitas pemohon*/
         dataRegis[0].namaLengkap = dataInput.namaLengkap;
         dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
         dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
+        dataRegis[0].jabatan = dataInput.jabatan;
         dataRegis[0].npwp = dataInput.npwp;
         dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
         dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
@@ -408,37 +436,46 @@
         dataRegis[0].barang_jasa = dataInput.barang_jasa;
         dataRegis[0].no_telp = dataInput.no_telp;
         dataRegis[0].emailAktif = dataInput.emailAktif;
+        /*identitas pemohon*/
 
+        /*Data Umum Bangunan*/
         dataRegis[0].nop = dataInput.nop;
         dataRegis[0].nrb = dataInput.nrb;
-
-        dataRegis[0].nama_toko = dataInput.nama_toko;
-        dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
-
         dataRegis[0].luas_lahan = dataInput.luas_lahan;
         dataRegis[0].ltb = dataInput.ltb;
         dataRegis[0].luas_lantai = dataInput.luas_lantai;
         dataRegis[0].jml_lantai = dataInput.jml_lantai;
         dataRegis[0].status_bangunan = dataInput.status_bangunan;
         dataRegis[0].status_milik = dataInput.status_milik;
-        dataRegis[0].alamat = dataInput.alamat;
-
+        dataRegis[0].nama_toko = dataInput.nama_toko;
         dataRegis[0].kelompok = dataInput.kelompok;
         dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
-
+        dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
+        dataRegis[0].kontak_pemohon = dataInput.kontak_pemohon;
+        dataRegis[0].alamat = dataInput.alamat;
         dataRegis[0].lat = dataInput.lat;
         dataRegis[0].lng = dataInput.lng;
         dataRegis[0].subzona = dataInput.subzona;
         dataRegis[0].idsubblok = dataInput.idsubblok;
         dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
         dataRegis[0].kecamatan = dataInput.kecamatan;
+        /*Data Umum Bangunan*/
 
+        /*Administrasi Bangunan*/
         dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
         dataRegis[0].lama_izin = dataInput.lama_izin;
+        /*Administrasi Bangunan*/
+
+        /*Informasi Kebermanfaatan Usaha*/
         dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
         dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
         dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
         dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
+        dataRegis[0].barang_jasa = dataInput.barang_jasa;
+        dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
+        /*Informasi Kebermanfaatan Usaha*/
+
+        /*Informasi Antisipasi Dampak/Resiko*/
         dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
         dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
         dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
@@ -454,7 +491,8 @@
         dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
         dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
         dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
-
+        /*Informasi Antisipasi Dampak/Resiko*/
+        
         localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
         $.ajax({
             url: BASE_URL + 'ValidasiController/ValidasiIzin',
@@ -651,6 +689,43 @@
                 }
             }
         }); 
+
+        $.ajax({
+            url: BASE_URL + 'ValidasiController/getallSelect?table=kelompok_usaha',
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data.success) {
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
+                    for (var i in data.row) {
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+                    }
+                    $('#kelompok_usaha').html(options);
+
+                }
+            }
+        }); 
+
+        $.ajax({
+            url: BASE_URL + 'ValidasiController/getallSelect?table=luas_lantai',
+            type: 'GET',
+            dataType: 'json',
+            beforeSend: function () {
+            },
+            success: function (data) {
+                if (data.success) {
+                    var options = "<option value='-' readonly='' selected>Pilih Salah Satu</option>";
+                    for (var i in data.row) {
+                        options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
+                    }
+                    $('#luasLantaiB').html(options);
+
+                }
+            }
+        }); 
+
         $.ajax({
             url: BASE_URL + 'ValidasiController/getallSelect?table=perjanjian_sewa',
             type: 'GET',

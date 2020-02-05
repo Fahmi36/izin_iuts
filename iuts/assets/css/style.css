@@ -370,6 +370,9 @@
       .navigation__btn {
         width: 50%;
       }
+      .judul-ijin {
+        font-size: 26px;
+      }
     }
     .position-btnreset {
       position: absolute;

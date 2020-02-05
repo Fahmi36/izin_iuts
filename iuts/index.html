@@ -51,9 +51,15 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="nomorInBeru" class="col-md-6 col-form-label">Jabatan :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="nomorInKepen" class="col-md-6 col-form-label">Nomor Induk Kependudukan :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
+              <input type="number" class="form-control" onkeyup="nikchecking()" name="nomor_induk" id="nomorInKepen" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -63,13 +69,7 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="nomorInBeru" class="col-md-6 col-form-label">Jabatan :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="npwp" class="col-md-6 col-form-label">NPWP Pemohon:</label>
+            <label for="npwp" class="col-md-6 col-form-label">NPWP Penanggung Jawab:</label>
             <div class="col-md-6">
               <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
             </div>
@@ -77,19 +77,13 @@
           <div class="form-group row">
             <label for="npwp" class="col-md-6 col-form-label">NPWP Perusahaan :</label>
             <div class="col-md-6">
-              <input type="number" onkeyup="npwpchecking()" class="form-control" id="npwp_perusahaan" name="npwp_perusahaan" placeholder="-">
+              <input type="number"  class="form-control" id="npwp_perusahaan" name="npwp_perusahaan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="njop" class="col-md-6 col-form-label">NJOP :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" id="njop" name="njop" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="njop" class="col-md-6 col-form-label">Barang / Jasa Dagangan Utama :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="barang_jasa" name="barang_jasa" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -113,18 +107,6 @@
         </div>
         <div data-question="3" class="ijin__step--3 ijin__step mb-150">
           <h1 class="judul-ijin">Lengkapi Data Umum Bangunan</h1>
-          <div class="form-group row">
-            <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nama Pemohon :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_pemohon" id="namaPemohon" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="nomorObjekPajak" class="col-md-6 col-form-label">NIB :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
-            </div>
-          </div>
           <div class="form-group row">
             <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak :</label>
             <div class="col-md-6">
@@ -152,7 +134,9 @@
           <div class="form-group row">
             <label for="luasLantaiB" class="col-md-6 col-form-label">Luas Lantai Usaha :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="luas_lantai" id="luasLantaiB" placeholder="-">
+              <select required="" aria-label="luasLantaiB" class="text-center form-control" id="luasLantaiB" name="luas_lantai">
+                
+              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -195,9 +179,11 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Kelompok Usaha :</label>
+            <label for="kelompokusaha" class="col-md-6 col-form-label">Kelompok Usaha :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="kelompok_usaha" id="kelompok_usaha" placeholder="-">
+              <select required="" aria-label="kelompokusaha" class="text-center form-control" id="kelompok_usaha" name="kelompok_usaha">
+                
+              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -298,14 +284,6 @@
               </select>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="penggunaanLahanSekitar" class="col-md-6 col-form-label">Penggunaan Lahan Sekitar :</label>
-            <div class="col-md-6">
-              <select required="" onchange="lahanSekitar()" aria-label="penggunaanLahanSekitar" class="text-center form-control" id="penggunaan_lahan_sekitar" name="penggunaan_lahan_sekitar">
-                
-              </select>
-            </div>
-          </div>
           <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Keterlibatan UMKM :</label>
             <div class="col-md-6">
@@ -334,6 +312,12 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="njop" class="col-md-6 col-form-label">Barang / Jasa Dagangan Utama :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="barang_jasa" name="barang_jasa" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah instalasi mesin ATM :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="jumlah_atm" id="jumlah_atm" placeholder="-">
@@ -343,37 +327,9 @@
         <div data-question="5" class="ijin__step--5 ijin__step mb-150">
           <h1 class="judul-ijin">Lengkapi Informasi Antisipasi Dampak/Resiko</h1>
           <div class="form-group row">
-            <label for="jarakPasar" class="col-md-6 col-form-label">Jarak Terhadap Pasar Tradisional :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="jarakPasar" class="text-center form-control" id="jarak_terhadap_pasar" name="jarak_terhadap_pasar">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="rencanaJalanMemadai" class="col-md-6 col-form-label">Rencana Jalan Memadai :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="rencanaJalanMemadai" class="text-center form-control" id="rencana_jln_memadai" name="rencana_jln_memadai">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jalanEksiting" class="col-md-6 col-form-label">Jalan Eksiting Memadai :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="jalanEksiting" class="text-center form-control" id="jalan_eksiting_memadai" name="jalan_eksiting_memadai">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Rekomendasi UMKM :</label>
             <div class="col-md-6">
               <select required="" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="sesuaiRencanaTataRuang" class="col-md-6 col-form-label">Sesuai Rencana Tata Ruang :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="sesuaiRencanaTataRuang" class="text-center form-control" id="sesuai_rencana_tr" name="sesuai_rencana_tr">
               </select>
             </div>
           </div>
@@ -395,13 +351,6 @@
             <label for="slfEksisting" class="col-md-6 col-form-label">SLF Eksisting :</label>
             <div class="col-md-6">
               <select required="" aria-label="slfEksisting" class="text-center form-control" id="slf_eksisting" name="slf_eksisting">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jarakKeUsahaSejenis" class="col-md-6 col-form-label">Jarak Ke Usaha Sejenis :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="jarakKeUsahaSejenis" class="text-center form-control" id="jarak_usaha_sejenis" name="jarak_usaha_sejenis">
               </select>
             </div>
           </div>
@@ -500,21 +449,36 @@
                       </tr>
                       <tr>
                         <th scope="row">4</th>
-                        <td>NPWP Pemohon</td>
+                        <td>Jabatan</td>
+                        <td id="jabatanlocal"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>NPWP Penanggung Jawab</td>
                         <td id="npwplocal"></td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
+                        <th scope="row">6</th>
                         <td>NPWP Perusahaan</td>
                         <td id="npwpperusahaan"></td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
+                        <th scope="row">7</th>
+                        <td>NJOP</td>
+                        <td id="njoplocal"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Nomor telepon/fax</td>
+                        <td id="nomortelp"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
                         <td>Alamat Perusahaan</td>
                         <td id="alamatperusahaan"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
+                        <th scope="row">10</th>
                         <td>Email</td>
                         <td id="email"></td>
                       </tr>  
@@ -564,7 +528,7 @@
                       </tr>
                       <tr>
                         <th scope="row">5</th>
-                        <td>Luas Lantai Bangunan</td>
+                        <td>Luas Lantai Usaha</td>
                         <td id="luaslantai"></td>
                       </tr>
 
@@ -580,8 +544,33 @@
                       </tr>
                       <tr>
                         <th scope="row">8</th>
-                        <td>Status Kepemilikan Bangunan</td>
+                        <td>Status Kepemilikan Lahan</td>
                         <td id="statusmilik"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Nama Toko</td>
+                        <td id="namatoko"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Kelompok Usaha</td>
+                        <td id="kelompokusaha"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">11</th>
+                        <td>Peruntukkan Toko</td>
+                        <td id="peruntukantoko"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">12</th>
+                        <td>Nama Badan Usaha</td>
+                        <td id="namausaha"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">12</th>
+                        <td>Kontak Pemohon</td>
+                        <td id="kontakpemohon"></td>
                       </tr>
                       <tr>
                         <th scope="row">9</th>
