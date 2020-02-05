@@ -56,7 +56,7 @@
                 url: BASE_URL + "ApiController/ApiPajakNPWP",
                 type: 'GET',
                 dataType: 'json',
-                data : {npwp:$('#npwp').val()},
+                data : {npwp:$('#npwp_perusahaan').val()},
                 success:function(response) {
                     if (response.pesan == 'Data Tidak ditemukan') {
 

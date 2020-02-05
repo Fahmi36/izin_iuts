@@ -574,7 +574,41 @@ timeline = {
 		})
 },
 };
+$("#serahForm").submit(function (event) {
+	var data = new FormData($(this)[0]);
+	$.ajax({
+		url: BASE_URL + 'UserController/KonfirmasiIzin',
+		type: "POST",
+		dataType:'json',
+		data: {id:localStorage.getItem('iduser'),pesan:$('#pesan').val()},
+		contentType: false,
+		cache: false,
+		processData: false,
+		beforeSend:function(argument) {
+			$(".loader-overlay").removeAttr('style');
+		},
+		success: function (response) {
+			if (response.success == false) {
+				Swal.fire(
+					''+response.msg+'',
+					);
+			}else{
+				Swal.fire(
+					'Silakan Menunggu Balasan dari petugas',
+					);
 
+				$("#serahForm")[0].reset();
+			}
+
+		},
+		error: function () {
+			Swal.fire(
+				'"'+response.msg+'"',
+				'Hubungi Tim Terkait',
+				);
+		}
+	});
+});
 $("#kirimpesan").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
