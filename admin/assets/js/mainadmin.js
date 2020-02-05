@@ -778,7 +778,7 @@ $("#inputadminteknis").submit(function (event) {
 						});
 					}
 				}else if(localStorage.getItem("level") ==3){ // Administrasi
-					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_verifikasi.html"> Verifikasi </a> </li> <li class="nav-item"> <a class="nav-link" href="tugas_sk.html"> Terbit SK </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Laporan </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Kontak Kami </a> </li> </ul>');
+					$('#tugas').html('<ul class="nav nav-sm flex-column"> <li class="nav-item"> <a class="nav-link" href="tugas_sk.html"> Terbit SK </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Laporan </a> </li> <li class="nav-item"> <a class="nav-link" href="#"> Kontak Kami </a> </li> </ul>');
 					$.ajax({
 						url: BASE_URL + 'ValidasiController/getallSelect?table=kelengkapan_admin',
 						type: 'GET',
