@@ -108,8 +108,13 @@
         localStorage.setItem("nik", $("#nomorInKepen").val());
         localStorage.setItem("nib", $("#nomorInBeru").val());
         localStorage.setItem("npwp", $("#npwp").val());
+        // localStorage.setItem("npwp_pemohon", $("#npwp_pemohon").val());
+        localStorage.setItem("npwp_perusahaan", $("#npwp_perusahaan").val());
+        localStorage.setItem("jabatan", $("#jabatan").val());
         localStorage.setItem("email", $("#emailAktif").val());
+        localStorage.setItem("alamat_perusahaan", $("#alamat_perusahaan").val());
         localStorage.setItem("nop", $("#nomorObjekPajak").val());
+        localStorage.setItem("barang_jasa", $("#barang_jasa").val());
         localStorage.setItem("nrb", $("#nomorRegistrasiB").val());
         localStorage.setItem("luas_lahan", $("#luasLahan").val());
         localStorage.setItem("luas_tapak", $("#luasTapakB").val());
@@ -167,6 +172,11 @@
         var nik = localStorage.getItem('nik');
         var nib = localStorage.getItem('nib');
         var npwp = localStorage.getItem('npwp');
+        // var npwp_pemohon = localStorage.getItem('npwppemohon');
+        var npwp_perusahaan = localStorage.getItem('npwp_perusahaan');
+        var jabatan = localStorage.getItem('jabatan');
+        var alamat_perusahaan = localStorage.getItem('alamat_perusahaan');
+        var barang_jasa = localStorage.getItem('barang_jasa');
         var email = localStorage.getItem('email');
         var nop = localStorage.getItem('nop');
         var nrb = localStorage.getItem('nrb');
@@ -207,6 +217,8 @@
         $("#nik").text(nik);
         $("#nib").text(nib);
         $("#npwplocal").text(npwp);
+        $("#npwpperusahaan").text(npwp_perusahaan);
+        $("#alamatperusahaan").text(alamat_perusahaan);
         $("#email").text(email);
 
         $("#nop").text(nop);
@@ -335,6 +347,8 @@
             nomorInKepen: $("#nomorInKepen").val(),
             nomorInBeru: $("#nomorInBeru").val(),
             npwp: $("#npwp").val(),
+            npwp_perusahaan: $("#npwp_perusahaan").val(),
+            alamat_perusahaan: $("#alamat_perusahaan").val(),
             njop: $("#njop").val(),
             no_telp: $("#no_telp").val(),
             emailAktif: $("#emailAktif").val(),
@@ -379,6 +393,8 @@
         dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
         dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
         dataRegis[0].npwp = dataInput.npwp;
+        dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
+        dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
         dataRegis[0].njop = dataInput.njop;
         dataRegis[0].no_telp = dataInput.no_telp;
         dataRegis[0].emailAktif = dataInput.emailAktif;
