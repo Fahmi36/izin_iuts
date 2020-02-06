@@ -515,7 +515,7 @@
                         for (var i =0; i < data.length; i++) {
                             if ($data[i].JNS_PAJAK == 'PBB'){
                                 if (data[i].NOPD == $('#nomorObjekPajak').val()) {
-                                    if (data[i].STATUS = "TIDAK TERDAPAT TUNGGAKAN") {
+                                    if (data[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
                                         var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
                                         dataRegis[0].status_npwp = '1';
                                         dataRegis[0].status_pbb = '1';
@@ -544,7 +544,6 @@
                                                         showCancelButton: true
                                                     });
                                                 }
-
                                             }
                                         }); 
                                     }else{
@@ -572,7 +571,8 @@
                     }
                 }
             });
-            
+        }
+    });
     /* end konfirmasi ijin */
 
     /* animation */
