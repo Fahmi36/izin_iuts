@@ -573,6 +573,7 @@
             });
         }
     });
+});
     /* end konfirmasi ijin */
 
     /* animation */
