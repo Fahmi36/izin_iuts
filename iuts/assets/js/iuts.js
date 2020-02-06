@@ -513,7 +513,7 @@
                         });
                     }else{
                         for (var i =0; i < response.length; i++) {
-                            if ($response[i].JNS_PAJAK == 'PBB'){
+                            if (response[i].JNS_PAJAK == 'PBB'){
                                 if (response[i].NOPD == $('#nomorObjekPajak').val()) {
                                     if (response[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
                                         var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
