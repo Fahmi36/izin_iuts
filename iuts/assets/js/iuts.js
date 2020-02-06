@@ -512,7 +512,7 @@
                             showCancelButton: true,
                         });
                     }else{
-                        for (var i =0; i < data.length; i++) {
+                        for (var i =0; i < response.length; i++) {
                             if ($response[i].JNS_PAJAK == 'PBB'){
                                 if (response[i].NOPD == $('#nomorObjekPajak').val()) {
                                     if (response[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
