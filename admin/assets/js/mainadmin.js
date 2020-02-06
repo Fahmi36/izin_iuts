@@ -486,10 +486,6 @@ datadetailPemohon:function() {
 },
 	// end view data
 };
-$("#logout").click(function(event) {
-	localStorage.clear();
-	window.location.href = '../login.html';
-});
 $("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
@@ -910,7 +906,7 @@ $("#inputadminteknis").submit(function (event) {
 				}
 				if (typeof(Storage) !== "undefined") {
 					if (localStorage.getItem('idadmin') === null) {
-						// window.location.href = '../login.html';
+						window.location.href = '../login.html';
 					}
 				}else{
 					navigator.sayswho= (function(){
@@ -930,3 +926,7 @@ $("#inputadminteknis").submit(function (event) {
 					})();
 					alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 				}
+$("#logout").click(function(event) {
+	localStorage.clear();
+	window.location.href = '../login.html';
+});

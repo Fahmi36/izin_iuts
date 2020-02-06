@@ -227,10 +227,7 @@ function pemohonselajutnya() {
 		}
 	});
 }
-$("#logout").click(function(event) {
-	localStorage.clear();
-	window.location.href = 'login.html';
-});
+
 
 timeline = {
 	datapesan:function() {
@@ -656,6 +653,10 @@ function lihatpemohon(code) {
 		}
 	})
 }
+$("#logout").click(function(event) {
+	localStorage.clear();
+	window.location.href = 'login.html';
+});
 if (typeof(Storage) !== "undefined") {
 	if (localStorage.getItem('iduser') === null) {
 		// window.location.href = 'login.html';
