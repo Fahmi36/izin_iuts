@@ -389,7 +389,6 @@
                 no_telp: $("#no_telp").val(),
                 emailAktif: $("#emailAktif").val(),
                 nop: $("#nomorObjekPajak").val(),
-                nrb: $("#nomorRegistrasiB").val(),
                 nama_toko: $("#nama_toko").val(),
                 nama_badan_usaha: $("#nama_badan_usaha").val(),
                 kelompok: $("#kelompok_usaha").val(),
@@ -399,12 +398,10 @@
                 luas_lantai: $("#luasLantaiB").val(),
                 luas_lantai_input: $("#luas_lantai_input").val(),
                 jml_lantai: $("#jmlLantaiB").val(),
-                kontak_pemohon: $("#kontak_pemohon").val(),
                 status_bangunan: $("#status_bangunan").val(),
                 status_milik: $("#status_milik").val(),
                 alamat: $("#alamatPemohon").val(),
                 kondisi_eksisting: $("#kondisi_eksisting").val(),
-                lama_izin: $("#lama_izin").val(),
                 pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
                 keterlibatan_umkm: $("#keterlibatan_umkm").val(),
                 perjanjian_sewa: $("#perjanjian_sewa").val(),
@@ -431,6 +428,7 @@
                 subzona: $('#subzona').val(),
                 idsubblok: $('#idsubblok').val(),
                 alamat_lengkap: $("#alamatLengkap").val(),
+                kelurahan: $("#kelurahan").val(),
                 kecamatan: $("#kecamatan").val(),
             };
 
@@ -450,7 +448,6 @@
 
             /*Data Umum Bangunan*/
             dataRegis[0].nop = dataInput.nop;
-            dataRegis[0].nrb = dataInput.nrb;
             dataRegis[0].luas_lahan = dataInput.luas_lahan;
             dataRegis[0].ltb = dataInput.ltb;
             dataRegis[0].luas_lantai = dataInput.luas_lantai;
@@ -462,7 +459,6 @@
             dataRegis[0].kelompok = dataInput.kelompok;
             dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
             dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
-            dataRegis[0].kontak_pemohon = dataInput.kontak_pemohon;
             dataRegis[0].alamat = dataInput.alamat;
             dataRegis[0].lat = dataInput.lat;
             dataRegis[0].lng = dataInput.lng;
@@ -470,11 +466,12 @@
             dataRegis[0].idsubblok = dataInput.idsubblok;
             dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
             dataRegis[0].kecamatan = dataInput.kecamatan;
+            dataRegis[0].kelurahan = dataInput.kelurahan;
             /*Data Umum Bangunan*/
 
             /*Administrasi Bangunan*/
             dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
-            dataRegis[0].lama_izin = dataInput.lama_izin;
+            dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
             /*Administrasi Bangunan*/
 
             /*Informasi Kebermanfaatan Usaha*/
@@ -482,7 +479,6 @@
             dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
             dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
             dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
-            dataRegis[0].barang_jasa = dataInput.barang_jasa;
             dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
             /*Informasi Kebermanfaatan Usaha*/
 
@@ -491,17 +487,16 @@
             dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
             dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
             dataRegis[0].slf_eksisting = dataInput.slf_eksisting;
-            dataRegis[0].volumeSumur = dataInput.volumeSumur;
             dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
+            dataRegis[0].volumeSumur = dataInput.volumeSumur;
             dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
             dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
             dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
             dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
             dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
+            
             dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
             dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
-            dataRegis[0].lama_izin_input = dataInput.lama_izin_input;
-            dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
             /*Informasi Antisipasi Dampak/Resiko*/
             
             localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));

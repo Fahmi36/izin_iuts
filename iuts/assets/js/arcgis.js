@@ -362,13 +362,13 @@ require([
       [evt.position.coords.longitude, evt.position.coords.latitude]
       ];
 
-      // arrayUtils.forEach(points, function(point) {
-      //  var graphic = new Graphic(new Point(point), makerSymbol);
-      //    view.graphics.add(graphic);
-      //    view.on("drag",(event) => {
-      //     dragpoint(event);
-      //   });
-      //  });
+      arrayUtils.forEach(points, function(point) {
+       var graphic = new Graphic(new Point(point), makerSymbol);
+         view.graphics.add(graphic);
+         view.on("drag",(event) => {
+          dragpoint(event);
+        });
+       });
     });
     // End Action Tombol Locate
 
@@ -452,12 +452,12 @@ require([
           [lon, lat]
           ];
 
-          // arrayUtils.forEach(points, function(point) {
-          //   var graphic = new Graphic(new Point(point), makerSymbol);
-          //   view.on("drag",(event) => {
-          //     dragpoint(event)
-          //   });
-          // });
+          arrayUtils.forEach(points, function(point) {
+            var graphic = new Graphic(new Point(point), makerSymbol);
+            view.on("drag",(event) => {
+              dragpoint(event)
+            });
+          });
         });
       // End Search Location
 
@@ -504,9 +504,9 @@ require([
       arrayUtils.forEach(points, function(point) {
        var graphic = new Graphic(new Point(point), makerSymbol);
        view.graphics.add(graphic);
-      //  view.on("drag",(event) => {
-      //   dragpoint(event);
-      // });
+       view.on("drag",(event) => {
+        dragpoint(event);
+      });
      });
     });
     // End klik maps
@@ -547,7 +547,9 @@ require([
           if (results[0].graphic.attributes == null) {
            view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + results[1].graphic.attributes['KTB']+'</td></tr></tbody></table>';
            $("#subzona").val(results[1].graphic.attributes['ZONA']);
-           $("#idsubblok").val(results[1].graphic.attributes['SUB_BLOK']);
+           $("#idsubblok").val(results[1].graphic.attributes['SUB_ZONA']);
+       $('#kelurahan').val(results[1].graphic.attributes['KELURAHAN']);
+       $('#kecamatan').val(results[1].graphic.attributes['KECAMATAN']);
            var izinkan = results[1].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[1].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[1].graphic.attributes['TERBATAS'].split(',');
@@ -556,7 +558,9 @@ require([
          }else{
            view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + results[0].graphic.attributes['KTB']+'</td></tr></tbody></table>';
            $("#subzona").val(results[0].graphic.attributes['ZONA']);
-           $("#idsubblok").val(results[0].graphic.attributes['SUB_BLOK']);
+           $("#idsubblok").val(results[0].graphic.attributes['SUB_ZONA']);
+       $('#kelurahan').val(results[0].graphic.attributes['KELURAHAN']);
+       $('#kecamatan').val(results[0].graphic.attributes['KECAMATAN']);
            var izinkan = results[0].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[0].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[0].graphic.attributes['TERBATAS'].split(',');
@@ -598,14 +602,18 @@ require([
        localStorage.setItem('b_terbatasbersyarat', t_bersyarat);
 
        $('#subzona').val(evt[1].graphic.attributes['ZONA']);
-       $('#idsubblok').val(evt[1].graphic.attributes['SUB_BLOK']);
+       $('#idsubblok').val(evt[1].graphic.attributes['SUB_ZONA']);
+       $('#kelurahan').val(evt[1].graphic.attributes['KELURAHAN']);
+       $('#kecamatan').val(evt[1].graphic.attributes['KECAMATAN']);
 
      }else{
 
        view.popup.content = '<table class="esri-widget__table" summary="List of attributes and values"><tbody><tr><th class="esri-feature__field-header">Kecamatan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KECAMATAN']+'</td></tr><tr><th class="esri-feature__field-header">Kelurahan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KELURAHAN']+'</td></tr><tr><th class="esri-feature__field-header">Sublok</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['SUB_BLOK']+'</td></tr><tr><th class="esri-feature__field-header">Zona</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Sub Zona</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['SUB_ZONA']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Bersyarat</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Dizinkan</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['DIIZINKAN']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['TERBATAS']+'</td></tr><tr><th class="esri-feature__field-header">Perizinan Terbatas Bersyarat</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['TERBATAS_BERSYARAT']+'</td></tr><tr><th class="esri-feature__field-header">KDB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KDB']+'</td></tr><tr><th class="esri-feature__field-header">KLB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KLB']+'</td></tr><tr><th class="esri-feature__field-header">KB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KB']+'</td></tr><tr><th class="esri-feature__field-header">KDH</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KDH']+'</td></tr><tr><th class="esri-feature__field-header">KTB</th><td class="esri-feature__field-data">' + evt[0].graphic.attributes['KTB']+'</td></tr></tbody></table>';
        
        $('#subzona').val(evt[0].graphic.attributes['ZONA']);
-       $('#idsubblok').val(evt[0].graphic.attributes['SUB_BLOK']);
+       $('#idsubblok').val(evt[0].graphic.attributes['SUB_ZONA']);
+       $('#kelurahan').val(evt[0].graphic.attributes['KELURAHAN']);
+       $('#kecamatan').val(evt[0].graphic.attributes['KECAMATAN']);
        var izinkan = evt[0].graphic.attributes['DIIZINKAN'].split(',');
        var b_syarat = evt[0].graphic.attributes['BERSYARAT'].split(',');
        var t_batas = evt[0].graphic.attributes['TERBATAS'].split(',');
