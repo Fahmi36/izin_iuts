@@ -516,6 +516,10 @@
                             if ($data[i].JNS_PAJAK == 'PBB'){
                                 if (data[i].NOPD == $('#nomorObjekPajak').val()) {
                                     if (data[i].STATUS = "TIDAK TERDAPAT TUNGGAKAN") {
+                                        var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                        dataRegis[0].status_npwp = '1';
+                                        dataRegis[0].status_pbb = '1';
+                                        localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
                                         $.ajax({
                                             url: BASE_URL + 'ValidasiController/ValidasiIzin',
                                             type: 'POST',
