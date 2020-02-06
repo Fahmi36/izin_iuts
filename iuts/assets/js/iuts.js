@@ -49,34 +49,6 @@
             localStorage.clear();
             location.reload();
         }
-        function nikchecking() {
-         
-            $.ajax({
-                url: BASE_URL + "ApiController/ApiPajakNPWP",
-                type: 'POST',
-                dataType: 'json',
-                data : {nik:$('#nomorInKepen').val()},
-                success:function(response) {
-                    if (response.pesan == 'Data Tidak ditemukan') {
-
-                    }else if (response.pesan == 'Panjang Karakter Kurang dari 15') {
-
-                    }else if (response.errorCode == '32') {
-
-                    }else if (response.msg == 'Server Sedang Bermasasalah') {
-
-                    }else{
-                        for (var i =0; i < data.length; i++) {
-                            if (data[i].NOPD) {
-
-                            }else{
-                                
-                            }
-                        }  
-                    }    
-                }
-            });
-        }
 
         function npwpusahachecking() {
            $.ajax({
@@ -88,7 +60,7 @@
 
                 }else{
 
-                    $.getScript("https://iuts.pkkmart.com/assets/scripts/arcgis.js", function() {
+                    $.getScript("https://iuts.pkkmart.com/iuts/assets/js/arcgis.js", function() {
                     });
                     $("#kelompok_usaha").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
                     $("#nama_toko").val(data.features[0].attributes.nama_toko_anda);
@@ -494,45 +466,109 @@
             dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
             dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
             dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
-            
+
             dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
             dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
             /*Informasi Antisipasi Dampak/Resiko*/
             
             localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
             $.ajax({
-                url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                url: BASE_URL + "ApiController/ApiPajakNPWP",
                 type: 'POST',
                 dataType: 'json',
-                data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                data : {nik:$('#nomorInKepen').val()},
                 beforeSend:function() {
 
                 },
-                success:function(data) {
-                    if (data.success) {
-                        e.preventDefault();
-                        $('.ijin').remove();
-                        $(summary).appendTo('.container');
-                        disableButtons=true;
-                        $('.navigation__btn').addClass('navigation__btn--disabled');
-                        swal({
-                            type: 'success',
-                            title: data.msg,
-                            showCancelButton: true
-                        }); 
-                    }else{
+                success:function(response) {
+                    if (response.pesan == 'Data Tidak ditemukan') {
                         swal({
                             type: 'error',
-                            title: data.msg,
-                            showCancelButton: true
+                            title: 'Data Tidak Di Temukan',
+                            showCancelButton: true,
                         });
-                    }
+                    }else if (response.pesan == 'Panjang Karakter Kurang dari 15') {
+                        swal({
+                            type: 'error',
+                            title: 'Maaf Panjang Angka NIK dari 15',
+                            showCancelButton: true,
+                        });
+                    }else if (response.errorCode == '32') {
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true,
+                        });
+                    }else if (response.errorCode == '99') {
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true,
+                        });
+                    }else if (response.msg == 'Server Sedang Bermasasalah') {
+                        swal({
+                            type: 'error',
+                            title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
+                            showCancelButton: true,
+                        });
+                    }else{
+                        for (var i =0; i < data.length; i++) {
+                            if ($data[i].JNS_PAJAK == 'PBB'){
+                                if (data[i].NOPD == $('#nomorObjekPajak').val()) {
+                                    if (data[i].STATUS = "TIDAK TERDAPAT TUNGGAKAN") {
+                                        $.ajax({
+                                            url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                                            success:function(data) {
+                                                if (data.success) {
+                                                    e.preventDefault();
+                                                    $('.ijin').remove();
+                                                    $(summary).appendTo('.container');
+                                                    disableButtons=true;
+                                                    $('.navigation__btn').addClass('navigation__btn--disabled');
+                                                    swal({
+                                                        type: 'success',
+                                                        title: data.msg,
+                                                        showCancelButton: true
+                                                    }); 
+                                                }else{
+                                                    swal({
+                                                        type: 'error',
+                                                        title: data.msg,
+                                                        showCancelButton: true
+                                                    });
+                                                }
 
+                                            }
+                                        }); 
+                                    }else{
+                                        swal({
+                                            type: 'error',
+                                            title: 'Maaf Anda Tidak Bisa Membuat Izin Usaha Toko Swalayan Karena PBB Anda Belum Lunas',
+                                            showCancelButton: true,
+                                        });
+                                    }
+                                }else{
+                                    swal({
+                                        type: 'error',
+                                        title: 'Nomor NOPD dan NIK tidak Terdaftar di Kantor Pajak',
+                                        showCancelButton: true,
+                                    });   
+                                }
+                            }else{
+                                swal({
+                                    type: 'error',
+                                    title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
+                                    showCancelButton: true,
+                                });
+                            }
+                        }  
+                    }
                 }
-            });               
-        }
-    })
-});
+            });
+            
     /* end konfirmasi ijin */
 
     /* animation */
