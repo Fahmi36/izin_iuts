@@ -181,7 +181,8 @@ require([
     //End Template Popup tadi di pakai sekarang tidak , tapi lebih baik buat kenangan
     // Fungsinya untuk menempelkan layer pada maps
     var parksLayer = new FeatureLayer({
-    	url: "https://tataruang.jakarta.go.id/server/rest/services/peta_operasional/Peta_Ops_V2_View/FeatureServer/3",
+     // url: "http://jakartasatu.jakarta.go.id/server/rest/services/JakartaSatu/Peta_Ops_V2_View/FeatureServer/3",
+     url: "http://tataruang.jakarta.go.id/server/rest/services/peta_operasional/Peta_Ops_V2_View/FeatureServer/3",
      // Testing Jika Tata ruang lama di buka
      // definitionExpression : "KECAMATAN = 'GAMBIR'",
      popupTemplate : template,

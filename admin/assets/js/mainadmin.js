@@ -123,147 +123,7 @@ function printsk() {
 		}
 	});
 }
-timeline = {		
-	datadetailprint:function() {
-		var datas = {id:localStorage.getItem("idbangunanadmin")};
-		$.ajax({
-			url: BASE_URL + 'OfficeController/detailBangunanDinas',
-			type: 'POST',
-			data: datas,
-			dataType : 'json',
-			success:function(data) {
-				var skorlengkap = [];
-				var skorwaktu = [];
-				var skorpbb = [];
-				var skornpwp = [];
-				var skorrenjalan = [];
-				var skorjalaneksis = [];
-				var skortataruang = [];
-				var skorjarakusaha = [];
-				var skorpenglahan = [];
-				var skorkondisieksis = [];
-				var skotpempbb = [];
-				var skorketumkm = [];
-				var skorsewa = [];
-				var skorwarga = [];
-				var skorrekumkm = [];
-				var skorslf = [];
-				var skorimb = [];
-				var skorkajian = [];
-				var skorvolsumur = [];
-				var skordrainase = [];
-				var skorkondisisumur = [];
-				var skorkdhmini = [];
-				var code = [];
-				var nama = [];
-				var nib = [];
-				var npwp = [];
-				var tgl = [];
-				var alamat = [];
-				var ketadmin = [];
-				var ketteknis = [];
-				var skoradministrasi = [];
-				var skormanfaat = [];
-				var skordampak = [];
-				var skortax = [];
-				var skorjarakpasar = [];
-				for(var coba in data.row){
-					skorlengkap.push(data.row[coba].skorlengkap);
-					skorwaktu.push(data.row[coba].skorwaktu);
-					skorpbb.push(data.row[coba].skorpbb);
-					skornpwp.push(data.row[coba].skornpwp);
-					skorrenjalan.push(data.row[coba].skorrenjalan);
-					skorjalaneksis.push(data.row[coba].skorjalaneksis);
-					skortataruang.push(data.row[coba].skortataruang);
-					skorjarakusaha.push(data.row[coba].skorjarakusaha);
-					skorpenglahan.push(data.row[coba].skorpenglahan);
-					skorkondisieksis.push(data.row[coba].skorkondisieksis);
-					skotpempbb.push(data.row[coba].skotpempbb);
-					skorketumkm.push(data.row[coba].skorketumkm);
-					skorsewa.push(data.row[coba].skorsewa);
-					skorwarga.push(data.row[coba].skorwarga);
-					skorrekumkm.push(data.row[coba].skorrekumkm);
-					skorslf.push(data.row[coba].skorslf);
-					skorimb.push(data.row[coba].skorimb);
-					skorkajian.push(data.row[coba].skorkajian);
-					skorvolsumur.push(data.row[coba].skorvolsumur);
-					skordrainase.push(data.row[coba].skordrainase);
-					skorkondisisumur.push(data.row[coba].skorkondisisumur);
-					skorkdhmini.push(data.row[coba].skorkdhmini);
-					skorjarakpasar.push(data.row[coba].skorjarakpasar);
-					code.push(data.row[coba].code);
-					nama.push(data.row[coba].nama);
-					nib.push(data.row[coba].nib);
-					npwp.push(data.row[coba].npwp);
-					tgl.push(data.row[coba].tgl);
-					alamat.push(data.row[coba].alamat);
-					ketadmin.push(data.row[coba].ketadmin);
-					ketteknis.push(data.row[coba].ketteknis);
-
-					skoradministrasi.push(data.row[coba].skoradministrasi);
-					skormanfaat.push(data.row[coba].skormanfaat);
-					skordampak.push(data.row[coba].skordampak);
-					skortax.push(data.row[coba].skortax);
-
-				}
-				// console.log(nama.length);
-				$('#nilailengkap').text(skorlengkap);
-				$('#nilaiizin').text(skorwaktu);
-				$('#nilaieksiting').text(skorkondisieksis);
-
-				$('#nilaipbb').text(skorpbb);
-				$('#nilainpwp').text(skornpwp);
-
-				$('#pempbb').text(skotpempbb);
-				$('#ketumkm').text(skorketumkm);
-				$('#persewa').text(skorsewa);
-
-				$('#penglahan').text(skorpenglahan);
-				$('#setwarga').text(skorwarga);
-				$('#eksismadai').text(skorjalaneksis);
-
-				$('#jarakpasar').text(skorjarakpasar);
-				$('#renjalan').text(skorrenjalan);
-				$('#rekumkm').text(skorrekumkm);
-				$('#slfeksis').text(skorslf);
-				$('#kondisisumur').text(skorkondisisumur);
-				$('#drainasesek').text(skordrainase);
-				$('#tataruang').text(skortataruang);
-				$('#kajiansostek').text(skorkajian);
-				$('#imbeksis').text(skorimb);
-				$('#jarakusaha').text(skorjarakusaha);
-				$('#sumurserap').text(skorvolsumur);
-				$('#kdhmini').text(skorkdhmini);
-
-				var totaladmin = parseFloat(skorlengkap)+parseFloat(skorwaktu)+parseFloat(skorkondisieksis);
-				var totalmanfaat = parseFloat(skotpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
-				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
-				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
-
-				var hasiladmin = parseFloat(totaladmin/3);
-				var hasilmanfaat = parseFloat(totalmanfaat/6);
-				var hasildampak = parseFloat(totaldampak/12);
-
-				$('#totaladminis').text(String(hasiladmin).substr(0, 4));
-				$('#totalmanfaat').text(String(hasilmanfaat).substr(0, 4));
-				$('#totaldampak').text(String(hasildampak).substr(0, 4));
-				$('#totaltax').text(totaltax);
-
-				var total = parseFloat(hasiladmin)+parseFloat(hasilmanfaat)+parseFloat(hasildampak);
-				var akumulasi = parseFloat(total/3)
-				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
-
-				$('#totalakhir').text(String(totalasli).substr(0, 4));
-				$('#totalakhir2').val(String(totalasli).substr(0, 4));
-				console.log(akumulasi);
-				
-				window.print();
-				if (nama.length != 0) {
-					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
-				}		
-			}
-		})
-},
+timeline = {	
 	// start view data
 	datadetailadmin:function() {
 		var datas = {id:localStorage.getItem("idbangunanadmin")};
@@ -273,8 +133,6 @@ timeline = {
 			data: datas,
 			dataType : 'json',
 			success:function(data) {
-				var skorlengkap = [];
-				var skorwaktu = [];
 				var skorpbb = [];
 				var skornpwp = [];
 				var skorrenjalan = [];
@@ -313,8 +171,6 @@ timeline = {
 				var skortax = [];
 				var skorjarakpasar = [];
 				for(var coba in data.row){
-					skorlengkap.push(data.row[coba].skorlengkap);
-					skorwaktu.push(data.row[coba].skorwaktu);
 					skorpbb.push(data.row[coba].skorpbb);
 					skornpwp.push(data.row[coba].skornpwp);
 					skorrenjalan.push(data.row[coba].skorrenjalan);
@@ -355,8 +211,6 @@ timeline = {
 
 				}
 				// console.log(nama.length);
-				$('#nilailengkap').text(skorlengkap);
-				$('#nilaiizin').text(skorwaktu);
 				$('#nilaieksiting').text(skorkondisieksis);
 
 				$('#nilaipbb').text(skorpbb);
@@ -383,12 +237,12 @@ timeline = {
 				$('#sumurserap').text(skorvolsumur);
 				$('#kdhmini').text(skorkdhmini);
  
-				var totaladmin = parseFloat(skorlengkap)+parseFloat(skorwaktu)+parseFloat(skorkondisieksis);
+				var totaladmin = parseFloat(skorkondisieksis);
 				var totalmanfaat = parseFloat(skotpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
 				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
-				var hasiladmin = parseFloat(totaladmin/3);
+				var hasiladmin = parseFloat(totaladmin/1);
 				var hasilmanfaat = parseFloat(totalmanfaat/6);
 				var hasildampak = parseFloat(totaldampak/12);
 
@@ -486,10 +340,6 @@ datadetailPemohon:function() {
 },
 	// end view data
 };
-$("#logout").click(function(event) {
-	localStorage.clear();
-	window.location.href = '../login.html';
-});
 $("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
@@ -910,7 +760,7 @@ $("#inputadminteknis").submit(function (event) {
 				}
 				if (typeof(Storage) !== "undefined") {
 					if (localStorage.getItem('idadmin') === null) {
-						// window.location.href = '../login.html';
+						window.location.href = '../login.html';
 					}
 				}else{
 					navigator.sayswho= (function(){
@@ -930,3 +780,7 @@ $("#inputadminteknis").submit(function (event) {
 					})();
 					alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 				}
+$("#logout").click(function(event) {
+	localStorage.clear();
+	window.location.href = '../login.html';
+});
