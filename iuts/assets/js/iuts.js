@@ -531,9 +531,10 @@
                     }else{
                         for (var i =0; i < response.length; i++) {
                             if (response[i].JNS_PAJAK == "PBB"){
-                                console.log(response[i].JNS_PAJAK);
-                                console.log(response[i]);
                                 if (response[i].NOPD == $('#nomorObjekPajak').val()) {
+                                console.log(response[i].NOPD);
+                                console.log(response[i]);
+                                console.log($('#nomorObjekPajak').val());
                                     if (response[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
                                         var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
                                         dataRegis[0].status_npwp = '1';
