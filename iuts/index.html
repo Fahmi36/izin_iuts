@@ -332,6 +332,16 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="perjanjianSewa" class="col-md-6 col-form-label">Kategori Usaha :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="perjanjianSewa" class="text-center form-control" id="kategori_usaha" name="kategori_usaha">
+                <option readonly='' selected value="-">Pilih Salah Satu</option>
+                <option value="Franchise">Franchise</option>
+                <option value="Bukan">Bukan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="njop" class="col-md-6 col-form-label">Barang / Jasa Dagangan Utama :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" id="barang_jasa" name="barang_jasa" placeholder="-">
@@ -341,6 +351,24 @@
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah instalasi mesin ATM :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="jumlah_atm" id="jumlah_atm" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Omset Perbulan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="omset_perbulan" id="omset_perbulan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Karyawan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="jumlah_karyawan" id="jumlah_karyawan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Asal Karyawan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="asal_karyawan" id="asal_karyawan" placeholder="-">
             </div>
           </div>
         </div>
@@ -511,7 +539,7 @@
               <div class="panel-heading" role="tab" id="headingTwo5">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#dataUmum5" aria-expanded="false" aria-controls="dataUmum5">
-                    Data Umum Bangunan
+                    Data Administrasi dan Bangunan
                   </a>
                 </h4>
               </div>
@@ -526,6 +554,11 @@
                       </tr>
                     </thead>
                     <tbody class="bg-white">
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Kondisi Eksisting</td>
+                        <td id="kondisi_eks_summary"></td>
+                      </tr>
                       <tr>
                         <th scope="row">1</th>
                         <td>Nomor Objek Pajak</td>
@@ -606,7 +639,7 @@
                 </div>
               </div>
             </div>
-            <div class="panel panel-default">
+            <!-- <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree5">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#adminBang5" aria-expanded="false" aria-controls="adminBang5">
@@ -639,7 +672,7 @@
                   </table>
                 </div>
               </div>
-            </div>
+            </div> -->
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree5">
                 <h4 class="panel-title">
@@ -679,7 +712,36 @@
                         <td>Persetujuan Warga Sekitar</td>
                         <td id="persetujuan_warga_summary"></td>
                       </tr>
-                      
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Kategori Usaha</td>
+                        <td id="kategori_usaha_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Barang / Jasa Dagangan Utama</td>
+                        <td id="barang_jasa_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Jumlah instalasi mesin ATM</td>
+                        <td id="jumlah_atm_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Omset Perbulan</td>
+                        <td id="omset_perbulan_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Jumlah Karyawan</td>
+                        <td id="jumlah_karyawan_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Asal Karyawan</td>
+                        <td id="asal_karyawan_summary"></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>

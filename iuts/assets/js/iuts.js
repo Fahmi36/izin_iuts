@@ -138,6 +138,11 @@
         localStorage.setItem("status_bangunan", $("#status_bangunan").val());
         localStorage.setItem("status_milik", $("#status_milik").val());
         localStorage.setItem("alamat", $("#alamatPemohon").val());
+        localStorage.setItem("kategori_usaha", $("#kategori_usaha").val());
+        localStorage.setItem("jumlah_atm", $("#jumlah_atm").val());
+        localStorage.setItem("omset_perbulan", $("#omset_perbulan").val());
+        localStorage.setItem("jumlah_karyawan", $("#jumlah_karyawan").val());
+        localStorage.setItem("asal_karyawan", $("#asal_karyawan").val());
 
         localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting option:selected").text());
         localStorage.setItem("lama_izin", $("#lama_izin option:selected").text());
@@ -216,6 +221,11 @@
         var keterlibatan_umkm = localStorage.getItem('keterlibatan_umkm');
         var perjanjian_sewa = localStorage.getItem('perjanjian_sewa');
         var persetujuan_warga = localStorage.getItem('persetujuan_warga');
+        var kategori_usaha = localStorage.getItem('kategori_usaha');
+        var jumlah_atm = localStorage.getItem('jumlah_atm');
+        var omset_perbulan = localStorage.getItem('omset_perbulan');
+        var jumlah_karyawan = localStorage.getItem('jumlah_karyawan');
+        var asal_karyawan = localStorage.getItem('asal_karyawan');
         var rekomendasi_umkm = localStorage.getItem('rekomendasi_umkm');
         var kajian_sostek = localStorage.getItem('kajian_sostek');
         var imb_eksisting = localStorage.getItem('imb_eksisting');
@@ -267,6 +277,12 @@
         $("#keterlibatan_umkm_summary").html(keterlibatan_umkm+'<br>'+keterlibatan_umkm_input);
         $("#janji_sewa_summary").html(perjanjian_sewa+'<br>'+janji_sewa_input);
         $("#persetujuan_warga_summary").text(persetujuan_warga);
+        $("#kategori_usaha_summary").text(kategori_usaha);
+        $("#barang_jasa_summary").text(barang_jasa);
+        $("#jumlah_atm_summary").text(jumlah_atm);
+        $("#omset_perbulan_summary").text(omset_perbulan);
+        $("#jumlah_karyawan_summary").text(jumlah_karyawan);
+        $("#asal_karyawan_summary").text(asal_karyawan);
 
         $("#rek_umkm_summary").text(rekomendasi_umkm);
         $("#kajian_sostek_summary").text(kajian_sostek);
