@@ -528,6 +528,12 @@
                             title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
                             showCancelButton: true,
                         });
+                    }else if (response.errorCode == '4') {
+                        swal({
+                            type: 'error',
+                            title: 'Silakan Isi NIK Anda',
+                            showCancelButton: true,
+                        });
                     }else{
                         for (var i =0; i < response.length; i++) {
                             if (response[i].JNS_PAJAK == "PBB"){
@@ -535,7 +541,7 @@
                                 console.log(response[i].NOPD);
                                 console.log(response[i]);
                                 console.log($('#nomorObjekPajak').val());
-                                    if (response[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
+                                    if (response.STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
                                         var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
                                         dataRegis[0].status_npwp = '1';
                                         dataRegis[0].status_pbb = '1';
