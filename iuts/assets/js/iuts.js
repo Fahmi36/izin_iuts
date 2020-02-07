@@ -539,32 +539,40 @@
                                         dataRegis[0].status_npwp = '1';
                                         dataRegis[0].status_pbb = '1';
                                         localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
-                                        $.ajax({
-                                            url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                                            type: 'POST',
-                                            dataType: 'json',
-                                            data:{dataRegist: localStorage.getItem('dataPermohonan')},
-                                            success:function(data) {
-                                                if (data.success) {
-                                                    e.preventDefault();
-                                                    $('.ijin').remove();
-                                                    $(summary).appendTo('.container');
-                                                    disableButtons=true;
-                                                    $('.navigation__btn').addClass('navigation__btn--disabled');
-                                                    swal({
-                                                        type: 'success',
-                                                        title: data.msg,
-                                                        showCancelButton: true
-                                                    }); 
-                                                }else{
-                                                    swal({
-                                                        type: 'error',
-                                                        title: data.msg,
-                                                        showCancelButton: true
-                                                    });
+                                        if ($('#idsubblok').val() == 'H.2') {
+                                            swal({
+                                                type: 'error',
+                                                title: 'Anda Tidak Dapat Mengajukan Izin pada Zona Ini',
+                                                showCancelButton: true,
+                                            });
+                                        }else{
+                                            $.ajax({
+                                                url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                                                success:function(data) {
+                                                    if (data.success) {
+                                                        e.preventDefault();
+                                                        $('.ijin').remove();
+                                                        $(summary).appendTo('.container');
+                                                        disableButtons=true;
+                                                        $('.navigation__btn').addClass('navigation__btn--disabled');
+                                                        swal({
+                                                            type: 'success',
+                                                            title: data.msg,
+                                                            showCancelButton: true
+                                                        }); 
+                                                    }else{
+                                                        swal({
+                                                            type: 'error',
+                                                            title: data.msg,
+                                                            showCancelButton: true
+                                                        });
+                                                    }
                                                 }
-                                            }
-                                        }); 
+                                            });    
+                                        } 
                                     }else{
                                         swal({
                                             type: 'error',
