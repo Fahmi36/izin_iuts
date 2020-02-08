@@ -397,6 +397,10 @@
                 persetujuan_warga: $("#persetujuan_warga").val(),
                 barang_jasa: $("#barang_jasa").val(),
                 jumlah_atm: $("#jumlah_atm").val(),
+                omset_perbulan: $("#omset_perbulan").val(),
+                jumlah_karyawan: $("#jumlah_karyawan").val(),
+                asal_karyawan: $("#asal_karyawan").val(),
+                kategori_usaha: $("#kategori_usaha").val(),
                 rekomendasi_umkm: $("#rekomendasi_umkm").val(),
                 kajian_sostek: $("#kajian_sostek").val(),
                 imb_eksisting: $("#imb_eksisting").val(),
@@ -430,7 +434,6 @@
             dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
             dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
             dataRegis[0].njop = dataInput.njop;
-            dataRegis[0].barang_jasa = dataInput.barang_jasa;
             dataRegis[0].no_telp = dataInput.no_telp;
             dataRegis[0].emailAktif = dataInput.emailAktif;
             /*identitas pemohon*/
@@ -468,7 +471,12 @@
             dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
             dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
             dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
+            dataRegis[0].kategori_usaha = dataInput.kategori_usaha;
+            dataRegis[0].barang_jasa = dataInput.barang_jasa;
             dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
+            dataRegis[0].omset_perbulan = dataInput.omset_perbulan;
+            dataRegis[0].jumlah_karyawan = dataInput.jumlah_karyawan;
+            dataRegis[0].asal_karyawan = dataInput.asal_karyawan;
             /*Informasi Kebermanfaatan Usaha*/
 
             /*Informasi Antisipasi Dampak/Resiko*/
@@ -495,9 +503,11 @@
                 dataType: 'json',
                 data : {nik:$('#nomorInKepen').val()},
                 beforeSend:function() {
-
+                    $("#text-loader").html('Sedang Cek Data Pajak Anda');
+                    $('#page-loader').fadeIn('slow');
                 },
                 success:function(response) {
+                    $('#page-loader').fadeOut('slow');
                     if (response.pesan == 'Data Tidak ditemukan') {
                         swal({
                             type: 'error',
@@ -558,6 +568,10 @@
                                                 type: 'POST',
                                                 dataType: 'json',
                                                 data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                                                beforeSend:function(argument) {
+                                                    $("#text-loader").html('Mohon Tunggu');
+                                                    $('#page-loader').fadeIn('slow');
+                                                },
                                                 success:function(data) {
                                                     if (data.success) {
                                                         e.preventDefault();
@@ -577,6 +591,7 @@
                                                             showCancelButton: true
                                                         });
                                                     }
+                                                    $('#page-loader').fadeOut('slow');
                                                 }
                                             });    
                                         } 
