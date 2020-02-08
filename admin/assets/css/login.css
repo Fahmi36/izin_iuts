@@ -477,8 +477,21 @@ footer a {
 		box-shadow: none;
 		min-height: 100%;
 	}
+	.form-container{
+		transition: none;
+	}
+	body{
+		overflow-y: scroll;
+		margin: 0;
+	}
 	.container.right-panel-active .sign-up-container {
 		transform: translateX(0%);
+		animation: none;
+	}
+	.container.right-panel-active .sign-in-container {
+    	transform: translateX(0%) !important;
+    	display: none !important;
+    	z-index: 0;
 	}
 	#btnLoginP {
 		width: 100%;

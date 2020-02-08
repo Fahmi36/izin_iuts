@@ -73,7 +73,7 @@ require([
     var view = new MapView({
     	container: "mapsadmin",
     	map: map,
-    	center: [$('#long').val(), $('#lat').val()],
+    	center: [parseFloat($('#long').val()), parseFloat($('#lat').val())],
     	zoom: 17
     });
     // end Setting maps
@@ -169,8 +169,8 @@ require([
     };
     var point = {
     	type: "point",
-    	longitude: $('#long').val(),
-    	latitude: $('#lat').val(),
+    	longitude: parseFloat($('#long').val()),
+    	latitude: parseFloat($('#lat').val()),
     };
 
     var pointGraphic = new Graphic({

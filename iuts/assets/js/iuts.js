@@ -114,6 +114,11 @@
         localStorage.setItem("status_bangunan", $("#status_bangunan").val());
         localStorage.setItem("status_milik", $("#status_milik").val());
         localStorage.setItem("alamat", $("#alamatPemohon").val());
+        // localStorage.setItem("kategori_usaha", $("#kategori_usaha").val());
+        localStorage.setItem("jumlah_atm", $("#jumlah_atm").val());
+        localStorage.setItem("omset_perbulan", $("#omset_perbulan").val());
+        localStorage.setItem("jumlah_karyawan", $("#jumlah_karyawan").val());
+        localStorage.setItem("asal_karyawan", $("#asal_karyawan").val());
 
         localStorage.setItem("kondisi_eksisting", $("#kondisi_eksisting option:selected").text());
         localStorage.setItem("lama_izin", $("#lama_izin option:selected").text());
@@ -121,6 +126,7 @@
         localStorage.setItem("keterlibatan_umkm", $("#keterlibatan_umkm option:selected").text());
         localStorage.setItem("perjanjian_sewa", $("#perjanjian_sewa option:selected").text());
         localStorage.setItem("persetujuan_warga", $("#persetujuan_warga option:selected").text());
+        localStorage.setItem("kategori_usaha", $("#kategori_usaha option:selected").text());
         localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm option:selected").text());
         localStorage.setItem("kajian_sostek", $("#kajian_sostek option:selected").text());
         localStorage.setItem("imb_eksisting", $("#imb_eksisting option:selected").text());
@@ -192,6 +198,11 @@
         var keterlibatan_umkm = localStorage.getItem('keterlibatan_umkm');
         var perjanjian_sewa = localStorage.getItem('perjanjian_sewa');
         var persetujuan_warga = localStorage.getItem('persetujuan_warga');
+        var kategori_usaha = localStorage.getItem('kategori_usaha');
+        var jumlah_atm = localStorage.getItem('jumlah_atm');
+        var omset_perbulan = localStorage.getItem('omset_perbulan');
+        var jumlah_karyawan = localStorage.getItem('jumlah_karyawan');
+        var asal_karyawan = localStorage.getItem('asal_karyawan');
         var rekomendasi_umkm = localStorage.getItem('rekomendasi_umkm');
         var kajian_sostek = localStorage.getItem('kajian_sostek');
         var imb_eksisting = localStorage.getItem('imb_eksisting');
@@ -243,6 +254,12 @@
         $("#keterlibatan_umkm_summary").html(keterlibatan_umkm+'<br>'+keterlibatan_umkm_input);
         $("#janji_sewa_summary").html(perjanjian_sewa+'<br>'+janji_sewa_input);
         $("#persetujuan_warga_summary").text(persetujuan_warga);
+        $("#kategori_usaha_summary").html(kategori_usaha);
+        $("#barang_jasa_summary").text(barang_jasa);
+        $("#jumlah_atm_summary").text(jumlah_atm);
+        $("#omset_perbulan_summary").text(omset_perbulan);
+        $("#jumlah_karyawan_summary").text(jumlah_karyawan);
+        $("#asal_karyawan_summary").text(asal_karyawan);
 
         $("#rek_umkm_summary").text(rekomendasi_umkm);
         $("#kajian_sostek_summary").text(kajian_sostek);
@@ -348,291 +365,219 @@
       })
         .then((result) => {
           if (result.value) {
-           var dataInput = {
-            namaLengkap: $("#namaLengkap").val(),
-            nomorInKepen: $("#nomorInKepen").val(),
-            nomorInBeru: $("#nomorInBeru").val(),
-            jabatan: $("#jabatan").val(),
-            npwp: $("#npwp").val(),
-            npwp_perusahaan: $("#npwp_perusahaan").val(),
-            alamat_perusahaan: $("#alamat_perusahaan").val(),
-            njop: $("#njop").val(),
-            barang_jasa: $("#barang_jasa").val(),
-            no_telp: $("#no_telp").val(),
-            emailAktif: $("#emailAktif").val(),
-            nop: $("#nomorObjekPajak").val(),
-            nama_toko: $("#nama_toko").val(),
-            nama_badan_usaha: $("#nama_badan_usaha").val(),
-            kelompok: $("#kelompok_usaha").val(),
-            peruntukan_toko: $("#peruntukan_toko").val(),
-            luas_lahan: $("#luasLahan").val(),
-            ltb: $("#luasTapakB").val(),
-            luas_lantai: $("#luasLantaiB").val(),
-            luas_lantai_input: $("#luas_lantai_input").val(),
-            jml_lantai: $("#jmlLantaiB").val(),
-            status_bangunan: $("#status_bangunan").val(),
-            status_milik: $("#status_milik").val(),
-            alamat: $("#alamatPemohon").val(),
-            kondisi_eksisting: $("#kondisi_eksisting").val(),
-            pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
-            keterlibatan_umkm: $("#keterlibatan_umkm").val(),
-            perjanjian_sewa: $("#perjanjian_sewa").val(),
-            persetujuan_warga: $("#persetujuan_warga").val(),
-            barang_jasa: $("#barang_jasa").val(),
-            jumlah_atm: $("#jumlah_atm").val(),
-            rekomendasi_umkm: $("#rekomendasi_umkm").val(),
-            kajian_sostek: $("#kajian_sostek").val(),
-            imb_eksisting: $("#imb_eksisting").val(),
-            slf_eksisting: $("#slf_eksisting").val(),
-            volumeSumur: $("#volumeSumur").val(),
-            kondisi_sumur_r: $("#kondisi_sumur_r").val(),
-            drainase_disekeliling: $("#drainase_disekeliling").val(),
-            kdh_minimum: $("#kdh_minimum").val(),
-            kondisi_kdh: $("#kondisi_kdh").val(),
-            pengelolaan_sampah: $("#pengelolaan_sampah").val(),
-            kondisi_parkir: $("#kondisi_parkir").val(),
-            janji_sewa_input: $("#janji_sewa_input").val(),
-            keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
-            lama_izin_input: $("#lama_izin_input").val(),
-            detail_kondisi_input: $("#detail_kondisi_input").val(),
-            lat: $('#lat').val(),
-            lng: $('#lng').val(), 
-            subzona: $('#subzona').val(),
-            idsubblok: $('#idsubblok').val(),
-            alamat_lengkap: $("#alamatLengkap").val(),
-            kelurahan: $("#kelurahan").val(),
-            kecamatan: $("#kecamatan").val(),
-        };
+             var dataInput = {
+                namaLengkap: $("#namaLengkap").val(),
+                nomorInKepen: $("#nomorInKepen").val(),
+                nomorInBeru: $("#nomorInBeru").val(),
+                jabatan: $("#jabatan").val(),
+                npwp: $("#npwp").val(),
+                npwp_perusahaan: $("#npwp_perusahaan").val(),
+                alamat_perusahaan: $("#alamat_perusahaan").val(),
+                njop: $("#njop").val(),
+                barang_jasa: $("#barang_jasa").val(),
+                no_telp: $("#no_telp").val(),
+                emailAktif: $("#emailAktif").val(),
+                nop: $("#nomorObjekPajak").val(),
+                nama_toko: $("#nama_toko").val(),
+                nama_badan_usaha: $("#nama_badan_usaha").val(),
+                kelompok: $("#kelompok_usaha").val(),
+                peruntukan_toko: $("#peruntukan_toko").val(),
+                luas_lahan: $("#luasLahan").val(),
+                ltb: $("#luasTapakB").val(),
+                luas_lantai: $("#luasLantaiB").val(),
+                luas_lantai_input: $("#luas_lantai_input").val(),
+                jml_lantai: $("#jmlLantaiB").val(),
+                status_bangunan: $("#status_bangunan").val(),
+                status_milik: $("#status_milik").val(),
+                alamat: $("#alamatPemohon").val(),
+                kondisi_eksisting: $("#kondisi_eksisting").val(),
+                pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
+                keterlibatan_umkm: $("#keterlibatan_umkm").val(),
+                perjanjian_sewa: $("#perjanjian_sewa").val(),
+                persetujuan_warga: $("#persetujuan_warga").val(),
+                barang_jasa: $("#barang_jasa").val(),
+                jumlah_atm: $("#jumlah_atm").val(),
+                omset_perbulan: $("#omset_perbulan").val(),
+                jumlah_karyawan: $("#jumlah_karyawan").val(),
+                asal_karyawan: $("#asal_karyawan").val(),
+                kategori_usaha: $("#kategori_usaha").val(),
+                rekomendasi_umkm: $("#rekomendasi_umkm").val(),
+                kajian_sostek: $("#kajian_sostek").val(),
+                imb_eksisting: $("#imb_eksisting").val(),
+                slf_eksisting: $("#slf_eksisting").val(),
+                volumeSumur: $("#volumeSumur").val(),
+                kondisi_sumur_r: $("#kondisi_sumur_r").val(),
+                drainase_disekeliling: $("#drainase_disekeliling").val(),
+                kdh_minimum: $("#kdh_minimum").val(),
+                kondisi_kdh: $("#kondisi_kdh").val(),
+                pengelolaan_sampah: $("#pengelolaan_sampah").val(),
+                kondisi_parkir: $("#kondisi_parkir").val(),
+                janji_sewa_input: $("#janji_sewa_input").val(),
+                keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
+                lama_izin_input: $("#lama_izin_input").val(),
+                detail_kondisi_input: $("#detail_kondisi_input").val(),
+                lat: $('#lat').val(),
+                lng: $('#lng').val(), 
+                subzona: $('#subzona').val(),
+                idsubblok: $('#idsubblok').val(),
+                alamat_lengkap: $("#alamatLengkap").val(),
+                kelurahan: $("#kelurahan").val(),
+                kecamatan: $("#kecamatan").val(),
+            };
 
-        /*identitas pemohon*/
-        dataRegis[0].namaLengkap = dataInput.namaLengkap;
-        dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
-        dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
-        dataRegis[0].jabatan = dataInput.jabatan;
-        dataRegis[0].npwp = dataInput.npwp;
-        dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
-        dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
-        dataRegis[0].njop = dataInput.njop;
-        dataRegis[0].barang_jasa = dataInput.barang_jasa;
-        dataRegis[0].no_telp = dataInput.no_telp;
-        dataRegis[0].emailAktif = dataInput.emailAktif;
-        /*identitas pemohon*/
+            /*identitas pemohon*/
+            dataRegis[0].namaLengkap = dataInput.namaLengkap;
+            dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
+            dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
+            dataRegis[0].jabatan = dataInput.jabatan;
+            dataRegis[0].npwp = dataInput.npwp;
+            dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
+            dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
+            dataRegis[0].njop = dataInput.njop;
+            dataRegis[0].no_telp = dataInput.no_telp;
+            dataRegis[0].emailAktif = dataInput.emailAktif;
+            /*identitas pemohon*/
 
-        /*Data Umum Bangunan*/
-        dataRegis[0].nop = dataInput.nop;
-        dataRegis[0].luas_lahan = dataInput.luas_lahan;
-        dataRegis[0].ltb = dataInput.ltb;
-        dataRegis[0].luas_lantai = dataInput.luas_lantai;
-        dataRegis[0].luas_lantai_input = dataInput.luas_lantai_input;
-        dataRegis[0].jml_lantai = dataInput.jml_lantai;
-        dataRegis[0].status_bangunan = dataInput.status_bangunan;
-        dataRegis[0].status_milik = dataInput.status_milik;
-        dataRegis[0].nama_toko = dataInput.nama_toko;
-        dataRegis[0].kelompok = dataInput.kelompok;
-        dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
-        dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
-        dataRegis[0].alamat = dataInput.alamat;
-        dataRegis[0].lat = dataInput.lat;
-        dataRegis[0].lng = dataInput.lng;
-        dataRegis[0].subzona = dataInput.subzona;
-        dataRegis[0].idsubblok = dataInput.idsubblok;
-        dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
-        dataRegis[0].kecamatan = dataInput.kecamatan;
-        dataRegis[0].kelurahan = dataInput.kelurahan;
-        /*Data Umum Bangunan*/
+            /*Data Umum Bangunan*/
+            dataRegis[0].nop = dataInput.nop;
+            dataRegis[0].luas_lahan = dataInput.luas_lahan;
+            dataRegis[0].ltb = dataInput.ltb;
+            dataRegis[0].luas_lantai = dataInput.luas_lantai;
+            dataRegis[0].luas_lantai_input = dataInput.luas_lantai_input;
+            dataRegis[0].jml_lantai = dataInput.jml_lantai;
+            dataRegis[0].status_bangunan = dataInput.status_bangunan;
+            dataRegis[0].status_milik = dataInput.status_milik;
+            dataRegis[0].nama_toko = dataInput.nama_toko;
+            dataRegis[0].kelompok = dataInput.kelompok;
+            dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
+            dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
+            dataRegis[0].alamat = dataInput.alamat;
+            dataRegis[0].lat = dataInput.lat;
+            dataRegis[0].lng = dataInput.lng;
+            dataRegis[0].subzona = dataInput.subzona;
+            dataRegis[0].idsubblok = dataInput.idsubblok;
+            dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
+            dataRegis[0].kecamatan = dataInput.kecamatan;
+            dataRegis[0].kelurahan = dataInput.kelurahan;
+            /*Data Umum Bangunan*/
 
-        /*Administrasi Bangunan*/
-        dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
-        dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
-        /*Administrasi Bangunan*/
+            /*Administrasi Bangunan*/
+            dataRegis[0].kondisi_eksisting = dataInput.kondisi_eksisting;
+            dataRegis[0].detail_kondisi_input = dataInput.detail_kondisi_input;
+            /*Administrasi Bangunan*/
 
-        /*Informasi Kebermanfaatan Usaha*/
-        dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
-        dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
-        dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
-        dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
-        dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
-        /*Informasi Kebermanfaatan Usaha*/
+            /*Informasi Kebermanfaatan Usaha*/
+            dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
+            dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
+            dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
+            dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
+            dataRegis[0].kategori_usaha = dataInput.kategori_usaha;
+            dataRegis[0].barang_jasa = dataInput.barang_jasa;
+            dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
+            dataRegis[0].omset_perbulan = dataInput.omset_perbulan;
+            dataRegis[0].jumlah_karyawan = dataInput.jumlah_karyawan;
+            dataRegis[0].asal_karyawan = dataInput.asal_karyawan;
+            /*Informasi Kebermanfaatan Usaha*/
 
-        /*Informasi Antisipasi Dampak/Resiko*/
-        dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
-        dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
-        dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
-        dataRegis[0].slf_eksisting = dataInput.slf_eksisting;
-        dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
-        dataRegis[0].volumeSumur = dataInput.volumeSumur;
-        dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
-        dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
-        dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
-        dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
-        dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
+            /*Informasi Antisipasi Dampak/Resiko*/
+            dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
+            dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
+            dataRegis[0].imb_eksisting = dataInput.imb_eksisting;
+            dataRegis[0].slf_eksisting = dataInput.slf_eksisting;
+            dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
+            dataRegis[0].volumeSumur = dataInput.volumeSumur;
+            dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
+            dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
+            dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
+            dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
+            dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
 
-        dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
-        dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
-        /*Informasi Antisipasi Dampak/Resiko*/
-
-        localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
-        $.ajax({
-            url: BASE_URL + "ApiController/ApiPajakNPWP",
-            type: 'POST',
-            dataType: 'json',
-            data : {nik:$('#nomorInKepen').val()},
-            beforeSend:function() {
-
-            },
-            success:function(response) {
-                if (response.pesan == 'Data Tidak ditemukan') {
-                    swal({
-                        type: 'error',
-                        title: 'Data Tidak Di Temukan',
-                        showCancelButton: true,
-                    });
-                }else if (response.pesan == 'Panjang Karakter Kurang dari 15') {
-                    swal({
-                        type: 'error',
-                        title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                        showCancelButton: true,
-                    });
-                }else if (response.errorCode == '32') {
-                    swal({
-                        type: 'error',
-                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                        showCancelButton: true,
-                    });
-                }else if (response.errorCode == '99') {
-                    swal({
-                        type: 'error',
-                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                        showCancelButton: true,
-                    });
-                }else if (response.msg == 'Server Sedang Bermasasalah') {
-                    swal({
-                        type: 'error',
-                        title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
-                        showCancelButton: true,
-                    });
-                }else{
-                    for (var i =0; i < response.length; i++) {
-                        if (response[i].JNS_PAJAK == "PBB"){
-                            if (response[i].NOPD == $('#nomorObjekPajak').val()) {
-                                if (response[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
-                                   $.ajax({
-                                    url: BASE_URL + "ApiController/ApiPajakNPWP",
-                                    type: 'POST',
-                                    dataType: 'json',
-                                    data : {nik:$('#npwp_perusahaan').val()},
-                                    beforeSend:function() {
-
-                                    },
-                                    success:function(data) {
-                                        if (data.pesan == 'Data Tidak ditemukan') {
-                                            swal({
-                                                type: 'error',
-                                                title: 'Data Tidak Di Temukan',
-                                                showCancelButton: true,
-                                            });
-                                        }else if (data.pesan == 'Panjang Karakter Kurang dari 15') {
-                                            swal({
-                                                type: 'error',
-                                                title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                                                showCancelButton: true,
-                                            });
-                                        }else if (data.errorCode == '32') {
-                                            swal({
-                                                type: 'error',
-                                                title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                showCancelButton: true,
-                                            });
-                                        }else if (data.errorCode == '99') {
-                                            swal({
-                                                type: 'error',
-                                                title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                showCancelButton: true,
-                                            });
-                                        }else if (data.msg == 'Server Sedang Bermasasalah') {
-                                            swal({
-                                                type: 'error',
-                                                title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
-                                                showCancelButton: true,
-                                            });
-                                        }else{
-                                            if (data[i].JNS_PAJAK == $('#jenis_pajak').val()){
-                                                if (data[i].STATUS == "TIDAK TERDAPAT TUNGGAKAN") {
-                                                 var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
-                                                 dataRegis[0].status_npwp = '1';
-                                                 dataRegis[0].status_pbb = '1';
-                                                 localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
-                                                 $.ajax({
-                                                    url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                                                    type: 'POST',
-                                                    dataType: 'json',
-                                                    data:{dataRegist: localStorage.getItem('dataPermohonan')},
-                                                    success:function(data) {
-                                                        if (data.success) {
-                                                            e.preventDefault();
-                                                            $('.ijin').remove();
-                                                            $(summary).appendTo('.container');
-                                                            disableButtons=true;
-                                                            $('.navigation__btn').addClass('navigation__btn--disabled');
-                                                            swal({
-                                                                type: 'success',
-                                                                title: data.msg,
-                                                                showCancelButton: true
-                                                            }); 
-                                                        }else{
-                                                            swal({
-                                                                type: 'error',
-                                                                title: data.msg,
-                                                                showCancelButton: true
-                                                            });
-                                                        }
-                                                    }
+            dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
+            dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
+            /*Informasi Antisipasi Dampak/Resiko*/
+            
+            localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+            $.ajax({
+                url: BASE_URL + "ApiController/ApiPajakNPWP",
+                type: 'POST',
+                dataType: 'json',
+                data : {nik:$('#nomorInKepen').val(),nopd:$('#nomorObjekPajak').val(),jenispajak:null},
+                beforeSend:function() {
+                    $("#text-loader").html('Sedang Cek Data PBB Anda');
+                    $('#page-loader').fadeIn('slow');
+                },
+                success:function(data) {
+                    if (response.success) {
+                        $.ajax({
+                            url: BASE_URL + "ApiController/ApiPajakNPWP",
+                            type: 'POST',
+                            dataType: 'json',
+                            data : {nik:$('#npwp_perusahaan').val(),jenispajak:$('#peruntukan_toko').val()},
+                            beforeSend:function() {
+                                $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
+                                $('#page-loader').fadeIn('slow');
+                            },
+                            success:function(response) {
+                                var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                dataRegis[0].status_npwp = '1';
+                                dataRegis[0].status_pbb = '1';
+                                localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+                                if (response.success) {
+                                    $.ajax({
+                                        url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                                        beforeSend:function() {
+                                            $("#text-loader").html('Mohon Tunggu');
+                                            $('#page-loader').fadeIn('slow');
+                                        },
+                                        success:function(data) {
+                                            if (data.success) {
+                                                e.preventDefault();
+                                                $('.ijin').remove();
+                                                $(summary).appendTo('.container');
+                                                disableButtons=true;
+                                                $('.navigation__btn').addClass('navigation__btn--disabled');
+                                                $('#page-loader').fadeOut('slow'); 
+                                                swal({
+                                                    type: 'success',
+                                                    title: data.msg,
+                                                    showCancelButton: true
                                                 });
-                                             }else{
-                                                 swal({
+                                            }else{
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
                                                     type: 'error',
-                                                    title: 'Maaf Anda Tidak Bisa Membuat Izin Usaha Toko Swalayan Karena PBB Anda Belum Lunas',
-                                                    showCancelButton: true,
+                                                    title: data.msg,
+                                                    showCancelButton: true
                                                 });
-                                             }
-                                         }else{
-                                            swal({
-                                                type: 'error',
-                                                title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
-                                                showCancelButton: true,
-                                            });
+                                            }
+                                            $('#page-loader').fadeOut('slow');
                                         }
-                                    } 
-                                }
-                            });                                    
-                            }else{
-                                swal({
-                                    type: 'error',
-                                    title: 'Maaf Anda Tidak Bisa Membuat Izin Usaha Toko Swalayan Karena PBB Anda Belum Lunas',
-                                    showCancelButton: true,
-                                });
+                                    });       
+                                }else{
+                                    $('#page-loader').fadeOut('slow');
+                                    swal({
+                                        type: 'error',
+                                        title: response.msg,
+                                        showCancelButton: true
+                                    });
+                                } 
                             }
-                            }else{
-                                swal({
-                                    type: 'error',
-                                    title: 'Nomor NOPD dan NIK tidak Terdaftar di Kantor Pajak',
-                                    showCancelButton: true,
-                                });   
-                            }
+                        });
                     }else{
+                        $('#page-loader').fadeOut('slow');
                         swal({
                             type: 'error',
-                            title: 'Maaf NIK Anda Tidak Mempunyai Pajak PBB',
-                            showCancelButton: true,
+                            title: response.msg,
+                            showCancelButton: true
                         });
-                    }
-                }  
-            }
+                    }     
+                } 
+            });
         }
     });
-    }
-});
-});
     /* end konfirmasi ijin */
 
     /* animation */
