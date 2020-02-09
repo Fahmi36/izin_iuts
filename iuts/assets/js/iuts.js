@@ -32,11 +32,11 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         // }
         $('.answer__input').on('change', function(e) { 
 
-           if($(this).next().children('.answer__tick').length>0){
-              return false
-          }
-          $(this).next().append(tick)
-      });
+         if($(this).next().children('.answer__tick').length>0){
+          return false
+      }
+      $(this).next().append(tick)
+  });
         $('.backkehalaman').click(function(event) {
             localStorage.clear();
             location.reload();
@@ -51,7 +51,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         }
 
         function npwpusahachecking() {
-           $.ajax({
+         $.ajax({
             url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp_perusahaan').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
             type: 'GET',
             dataType: 'json',
@@ -80,8 +80,8 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
                 }
             }
         })
-       }
-       $('.navigation__btn--right').click(function(e){
+     }
+     $('.navigation__btn--right').click(function(e){
         // if($('.ijin__step--current input').length == 0){
         //      //console.log('input empty');
         //      return false;
@@ -454,217 +454,217 @@ $(document).on('click', '.submit__container', function(e) {
   })
     .then((result) => {
       if (result.value) {
-       var dataInput = {
+         var dataInput = {
+            /* Data Administrasi Pemohon */
+            no_token: $("#no_token").val(),
+            namaLengkap: $("#namaLengkap").val(),
+            jabatan: $("#jabatan").val(),
+            nomorInKepen: $("#nomorInKepen").val(),
+            nomorInBeru: $("#nomorInBeru").val(),
+            npwp: $("#npwp").val(),
+            alamat_perusahaan: $("#alamat_perusahaan").val(),
+            no_telp: $("#no_telp").val(),
+            emailAktif: $("#emailAktif").val(),
+            /* Data Administrasi Pemohon */
+
+            /* Data Umum Bangunan */
+            luas_lahan: $("#luasLahan").val(),
+            status_milik: $("#status_milik").val(),
+            ltb: $("#luasTapakB").val(),
+            jml_lantai: $("#jml_lantai").val(),
+            luas_bangunan: $("#luas_bangunan").val(),
+            tinggi_bangunan: $("#tinggi_bangunan").val(),
+            peruntukan_bangunan: $("#peruntukan_bangunan").val(),
+            foto_luar_bangunan: $("#foto_luar_bangunan").val(),
+            foto_dalam_bangunan: $("#foto_dalam_bangunan").val(),
+            /* Data Umum Bangunan */
+
+            /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+            kdh_zonasi: $("#kdh_zonasi").val(),
+            kdh_minimum: $("#kdh_minimum").val(),
+            kondisi_kdh: $("#kondisi_kdh").val(),
+            volumeSumur: $("#volumeSumur").val(),
+            kondisi_pertandaan_toko: $("#kondisi_pertandaan_toko").val(),
+            kondisi_sumur_r: $("#kondisi_sumur_r").val(),
+            drainase_disekeliling: $("#drainase_disekeliling").val(),
+            /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+            /* Data Keselamatan dan Keamanan */
+            rekomendasi_slf: $("#rekomendasi_slf").val(),
+            izin_dinas_pkp: $("#izin_dinas_pkp").val(),
+            izin_dinas_tkt: $("#izin_dinas_tkt").val(),
+            imb: $("#imb").val(),
+            fasilitas_penang_kebakaran: $("#fasilitas_penang_kebakaran").val(),
+            waktu_pembaruan_k_g: $("#ketersediaan_asuransi_toko").val(),
+            waktu_pembaruan_k_g: $("#waktu_pembaruan_k_g").val(),
+            /* Data Keselamatan dan Keamanan */
+
+            /* Data Kesehatan */
+            air_bersih: $("#air_bersih").val(),
+            sumber_air_bersih: $("#sumber_air_bersih").val(),
+            pengelolaan_air_kotor: $("#pengelolaan_air_kotor").val(),
+            pengelolaan_sampah: $("#pengelolaan_sampah").val(),
+            ketersediaan_listrik: $("#ketersediaan_listrik").val(),
+            /* Data Kesehatan */
+
+            /* Data Kemudahan */
+            ketersediaan_toilet: $("#ketersediaan_toilet").val(),
+            kondisi_parkir: $("#kondisi_parkir").val(),
+            /* Data Kemudahan */
+
+            /* Data Administrasi Usaha */
+            nop: $("#nomorObjekPajak").val(),
+            njop: $("#njop").val(),
+            nama_toko: $("#nama_toko").val(),
+            kelompok: $("#kelompok_usaha").val(),
+            nama_badan_usaha: $("#nama_badan_usaha").val(),
+            kategori_usaha: $("#kategori_usaha").val(),
+            omset_perbulan: $("#omset_perbulan").val(),
+            peruntukan_toko: $("#peruntukan_toko").val(),
+            status_bangunan: $("#status_bangunan").val(),
+            lat: $('#lat').val(),
+            lng: $('#lng').val(), 
+            subzona: $('#subzona').val(),
+            idsubblok: $('#idsubblok').val(),
+            alamat_lengkap: $("#alamatLengkap").val(),
+            alamat: $("#alamatPemohon").val(),
+            kelurahan: $("#kelurahan").val(),
+            kecamatan: $("#kecamatan").val(),
+            /* Data Administrasi Usaha */
+
+            /* Data Kebermanfaatan Usaha */
+            pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
+            keterlibatan_umkm: $("#keterlibatan_umkm").val(),
+            keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
+            persetujuan_warga: $("#persetujuan_warga").val(),
+            jumlah_karyawan: $("#jumlah_karyawan").val(),
+            asal_karyawan: $("#asal_karyawan").val(),
+            jumlah_atm: $("#jumlah_atm").val(),
+            jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
+            penggunaan_lahan_sekitar: $("#penggunaan_lahan_sekitar").val(),
+            /* Data Kebermanfaatan Usaha */
+
+            /* Data Antisipasi Dampak/Resiko */
+            jarak_pasar: $("#jarak_pasar").val(),
+            rencana_jalan_memadai: $("#rencana_jalan_memadai").val(),
+            jalan_eksisting_memadai: $("#jalan_eksisting_memadai").val(),
+            rekomendasi_umkm: $("#rekomendasi_umkm").val(),
+            tataruang: $("#tataruang").val(),
+            kajian_sostek: $("#kajian_sostek").val(),
+            jarak_usaha_sejenis: $("#jarak_usaha_sejenis").val(),
+            /* Data Antisipasi Dampak/Resiko */
+
+            barang_jasa: $("#barang_jasa").val(),
+            luas_lantai: $("#luasLantaiB").val(),
+            luas_lantai_input: $("#luas_lantai_input").val(),
+            jml_lantai: $("#jmlLantaiB").val(),
+            kondisi_eksisting: $("#kondisi_eksisting").val(),
+            perjanjian_sewa: $("#perjanjian_sewa").val(),
+            barang_jasa: $("#barang_jasa").val(),
+            imb_eksisting: $("#imb_eksisting").val(),
+            slf_eksisting: $("#slf_eksisting").val(),
+            janji_sewa_input: $("#janji_sewa_input").val(),
+            lama_izin_input: $("#lama_izin_input").val(),
+            detail_kondisi_input: $("#detail_kondisi_input").val(),
+        };
+
         /* Data Administrasi Pemohon */
-        no_token: $("#no_token").val(),
-        namaLengkap: $("#namaLengkap").val(),
-        jabatan: $("#jabatan").val(),
-        nomorInKepen: $("#nomorInKepen").val(),
-        nomorInBeru: $("#nomorInBeru").val(),
-        npwp: $("#npwp").val(),
-        alamat_perusahaan: $("#alamat_perusahaan").val(),
-        no_telp: $("#no_telp").val(),
-        emailAktif: $("#emailAktif").val(),
-        /* Data Administrasi Pemohon */
+        dataRegis[0].no_token = dataInput.no_token;
+        dataRegis[0].namaLengkap = dataInput.namaLengkap;
+        dataRegis[0].jabatan = dataInput.jabatan;
+        dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
+        dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
+        dataRegis[0].npwp = dataInput.npwp;
+        dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
+        dataRegis[0].no_telp = dataInput.no_telp;
+        dataRegis[0].emailAktif = dataInput.emailAktif;
+        /*identitas pemohon*/
 
         /* Data Umum Bangunan */
-        luas_lahan: $("#luasLahan").val(),
-        status_milik: $("#status_milik").val(),
-        ltb: $("#luasTapakB").val(),
-        jml_lantai: $("#jml_lantai").val(),
-        luas_bangunan: $("#luas_bangunan").val(),
-        tinggi_bangunan: $("#tinggi_bangunan").val(),
-        peruntukan_bangunan: $("#peruntukan_bangunan").val(),
-        foto_luar_bangunan: $("#foto_luar_bangunan").val(),
-        foto_dalam_bangunan: $("#foto_dalam_bangunan").val(),
+        dataRegis[0].luas_lahan = dataInput.luas_lahan;
+        dataRegis[0].status_milik = dataInput.status_milik;
+        dataRegis[0].ltb = dataInput.ltb;
+        dataRegis[0].jml_lantai = dataInput.jml_lantai;
+        dataRegis[0].luas_bangunan = dataInput.luas_bangunan;
+        dataRegis[0].tinggi_bangunan = dataInput.tinggi_bangunan;
+        dataRegis[0].peruntukan_bangunan = dataInput.peruntukan_bangunan;
+        dataRegis[0].foto_luar_bangunan = dataInput.foto_luar_bangunan;
+        dataRegis[0].foto_dalam_bangunan = dataInput.foto_dalam_bangunan;
         /* Data Umum Bangunan */
 
         /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-        kdh_zonasi: $("#kdh_zonasi").val(),
-        kdh_minimum: $("#kdh_minimum").val(),
-        kondisi_kdh: $("#kondisi_kdh").val(),
-        volumeSumur: $("#volumeSumur").val(),
-        kondisi_pertandaan_toko: $("#kondisi_pertandaan_toko").val(),
-        kondisi_sumur_r: $("#kondisi_sumur_r").val(),
-        drainase_disekeliling: $("#drainase_disekeliling").val(),
+        dataRegis[0].kdh_zonasi = dataInput.kdh_zonasi;
+        dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
+        dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
+        dataRegis[0].volumeSumur = dataInput.volumeSumur;
+        dataRegis[0].kondisi_pertandaan_toko = dataInput.kondisi_pertandaan_toko;
+        dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
+        dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
         /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
 
         /* Data Keselamatan dan Keamanan */
-        rekomendasi_slf: $("#rekomendasi_slf").val(),
-        izin_dinas_pkp: $("#izin_dinas_pkp").val(),
-        izin_dinas_tkt: $("#izin_dinas_tkt").val(),
-        imb: $("#imb").val(),
-        fasilitas_penang_kebakaran: $("#fasilitas_penang_kebakaran").val(),
-        waktu_pembaruan_k_g: $("#ketersediaan_asuransi_toko").val(),
-        waktu_pembaruan_k_g: $("#waktu_pembaruan_k_g").val(),
-        /* Data Keselamatan dan Keamanan */
+        dataRegis[0].rekomendasi_slf = dataInput.rekomendasi_slf;
+        dataRegis[0].izin_dinas_pkp = dataInput.izin_dinas_pkp;
+        dataRegis[0].izin_dinas_tkt = dataInput.izin_dinas_tkt;
+        dataRegis[0].imb = dataInput.imb;
+        dataRegis[0].fasilitas_penang_kebakaran = dataInput.fasilitas_penang_kebakaran;
+        dataRegis[0].ketersediaan_asuransi_toko = dataInput.ketersediaan_asuransi_toko;
+        dataRegis[0].waktu_pembaruan_k_g = dataInput.waktu_pembaruan_k_g;
+        /* Data Keselamatan dan Keamanan */    
 
         /* Data Kesehatan */
-        air_bersih: $("#air_bersih").val(),
-        sumber_air_bersih: $("#sumber_air_bersih").val(),
-        pengelolaan_air_kotor: $("#pengelolaan_air_kotor").val(),
-        pengelolaan_sampah: $("#pengelolaan_sampah").val(),
-        ketersediaan_listrik: $("#ketersediaan_listrik").val(),
+        dataRegis[0].air_bersih = dataInput.air_bersih;
+        dataRegis[0].sumber_air_bersih = dataInput.sumber_air_bersih;
+        dataRegis[0].pengelolaan_air_kotor = dataInput.pengelolaan_air_kotor;
+        dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
+        dataRegis[0].ketersediaan_listrik = dataInput.ketersediaan_listrik;
         /* Data Kesehatan */
 
         /* Data Kemudahan */
-        ketersediaan_toilet: $("#ketersediaan_toilet").val(),
-        kondisi_parkir: $("#kondisi_parkir").val(),
+        dataRegis[0].ketersediaan_toilet = dataInput.ketersediaan_toilet;
+        dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
         /* Data Kemudahan */
 
         /* Data Administrasi Usaha */
-        nop: $("#nomorObjekPajak").val(),
-        njop: $("#njop").val(),
-        nama_toko: $("#nama_toko").val(),
-        kelompok: $("#kelompok_usaha").val(),
-        nama_badan_usaha: $("#nama_badan_usaha").val(),
-        kategori_usaha: $("#kategori_usaha").val(),
-        omset_perbulan: $("#omset_perbulan").val(),
-        peruntukan_toko: $("#peruntukan_toko").val(),
-        status_bangunan: $("#status_bangunan").val(),
-        lat: $('#lat').val(),
-        lng: $('#lng').val(), 
-        subzona: $('#subzona').val(),
-        idsubblok: $('#idsubblok').val(),
-        alamat_lengkap: $("#alamatLengkap").val(),
-        alamat: $("#alamatPemohon").val(),
-        kelurahan: $("#kelurahan").val(),
-        kecamatan: $("#kecamatan").val(),
-        /* Data Administrasi Usaha */
+        dataRegis[0].nop = dataInput.nop;
+        dataRegis[0].njop = dataInput.njop;
+        dataRegis[0].nama_toko = dataInput.nama_toko;
+        dataRegis[0].kelompok = dataInput.kelompok;
+        dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
+        dataRegis[0].kategori_usaha = dataInput.kategori_usaha;
+        dataRegis[0].omset_perbulan = dataInput.omset_perbulan;
+        dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
+        dataRegis[0].status_bangunan = dataInput.status_bangunan;
+        dataRegis[0].alamat = dataInput.alamat;
+        dataRegis[0].lat = dataInput.lat;
+        dataRegis[0].lng = dataInput.lng;
+        dataRegis[0].subzona = dataInput.subzona;
+        dataRegis[0].idsubblok = dataInput.idsubblok;
+        dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
+        dataRegis[0].kecamatan = dataInput.kecamatan;
+        dataRegis[0].kelurahan = dataInput.kelurahan;
 
         /* Data Kebermanfaatan Usaha */
-        pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
-        keterlibatan_umkm: $("#keterlibatan_umkm").val(),
-        keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
-        persetujuan_warga: $("#persetujuan_warga").val(),
-        jumlah_karyawan: $("#jumlah_karyawan").val(),
-        asal_karyawan: $("#asal_karyawan").val(),
-        jumlah_atm: $("#jumlah_atm").val(),
-        jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
-        penggunaan_lahan_sekitar: $("#penggunaan_lahan_sekitar").val(),
+        dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
+        dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
+        dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
+        dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
+        dataRegis[0].jumlah_karyawan = dataInput.jumlah_karyawan;
+        dataRegis[0].asal_karyawan = dataInput.asal_karyawan;
+        dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
+        dataRegis[0].jumlah_pengunjung_b = dataInput.jumlah_pengunjung_b;
+        dataRegis[0].penggunaan_lahan_sekitar = dataInput.penggunaan_lahan_sekitar;
         /* Data Kebermanfaatan Usaha */
 
         /* Data Antisipasi Dampak/Resiko */
-        jarak_pasar: $("#jarak_pasar").val(),
-        rencana_jalan_memadai: $("#rencana_jalan_memadai").val(),
-        jalan_eksisting_memadai: $("#jalan_eksisting_memadai").val(),
-        rekomendasi_umkm: $("#rekomendasi_umkm").val(),
-        tataruang: $("#tataruang").val(),
-        kajian_sostek: $("#kajian_sostek").val(),
-        jarak_usaha_sejenis: $("#jarak_usaha_sejenis").val(),
+        dataRegis[0].jarak_pasar = dataInput.jarak_pasar;
+        dataRegis[0].rencana_jalan_memadai = dataInput.rencana_jalan_memadai;
+        dataRegis[0].jalan_eksisting_memadai = dataInput.jalan_eksisting_memadai;
+        dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
+        dataRegis[0].tataruang = dataInput.tataruang;
+        dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
+        dataRegis[0].jarak_usaha_sejenis = dataInput.jarak_usaha_sejenis;
         /* Data Antisipasi Dampak/Resiko */
-
-        barang_jasa: $("#barang_jasa").val(),
-        luas_lantai: $("#luasLantaiB").val(),
-        luas_lantai_input: $("#luas_lantai_input").val(),
-        jml_lantai: $("#jmlLantaiB").val(),
-        kondisi_eksisting: $("#kondisi_eksisting").val(),
-        perjanjian_sewa: $("#perjanjian_sewa").val(),
-        barang_jasa: $("#barang_jasa").val(),
-        imb_eksisting: $("#imb_eksisting").val(),
-        slf_eksisting: $("#slf_eksisting").val(),
-        janji_sewa_input: $("#janji_sewa_input").val(),
-        lama_izin_input: $("#lama_izin_input").val(),
-        detail_kondisi_input: $("#detail_kondisi_input").val(),
-    };
-
-    /* Data Administrasi Pemohon */
-    dataRegis[0].no_token = dataInput.no_token;
-    dataRegis[0].namaLengkap = dataInput.namaLengkap;
-    dataRegis[0].jabatan = dataInput.jabatan;
-    dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
-    dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
-    dataRegis[0].npwp = dataInput.npwp;
-    dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
-    dataRegis[0].no_telp = dataInput.no_telp;
-    dataRegis[0].emailAktif = dataInput.emailAktif;
-    /*identitas pemohon*/
-
-    /* Data Umum Bangunan */
-    dataRegis[0].luas_lahan = dataInput.luas_lahan;
-    dataRegis[0].status_milik = dataInput.status_milik;
-    dataRegis[0].ltb = dataInput.ltb;
-    dataRegis[0].jml_lantai = dataInput.jml_lantai;
-    dataRegis[0].luas_bangunan = dataInput.luas_bangunan;
-    dataRegis[0].tinggi_bangunan = dataInput.tinggi_bangunan;
-    dataRegis[0].peruntukan_bangunan = dataInput.peruntukan_bangunan;
-    dataRegis[0].foto_luar_bangunan = dataInput.foto_luar_bangunan;
-    dataRegis[0].foto_dalam_bangunan = dataInput.foto_dalam_bangunan;
-    /* Data Umum Bangunan */
-    
-    /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-    dataRegis[0].kdh_zonasi = dataInput.kdh_zonasi;
-    dataRegis[0].kdh_minimum = dataInput.kdh_minimum;
-    dataRegis[0].kondisi_kdh = dataInput.kondisi_kdh;
-    dataRegis[0].volumeSumur = dataInput.volumeSumur;
-    dataRegis[0].kondisi_pertandaan_toko = dataInput.kondisi_pertandaan_toko;
-    dataRegis[0].kondisi_sumur_r = dataInput.kondisi_sumur_r;
-    dataRegis[0].drainase_disekeliling = dataInput.drainase_disekeliling;
-    /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-    
-    /* Data Keselamatan dan Keamanan */
-    dataRegis[0].rekomendasi_slf = dataInput.rekomendasi_slf;
-    dataRegis[0].izin_dinas_pkp = dataInput.izin_dinas_pkp;
-    dataRegis[0].izin_dinas_tkt = dataInput.izin_dinas_tkt;
-    dataRegis[0].imb = dataInput.imb;
-    dataRegis[0].fasilitas_penang_kebakaran = dataInput.fasilitas_penang_kebakaran;
-    dataRegis[0].ketersediaan_asuransi_toko = dataInput.ketersediaan_asuransi_toko;
-    dataRegis[0].waktu_pembaruan_k_g = dataInput.waktu_pembaruan_k_g;
-    /* Data Keselamatan dan Keamanan */    
-
-    /* Data Kesehatan */
-    dataRegis[0].air_bersih = dataInput.air_bersih;
-    dataRegis[0].sumber_air_bersih = dataInput.sumber_air_bersih;
-    dataRegis[0].pengelolaan_air_kotor = dataInput.pengelolaan_air_kotor;
-    dataRegis[0].pengelolaan_sampah = dataInput.pengelolaan_sampah;
-    dataRegis[0].ketersediaan_listrik = dataInput.ketersediaan_listrik;
-    /* Data Kesehatan */
-
-    /* Data Kemudahan */
-    dataRegis[0].ketersediaan_toilet = dataInput.ketersediaan_toilet;
-    dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
-    /* Data Kemudahan */
-
-    /* Data Administrasi Usaha */
-    dataRegis[0].nop = dataInput.nop;
-    dataRegis[0].njop = dataInput.njop;
-    dataRegis[0].nama_toko = dataInput.nama_toko;
-    dataRegis[0].kelompok = dataInput.kelompok;
-    dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
-    dataRegis[0].kategori_usaha = dataInput.kategori_usaha;
-    dataRegis[0].omset_perbulan = dataInput.omset_perbulan;
-    dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
-    dataRegis[0].status_bangunan = dataInput.status_bangunan;
-    dataRegis[0].alamat = dataInput.alamat;
-    dataRegis[0].lat = dataInput.lat;
-    dataRegis[0].lng = dataInput.lng;
-    dataRegis[0].subzona = dataInput.subzona;
-    dataRegis[0].idsubblok = dataInput.idsubblok;
-    dataRegis[0].alamat_lengkap = dataInput.alamat_lengkap;
-    dataRegis[0].kecamatan = dataInput.kecamatan;
-    dataRegis[0].kelurahan = dataInput.kelurahan;
-
-    /* Data Kebermanfaatan Usaha */
-    dataRegis[0].pemutakhiran_pbb = dataInput.pemutakhiran_pbb;
-    dataRegis[0].keterlibatan_umkm = dataInput.keterlibatan_umkm;
-    dataRegis[0].keterlibatan_umkm_input = dataInput.keterlibatan_umkm_input;
-    dataRegis[0].persetujuan_warga = dataInput.persetujuan_warga;
-    dataRegis[0].jumlah_karyawan = dataInput.jumlah_karyawan;
-    dataRegis[0].asal_karyawan = dataInput.asal_karyawan;
-    dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
-    dataRegis[0].jumlah_pengunjung_b = dataInput.jumlah_pengunjung_b;
-    dataRegis[0].penggunaan_lahan_sekitar = dataInput.penggunaan_lahan_sekitar;
-    /* Data Kebermanfaatan Usaha */
-
-    /* Data Antisipasi Dampak/Resiko */
-    dataRegis[0].jarak_pasar = dataInput.jarak_pasar;
-    dataRegis[0].rencana_jalan_memadai = dataInput.rencana_jalan_memadai;
-    dataRegis[0].jalan_eksisting_memadai = dataInput.jalan_eksisting_memadai;
-    dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
-    dataRegis[0].tataruang = dataInput.tataruang;
-    dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
-    dataRegis[0].jarak_usaha_sejenis = dataInput.jarak_usaha_sejenis;
-    /* Data Antisipasi Dampak/Resiko */
 
             // dataRegis[0].barang_jasa = dataInput.barang_jasa;
             // dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
@@ -758,8 +758,10 @@ $(document).on('click', '.submit__container', function(e) {
                     }     
                 } 
             });
-}
+    }
 });
+});
+
 /* end konfirmasi ijin */
 
 /* animation */
