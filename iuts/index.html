@@ -59,31 +59,45 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label">Nama Penanggung Jawab :</label>
+            <label for="statusPemohon" class="col-md-6 col-form-label">Status Pemohon :</label>
+            <div class="col-md-6">
+              <select required="" onchange="statuspemohon();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="Perorangan">Perorangan</option>
+                <option value="Perusahaan">Perusahaan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="namaLengkap" class="col-md-6 col-form-label" id="np" style="display: none;">Nama Perusahaan :</label>
+            <label for="namaLengkap" class="col-md-6 col-form-label" id="npj">Nama Penanggung Jawab :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
             </div>
           </div>
-          <div class="form-group row">
+          <div class="form-group row" id="jabatan_row" style="display: none;">
             <label for="jabatan" class="col-md-6 col-form-label">Jabatan :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="nomorInKepen" class="col-md-6 col-form-label">NIK Penanggung Jawab :</label>
+            <label for="namaLengkap" class="col-md-6 col-form-label" id="nikD" style="display: none;">NIK Direktur :</label>
+            <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ">NIK Penanggung Jawab :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="nomorInBeru" class="col-md-6 col-form-label">NIB Penanggung Jawab :</label>
+            <label for="namaLengkap" class="col-md-6 col-form-label" id="nibP" style="display: none;">NIB Perusahaan :</label>
+            <label for="nomorInBeru" class="col-md-6 col-form-label" id="nibPJ">NIB Penanggung Jawab :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="npwp" class="col-md-6 col-form-label">NPWP Penanggung Jawab:</label>
+            <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
+            <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ">NPWP Penanggung Jawab :</label>
             <div class="col-md-6">
               <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
             </div>
@@ -119,7 +133,7 @@
           <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Kepemilikan Lahan :</label>
             <div class="col-md-6">
-              <select required="" aria-label="statusBangunan" class="text-center form-control" id="status_milik" name="status_kepem_lahan">
+              <select required="" aria-label="statusBangunan" class="text-center form-control" id="status_pemohon" name="status_kepem_lahan">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                 <option value="Hak Milik">Hak Milik</option>
                 <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
@@ -599,6 +613,18 @@
             </div>
           </div>
           <div class="form-group row">
+            <label for="statusKepUsaha" class="col-md-6 col-form-label">Status Kepemilikan Usaha :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="statusKepUsaha" class="text-center form-control" id="status_milik_usaha" name="status_milik_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Usaha milik Asing</option>
+                <option value="2">100% Badan Usaha</option>
+                <option value="3">Sharing Modal dan Profit dengan Badan Usaha</option>
+                <option value="4">100% milik Warga</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
             <label for="penggunaanLahanSekitar" class="col-md-6 col-form-label">Penggunaan Lahan Sekitar :</label>
             <div class="col-md-6">
               <select required="" aria-label="jarakPasar" class="text-center form-control" id="penggunaan_lahan_sekitar" name="penggunaan_lahan_sekitar">
@@ -688,41 +714,46 @@
                       </tr>
                       <tr>
                         <th scope="row">2</th>
+                        <td>Status Pemohon</td>
+                        <td id="statusPemohon"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
                         <td>Nama Penanggung Jawab</td>
                         <td id="nama"></td>
                       </tr>
                       <tr>
-                        <th scope="row">3</th>
+                        <th scope="row">4</th>
                         <td>Jabatan</td>
                         <td id="jabatanlocal"></td>
                       </tr>
                       <tr> 
-                        <th scope="row">4</th>
+                        <th scope="row">5</th>
                         <td>NIK Penanggung Jawab</td>
                         <td id="nik"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
+                        <th scope="row">6</th>
                         <td>NIB Penanggung Jawab</td>
                         <td id="nib"></td>
                       </tr>
                       <tr>
-                        <th scope="row">6</th>
+                        <th scope="row">7</th>
                         <td>NPWP Penanggung Jawab</td>
                         <td id="npwplocal"></td>
                       </tr>
                       <tr>
-                        <th scope="row">7</th>
+                        <th scope="row">8</th>
                         <td>Alamat Perusahaan</td>
                         <td id="alamatperusahaan"></td>
                       </tr>
                       <tr>
-                        <th scope="row">8</th>
+                        <th scope="row">9</th>
                         <td>Nomor telepon/fax</td>
                         <td id="nomortelp"></td>
                       </tr>
                       <tr>
-                        <th scope="row">9</th>
+                        <th scope="row">10</th>
                         <td>Email</td>
                         <td id="email"></td>
                       </tr>  
@@ -1145,6 +1176,11 @@
                       </tr>
                       <tr>
                         <th scope="row">8</th>
+                        <td>Status Kepemilikan Usaha</td>
+                        <td id="status_mlk_ush_summary"></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
                         <td>Penggunaan Lahan Sekitar</td>
                         <td id="peng_lahan_s_summary"></td>
                       </tr>

@@ -5,6 +5,19 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
     // var BASE_URL = 'http://localhost/rest_api_iuts/';
     var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
+    function statuspemohon() {
+        if ($("#status_pemohon option:selected").val() == "Perorangan") {
+            $("#jabatan_row").removeAttr('style');
+        }else{
+            $("#nikD").removeAttr('style');
+            $("#nikPJ").attr('style', 'display:none');
+            $("#nibP").removeAttr('style');
+            $("#nibPJ").attr('style', 'display:none');
+            $("#npwpP").removeAttr('style');
+            $("#npwpPJ").attr('style', 'display:none');
+            $("#jabatan_row").attr('style', 'display:none');
+        }
+    }
     function kondisieksis() {
         if ($("#kondisi_eksisting option:selected").val() != 1 &&  $("#kondisi_eksisting option:selected").val() != 2) {
             $("#kondisieksis").removeAttr('style');
@@ -90,6 +103,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
 
         /* Data Administrasi Pemohon */
         localStorage.setItem("no_token", $("#no_token").val());
+        localStorage.setItem("status_pemohon", $("#status_pemohon").val());
         localStorage.setItem("namapemohon", $("#namaLengkap").val());
         localStorage.setItem("jabatan", $("#jabatan").val());
         localStorage.setItem("nik", $("#nomorInKepen").val());
@@ -100,6 +114,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("email", $("#emailAktif").val());
 
         var no_token = localStorage.getItem('no_token');
+        var status_pemohon = localStorage.getItem('status_pemohon');
         var nama = localStorage.getItem('namapemohon');
         var jabatan = localStorage.getItem('jabatan');
         var nik = localStorage.getItem('nik');
@@ -110,6 +125,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         var email = localStorage.getItem('email');
 
         $("#nomorToken").text(no_token);
+        $("#statusPemohon").text(status_pemohon);
         $("#nama").text(nama);
         $("#jabatanlocal").text(jabatan);
         $("#nik").text(nik);
@@ -279,6 +295,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("asal_karyawan", $("#asal_karyawan option:selected").text());
         localStorage.setItem("jumlah_atm", $("#jumlah_atm").val());
         localStorage.setItem("jumlah_pengunjung_b", $("#jumlah_pengunjung_b").val());
+        localStorage.setItem("status_milik_usaha", $("#status_milik_usaha option:selected").text());
         localStorage.setItem("penggunaan_lahan_sekitar", $("#penggunaan_lahan_sekitar option:selected").text());
 
         var pemutakhiran_pbb = localStorage.getItem('pemutakhiran_pbb');
@@ -289,6 +306,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         var asal_karyawan = localStorage.getItem('asal_karyawan');
         var jumlah_atm = localStorage.getItem('jumlah_atm');
         var jumlah_pengunjung_b = localStorage.getItem('jumlah_pengunjung_b');
+        var status_milik_usaha = localStorage.getItem('status_milik_usaha');
         var penggunaan_lahan_sekitar = localStorage.getItem('penggunaan_lahan_sekitar');
 
         $("#pbb_summary").text(pemutakhiran_pbb);
@@ -298,6 +316,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         $("#asal_karyawan_summary").text(asal_karyawan);
         $("#jumlah_atm_summary").text(jumlah_atm);
         $("#jumlah_pengunjung_summary").text(jumlah_pengunjung_b);
+        $("#status_mlk_ush_summary").text(status_milik_usaha);
         $("#peng_lahan_s_summary").text(penggunaan_lahan_sekitar);
         /* Data Kebermanfaatan Usaha */
 
@@ -457,6 +476,7 @@ $(document).on('click', '.submit__container', function(e) {
          var dataInput = {
             /* Data Administrasi Pemohon */
             no_token: $("#no_token").val(),
+            status_pemohon: $("#status_pemohon").val(),
             namaLengkap: $("#namaLengkap").val(),
             jabatan: $("#jabatan").val(),
             nomorInKepen: $("#nomorInKepen").val(),
@@ -541,6 +561,7 @@ $(document).on('click', '.submit__container', function(e) {
             asal_karyawan: $("#asal_karyawan").val(),
             jumlah_atm: $("#jumlah_atm").val(),
             jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
+            status_milik_usaha: $("#status_milik_usaha").val(),
             penggunaan_lahan_sekitar: $("#penggunaan_lahan_sekitar").val(),
             /* Data Kebermanfaatan Usaha */
 
@@ -570,6 +591,7 @@ $(document).on('click', '.submit__container', function(e) {
 
         /* Data Administrasi Pemohon */
         dataRegis[0].no_token = dataInput.no_token;
+        dataRegis[0].status_pemohon = dataInput.status_pemohon;
         dataRegis[0].namaLengkap = dataInput.namaLengkap;
         dataRegis[0].jabatan = dataInput.jabatan;
         dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
@@ -653,6 +675,7 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].asal_karyawan = dataInput.asal_karyawan;
         dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
         dataRegis[0].jumlah_pengunjung_b = dataInput.jumlah_pengunjung_b;
+        dataRegis[0].status_milik_usaha = dataInput.status_milik_usaha;
         dataRegis[0].penggunaan_lahan_sekitar = dataInput.penggunaan_lahan_sekitar;
         /* Data Kebermanfaatan Usaha */
 
@@ -758,7 +781,7 @@ $(document).on('click', '.submit__container', function(e) {
                     }     
                 } 
             });
-    }
+}
 });
 });
 
