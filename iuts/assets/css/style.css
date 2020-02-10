@@ -15,6 +15,24 @@
       overflow-x: hidden;
     }
 
+    textarea:focus, 
+    select:focus,
+    textarea.form-control:focus, 
+    input.form-control:focus, 
+    input[type=text]:focus, 
+    input[type=password]:focus, 
+    input[type=email]:focus, 
+    input[type=number]:focus, 
+    [type=text].form-control:focus, 
+    [type=password].form-control:focus, 
+    [type=email].form-control:focus, 
+    [type=tel].form-control:focus, 
+    [contenteditable].form-control:focus {
+      box-shadow: inset 0 -1px 0 #ddd;
+      outline: none !important;
+      border:solid 1px #fe6937;
+    }
+
     #canvas {
       position:absolute;
       left:0;
@@ -614,7 +632,7 @@
 }
 .imagePreview {
   width: 100%;
-  height: 180px;
+  height: 130px;
   background-position: center center;
   background:url(http://cliquecities.com/assets/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg) center center no-repeat;
   background-color:#fff;
@@ -624,13 +642,36 @@
   border-radius: 0.25rem 0.25rem 0 0;
   border: 1px solid #ced4da;
 }
-#img-luar-bangunan {
-  display: none;
-}
-#img-dalam-bangunan {
-  display: none;
-}
 .imgUp
 {
   margin-bottom:15px;
+}
+.del
+{
+  position:absolute;
+  top:0px;
+  right:15px;
+  width:30px;
+  height:30px;
+  text-align:center;
+  line-height:30px !important;
+  color: #fff;
+  background-color: rgba(0,0,0,0.3);
+  cursor:pointer;
+}
+.imgAdd, .imgAddDalam{
+  width: 30%;
+  height: 40px;
+  box-shadow:0px 0px 2px 1px rgba(0,0,0,0.2);
+  text-align:center;
+  line-height:30px;
+  margin-top: 10px;
+  margin-left: 15px;
+  cursor:pointer;
+}
+.imgUpLuar, .imgUpDalam{
+  margin:10px 0 10px 0;
+}
+.imgUpLuar label, .imgUpDalam label{
+  margin-top: -4px !important;
 }

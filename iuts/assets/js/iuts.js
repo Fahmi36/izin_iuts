@@ -25,6 +25,20 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
             $("#kondisieksis").attr('style', 'display:none');
         }
     }
+    function statusbangunan() {
+        if ($("#status_bangunan option:selected").val() == "Sewa") {
+            $("#rowSewa").removeAttr('style');
+        }else{
+            $("#rowSewa").attr('style', 'display:none');
+        }
+    }
+    function kelompokusaha() {
+        if ($("#kelompok_usaha option:selected").val() == "8") {
+            $("#rowKelompok").removeAttr('style');
+        }else{
+            $("#rowKelompok").attr('style', 'display:none');
+        }
+    }
     function lamaizin() {
         $("#lama_izin_row").removeAttr('style');
     }
@@ -102,7 +116,6 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.clear();
 
         /* Data Administrasi Pemohon */
-        localStorage.setItem("no_token", $("#no_token").val());
         localStorage.setItem("status_pemohon", $("#status_pemohon").val());
         localStorage.setItem("namapemohon", $("#namaLengkap").val());
         localStorage.setItem("jabatan", $("#jabatan").val());
@@ -113,7 +126,6 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("no_telp", $("#no_telp").val());
         localStorage.setItem("email", $("#emailAktif").val());
 
-        var no_token = localStorage.getItem('no_token');
         var status_pemohon = localStorage.getItem('status_pemohon');
         var nama = localStorage.getItem('namapemohon');
         var jabatan = localStorage.getItem('jabatan');
@@ -124,7 +136,6 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         var no_telp = localStorage.getItem('no_telp');
         var email = localStorage.getItem('email');
 
-        $("#nomorToken").text(no_token);
         $("#statusPemohon").text(status_pemohon);
         $("#nama").text(nama);
         $("#jabatanlocal").text(jabatan);
@@ -196,6 +207,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
 
         /* Data Keselamatan dan Keamanan */
         localStorage.setItem("rekomendasi_slf", $("#rekomendasi_slf option:selected").text());
+        localStorage.setItem("slf", $("#slf option:selected").text());
         localStorage.setItem("izin_dinas_pkp", $("#izin_dinas_pkp option:selected").text());
         localStorage.setItem("izin_dinas_tkt", $("#izin_dinas_tkt option:selected").text());
         localStorage.setItem("imb", $("#imb option:selected").text());
@@ -204,6 +216,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("waktu_pembaruan_k_g", $("#waktu_pembaruan_k_g option:selected").text());
 
         var rekomendasi_slf = localStorage.getItem('rekomendasi_slf');
+        var slf = localStorage.getItem('slf');
         var izin_dinas_pkp = localStorage.getItem('izin_dinas_pkp');
         var izin_dinas_tkt = localStorage.getItem('izin_dinas_tkt');
         var imb = localStorage.getItem('imb');
@@ -212,6 +225,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         var waktu_pembaruan_k_g = localStorage.getItem('waktu_pembaruan_k_g');
 
         $("#rekomendasi_slf_summary").text(rekomendasi_slf);
+        $("#slf_summary").text(slf);
         $("#izin_pkp_summary").text(izin_dinas_pkp);
         $("#izin_tkt_summary").text(izin_dinas_tkt);
         $("#imb_summary").text(imb);
@@ -256,33 +270,37 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("njop", $("#njop").val());
         localStorage.setItem("nama_toko", $("#nama_toko").val());
         localStorage.setItem("kelompok_usaha", $("#kelompok_usaha option:selected").text());
+        localStorage.setItem("kelompok_input", $("#kelompok_input").val());
         localStorage.setItem("nama_badan_usaha", $("#nama_badan_usaha").val());
         localStorage.setItem("kategori_usaha", $("#kategori_usaha option:selected").text());
         localStorage.setItem("omset_perbulan", $("#omset_perbulan").val());
         localStorage.setItem("peruntukan_toko", $("#peruntukan_toko").val());
-        localStorage.setItem("status_bangunan", $("#status_bangunan").val());
+        localStorage.setItem("status_bangunan", $("#status_bangunan option:selected").text());
+        localStorage.setItem("lama_sewa_input", $("#lama_sewa_input").val());
         localStorage.setItem("alamat_lengkap", $("#alamatLengkap").val());
 
         var nop = localStorage.getItem('nop');
         var njop = localStorage.getItem('njop');
         var nama_toko = localStorage.getItem('nama_toko');
         var kelompok_usaha = localStorage.getItem('kelompok_usaha');
+        var kelompok_input = localStorage.getItem('kelompok_input');
         var nama_badan_usaha = localStorage.getItem('nama_badan_usaha');
         var kategori_usaha = localStorage.getItem('kategori_usaha');
         var omset_perbulan = localStorage.getItem('omset_perbulan');
         var peruntukan_toko = localStorage.getItem('peruntukan_toko');
         var status_bangunan = localStorage.getItem('status_bangunan');
+        var lama_sewa_input = localStorage.getItem('lama_sewa_input');
         var alamat = localStorage.getItem('alamat_lengkap');
 
         $("#nop").text(nop);
         $("#njoplocal").text(njop);
         $("#namatoko").text(nama_toko);
-        $("#kelompokusaha").text(kelompok_usaha);
+        $("#kelompokusaha").html(kelompok_usaha+'<br>'+kelompok_input);
         $("#namausaha").text(nama_badan_usaha);
         $("#kategori_usaha_summary").text(kategori_usaha);
         $("#omset_perbulan_summary").text(omset_perbulan);
         $("#peruntukan_toko_summary").text(peruntukan_toko);
-        $("#statusbangunan").text(status_bangunan);
+        $("#statusbangunan_summary").html(status_bangunan+'<br>'+lama_sewa_input);
         $("#alamatlocal").text(alamat);
         /* Data Administrasi Usaha */
 
@@ -296,7 +314,6 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         localStorage.setItem("jumlah_atm", $("#jumlah_atm").val());
         localStorage.setItem("jumlah_pengunjung_b", $("#jumlah_pengunjung_b").val());
         localStorage.setItem("status_milik_usaha", $("#status_milik_usaha option:selected").text());
-        localStorage.setItem("penggunaan_lahan_sekitar", $("#penggunaan_lahan_sekitar option:selected").text());
 
         var pemutakhiran_pbb = localStorage.getItem('pemutakhiran_pbb');
         var keterlibatan_umkm = localStorage.getItem('keterlibatan_umkm');
@@ -307,7 +324,6 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         var jumlah_atm = localStorage.getItem('jumlah_atm');
         var jumlah_pengunjung_b = localStorage.getItem('jumlah_pengunjung_b');
         var status_milik_usaha = localStorage.getItem('status_milik_usaha');
-        var penggunaan_lahan_sekitar = localStorage.getItem('penggunaan_lahan_sekitar');
 
         $("#pbb_summary").text(pemutakhiran_pbb);
         $("#keterlibatan_umkm_summary").html(keterlibatan_umkm+'<br>'+keterlibatan_umkm_input);
@@ -317,33 +333,17 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         $("#jumlah_atm_summary").text(jumlah_atm);
         $("#jumlah_pengunjung_summary").text(jumlah_pengunjung_b);
         $("#status_mlk_ush_summary").text(status_milik_usaha);
-        $("#peng_lahan_s_summary").text(penggunaan_lahan_sekitar);
         /* Data Kebermanfaatan Usaha */
 
         /* Data Antisipasi Dampak/Resiko */
-        localStorage.setItem("jarak_pasar", $("#jarak_pasar option:selected").text());
-        localStorage.setItem("rencana_jalan_memadai", $("#rencana_jalan_memadai option:selected").text());
-        localStorage.setItem("jalan_eksisting_memadai", $("#jalan_eksisting_memadai option:selected").text());
         localStorage.setItem("rekomendasi_umkm", $("#rekomendasi_umkm option:selected").text());
-        localStorage.setItem("tataruang", $("#tataruang option:selected").text());
         localStorage.setItem("kajian_sostek", $("#kajian_sostek option:selected").text());
-        localStorage.setItem("jarak_usaha_sejenis", $("#jarak_usaha_sejenis option:selected").text());
 
-        var jarak_pasar = localStorage.getItem('jarak_pasar');
-        var rencana_jalan_memadai = localStorage.getItem('rencana_jalan_memadai');
-        var jalan_eksisting_memadai = localStorage.getItem('jalan_eksisting_memadai');
         var rekomendasi_umkm = localStorage.getItem('rekomendasi_umkm');
-        var tataruang = localStorage.getItem('tataruang');
         var kajian_sostek = localStorage.getItem('kajian_sostek');
-        var jarak_usaha_sejenis = localStorage.getItem('jarak_usaha_sejenis');
 
-        $("#jarak_pasar_summary").text(jarak_pasar);
-        $("#rencana_jalan_summary").text(rencana_jalan_memadai);
-        $("#jalan_eksisting_summary").text(jalan_eksisting_memadai);
         $("#rek_umkm_summary").text(rekomendasi_umkm);
-        $("#tata_ruang_summary").text(tataruang);
         $("#kajian_sostek_summary").text(kajian_sostek);
-        $("#jarak_sejenis_summary").text(jarak_usaha_sejenis);
         /* Data Antisipasi Dampak/Resiko */
 
         localStorage.setItem("npwp_pemohon", $("#npwp_pemohon").val());
@@ -475,7 +475,6 @@ $(document).on('click', '.submit__container', function(e) {
       if (result.value) {
          var dataInput = {
             /* Data Administrasi Pemohon */
-            no_token: $("#no_token").val(),
             status_pemohon: $("#status_pemohon").val(),
             namaLengkap: $("#namaLengkap").val(),
             jabatan: $("#jabatan").val(),
@@ -511,6 +510,7 @@ $(document).on('click', '.submit__container', function(e) {
 
             /* Data Keselamatan dan Keamanan */
             rekomendasi_slf: $("#rekomendasi_slf").val(),
+            slf: $("#slf").val(),
             izin_dinas_pkp: $("#izin_dinas_pkp").val(),
             izin_dinas_tkt: $("#izin_dinas_tkt").val(),
             imb: $("#imb").val(),
@@ -537,11 +537,13 @@ $(document).on('click', '.submit__container', function(e) {
             njop: $("#njop").val(),
             nama_toko: $("#nama_toko").val(),
             kelompok: $("#kelompok_usaha").val(),
+            kelompok_input: $("#kelompok_input").val(),
             nama_badan_usaha: $("#nama_badan_usaha").val(),
             kategori_usaha: $("#kategori_usaha").val(),
             omset_perbulan: $("#omset_perbulan").val(),
             peruntukan_toko: $("#peruntukan_toko").val(),
             status_bangunan: $("#status_bangunan").val(),
+            lama_sewa_input: $("#lama_sewa_input").val(),
             lat: $('#lat').val(),
             lng: $('#lng').val(), 
             subzona: $('#subzona').val(),
@@ -562,17 +564,11 @@ $(document).on('click', '.submit__container', function(e) {
             jumlah_atm: $("#jumlah_atm").val(),
             jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
             status_milik_usaha: $("#status_milik_usaha").val(),
-            penggunaan_lahan_sekitar: $("#penggunaan_lahan_sekitar").val(),
             /* Data Kebermanfaatan Usaha */
 
             /* Data Antisipasi Dampak/Resiko */
-            jarak_pasar: $("#jarak_pasar").val(),
-            rencana_jalan_memadai: $("#rencana_jalan_memadai").val(),
-            jalan_eksisting_memadai: $("#jalan_eksisting_memadai").val(),
             rekomendasi_umkm: $("#rekomendasi_umkm").val(),
-            tataruang: $("#tataruang").val(),
             kajian_sostek: $("#kajian_sostek").val(),
-            jarak_usaha_sejenis: $("#jarak_usaha_sejenis").val(),
             /* Data Antisipasi Dampak/Resiko */
 
             barang_jasa: $("#barang_jasa").val(),
@@ -590,7 +586,6 @@ $(document).on('click', '.submit__container', function(e) {
         };
 
         /* Data Administrasi Pemohon */
-        dataRegis[0].no_token = dataInput.no_token;
         dataRegis[0].status_pemohon = dataInput.status_pemohon;
         dataRegis[0].namaLengkap = dataInput.namaLengkap;
         dataRegis[0].jabatan = dataInput.jabatan;
@@ -626,6 +621,7 @@ $(document).on('click', '.submit__container', function(e) {
 
         /* Data Keselamatan dan Keamanan */
         dataRegis[0].rekomendasi_slf = dataInput.rekomendasi_slf;
+        dataRegis[0].slf = dataInput.slf;
         dataRegis[0].izin_dinas_pkp = dataInput.izin_dinas_pkp;
         dataRegis[0].izin_dinas_tkt = dataInput.izin_dinas_tkt;
         dataRegis[0].imb = dataInput.imb;
@@ -652,11 +648,13 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].njop = dataInput.njop;
         dataRegis[0].nama_toko = dataInput.nama_toko;
         dataRegis[0].kelompok = dataInput.kelompok;
+        dataRegis[0].kelompok_input = dataInput.kelompok_input;
         dataRegis[0].nama_badan_usaha = dataInput.nama_badan_usaha;
         dataRegis[0].kategori_usaha = dataInput.kategori_usaha;
         dataRegis[0].omset_perbulan = dataInput.omset_perbulan;
         dataRegis[0].peruntukan_toko = dataInput.peruntukan_toko;
         dataRegis[0].status_bangunan = dataInput.status_bangunan;
+        dataRegis[0].lama_sewa_input = dataInput.lama_sewa_input;
         dataRegis[0].alamat = dataInput.alamat;
         dataRegis[0].lat = dataInput.lat;
         dataRegis[0].lng = dataInput.lng;
@@ -676,17 +674,11 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].jumlah_atm = dataInput.jumlah_atm;
         dataRegis[0].jumlah_pengunjung_b = dataInput.jumlah_pengunjung_b;
         dataRegis[0].status_milik_usaha = dataInput.status_milik_usaha;
-        dataRegis[0].penggunaan_lahan_sekitar = dataInput.penggunaan_lahan_sekitar;
         /* Data Kebermanfaatan Usaha */
 
         /* Data Antisipasi Dampak/Resiko */
-        dataRegis[0].jarak_pasar = dataInput.jarak_pasar;
-        dataRegis[0].rencana_jalan_memadai = dataInput.rencana_jalan_memadai;
-        dataRegis[0].jalan_eksisting_memadai = dataInput.jalan_eksisting_memadai;
         dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
-        dataRegis[0].tataruang = dataInput.tataruang;
         dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
-        dataRegis[0].jarak_usaha_sejenis = dataInput.jarak_usaha_sejenis;
         /* Data Antisipasi Dampak/Resiko */
 
             // dataRegis[0].barang_jasa = dataInput.barang_jasa;
@@ -781,8 +773,8 @@ $(document).on('click', '.submit__container', function(e) {
                     }     
                 } 
             });
-}
-});
+        }
+    });
 });
 
 /* end konfirmasi ijin */
@@ -1370,6 +1362,7 @@ $(document).ready(function() {
                         options += "<option value='"+ data.row[i].id +"'>"+ data.row[i].nama +"</option>";
                     }
                     $('#imb').html(options);
+                    $('#slf').html(options);
                 }
             }
         });
@@ -1504,7 +1497,15 @@ $(document).ready(function() {
 
     });
 /* end animation */
-
+$(".imgAdd").click(function(){
+  $(this).closest(".row").find('.imgAdd').before('<div class="col-md-6 imgUpLuar"> <div class="imagePreview" id="img-luar-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
+});
+$(".imgAddDalam").click(function(){
+  $(this).closest(".row").find('.imgAddDalam').before('<div class="col-md-6 imgUpDalam"> <div class="imagePreview" id="img-dalam-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
+});
+$(document).on("click", "i.del" , function() {
+    $(this).parent().remove();
+});
 $(function() {
     $(document).on("change",".uploadFile", function()
     {
@@ -1519,11 +1520,17 @@ $(function() {
             reader.onloadend = function(){ // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
                 uploadFile.closest(".imgUpLuar").find('#img-luar-bangunan').css("background-image", "url("+this.result+")");
-                $('#img-luar-bangunan').fadeIn('slow');
                 uploadFile.closest(".imgUpDalam").find('#img-dalam-bangunan').css("background-image", "url("+this.result+")");
-                $('#img-dalam-bangunan').fadeIn('slow');
             }
         }
 
     });
+});
+
+$("#luas_bangunan").keyup(function() {
+    if($(this).val() > 400) {
+        $("#alertLuas").html("<span class='text-danger'>Luas total bangunan tidak boleh lebih dari 400 m2</span>");
+    } else {
+        $("#alertLuas").html("");
+    }
 });
