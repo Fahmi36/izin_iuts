@@ -499,7 +499,7 @@ $(document).on('click', '.submit__container', function(e) {
             /* Data Umum Bangunan */
 
             /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-            kdh_zonasi: $("#kdh_zonasi").val(),
+            kdh_zonasi: $("#kdh").val(),
             kdh_minimum: $("#kdh_minimum").val(),
             kondisi_kdh: $("#kondisi_kdh").val(),
             volumeSumur: $("#volumeSumur").val(),
@@ -596,6 +596,7 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].no_telp = dataInput.no_telp;
         dataRegis[0].emailAktif = dataInput.emailAktif;
         /*identitas pemohon*/
+
         // Mulai SLF//
         /* Data Umum Bangunan */
         dataRegis[0].luas_lahan = dataInput.luas_lahan;
