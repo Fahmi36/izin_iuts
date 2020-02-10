@@ -422,7 +422,6 @@ $('#buttonbacktohome').click(function(e){
     currentIndex = Number($('.ijin__step--current').attr('data-question'));
     const percentage = ((currentIndex-1)  * 100)/ numberSteps+1;
     $('.progress__inner').width(percentage+ '%');
-    $('.ijin__step--current').keyup(keypressEvent);
 });
 
 $('.navigation__btn--left').click(function(e){
@@ -442,7 +441,6 @@ $('.navigation__btn--left').click(function(e){
     }
     const percentage = ((currentIndex-1)  * 100)/ numberSteps+1;
     $('.progress__inner').width(percentage+ '%');
-    $('.ijin__step--current').keyup(keypressEvent);
 });
 /* end ijin */
 $('#btn-modalmaps').click(function(event) {
