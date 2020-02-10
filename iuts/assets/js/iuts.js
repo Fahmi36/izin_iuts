@@ -844,7 +844,8 @@ $(document).on('click', '.submit__container', function(e) {
                 }
             });
         }
-    });
+    }
+});
 
 /* end konfirmasi ijin */
 
