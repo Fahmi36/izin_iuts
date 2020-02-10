@@ -509,7 +509,7 @@ $(document).on('click', '.submit__container', function(e) {
             /* Data Umum Bangunan */
 
             /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-            kdh_zonasi: $("#kdh_zonasi").val(),
+            kdh_zonasi: $("#kdh").val(),
             kdh_minimum: $("#kdh_minimum").val(),
             kondisi_kdh: $("#kondisi_kdh").val(),
             volumeSumur: $("#volumeSumur").val(),
@@ -607,6 +607,7 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].emailAktif = dataInput.emailAktif;
         /*identitas pemohon*/
 
+        // Mulai SLF//
         /* Data Umum Bangunan */
         dataRegis[0].luas_lahan = dataInput.luas_lahan;
         dataRegis[0].status_milik = dataInput.status_milik;
@@ -653,6 +654,9 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
         /* Data Kemudahan */
 
+        // Selesai SLF//
+
+        // Mulau IUTS/
         /* Data Administrasi Usaha */
         dataRegis[0].nop = dataInput.nop;
         dataRegis[0].njop = dataInput.njop;
@@ -691,6 +695,8 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
         /* Data Antisipasi Dampak/Resiko */
 
+
+        // Selesai IUTS//
             // dataRegis[0].barang_jasa = dataInput.barang_jasa;
             // dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
             // dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;

@@ -550,6 +550,7 @@ require([
            $("#idsubblok").val(results[1].graphic.attributes['SUB_ZONA']);
            $('#kelurahan').val(results[1].graphic.attributes['KELURAHAN']);
            $('#kecamatan').val(results[1].graphic.attributes['KECAMATAN']);
+            $('#kdh').val(results[1].graphic.attributes['KDH']);
            var izinkan = results[1].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[1].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[1].graphic.attributes['TERBATAS'].split(',');
@@ -561,6 +562,7 @@ require([
            $("#idsubblok").val(results[0].graphic.attributes['SUB_ZONA']);
            $('#kelurahan').val(results[0].graphic.attributes['KELURAHAN']);
            $('#kecamatan').val(results[0].graphic.attributes['KECAMATAN']);
+            $('#kdh').val(results[0].graphic.attributes['KDH']);
            var izinkan = results[0].graphic.attributes['DIIZINKAN'].split(',');
            var b_syarat = results[0].graphic.attributes['BERSYARAT'].split(',');
            var t_batas = results[0].graphic.attributes['TERBATAS'].split(',');
@@ -605,6 +607,7 @@ require([
        $('#idsubblok').val(evt[1].graphic.attributes['SUB_ZONA']);
        $('#kelurahan').val(evt[1].graphic.attributes['KELURAHAN']);
        $('#kecamatan').val(evt[1].graphic.attributes['KECAMATAN']);
+       $('#kdh').val(evt[1].graphic.attributes['KDH']);
 
      }else{
 
@@ -614,6 +617,7 @@ require([
        $('#idsubblok').val(evt[0].graphic.attributes['SUB_ZONA']);
        $('#kelurahan').val(evt[0].graphic.attributes['KELURAHAN']);
        $('#kecamatan').val(evt[0].graphic.attributes['KECAMATAN']);
+       $('#kdh').val(evt[0].graphic.attributes['KDH']);
        var izinkan = evt[0].graphic.attributes['DIIZINKAN'].split(',');
        var b_syarat = evt[0].graphic.attributes['BERSYARAT'].split(',');
        var t_batas = evt[0].graphic.attributes['TERBATAS'].split(',');
