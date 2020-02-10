@@ -8,14 +8,24 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
     function statuspemohon() {
         if ($("#status_pemohon option:selected").val() == "Perorangan") {
             $("#jabatan_row").removeAttr('style');
+            $("#npj").removeAttr('style');
+            $("#nikPJ").removeAttr('style');
+            $("#nibPJ").removeAttr('style');
+            $("#npwpPJ").removeAttr('style');
+            $("#np").attr('style', 'display:none');
+            $("#nikD").attr('style', 'display:none');
+            $("#nibP").attr('style', 'display:none');
+            $("#npwpP").attr('style', 'display:none');
         }else{
-            $("#nikD").removeAttr('style');
-            $("#nikPJ").attr('style', 'display:none');
-            $("#nibP").removeAttr('style');
-            $("#nibPJ").attr('style', 'display:none');
-            $("#npwpP").removeAttr('style');
-            $("#npwpPJ").attr('style', 'display:none');
             $("#jabatan_row").attr('style', 'display:none');
+            $("#npj").attr('style', 'display:none');
+            $("#nikPJ").attr('style', 'display:none');
+            $("#nibPJ").attr('style', 'display:none');
+            $("#npwpPJ").attr('style', 'display:none');
+            $("#np").removeAttr('style');
+            $("#nikD").removeAttr('style');
+            $("#nibP").removeAttr('style');
+            $("#npwpP").removeAttr('style');
         }
     }
     function kondisieksis() {
