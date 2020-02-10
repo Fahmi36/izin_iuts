@@ -59,11 +59,11 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         // }
         $('.answer__input').on('change', function(e) { 
 
-         if($(this).next().children('.answer__tick').length>0){
-          return false
-      }
-      $(this).next().append(tick)
-  });
+           if($(this).next().children('.answer__tick').length>0){
+              return false
+          }
+          $(this).next().append(tick)
+      });
         $('.backkehalaman').click(function(event) {
             localStorage.clear();
             location.reload();
@@ -78,7 +78,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
         }
 
         function npwpusahachecking() {
-         $.ajax({
+           $.ajax({
             url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp_perusahaan').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
             type: 'GET',
             dataType: 'json',
@@ -107,8 +107,8 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
                 }
             }
         })
-     }
-     $('.navigation__btn--right').click(function(e){
+       }
+       $('.navigation__btn--right').click(function(e){
         // if($('.ijin__step--current input').length == 0){
         //      //console.log('input empty');
         //      return false;
@@ -471,129 +471,129 @@ $(document).on('click', '.submit__container', function(e) {
   })
     .then((result) => {
       if (result.value) {
-         var dataInput = {
-            /* Data Administrasi Pemohon */
-            status_pemohon: $("#status_pemohon").val(),
-            namaLengkap: $("#namaLengkap").val(),
-            jabatan: $("#jabatan").val(),
-            nomorInKepen: $("#nomorInKepen").val(),
-            nomorInBeru: $("#nomorInBeru").val(),
-            npwp: $("#npwp").val(),
-            alamat_perusahaan: $("#alamat_perusahaan").val(),
-            no_telp: $("#no_telp").val(),
-            emailAktif: $("#emailAktif").val(),
-            /* Data Administrasi Pemohon */
-
-            /* Data Umum Bangunan */
-            luas_lahan: $("#luasLahan").val(),
-            status_milik: $("#status_milik").val(),
-            ltb: $("#luasTapakB").val(),
-            jml_lantai: $("#jml_lantai").val(),
-            luas_bangunan: $("#luas_bangunan").val(),
-            tinggi_bangunan: $("#tinggi_bangunan").val(),
-            peruntukan_bangunan: $("#peruntukan_bangunan").val(),
-            foto_luar_bangunan: $("#foto_luar_bangunan").val(),
-            foto_dalam_bangunan: $("#foto_dalam_bangunan").val(),
-            /* Data Umum Bangunan */
-
-            /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-            kdh_zonasi: $("#kdh").val(),
-            kdh_minimum: $("#kdh_minimum").val(),
-            kondisi_kdh: $("#kondisi_kdh").val(),
-            volumeSumur: $("#volumeSumur").val(),
-            kondisi_pertandaan_toko: $("#kondisi_pertandaan_toko").val(),
-            kondisi_sumur_r: $("#kondisi_sumur_r").val(),
-            drainase_disekeliling: $("#drainase_disekeliling").val(),
-            /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
-
-            /* Data Keselamatan dan Keamanan */
-            rekomendasi_slf: $("#rekomendasi_slf").val(),
-            slf: $("#slf").val(),
-            izin_dinas_pkp: $("#izin_dinas_pkp").val(),
-            izin_dinas_tkt: $("#izin_dinas_tkt").val(),
-            imb: $("#imb").val(),
-            fasilitas_penang_kebakaran: $("#fasilitas_penang_kebakaran").val(),
-            waktu_pembaruan_k_g: $("#ketersediaan_asuransi_toko").val(),
-            waktu_pembaruan_k_g: $("#waktu_pembaruan_k_g").val(),
-            /* Data Keselamatan dan Keamanan */
-
-            /* Data Kesehatan */
-            air_bersih: $("#air_bersih").val(),
-            sumber_air_bersih: $("#sumber_air_bersih").val(),
-            pengelolaan_air_kotor: $("#pengelolaan_air_kotor").val(),
-            pengelolaan_sampah: $("#pengelolaan_sampah").val(),
-            ketersediaan_listrik: $("#ketersediaan_listrik").val(),
-            /* Data Kesehatan */
-
-            /* Data Kemudahan */
-            ketersediaan_toilet: $("#ketersediaan_toilet").val(),
-            kondisi_parkir: $("#kondisi_parkir").val(),
-            /* Data Kemudahan */
-
-            /* Data Administrasi Usaha */
-            nop: $("#nomorObjekPajak").val(),
-            njop: $("#njop").val(),
-            nama_toko: $("#nama_toko").val(),
-            kelompok: $("#kelompok_usaha").val(),
-            kelompok_input: $("#kelompok_input").val(),
-            nama_badan_usaha: $("#nama_badan_usaha").val(),
-            kategori_usaha: $("#kategori_usaha").val(),
-            omset_perbulan: $("#omset_perbulan").val(),
-            peruntukan_toko: $("#peruntukan_toko").val(),
-            status_bangunan: $("#status_bangunan").val(),
-            lama_sewa_input: $("#lama_sewa_input").val(),
-            lat: $('#lat').val(),
-            lng: $('#lng').val(), 
-            subzona: $('#subzona').val(),
-            idsubblok: $('#idsubblok').val(),
-            alamat_lengkap: $("#alamatLengkap").val(),
-            alamat: $("#alamatPemohon").val(),
-            kelurahan: $("#kelurahan").val(),
-            kecamatan: $("#kecamatan").val(),
-            /* Data Administrasi Usaha */
-
-            /* Data Kebermanfaatan Usaha */
-            pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
-            keterlibatan_umkm: $("#keterlibatan_umkm").val(),
-            keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
-            persetujuan_warga: $("#persetujuan_warga").val(),
-            jumlah_karyawan: $("#jumlah_karyawan").val(),
-            asal_karyawan: $("#asal_karyawan").val(),
-            jumlah_atm: $("#jumlah_atm").val(),
-            jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
-            status_milik_usaha: $("#status_milik_usaha").val(),
-            /* Data Kebermanfaatan Usaha */
-
-            /* Data Antisipasi Dampak/Resiko */
-            rekomendasi_umkm: $("#rekomendasi_umkm").val(),
-            kajian_sostek: $("#kajian_sostek").val(),
-            /* Data Antisipasi Dampak/Resiko */
-
-            barang_jasa: $("#barang_jasa").val(),
-            luas_lantai: $("#luasLantaiB").val(),
-            luas_lantai_input: $("#luas_lantai_input").val(),
-            jml_lantai: $("#jmlLantaiB").val(),
-            kondisi_eksisting: $("#kondisi_eksisting").val(),
-            perjanjian_sewa: $("#perjanjian_sewa").val(),
-            barang_jasa: $("#barang_jasa").val(),
-            imb_eksisting: $("#imb_eksisting").val(),
-            slf_eksisting: $("#slf_eksisting").val(),
-            janji_sewa_input: $("#janji_sewa_input").val(),
-            lama_izin_input: $("#lama_izin_input").val(),
-            detail_kondisi_input: $("#detail_kondisi_input").val(),
-        };
-
+       var dataInput = {
         /* Data Administrasi Pemohon */
-        dataRegis[0].status_pemohon = dataInput.status_pemohon;
-        dataRegis[0].namaLengkap = dataInput.namaLengkap;
-        dataRegis[0].jabatan = dataInput.jabatan;
-        dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
-        dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
-        dataRegis[0].npwp = dataInput.npwp;
-        dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
-        dataRegis[0].no_telp = dataInput.no_telp;
-        dataRegis[0].emailAktif = dataInput.emailAktif;
-        /*identitas pemohon*/
+        status_pemohon: $("#status_pemohon").val(),
+        namaLengkap: $("#namaLengkap").val(),
+        jabatan: $("#jabatan").val(),
+        nomorInKepen: $("#nomorInKepen").val(),
+        nomorInBeru: $("#nomorInBeru").val(),
+        npwp: $("#npwp").val(),
+        alamat_perusahaan: $("#alamat_perusahaan").val(),
+        no_telp: $("#no_telp").val(),
+        emailAktif: $("#emailAktif").val(),
+        /* Data Administrasi Pemohon */
+
+        /* Data Umum Bangunan */
+        luas_lahan: $("#luasLahan").val(),
+        status_milik: $("#status_milik").val(),
+        ltb: $("#luasTapakB").val(),
+        jml_lantai: $("#jml_lantai").val(),
+        luas_bangunan: $("#luas_bangunan").val(),
+        tinggi_bangunan: $("#tinggi_bangunan").val(),
+        peruntukan_bangunan: $("#peruntukan_bangunan").val(),
+        foto_luar_bangunan: $("#foto_luar_bangunan").val(),
+        foto_dalam_bangunan: $("#foto_dalam_bangunan").val(),
+        /* Data Umum Bangunan */
+
+        /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+        kdh_zonasi: $("#kdh").val(),
+        kdh_minimum: $("#kdh_minimum").val(),
+        kondisi_kdh: $("#kondisi_kdh").val(),
+        volumeSumur: $("#volumeSumur").val(),
+        kondisi_pertandaan_toko: $("#kondisi_pertandaan_toko").val(),
+        kondisi_sumur_r: $("#kondisi_sumur_r").val(),
+        drainase_disekeliling: $("#drainase_disekeliling").val(),
+        /* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+        /* Data Keselamatan dan Keamanan */
+        rekomendasi_slf: $("#rekomendasi_slf").val(),
+        slf: $("#slf").val(),
+        izin_dinas_pkp: $("#izin_dinas_pkp").val(),
+        izin_dinas_tkt: $("#izin_dinas_tkt").val(),
+        imb: $("#imb").val(),
+        fasilitas_penang_kebakaran: $("#fasilitas_penang_kebakaran").val(),
+        waktu_pembaruan_k_g: $("#ketersediaan_asuransi_toko").val(),
+        waktu_pembaruan_k_g: $("#waktu_pembaruan_k_g").val(),
+        /* Data Keselamatan dan Keamanan */
+
+        /* Data Kesehatan */
+        air_bersih: $("#air_bersih").val(),
+        sumber_air_bersih: $("#sumber_air_bersih").val(),
+        pengelolaan_air_kotor: $("#pengelolaan_air_kotor").val(),
+        pengelolaan_sampah: $("#pengelolaan_sampah").val(),
+        ketersediaan_listrik: $("#ketersediaan_listrik").val(),
+        /* Data Kesehatan */
+
+        /* Data Kemudahan */
+        ketersediaan_toilet: $("#ketersediaan_toilet").val(),
+        kondisi_parkir: $("#kondisi_parkir").val(),
+        /* Data Kemudahan */
+
+        /* Data Administrasi Usaha */
+        nop: $("#nomorObjekPajak").val(),
+        njop: $("#njop").val(),
+        nama_toko: $("#nama_toko").val(),
+        kelompok: $("#kelompok_usaha").val(),
+        kelompok_input: $("#kelompok_input").val(),
+        nama_badan_usaha: $("#nama_badan_usaha").val(),
+        kategori_usaha: $("#kategori_usaha").val(),
+        omset_perbulan: $("#omset_perbulan").val(),
+        peruntukan_toko: $("#peruntukan_toko").val(),
+        status_bangunan: $("#status_bangunan").val(),
+        lama_sewa_input: $("#lama_sewa_input").val(),
+        lat: $('#lat').val(),
+        lng: $('#lng').val(), 
+        subzona: $('#subzona').val(),
+        idsubblok: $('#idsubblok').val(),
+        alamat_lengkap: $("#alamatLengkap").val(),
+        alamat: $("#alamatPemohon").val(),
+        kelurahan: $("#kelurahan").val(),
+        kecamatan: $("#kecamatan").val(),
+        /* Data Administrasi Usaha */
+
+        /* Data Kebermanfaatan Usaha */
+        pemutakhiran_pbb: $("#pemutakhiran_pbb").val(),
+        keterlibatan_umkm: $("#keterlibatan_umkm").val(),
+        keterlibatan_umkm_input: $("#keterlibatan_umkm_input").val(),
+        persetujuan_warga: $("#persetujuan_warga").val(),
+        jumlah_karyawan: $("#jumlah_karyawan").val(),
+        asal_karyawan: $("#asal_karyawan").val(),
+        jumlah_atm: $("#jumlah_atm").val(),
+        jumlah_pengunjung_b: $("#jumlah_pengunjung_b").val(),
+        status_milik_usaha: $("#status_milik_usaha").val(),
+        /* Data Kebermanfaatan Usaha */
+
+        /* Data Antisipasi Dampak/Resiko */
+        rekomendasi_umkm: $("#rekomendasi_umkm").val(),
+        kajian_sostek: $("#kajian_sostek").val(),
+        /* Data Antisipasi Dampak/Resiko */
+
+        barang_jasa: $("#barang_jasa").val(),
+        luas_lantai: $("#luasLantaiB").val(),
+        luas_lantai_input: $("#luas_lantai_input").val(),
+        jml_lantai: $("#jmlLantaiB").val(),
+        kondisi_eksisting: $("#kondisi_eksisting").val(),
+        perjanjian_sewa: $("#perjanjian_sewa").val(),
+        barang_jasa: $("#barang_jasa").val(),
+        imb_eksisting: $("#imb_eksisting").val(),
+        slf_eksisting: $("#slf_eksisting").val(),
+        janji_sewa_input: $("#janji_sewa_input").val(),
+        lama_izin_input: $("#lama_izin_input").val(),
+        detail_kondisi_input: $("#detail_kondisi_input").val(),
+    };
+
+    /* Data Administrasi Pemohon */
+    dataRegis[0].status_pemohon = dataInput.status_pemohon;
+    dataRegis[0].namaLengkap = dataInput.namaLengkap;
+    dataRegis[0].jabatan = dataInput.jabatan;
+    dataRegis[0].nomorInKepen = dataInput.nomorInKepen;
+    dataRegis[0].nomorInBeru = dataInput.nomorInBeru;
+    dataRegis[0].npwp = dataInput.npwp;
+    dataRegis[0].alamat_perusahaan = dataInput.alamat_perusahaan;
+    dataRegis[0].no_telp = dataInput.no_telp;
+    dataRegis[0].emailAktif = dataInput.emailAktif;
+    /*identitas pemohon*/
 
         // Mulai SLF//
         /* Data Umum Bangunan */
@@ -708,7 +708,42 @@ $(document).on('click', '.submit__container', function(e) {
                     $('#page-loader').fadeIn('slow');
                 },
                 success:function(data) {
-                    if (response.success) {
+                    if (data.pesan == "Data Tidak ditemukan") {
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Tidak ada Data',
+                            showCancelButton: true
+                        });
+                    }else if(data.pesan == "Panjang Karakter Kurang dari 15"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "32"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "99"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "4"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Angka NIK / NPWP Kurang Dari 15',
+                            showCancelButton: true
+                        });
+                    }else{
                         $.ajax({
                             url: BASE_URL + "ApiController/ApiPajakNPWP",
                             type: 'POST',
@@ -723,63 +758,81 @@ $(document).on('click', '.submit__container', function(e) {
                                 dataRegis[0].status_npwp = '1';
                                 dataRegis[0].status_pbb = '1';
                                 localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
-                                if (response.success) {
-                                    $.ajax({
-                                        url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                                        type: 'POST',
-                                        dataType: 'json',
-                                        data:{dataRegist: localStorage.getItem('dataPermohonan')},
-                                        beforeSend:function() {
-                                            $("#text-loader").html('Mohon Tunggu');
-                                            $('#page-loader').fadeIn('slow');
-                                        },
-                                        success:function(data) {
-                                            if (data.success) {
-                                                e.preventDefault();
-                                                $('.ijin').remove();
-                                                $(summary).appendTo('.container');
-                                                disableButtons=true;
-                                                $('.navigation__btn').addClass('navigation__btn--disabled');
-                                                $('#page-loader').fadeOut('slow'); 
-                                                swal({
-                                                    type: 'success',
-                                                    title: data.msg,
-                                                    showCancelButton: true
-                                                });
-                                            }else{
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: data.msg,
-                                                    showCancelButton: true
-                                                });
-                                            }
-                                            $('#page-loader').fadeOut('slow');
-                                        }
-                                    });       
-                                }else{
+                                if (data.pesan == "Data Tidak ditemukan") {
                                     $('#page-loader').fadeOut('slow');
                                     swal({
                                         type: 'error',
-                                        title: response.msg,
+                                        title: 'Tidak ada Data',
                                         showCancelButton: true
                                     });
-                                } 
+                                }else if(data.pesan == "Panjang Karakter Kurang dari 15"){
+                                    $('#page-loader').fadeOut('slow');
+                                    swal({
+                                        type: 'error',
+                                        title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                                        showCancelButton: true
+                                    });
+                                }else if(data.errorCode == "32"){
+                                    $('#page-loader').fadeOut('slow');
+                                    swal({
+                                        type: 'error',
+                                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                        showCancelButton: true
+                                    });
+                                }else if(data.errorCode == "99"){
+                                    $('#page-loader').fadeOut('slow');
+                                    swal({
+                                        type: 'error',
+                                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                        showCancelButton: true
+                                    });
+                                }else if(data.errorCode == "4"){
+                                    $('#page-loader').fadeOut('slow');
+                                    swal({
+                                        type: 'error',
+                                        title: 'Angka NIK / NPWP Kurang Dari 15',
+                                        showCancelButton: true
+                                    });
+                                }else{
+                                   $.ajax({
+                                    url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    data:{dataRegist: localStorage.getItem('dataPermohonan')},
+                                    beforeSend:function() {
+                                        $("#text-loader").html('Mohon Tunggu');
+                                        $('#page-loader').fadeIn('slow');
+                                    },
+                                    success:function(data) {
+                                        if (data.success) {
+                                            e.preventDefault();
+                                            $('.ijin').remove();
+                                            $(summary).appendTo('.container');
+                                            disableButtons=true;
+                                            $('.navigation__btn').addClass('navigation__btn--disabled');
+                                            $('#page-loader').fadeOut('slow'); 
+                                            swal({
+                                                type: 'success',
+                                                title: data.msg,
+                                                showCancelButton: true
+                                            });
+                                        }else{
+                                            $('#page-loader').fadeOut('slow');
+                                            swal({
+                                                type: 'error',
+                                                title: data.msg,
+                                                showCancelButton: true
+                                            });
+                                        }
+                                        $('#page-loader').fadeOut('slow');
+                                    }
+                                });    
+                               }
                             }
                         });
-                    }else{
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: response.msg,
-                            showCancelButton: true
-                        });
-                    }     
-                } 
+                    }
+                }
             });
-        }
-    });
-});
 
 /* end konfirmasi ijin */
 
