@@ -5,6 +5,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
     // var BASE_URL = 'http://localhost/rest_api_iuts/';
     var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
+    /* Add Row */
     function statuspemohon() {
         if ($("#status_pemohon option:selected").val() == "Perorangan") {
             $("#jabatan_row").removeAttr('style');
@@ -16,6 +17,7 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
             $("#nikD").attr('style', 'display:none');
             $("#nibP").attr('style', 'display:none');
             $("#npwpP").attr('style', 'display:none');
+            $("#namaPJ").attr('style', 'display:none');
         }else{
             $("#jabatan_row").attr('style', 'display:none');
             $("#npj").attr('style', 'display:none');
@@ -26,6 +28,42 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
             $("#nikD").removeAttr('style');
             $("#nibP").removeAttr('style');
             $("#npwpP").removeAttr('style');
+            $("#namaPJ").removeAttr('style');
+        }
+    }
+    function rekomendasislf() {
+        if ($("#rekomendasi_slf option:selected").val() != 1 &&  $("#rekomendasi_slf option:selected").val() != 2) {
+            $("#uploadReSLF").removeAttr('style');
+        }else{
+            $("#uploadReSLF").attr('style', 'display:none');
+        }
+    }
+    function slf_change() {
+        if ($("#slf option:selected").val() != 1 &&  $("#slf option:selected").val() != 2) {
+            $("#uploadSLF").removeAttr('style');
+        }else{
+            $("#uploadSLF").attr('style', 'display:none');
+        }
+    }
+    function damkar() {
+        if ($("#izin_dinas_pkp option:selected").val() != 1 &&  $("#izin_dinas_pkp option:selected").val() != 2) {
+            $("#uploadDamkar").removeAttr('style');
+        }else{
+            $("#uploadDamkar").attr('style', 'display:none');
+        }
+    }
+    function izinTKT() {
+        if ($("#izin_dinas_tkt option:selected").val() != 1 &&  $("#izin_dinas_tkt option:selected").val() != 2) {
+            $("#uploadTKT").removeAttr('style');
+        }else{
+            $("#uploadTKT").attr('style', 'display:none');
+        }
+    }
+    function imb_change() {
+        if ($("#imb option:selected").val() != 1 &&  $("#imb option:selected").val() != 2) {
+            $("#uploadIMB").removeAttr('style');
+        }else{
+            $("#uploadIMB").attr('style', 'display:none');
         }
     }
     function kondisieksis() {
@@ -61,64 +99,125 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
     function luaslantai() {
         $("#luas_lantai_row").removeAttr('style');
     }
-        // function volumesumur() {
-        //     $("#volume_sumur_row").removeAttr('style');
-        // }
-        // function kondisikdh() {
-        //     $("#kondisi_kdh_row").removeAttr('style');
-        // }
-        $('.answer__input').on('change', function(e) { 
+    /* Add Row */
 
-         if($(this).next().children('.answer__tick').length>0){
+    // function volumesumur() {
+    //     $("#volume_sumur_row").removeAttr('style');
+    // }
+    // function kondisikdh() {
+    //     $("#kondisi_kdh_row").removeAttr('style');
+    // }
+
+    /* File Upload */    
+    $('#fileRekomendasiSlf').bind('change', function () {
+        var filenameReSLF = $("#fileRekomendasiSlf").val();
+        if (/^\s*$/.test(filenameReSLF)) {
+            $(".uploadReSLF").removeClass('active');
+            $("#noFileReSLF").text("No file chosen..."); 
+        }
+        else {
+            $(".uploadReSLF").addClass('active');
+            $("#noFileReSLF").text(filenameReSLF.replace("C:\\fakepath\\", "")); 
+        }
+    });   
+    $('#fileSLF').bind('change', function () {
+        var filenameSLF = $("#fileSLF").val();
+        if (/^\s*$/.test(filenameSLF)) {
+            $(".uploadSLF").removeClass('active');
+            $("#noFileSLF").text("No file chosen..."); 
+        }
+        else {
+            $(".uploadSLF").addClass('active');
+            $("#noFileSLF").text(filenameSLF.replace("C:\\fakepath\\", "")); 
+        }
+    });   
+    $('#fileDamkar').bind('change', function () {
+        var filenameDamkar = $("#fileDamkar").val();
+        if (/^\s*$/.test(filenameDamkar)) {
+            $(".uploadDamkar").removeClass('active');
+            $("#noFileDamkar").text("No file chosen..."); 
+        }
+        else {
+            $(".uploadDamkar").addClass('active');
+            $("#noFileDamkar").text(filenameDamkar.replace("C:\\fakepath\\", "")); 
+        }
+    });  
+    $('#fileTKT').bind('change', function () {
+        var filenameTKT = $("#fileTKT").val();
+        if (/^\s*$/.test(filenameTKT)) {
+            $(".uploadTKT").removeClass('active');
+            $("#noFileTKT").text("No file chosen..."); 
+        }
+        else {
+            $(".uploadTKT").addClass('active');
+            $("#noFileTKT").text(filenameTKT.replace("C:\\fakepath\\", "")); 
+        }
+    });   
+    $('#fileIMB').bind('change', function () {
+        var filenameIMB = $("#fileIMB").val();
+        if (/^\s*$/.test(filenameIMB)) {
+            $(".uploadIMB").removeClass('active');
+            $("#noFileIMB").text("No file chosen..."); 
+        }
+        else {
+            $(".uploadIMB").addClass('active');
+            $("#noFileIMB").text(filenameIMB.replace("C:\\fakepath\\", "")); 
+        }
+    });   
+    /* File Upload */    
+
+    $('.answer__input').on('change', function(e) { 
+        if($(this).next().children('.answer__tick').length>0){
           return false
       }
       $(this).next().append(tick)
   });
-        $('.backkehalaman').click(function(event) {
-            localStorage.clear();
-            location.reload();
-        });
-        $('#buttonreload').click(function(event) {
-            localStorage.clear();
-            location.reload();
-        });
-        function backkehalaman() {
-            localStorage.clear();
-            location.reload();
-        }
 
-        function npwpusahachecking() {
-         $.ajax({
-            url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp_perusahaan').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
-            type: 'GET',
-            dataType: 'json',
-            success:function(data) {
-                if (data.features[0].attributes == '') {
+    $('.backkehalaman').click(function(event) {
+        localStorage.clear();
+        location.reload();
+    });
+    $('#buttonreload').click(function(event) {
+        localStorage.clear();
+        location.reload();
+    });
+    function backkehalaman() {
+        localStorage.clear();
+        location.reload();
+    }
 
-                }else{
+    function npwpusahachecking() {
+     $.ajax({
+        url: "https://jakartasatu.jakarta.go.id/server/rest/services/Hosted/survey123_4f22b11ca9c4456bbb9ef5026fb32656/FeatureServer/0/query?where=masukkan_nomor_npwp_badan_usaha='"+$('#npwp_perusahaan').val()+"'&outFields=*&returnGeometry=true&resultType=&f=pjson",
+        type: 'GET',
+        dataType: 'json',
+        success:function(data) {
+            if (data.features[0].attributes == '') {
 
-                    $.getScript("https://iuts.pkkmart.com/iuts/assets/js/arcgis.js", function() {
-                    });
-                    $("#kelompok_usaha").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
-                    $("#nama_toko").val(data.features[0].attributes.nama_toko_anda);
-                    $("#nama_badan_usaha").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
-                    $("#peruntukan_toko").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
-                    $("#status_bangunan").val(data.features[0].attributes.pilih_status_kepemilikan_tempat);
-                    $("#nomorObjekPajak").val(data.features[0].attributes.field_23);
+            }else{
 
-                    $("#rekomendasi_umkm").val(data.features[0].attributes.rekomendasi_dinas_kumkmp);
-                    $("#imb_eksisting").val(data.features[0].attributes.masukkan_nomor_imb_toko_anda);
-                    
-                    localStorage.setItem('lat',data.features[0].geometry.y);
-                    localStorage.setItem('lng',data.features[0].geometry.x);
-                    localStorage.setItem('wkid',data.spatialReference.wkid);
-                    $("#alamatLengkap").val(data.features[0].attributes.masukkan_alamat_anda);
-                    $("#alamat_perusahaan").val(data.features[0].attributes.masukkan_alamat_objek_pajak_1);
-                }
+                $.getScript("https://iuts.pkkmart.com/iuts/assets/js/arcgis.js", function() {
+                });
+                $("#kelompok_usaha").val(data.features[0].attributes.pilih_kelompok_usaha_anda);
+                $("#nama_toko").val(data.features[0].attributes.nama_toko_anda);
+                $("#nama_badan_usaha").val(data.features[0].attributes.masukkan_nama_ptcv_badan_usaha_);
+                $("#peruntukan_toko").val(data.features[0].attributes.masukkan_peruntukkan_toko_anda_);
+                $("#status_bangunan").val(data.features[0].attributes.pilih_status_kepemilikan_tempat);
+                $("#nomorObjekPajak").val(data.features[0].attributes.field_23);
+
+                $("#rekomendasi_umkm").val(data.features[0].attributes.rekomendasi_dinas_kumkmp);
+                $("#imb_eksisting").val(data.features[0].attributes.masukkan_nomor_imb_toko_anda);
+
+                localStorage.setItem('lat',data.features[0].geometry.y);
+                localStorage.setItem('lng',data.features[0].geometry.x);
+                localStorage.setItem('wkid',data.spatialReference.wkid);
+                $("#alamatLengkap").val(data.features[0].attributes.masukkan_alamat_anda);
+                $("#alamat_perusahaan").val(data.features[0].attributes.masukkan_alamat_objek_pajak_1);
             }
-        })
-     }
-     $('.navigation__btn--right').click(function(e){
+        }
+    })
+ }
+ $('.navigation__btn--right').click(function(e){
         // if($('.ijin__step--current input').length == 0){
         //      //console.log('input empty');
         //      return false;
@@ -217,28 +316,38 @@ let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha
 
         /* Data Keselamatan dan Keamanan */
         localStorage.setItem("rekomendasi_slf", $("#rekomendasi_slf option:selected").text());
+        localStorage.setItem("fileRekomendasiSlf", $("#fileRekomendasiSlf").val());
         localStorage.setItem("slf", $("#slf option:selected").text());
+        localStorage.setItem("fileSLF", $("#fileSLF").val());
         localStorage.setItem("izin_dinas_pkp", $("#izin_dinas_pkp option:selected").text());
+        localStorage.setItem("fileDamkar", $("#fileDamkar").val());
         localStorage.setItem("izin_dinas_tkt", $("#izin_dinas_tkt option:selected").text());
+        localStorage.setItem("fileTKT", $("#fileTKT").val());
         localStorage.setItem("imb", $("#imb option:selected").text());
+        localStorage.setItem("fileIMB", $("#fileIMB").val());
         localStorage.setItem("fasilitas_penang_kebakaran", $("#fasilitas_penang_kebakaran option:selected").text());
         localStorage.setItem("ketersediaan_asuransi_toko", $("#ketersediaan_asuransi_toko option:selected").text());
         localStorage.setItem("waktu_pembaruan_k_g", $("#waktu_pembaruan_k_g option:selected").text());
 
         var rekomendasi_slf = localStorage.getItem('rekomendasi_slf');
+        var fileRekomendasiSlf = localStorage.getItem('fileRekomendasiSlf');
         var slf = localStorage.getItem('slf');
+        var fileSLF = localStorage.getItem('fileSLF');
         var izin_dinas_pkp = localStorage.getItem('izin_dinas_pkp');
+        var fileDamkar = localStorage.getItem('fileDamkar');
         var izin_dinas_tkt = localStorage.getItem('izin_dinas_tkt');
+        var fileTKT = localStorage.getItem('fileTKT');
         var imb = localStorage.getItem('imb');
+        var fileIMB = localStorage.getItem('fileIMB');
         var fasilitas_penang_kebakaran = localStorage.getItem('fasilitas_penang_kebakaran');
         var ketersediaan_asuransi_toko = localStorage.getItem('ketersediaan_asuransi_toko');
         var waktu_pembaruan_k_g = localStorage.getItem('waktu_pembaruan_k_g');
 
-        $("#rekomendasi_slf_summary").text(rekomendasi_slf);
-        $("#slf_summary").text(slf);
-        $("#izin_pkp_summary").text(izin_dinas_pkp);
-        $("#izin_tkt_summary").text(izin_dinas_tkt);
-        $("#imb_summary").text(imb);
+        $("#rekomendasi_slf_summary").html(rekomendasi_slf+'<br>'+fileRekomendasiSlf.replace("C:\\fakepath\\", ""));
+        $("#slf_summary").html(slf+'<br>'+fileSLF.replace("C:\\fakepath\\", ""));
+        $("#izin_pkp_summary").html(izin_dinas_pkp+'<br>'+fileDamkar.replace("C:\\fakepath\\", ""));
+        $("#izin_tkt_summary").html(izin_dinas_tkt+'<br>'+fileTKT.replace("C:\\fakepath\\", ""));
+        $("#imb_summary").html(imb+'<br>'+fileIMB.replace("C:\\fakepath\\", ""));
         $("#fasilitas_kebakaran_summary").text(fasilitas_penang_kebakaran);
         $("#asuransi_toko_summary").text(ketersediaan_asuransi_toko);
         $("#kelayakan_gedung_summary").text(waktu_pembaruan_k_g);
@@ -520,10 +629,15 @@ $(document).on('click', '.submit__container', function(e) {
 
             /* Data Keselamatan dan Keamanan */
             rekomendasi_slf: $("#rekomendasi_slf").val(),
+            fileRekomendasiSlf: $("#fileRekomendasiSlf").val(),
             slf: $("#slf").val(),
+            fileSLF: $("#fileSLF").val(),
             izin_dinas_pkp: $("#izin_dinas_pkp").val(),
+            fileDamkar: $("#fileDamkar").val(),
             izin_dinas_tkt: $("#izin_dinas_tkt").val(),
+            fileTKT: $("#fileTKT").val(),
             imb: $("#imb").val(),
+            fileIMB: $("#fileIMB").val(),
             fasilitas_penang_kebakaran: $("#fasilitas_penang_kebakaran").val(),
             waktu_pembaruan_k_g: $("#ketersediaan_asuransi_toko").val(),
             waktu_pembaruan_k_g: $("#waktu_pembaruan_k_g").val(),
@@ -632,10 +746,15 @@ $(document).on('click', '.submit__container', function(e) {
 
         /* Data Keselamatan dan Keamanan */
         dataRegis[0].rekomendasi_slf = dataInput.rekomendasi_slf;
+        dataRegis[0].fileRekomendasiSlf = dataInput.fileRekomendasiSlf;
         dataRegis[0].slf = dataInput.slf;
+        dataRegis[0].fileSLF = dataInput.fileSLF;
         dataRegis[0].izin_dinas_pkp = dataInput.izin_dinas_pkp;
+        dataRegis[0].fileDamkar = dataInput.fileDamkar;
         dataRegis[0].izin_dinas_tkt = dataInput.izin_dinas_tkt;
+        dataRegis[0].fileTKT = dataInput.fileTKT;
         dataRegis[0].imb = dataInput.imb;
+        dataRegis[0].fileIMB = dataInput.fileIMB;
         dataRegis[0].fasilitas_penang_kebakaran = dataInput.fasilitas_penang_kebakaran;
         dataRegis[0].ketersediaan_asuransi_toko = dataInput.ketersediaan_asuransi_toko;
         dataRegis[0].waktu_pembaruan_k_g = dataInput.waktu_pembaruan_k_g;
@@ -653,7 +772,6 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].ketersediaan_toilet = dataInput.ketersediaan_toilet;
         dataRegis[0].kondisi_parkir = dataInput.kondisi_parkir;
         /* Data Kemudahan */
-
         // Selesai SLF//
 
         // Mulau IUTS/
@@ -694,9 +812,8 @@ $(document).on('click', '.submit__container', function(e) {
         dataRegis[0].rekomendasi_umkm = dataInput.rekomendasi_umkm;
         dataRegis[0].kajian_sostek = dataInput.kajian_sostek;
         /* Data Antisipasi Dampak/Resiko */
-
-
         // Selesai IUTS//
+
             // dataRegis[0].barang_jasa = dataInput.barang_jasa;
             // dataRegis[0].perjanjian_sewa = dataInput.perjanjian_sewa;
             // dataRegis[0].npwp_perusahaan = dataInput.npwp_perusahaan;
@@ -789,8 +906,8 @@ $(document).on('click', '.submit__container', function(e) {
                     }     
                 } 
             });
-        }
-    });
+}
+});
 });
 
 /* end konfirmasi ijin */

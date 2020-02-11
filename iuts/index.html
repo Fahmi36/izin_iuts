@@ -69,6 +69,12 @@
               <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
             </div>
           </div>
+          <div class="form-group row" id="namaPJ" style="display: none;">
+            <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Penanggung Jawab :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+            </div>
+          </div>
           <div class="form-group row" id="jabatan_row" style="display: none;">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
             <div class="col-md-6">
@@ -341,36 +347,96 @@
           <div class="form-group row">
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Rekomendasi terkait SLF dari DCKTRP :</label>
             <div class="col-md-6">
-              <select required="" aria-label="rekomendasiSLF" class="text-center form-control" id="rekomendasi_slf" name="rekomendasi_slf">
+              <select required="" onchange="rekomendasislf()" aria-label="rekomendasiSLF" class="text-center form-control" id="rekomendasi_slf" name="rekomendasi_slf">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadReSLF" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-upload uploadReSLF">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileNameReSLF">Pilih File</div>
+                  <div class="file-select-name" id="noFileReSLF">No file chosen...</div> 
+                  <input type="file" name="fileRekomendasiSlf" id="fileRekomendasiSlf">
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="sertifikatLF" class="col-md-6 col-form-label">Sertifikat Layak Fungsi  :</label>
             <div class="col-md-6">
-              <select required="" aria-label="sertifikatLF" class="text-center form-control" id="slf" name="slf">
+              <select required="" onchange="slf_change()" aria-label="sertifikatLF" class="text-center form-control" id="slf" name="slf">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadSLF" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-upload uploadSLF">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileNameSLF">Pilih File</div>
+                  <div class="file-select-name" id="noFileSLF">No file chosen...</div> 
+                  <input type="file" name="fileSLF" id="fileSLF">
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="izinDinasPKP" class="col-md-6 col-form-label">Izin dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
             <div class="col-md-6">
-              <select required="" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
+              <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadDamkar" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-upload uploadDamkar">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileNameDamkar">Pilih File</div>
+                  <div class="file-select-name" id="noFileDamkar">No file chosen...</div> 
+                  <input type="file" name="fileDamkar" id="fileDamkar">
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Izin dari Dinas Tenaga Kerja dan Transmigrasi :</label>
             <div class="col-md-6">
-              <select required="" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
+              <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadTKT" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-upload uploadTKT">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileNameTKT">Pilih File</div>
+                  <div class="file-select-name" id="noFileTKT">No file chosen...</div> 
+                  <input type="file" name="fileTKT" id="fileTKT">
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group row">
             <label for="imbEksisting" class="col-md-6 col-form-label">Izin Mendirikan Bangunan :</label>
             <div class="col-md-6">
-              <select required="" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
+              <select required="" onchange="imb_change()" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadIMB" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-upload uploadIMB">
+                <div class="file-select">
+                  <div class="file-select-button" id="fileNameIMB">Pilih File</div>
+                  <div class="file-select-name" id="noFileIMB">No file chosen...</div> 
+                  <input type="file" name="fileIMB" id="fileIMB">
+                </div>
+              </div>
             </div>
           </div>
           <div class="form-group row">
