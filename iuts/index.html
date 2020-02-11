@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="form-group row" id="namaPJ" style="display: none;">
-              <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Direktur :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
               </div>
@@ -87,6 +87,19 @@
               <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ" style="">NIK Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto KTP :</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6 imgUpKTP">
+                    <div class="imagePreview" id="img-KTP"></div>
+                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                      <input type="file" class="uploadFile img" name="foto_ktp" id="foto_ktp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
@@ -261,7 +274,7 @@
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keseimbangan, Keserasian, Keselarasan Lingkungan</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
           <div class="form-group row">
-            <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Minimum :</label>
+            <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Eksisting :</label>
             <div class="col-md-6">
               <select required="" aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
 
@@ -1310,15 +1323,13 @@
         <div class="modal-body" style="padding: 2rem;">
           <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
           <p class="text-danger">
-            1. Bangunan telah diregistrasi<br>
-            2. Memiliki Nomor izin Berusaha<br>
-            3. Memiliki NPWP dan NOP<br>
-            4. Telah melakukan pelunasan pajak<br>
+            1. Memiliki Nomor izin Berusaha<br>
+            2. Memiliki NPWP dan NOP<br>
+            3. Telah melakukan pelunasan pajak<br>
           </p>
           <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
           <center>
             <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
-            <p class="m-0">Belum registrasi bangunan? Registrasi terlebih dahulu <a href="https://jakartasatu.jakarta.go.id/regbangunan/login" target="_blank">Disini</a></p>
             <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
           </center>
         </div>
