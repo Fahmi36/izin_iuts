@@ -62,68 +62,76 @@
               </select>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label" id="np" style="display: none;">Nama Perusahaan :</label>
-            <label for="namaLengkap" class="col-md-6 col-form-label" id="npj" style="">Nama Penanggung Jawab :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+          <div id="statusP" style="display: none;">
+            <div class="form-group row">
+              <label for="namaLengkap" class="col-md-6 col-form-label" id="np" style="display: none;">Nama Perusahaan :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label" id="npj" style="">Nama Penanggung Jawab :</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row" id="namaPJ" style="display: none;">
-            <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Penanggung Jawab :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+            <div class="form-group row" id="namaPJ" style="display: none;">
+              <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Penanggung Jawab :</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row" id="jabatan_row" style="display: none;">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+            <div class="form-group row" id="jabatan_row" style="display: none;">
+              <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label" id="nikD" style="display: none;">NIK Direktur :</label>
-            <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ" style="">NIK Penanggung Jawab :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
+            <div class="form-group row">
+              <label for="namaLengkap" class="col-md-6 col-form-label" id="nikD" style="display: none;">NIK Direktur :</label>
+              <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ" style="">NIK Penanggung Jawab :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label" id="nibP" style="display: none;">NIB Perusahaan :</label>
-            <label for="nomorInBeru" class="col-md-6 col-form-label" id="nibPJ" style="">NIB Penanggung Jawab :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+            <div class="form-group row">
+              <label for="namaLengkap" class="col-md-6 col-form-label" id="nibP" style="display: none;">NIB Perusahaan :</label>
+              <label for="nomorInBeru" class="col-md-6 col-form-label" id="nibPJ" style="">NIB Penanggung Jawab :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
-            <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ" style="">NPWP Penanggung Jawab :</label>
-            <div class="col-md-6">
-              <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
+            <div class="form-group row">
+              <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
+              <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ" style="">NPWP Penanggung Jawab :</label>
+              <div class="col-md-6">
+                <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="alamatPerusahaan" class="col-md-6 col-form-label">Alamat Perusahaan :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" placeholder="-">
+            <div class="form-group row">
+              <label for="alamatPerusahaan" class="col-md-6 col-form-label">Alamat Perusahaan :</label>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="no-telp" class="col-md-6 col-form-label">Nomor telepon/fax :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="-">
+            <div class="form-group row">
+              <label for="no-telp" class="col-md-6 col-form-label">Nomor telepon/fax :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" id="no_telp" name="no_telp" placeholder="-">
+              </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="emailAktif" class="col-md-6 col-form-label">Email Aktif :</label>
-            <div class="col-md-6">
-              <input type="email" class="form-control" id="emailAktif" name="email" placeholder="-">
+            <div class="form-group row">
+              <label for="emailAktif" class="col-md-6 col-form-label">Email Aktif :</label>
+              <div class="col-md-6">
+                <input type="email" class="form-control" id="emailAktif" name="email" placeholder="-">
+              </div>
             </div>
           </div>
         </div>
         <div data-question="3" class="ijin__step--3 ijin__step mb-150">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Umum Bangunan</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="luasLahan" class="col-md-6 col-form-label">NOPD Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="nopd_bangunan" id="nopd_bangunan" placeholder="-">
+            </div>
+          </div>
           <div class="form-group row">
             <label for="luasLahan" class="col-md-6 col-form-label">Luas Lahan :</label>
             <div class="col-md-6">
@@ -345,22 +353,27 @@
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keselamatan dan Keamanan</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
           <div class="form-group row">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Rekomendasi terkait SLF dari DCKTRP :</label>
+            <label for="imbEksisting" class="col-md-6 col-form-label">Izin Mendirikan Bangunan :</label>
             <div class="col-md-6">
-              <select required="" onchange="rekomendasislf()" aria-label="rekomendasiSLF" class="text-center form-control" id="rekomendasi_slf" name="rekomendasi_slf">
+              <select required="" onchange="imb_change()" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadReSLF" style="display: none;">
+          <div class="form-group row" id="uploadIMB" style="display: none;">
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
-              <div class="file-upload uploadReSLF">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileNameReSLF">Pilih File</div>
-                  <div class="file-select-name" id="noFileReSLF">No file chosen...</div> 
-                  <input type="file" name="fileRekomendasiSlf" id="fileRekomendasiSlf">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="file-upload uploadIMB">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileNameIMB">Pilih File</div>
+                      <div class="file-select-name" id="noFileIMB">No file chosen...</div> 
+                      <input type="file" name="fileIMB[]" id="fileIMB">
+                    </div>
+                  </div>
                 </div>
               </div>
+              <button type="button" class="btn btn3d btn-white addFileIMB">Tambah</button>
             </div>
           </div>
           <div class="form-group row">
@@ -373,77 +386,67 @@
           <div class="form-group row" id="uploadSLF" style="display: none;">
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
-              <div class="file-upload uploadSLF">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileNameSLF">Pilih File</div>
-                  <div class="file-select-name" id="noFileSLF">No file chosen...</div> 
-                  <input type="file" name="fileSLF" id="fileSLF">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="file-upload uploadSLF">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileNameSLF">Pilih File</div>
+                      <div class="file-select-name" id="noFileSLF">No file chosen...</div> 
+                      <input type="file" name="fileSLF[]" id="fileSLF">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn3d btn-white addFileSLF">Tambah</button>
+            </div>
+          </div>
+          <div id="adaSLF">
+            <div class="form-group row">
+              <label for="izinDinasPKP" class="col-md-6 col-form-label">Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
+              <div class="col-md-6">
+                <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
+                </select>
+              </div>
+            </div>
+            <div class="form-group row" id="uploadDamkar" style="display: none;">
+              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="file-upload uploadDamkar">
+                  <div class="file-select">
+                    <div class="file-select-button" id="fileNameDamkar">Pilih File</div>
+                    <div class="file-select-name" id="noFileDamkar">No file chosen...</div> 
+                    <input type="file" name="fileDamkar" id="fileDamkar">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="izinDinasPKP" class="col-md-6 col-form-label">Izin dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
-            <div class="col-md-6">
-              <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadDamkar" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-upload uploadDamkar">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileNameDamkar">Pilih File</div>
-                  <div class="file-select-name" id="noFileDamkar">No file chosen...</div> 
-                  <input type="file" name="fileDamkar" id="fileDamkar">
-                </div>
+            <div class="form-group row">
+              <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi :</label>
+              <div class="col-md-6">
+                <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
+                </select>
               </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Izin dari Dinas Tenaga Kerja dan Transmigrasi :</label>
-            <div class="col-md-6">
-              <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadTKT" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-upload uploadTKT">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileNameTKT">Pilih File</div>
-                  <div class="file-select-name" id="noFileTKT">No file chosen...</div> 
-                  <input type="file" name="fileTKT" id="fileTKT">
+            <div class="form-group row" id="uploadTKT" style="display: none;">
+              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="file-upload uploadTKT">
+                  <div class="file-select">
+                    <div class="file-select-button" id="fileNameTKT">Pilih File</div>
+                    <div class="file-select-name" id="noFileTKT">No file chosen...</div> 
+                    <input type="file" name="fileTKT" id="fileTKT">
+                  </div>
+                  <i class="fa fa-times del-file"></i>
                 </div>
+                <button type="button" class="btn btn3d btn-white addFileReSLF">Tambah</button>
               </div>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="imbEksisting" class="col-md-6 col-form-label">Izin Mendirikan Bangunan :</label>
-            <div class="col-md-6">
-              <select required="" onchange="imb_change()" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadIMB" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-upload uploadIMB">
-                <div class="file-select">
-                  <div class="file-select-button" id="fileNameIMB">Pilih File</div>
-                  <div class="file-select-name" id="noFileIMB">No file chosen...</div> 
-                  <input type="file" name="fileIMB" id="fileIMB">
-                </div>
+            <div class="form-group row">
+              <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
+              <div class="col-md-6">
+                <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
+                </select>
               </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
-              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -522,7 +525,7 @@
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Usaha</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
           <div class="form-group row">
-            <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak Daerah :</label>
+            <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak Daerah Usaha :</label>
             <div class="col-md-6">
               <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
             </div>
@@ -601,13 +604,15 @@
             <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
             <div class="col-md-6">
               <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lat" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="lng" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="subzona" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="idsubblok" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="kdh" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="kelurahan" placeholder="Masukan Alamat Pemohon">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="kecamatan" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="status_npwp" id="status_npwp" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="status_pbb" id="statusPBB" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lat" id="lat" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lng" id="lng" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="subzona" id="subzona" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="idsubblok" id="idsubblok" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="kdh" id="kdh" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="kelurahan" id="kelurahan" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="kecamatan" id="kecamatan" placeholder="Masukan Alamat Pemohon">
               <input type="text" class="form-control" name="lokasi_pemohon" id="alamatLengkap" placeholder="Masukan Alamat Usaha">
               <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
             </div>
@@ -1281,7 +1286,7 @@
             </div>
           </div> 
           <div class="submit__container">
-            <a href="#" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
+            <a href="#" type="submit" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
           </div>
         </div>
         <!-- <div data-question="7" class="ijin__step--7 ijin__step ijin__summary">
