@@ -402,41 +402,7 @@ timeline = {
 						$('#pemohon').addClass('active');
 						$('#ket_pemohon').removeAttr('style');
 						$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(tgl[i]))+'</p>');
-					}else if(status[i] == '1'){
-						$.ajax({
-							url: BASE_URL + 'UserController/detailPemohonAdministrasi',
-							type: 'POST',
-							dataType: 'json',
-							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
-							success:function(data) {
-								if (data.success) {
-									var skorlengkap = [];
-									var skorwaktu = [];
-									var skorpbb = [];
-									var skornpwp = [];
-									var skoradministrasi = [];
-									for(var coba in data.row){
-										skorlengkap.push(data.row[coba].skorlengkap);
-										skorwaktu.push(data.row[coba].skorwaktu);
-										skorpbb.push(data.row[coba].skorpbb);
-										skornpwp.push(data.row[coba].skornpwp);
-										skoradministrasi.push(data.row[coba].skoradministrasi);
-									}
-
-									var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
-									var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
-									var skorakumulasi = skoradmin/2;
-									var totalakhir = skorakumulasi*skortotal;
-									if (data.rowCount > 0) {
-										$('#ket_pemohon').removeAttr('style');
-										$('#ket_pemohon').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
-									}
-								}
-							}
-						});
-						$('#pemohon').addClass('active');
-						$('#adminitrasi').addClass('active');
-					}else if(status[i] == '2'){
+					}if(status[i] == '1'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -450,7 +416,6 @@ timeline = {
 									var skorjarakpasar = [];
 									var skorrenjalan = [];
 									var skorjalaneksis = [];
-									var skortataruang = [];
 									var skorpenglahan = [];
 									var skormanfaat = [];
 									var skorjarakusaha = [];
@@ -458,7 +423,6 @@ timeline = {
 										skorjarakpasar.push(data.row[coba].skorjarakpasar);
 										skorrenjalan.push(data.row[coba].skorrenjalan);
 										skorjalaneksis.push(data.row[coba].skorjalaneksis);
-										skortataruang.push(data.row[coba].skortataruang);
 										skorjarakusaha.push(data.row[coba].skorjarakusaha);
 										skorpenglahan.push(data.row[coba].skorpenglahan);
 										skormanfaat.push(data.row[coba].skormanfaat);
@@ -472,7 +436,7 @@ timeline = {
 								}
 							}
 						});
-					}else if (status[i] == '3') {
+					}else if (status[i] == '2') {
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -510,7 +474,7 @@ timeline = {
 								}
 							}
 						});
-					}else if (status[i] == '4'){
+					}else if (status[i] == '3'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -550,7 +514,7 @@ timeline = {
 							}
 						});
 
-					}else if (status[i] == '6'){
+					}else if (status[i] == '4'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
