@@ -355,7 +355,7 @@ timeline = {
 				$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 			}
 			for (var i = 0; i < nama.length; i++) {
-				console.log(email[i]);
+				// console.log(email[i]);
 				if (status[i] == '0') {
 					var statuscard = 'Di Proses';
 					var warna = 'yellow';
