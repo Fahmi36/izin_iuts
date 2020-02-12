@@ -17,7 +17,11 @@ function detailtugas(id) {
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'verifikasi_perizinan_teknis.html';
+					if (data.row[0].id_jenis == '3' || data.row[0].id_jenis == '1') {
+						window.location.href = 'verifikasi_perizinan_teknis.html';
+					}else{
+						window.location.href = 'dashboard_admin.html';
+					}
 				}else if(localStorage.getItem("level") ==3){ // Administrasi
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
