@@ -80,7 +80,6 @@ function Detailpemohon(id) {
 					$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
 					});	
 					localStorage.setItem('idbangunanuser',id);
-					adminitrasi();
 					adminteknis();
 					kepaladinas();
 				}
