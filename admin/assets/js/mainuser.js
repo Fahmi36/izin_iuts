@@ -348,7 +348,7 @@ timeline = {
 					jenis.push(data.row[coba].jenis);
 					code.push(data.row[coba].code);
 					tanggal.push(data.row[coba].created_at);
-					id_bangunan.push(data.row[coba].id_bangunan);
+					id_bangunan.push(data.row[coba].id_slf);
 				}
 
 				if (nama.length == 0) {
@@ -677,7 +677,7 @@ $("#logout").click(function(event) {
 });
 if (typeof(Storage) !== "undefined") {
 	if (localStorage.getItem('iduser') === null) {
-		window.location.href = 'login.html';
+		// window.location.href = 'login.html';
 	}
 }else{
 	navigator.sayswho= (function(){

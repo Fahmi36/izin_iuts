@@ -8,6 +8,7 @@ var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 /* Add Row */
 function statuspemohon() {
     if ($("#status_pemohon option:selected").val() == "Perorangan") {
+        $("#statusP").removeAttr('style');
         $("#jabatan_row").removeAttr('style');
         $("#npj").removeAttr('style');
         $("#nikPJ").removeAttr('style');
@@ -19,6 +20,7 @@ function statuspemohon() {
         $("#npwpP").attr('style', 'display:none');
         $("#namaPJ").attr('style', 'display:none');
     }else{
+        $("#statusP").removeAttr('style');
         $("#jabatan_row").attr('style', 'display:none');
         $("#npj").attr('style', 'display:none');
         $("#nikPJ").attr('style', 'display:none');
@@ -41,8 +43,10 @@ function rekomendasislf() {
 function slf_change() {
     if ($("#slf option:selected").val() != 1 &&  $("#slf option:selected").val() != 2) {
         $("#uploadSLF").removeAttr('style');
+        $("#adaSLF").attr('style', 'display:none');
     }else{
         $("#uploadSLF").attr('style', 'display:none');
+        $("#adaSLF").removeAttr('style');
     }
 }
 function damkar() {
@@ -165,6 +169,12 @@ $('#fileIMB').bind('change', function () {
     }
 });   
 /* File Upload */
+
+$('input').on('keyup', function () {
+    $("input").filter(function () {
+        this.value.length ? $(this).addClass('input-success') : $(this).removeClass('input-success');
+    });
+});
 
 $('.answer__input').on('change', function(e) { 
     if($(this).next().children('.answer__tick').length>0){
@@ -1744,6 +1754,15 @@ $(document).ready(function() {
 });
 
 /* end animation */
+$(".addFileReSLF").click(function(){
+  $(this).closest(".row").find('.addFileReSLF').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadReSLF mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameReSLF">Pilih File</div> <div class="file-select-name" id="noFileReSLF">No file chosen...</div> <input type="file" name="fileRekomendasiSlf[]" id="fileRekomendasiSlf"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
+});
+$(".addFileSLF").click(function(){
+  $(this).closest(".row").find('.addFileSLF').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadSLF mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameSLF">Pilih File</div> <div class="file-select-name" id="noFileSLF">No file chosen...</div> <input type="file" name="fileSLF[]" id="fileSLF"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
+});
+$(".addFileIMB").click(function(){
+  $(this).closest(".row").find('.addFileIMB').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadIMB mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameIMB">Pilih File</div> <div class="file-select-name" id="noFileIMB">No file chosen...</div> <input type="file" name="fileIMB[]" id="fileIMB"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
+});
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before('<div class="col-md-6 imgUpLuar"> <div class="imagePreview" id="img-luar-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
 });
@@ -1751,6 +1770,9 @@ $(".imgAddDalam").click(function(){
   $(this).closest(".row").find('.imgAddDalam').before('<div class="col-md-6 imgUpDalam"> <div class="imagePreview" id="img-dalam-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
 });
 $(document).on("click", "i.del" , function() {
+    $(this).parent().remove();
+});
+$(document).on("click", "i.del-file" , function() {
     $(this).parent().remove();
 });
 $(function() {

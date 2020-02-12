@@ -102,12 +102,38 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link collapsed" href="#disposisi" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="spj">
-                <i class="ni ni-archive-2 text-info"></i>
-                <span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Perizinan Saya</span>
+              <a class="nav-link collapsed" href="#slf" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="slf">
+                <i class="ni ni-archive-2 text-success"></i>
+                <span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Perizinan SLF</span>
               </a>
-
-              <div class="collapse" id="disposisi">
+ 
+              <div class="collapse" id="slf">
+                <ul class="nav nav-sm flex-column">
+                  <li class="nav-item">
+                    <a onclick="filterizin(0)" href="javascript:void(0);" class="nav-link">
+                      Proses <span class="badge badge-default ml-2" id="countproses">0</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a onclick="filterizin(3)" href="javascript:void(0);" class="nav-link">
+                      Expired <span class="badge badge-default ml-2" id="countexpired">0</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a onclick="filterizin(1)"  href="javascript:void(0);" class="nav-link">
+                      Selesai <span class="badge badge-default ml-2" id="countselesai">0</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="#iuts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="iuts">
+                <i class="ni ni-archive-2 text-info"></i>
+                <span class="nav-link-text" style="color: rgba(0, 0, 0, .5);">Perizinan IUTS</span>
+              </a>
+ 
+              <div class="collapse" id="iuts">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
                     <a onclick="filterizin(0)" href="javascript:void(0);" class="nav-link">
