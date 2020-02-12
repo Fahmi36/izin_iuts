@@ -134,7 +134,6 @@ function adminteknis() {
 				var skorjarakpasar = [];
 				var skorrenjalan = [];
 				var skorjalaneksis = [];
-				var skortataruang = [];
 				var skorpenglahan = [];
 				var skormanfaat = [];
 				var skorjarakusaha = [];
@@ -142,7 +141,6 @@ function adminteknis() {
 					skorjarakpasar.push(data.row[coba].skorjarakpasar);
 					skorrenjalan.push(data.row[coba].skorrenjalan);
 					skorjalaneksis.push(data.row[coba].skorjalaneksis);
-					skortataruang.push(data.row[coba].skortataruang);
 					skorjarakusaha.push(data.row[coba].skorjarakusaha);
 					skorpenglahan.push(data.row[coba].skorpenglahan);
 					skormanfaat.push(data.row[coba].skormanfaat);
