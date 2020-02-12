@@ -348,7 +348,6 @@ timeline = {
 					jenis.push(data.row[coba].jenis);
 					code.push(data.row[coba].code);
 					tanggal.push(data.row[coba].created_at);
-					id_bangunan.push(data.row[coba].id_slf);
 				}
 
 				if (nama.length == 0) {
