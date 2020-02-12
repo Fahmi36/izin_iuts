@@ -80,21 +80,6 @@ function datadetailPemohon(id) {
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
                 });
-                $.ajax({
-                	url: BASE_URL + 'OfficeController/getAllFoto',
-                	type: 'POST',
-                	dataType: 'json',
-                	data: datas,
-                	beforeSend:function() {
-						jQuery('#loader').fadeIn('slow');
-                	},
-                	success:function(data) {
-                		if (data.success) {
-							jQuery('#loader').fadeOut('slow');
-							console.log(data);
-                		}
-                	}
-                })
 			}
 		}
 	});
@@ -405,6 +390,21 @@ datadetailPemohon:function() {
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
                 });
+                $.ajax({
+                	url: BASE_URL + 'OfficeController/getAllFoto',
+                	type: 'POST',
+                	dataType: 'json',
+                	data: datas,
+                	beforeSend:function() {
+						jQuery('#loader').fadeIn('slow');
+                	},
+                	success:function(data) {
+                		if (data.success) {
+							jQuery('#loader').fadeOut('slow');
+							console.log(data);
+                		}
+                	}
+                })
 			}
 		}
 	});
