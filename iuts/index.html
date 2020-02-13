@@ -143,6 +143,20 @@
               </div>
             </div>
             <div class="form-group row">
+              <label for="akteP" class="col-md-6 col-form-label">Akte Perusahaan :</label>
+              <div class="col-md-6">
+                <div class="file-input single">
+                  <div class="file-input-wrapper">
+                    <input type="file" name="aktePerusahaan" id="aktePerusahaan">
+                    <label for="aktePerusahaan" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    </label>
+                  </div>
+                  <ul class="selected-files"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
               <label for="alamatPerusahaan" class="col-md-6 col-form-label">Alamat Perusahaan :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" placeholder="-">
@@ -180,7 +194,7 @@
           <div class="form-group row">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Kepemilikan Lahan :</label>
             <div class="col-md-6">
-              <select required="" aria-label="statusBangunan" class="text-center form-control" id="status_kepem_lahan" name="status_kepem_lahan">
+              <select required="" onchange="statusLahan()" aria-label="statusBangunan" class="text-center form-control" id="status_kepem_lahan" name="status_kepem_lahan">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                 <option value="Hak Milik">Hak Milik</option>
                 <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
@@ -190,6 +204,20 @@
                 <option value="Milik Pemerintah Provinsi DKI Jakarta">Milik Pemerintah Provinsi DKI Jakarta</option>
                 <option value="Tidak Ada">Tidak Ada</option>
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadStatusL" style="display: none;">
+            <label for="statusL" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileStatusLahan[]" multiple id="fileStatusLahan">
+                  <label for="fileStatusLahan" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -501,8 +529,22 @@
           <div class="form-group row">
             <label for="ketersediaanAsuransiToko" class="col-md-6 col-form-label">Ketersediaan Asuransi Toko :</label>
             <div class="col-md-6">
-              <select required="" aria-label="ketersediaanAsuransiToko" class="text-center form-control" id="ketersediaan_asuransi_toko" name="ketersediaan_asuransi_toko">
+              <select required="" onchange="asuransiToko()" aria-label="ketersediaanAsuransiToko" class="text-center form-control" id="ketersediaan_asuransi_toko" name="ketersediaan_asuransi_toko">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadAsuransiT" style="display: none;">
+            <label for="asurasiT" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileSostek[]" id="fileKajianSostek" multiple >
+                  <label for="fileKajianSostek" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -693,9 +735,23 @@
           <div class="form-group row">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Pemutahiran PBB :</label>
             <div class="col-md-6">
-              <select required="" aria-label="pemutahiranPBB" class="text-center form-control" id="pemutakhiran_pbb" name="pemutahiran_pbb">
+              <select required="" onchange="pemutahiranPBB()" aria-label="pemutahiranPBB" class="text-center form-control" id="pemutakhiran_pbb" name="pemutahiran_pbb">
 
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadPBB" style="display: none;">
+            <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Pemutahiran PBB :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="filePBB[]" id="filePBB" multiple >
+                  <label for="filePBB" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -715,8 +771,22 @@
           <div class="form-group row">
             <label for="persetujuanWarga" class="col-md-6 col-form-label">Persetujuan Warga Sekitar :</label>
             <div class="col-md-6">
-              <select required="" aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
+              <select required="" onchange="persetujuanWarga()" aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadPW" style="display: none;">
+            <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Persetujuan Warga Sekitar :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="filePerW[]" id="filePerW" multiple >
+                  <label for="filePerW" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
           <div class="form-group row">
@@ -775,25 +845,36 @@
           <div class="form-group row" id="uploadUMKM" style="display: none;">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Rekomendasi UMKM :</label>
             <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="file-upload uploadUMKM">
-                    <div class="file-select">
-                      <div class="file-select-button" id="fileNameUMKM">Pilih File</div>
-                      <div class="file-select-name" id="noFileUMKM">No file chosen...</div> 
-                      <input type="file" name="fileUMKM[]" id="fileUMKM">
-                    </div>
-                  </div>
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileUMKM[]" id="fileUMKM" multiple >
+                  <label for="fileUMKM" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
                 </div>
+                <ul class="selected-files"></ul>
               </div>
-              <button type="button" class="btn btn3d btn-white addFileSLF">Tambah</button>
             </div>
           </div>
           <div class="form-group row">
             <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sosial Ekonomi :</label>
             <div class="col-md-6">
-              <select required="" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
+              <select required="" onchange="kajianSostek()" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadSostek" style="display: none;">
+            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileSostek[]" id="fileSostek" multiple >
+                  <label for="fileSostek" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
         </div>
