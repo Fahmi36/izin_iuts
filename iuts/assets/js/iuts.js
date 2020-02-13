@@ -26,6 +26,7 @@ function statuspemohon() {
         $("#nikPJ").attr('style', 'display:none');
         $("#nibPJ").attr('style', 'display:none');
         $("#npwpPJ").attr('style', 'display:none');
+        $("#fotoNIB").attr('style', 'display:none');
         $("#np").removeAttr('style');
         $("#nikD").removeAttr('style');
         $("#nibP").removeAttr('style');
@@ -41,12 +42,17 @@ function rekomendasislf() {
     }
 }
 function slf_change() {
-    if ($("#slf option:selected").val() != 1 &&  $("#slf option:selected").val() != 2) {
-        $("#uploadSLF").removeAttr('style');
-        $("#adaSLF").attr('style', 'display:none');
-    }else{
+    if ($("#slf option:selected").val() == 3 &&  $("#slf option:selected").val() == 4) {
         $("#uploadSLF").attr('style', 'display:none');
+        $("#suratPengawas").attr('style', 'display:none');
         $("#adaSLF").removeAttr('style');
+        $("#suratPengawas").attr('style', 'display:none');
+    }else if($("#slf option:selected").val() == 1){
+        $("#suratPengawas").removeAttr('style');
+    }else{
+        $("#uploadSLF").removeAttr('style');
+        $("#suratPengawas").attr('style', 'display:none');
+        $("#adaSLF").attr('style', 'display:none');
     }
 }
 function damkar() {
@@ -89,6 +95,13 @@ function kelompokusaha() {
         $("#rowKelompok").removeAttr('style');
     }else{
         $("#rowKelompok").attr('style', 'display:none');
+    }
+}
+function rekomendasiUMKM() {
+    if ($("#rekomendasi_umkm option:selected").val() == "4") {
+        $("#uploadUMKM").removeAttr('style');
+    }else{
+        $("#uploadUMKM").attr('style', 'display:none');
     }
 }
 function lamaizin() {
@@ -1754,15 +1767,6 @@ $(document).ready(function() {
 });
 
 /* end animation */
-$(".addFileReSLF").click(function(){
-  $(this).closest(".row").find('.addFileReSLF').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadReSLF mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameReSLF">Pilih File</div> <div class="file-select-name" id="noFileReSLF">No file chosen...</div> <input type="file" name="fileRekomendasiSlf[]" id="fileRekomendasiSlf"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
-});
-$(".addFileSLF").click(function(){
-  $(this).closest(".row").find('.addFileSLF').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadSLF mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameSLF">Pilih File</div> <div class="file-select-name" id="noFileSLF">No file chosen...</div> <input type="file" name="fileSLF[]" id="fileSLF"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
-});
-$(".addFileIMB").click(function(){
-  $(this).closest(".row").find('.addFileIMB').before('<div class="row"><div class="col-md-12"> <div class="file-upload uploadIMB mt-1"> <div class="file-select"> <div class="file-select-button" id="fileNameIMB">Pilih File</div> <div class="file-select-name" id="noFileIMB">No file chosen...</div> <input type="file" name="fileIMB[]" id="fileIMB"> </div><i class="fa fa-times del-file mt-1"></i></div> </div></div>');  
-});
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before('<div class="col-md-6 imgUpLuar"> <div class="imagePreview" id="img-luar-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
 });
@@ -1770,9 +1774,6 @@ $(".imgAddDalam").click(function(){
   $(this).closest(".row").find('.imgAddDalam').before('<div class="col-md-6 imgUpDalam"> <div class="imagePreview" id="img-dalam-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
 });
 $(document).on("click", "i.del" , function() {
-    $(this).parent().remove();
-});
-$(document).on("click", "i.del-file" , function() {
     $(this).parent().remove();
 });
 $(function() {
@@ -1788,6 +1789,9 @@ $(function() {
 
             reader.onloadend = function(){ // set image data as background of div
                 //alert(uploadFile.closest(".upimage").find('.imagePreview').length);
+                uploadFile.closest(".imgUpKTP").find('#img-KTP').css("background-image", "url("+this.result+")");
+                uploadFile.closest(".imgUpNIB").find('#img-NIB').css("background-image", "url("+this.result+")");
+                uploadFile.closest(".imgUpNPWP").find('#img-NPWP').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpLuar").find('#img-luar-bangunan').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpDalam").find('#img-dalam-bangunan').css("background-image", "url("+this.result+")");
             }
@@ -1803,3 +1807,78 @@ $("#luas_bangunan").keyup(function() {
         $("#alertLuas").html("");
     }
 });
+
+class FileInput {
+    constructor(wrapperEl) {
+        this.wrapperEl = wrapperEl
+        this.fileInput = wrapperEl.querySelector('input[type="file"]')
+        this.uploadCta = wrapperEl.querySelector('.upload-cta')
+        this.selectedFileList = wrapperEl.querySelector('.selected-files')
+    
+        this.fileInput.addEventListener('change', (e) => {
+            this.handleFileChange(e)
+        })
+    }
+
+    buildSelectedFileElement(file, fileId) {
+        var selectedFileEl = document.createElement('li')
+        var text = document.createTextNode(file.name)
+        // var suffix = "bytes";
+        // var size = document.createTextNode(file.size)
+        // if (size >= 1024 && size < 1024000) {
+        //   suffix = "KB";
+        //   size = Math.round(size / 1024 * 100) / 100;
+        // } else if (size >= 1024000) {
+        //   suffix = "MB";
+        //   size = Math.round(size / 1024000 * 100) / 100;
+        // }
+        var removeButton = document.createElement('button')
+        
+        removeButton.setAttribute('role', 'button')
+        removeButton.classList.add('remove')
+        removeButton.innerText = 'Remove'
+        removeButton.addEventListener('click', () => {
+            selectedFileEl.parentNode.removeChild(selectedFileEl)
+            this.removeFile(fileId)
+        })
+        
+        selectedFileEl.appendChild(text)
+        // selectedFileEl.appendChild(size)
+        selectedFileEl.appendChild(removeButton)
+        
+        return selectedFileEl
+    }
+}
+
+class MultipleFileInput extends FileInput {
+    constructor(wrapperEl) {
+        super(wrapperEl)
+    
+        this.selectedFiles = {}
+        this.nextFileId = 1
+    }
+
+    handleFileChange(e) {
+        var filesFromInput = e.target.files
+        
+        for (var i = 0; i < filesFromInput.length; i++) {
+            var file = filesFromInput[i]
+            var fileId = this.nextFileId++
+          
+            this.selectedFiles[fileId] = file
+          
+            var selectedFileEl = this.buildSelectedFileElement(file, fileId)
+            this.selectedFileList.appendChild(selectedFileEl)
+        }
+        e.target.value = ''
+    }
+
+    removeFile(fileId) {
+        delete this.selectedFiles[fileId]
+    }
+}
+
+// Multiple file input
+document.querySelectorAll('.file-input.multiple').forEach(function(wrapperEl) {
+  new MultipleFileInput(wrapperEl)
+})

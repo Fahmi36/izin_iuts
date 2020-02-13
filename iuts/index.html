@@ -109,11 +109,37 @@
                 <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
               </div>
             </div>
+            <div class="form-group row" id="fotoNIB">
+              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NIB :</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6 imgUpNIB">
+                    <div class="imagePreview" id="img-NIB"></div>
+                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                      <input type="file" class="uploadFile img" name="foto_nib" id="foto_nib" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="form-group row">
               <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
               <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ" style="">NPWP Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NPWP :</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6 imgUpNPWP">
+                    <div class="imagePreview" id="img-NPWP"></div>
+                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                      <input type="file" class="uploadFile img" name="foto_npwp" id="foto_npwp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
@@ -373,20 +399,17 @@
             </div>
           </div>
           <div class="form-group row" id="uploadIMB" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="file-upload uploadIMB">
-                    <div class="file-select">
-                      <div class="file-select-button" id="fileNameIMB">Pilih File</div>
-                      <div class="file-select-name" id="noFileIMB">No file chosen...</div> 
-                      <input type="file" name="fileIMB[]" id="fileIMB">
-                    </div>
-                  </div>
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileIMB[]" multiple id="fileIMB">
+                  <label for="fileIMB" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
                 </div>
+                <ul class="selected-files"></ul>
               </div>
-              <button type="button" class="btn btn3d btn-white addFileIMB">Tambah</button>
             </div>
           </div>
           <div class="form-group row">
@@ -399,18 +422,29 @@
           <div class="form-group row" id="uploadSLF" style="display: none;">
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="file-upload uploadSLF">
-                    <div class="file-select">
-                      <div class="file-select-button" id="fileNameSLF">Pilih File</div>
-                      <div class="file-select-name" id="noFileSLF">No file chosen...</div> 
-                      <input type="file" name="fileSLF[]" id="fileSLF">
-                    </div>
-                  </div>
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileSLF[]" multiple id="fileSLF">
+                  <label for="fileSLF" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
                 </div>
+                <ul class="selected-files"></ul>
               </div>
-              <button type="button" class="btn btn3d btn-white addFileSLF">Tambah</button>
+            </div>
+          </div>
+          <div class="form-group row" id="suratPengawas" style="display: none;">
+            <label for="suratP" class="col-md-6 col-form-label">Surat Pernyataan Pengawas/pengkaji Teknis :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileSuratP[]" id="fileSuratP" multiple>
+                  <label for="fileSuratP" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
+                </div>
+                <ul class="selected-files"></ul>
+              </div>
             </div>
           </div>
           <div id="adaSLF">
@@ -424,12 +458,14 @@
             <div class="form-group row" id="uploadDamkar" style="display: none;">
               <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
-                <div class="file-upload uploadDamkar">
-                  <div class="file-select">
-                    <div class="file-select-button" id="fileNameDamkar">Pilih File</div>
-                    <div class="file-select-name" id="noFileDamkar">No file chosen...</div> 
-                    <input type="file" name="fileDamkar" id="fileDamkar">
+                <div class="file-input multiple">
+                  <div class="file-input-wrapper">
+                    <input type="file" name="fileDamkar[]" id="fileDamkar" multiple>
+                    <label for="fileDamkar" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    </label>
                   </div>
+                  <ul class="selected-files"></ul>
                 </div>
               </div>
             </div>
@@ -443,15 +479,15 @@
             <div class="form-group row" id="uploadTKT" style="display: none;">
               <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
-                <div class="file-upload uploadTKT">
-                  <div class="file-select">
-                    <div class="file-select-button" id="fileNameTKT">Pilih File</div>
-                    <div class="file-select-name" id="noFileTKT">No file chosen...</div> 
-                    <input type="file" name="fileTKT" id="fileTKT">
+                <div class="file-input multiple">
+                  <div class="file-input-wrapper">
+                    <input type="file" name="fileTKT[]" id="fileTKT" multiple>
+                    <label for="fileTKT" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    </label>
                   </div>
-                  <i class="fa fa-times del-file"></i>
+                  <ul class="selected-files"></ul>
                 </div>
-                <button type="button" class="btn btn3d btn-white addFileReSLF">Tambah</button>
               </div>
             </div>
             <div class="form-group row">
@@ -732,8 +768,25 @@
           <div class="form-group row">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Ada Rekomendasi UMKM :</label>
             <div class="col-md-6">
-              <select required="" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
+              <select required="" onchange="rekomendasiUMKM()" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
               </select>
+            </div>
+          </div>
+          <div class="form-group row" id="uploadUMKM" style="display: none;">
+            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Rekomendasi UMKM :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="file-upload uploadUMKM">
+                    <div class="file-select">
+                      <div class="file-select-button" id="fileNameUMKM">Pilih File</div>
+                      <div class="file-select-name" id="noFileUMKM">No file chosen...</div> 
+                      <input type="file" name="fileUMKM[]" id="fileUMKM">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn3d btn-white addFileSLF">Tambah</button>
             </div>
           </div>
           <div class="form-group row">
