@@ -887,6 +887,8 @@ $('#btn-modalmaps').click(function(event) {
             // dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
 
             // localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+            $nofotoluar = 0;
+
             $("#formizinslfiuts").submit(function (event) {
                 swal({
                     title: "Ajukan Izin", 
@@ -899,12 +901,24 @@ $('#btn-modalmaps').click(function(event) {
                 .then((result) => {
                     if (result.value) {
             // var datas = new FormData($(this)[0]);
+
+                var form_name = '#formizinslfiuts';   
                 var datas = new FormData($(this)[0]);
-                datas.append('datas', JSON.stringify(datas));
 
                 var ins1 = document.getElementById('foto_luar_bangunan').files.length;
                 for (var x = 0; x < ins1; x++) {
-                    datas.append("fotoluar[]", document.getElementById('foto_luar_bangunan').files[x]);
+                    var file = document.getElementById('foto_luar_bangunan').files[x];
+                    var reader = new FileReader();
+                    if (file != undefined) {
+                        reader.readAsDataURL(file);
+                        reader.onload = shipOffLuarBangunan;
+                        var a = new Date();
+                        var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                        var name = datenya + file.name;
+                        console.log(name);
+                        // updateFoto(name, data.idhelp);
+
+                    }
                 }
                 var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
                 for (var x = 0; x < ins2; x++) {
@@ -995,6 +1009,37 @@ $('#btn-modalmaps').click(function(event) {
     }
 })
 });
+
+
+function shipOffLuarBangunan(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoluar].name;
+    $nofotoluar+=1;
+    debugger;
+    return;
+
+    $.ajax({
+        url: api_url + 'Helpdesk/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+            window.location.reload();
+            // window.location.reload();
+        }
+    })
+}
+
+function updateFoto(name, id) {
+    $.ajax({
+        url: api_url + 'Helpdesk/updateData',
+        data: {id: id, name: name},
+        method: 'post',
+        success: function (data) {
+        }
+    })
+}
 
 /* end konfirmasi ijin */
 
