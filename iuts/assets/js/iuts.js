@@ -2,8 +2,8 @@ const numberSteps = $('.ijin__step').length - 1;
 let disableButtons = false;
 const tick = '<div class="answer__tick"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></div>'; 
 let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1><p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p><p>Perkiran Waktu Perizinan Selesai (0) Hari</p><div class="backkehalaman"><a onclick="backkehalaman();" href="javascript:void(0);" class="btn3d btn btn-danger btn-lg">Kembali Ke Halaman Utama</a></div></div>';
-// var BASE_URL = 'http://localhost/rest_api_iuts/';
-var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+var BASE_URL = 'http://localhost/rest-api-iuts/';
+// var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
 /* Add Row */
 function statuspemohon() {
@@ -890,6 +890,8 @@ $('#btn-modalmaps').click(function(event) {
             $nofotoluar = 0;
 
             $("#formizinslfiuts").submit(function (event) {
+                event.preventDefault();
+
                 swal({
                     title: "Ajukan Izin", 
                     text: "Apakah Data Yang Anda Masukkan Sudah Benar", 
@@ -905,61 +907,6 @@ $('#btn-modalmaps').click(function(event) {
                 var form_name = '#formizinslfiuts';   
                 var datas = new FormData($(this)[0]);
 
-                var ins1 = document.getElementById('foto_luar_bangunan').files.length;
-                for (var x = 0; x < ins1; x++) {
-                    var file = document.getElementById('foto_luar_bangunan').files[x];
-                    var reader = new FileReader();
-                    if (file != undefined) {
-                        reader.readAsDataURL(file);
-                        reader.onload = shipOffLuarBangunan;
-                        var a = new Date();
-                        var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                        var name = datenya + file.name;
-                        console.log(name);
-                        // updateFoto(name, data.idhelp);
-
-                    }
-                }
-                var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
-                for (var x = 0; x < ins2; x++) {
-                    datas.append("foto_dalam_bangunan[]", document.getElementById('foto_dalam_bangunan').files[x]);
-                }
-                var ins3 = document.getElementById('fileIMB').files.length;
-                for (var x = 0; x < ins3; x++) {
-                    datas.append("fileIMB[]", document.getElementById('fileIMB').files[x]);
-                }
-                var ins4 = document.getElementById('fileSLF').files.length;
-                for (var x = 0; x < ins4; x++) {
-                    datas.append("fileSLF[]", document.getElementById('fileSLF').files[x]);
-                }
-                var ins5 = document.getElementById('fileSuratP').files.length;
-                for (var x = 0; x < ins5; x++) {
-                    datas.append("fileSuratP[]", document.getElementById('fileSuratP').files[x]);
-                }
-                var ins6 = document.getElementById('fileDamkar').files.length;
-                for (var x = 0; x < ins6; x++) {
-                    datas.append("fileDamkar[]", document.getElementById('fileDamkar').files[x]);
-                }
-                var ins = document.getElementById('fileTKT').files.length;
-                for (var x = 0; x < ins; x++) {
-                    datas.append("fileTKT[]", document.getElementById('fileTKT').files[x]);
-                }
-                var ins7 = document.getElementById('fileSostek').files.length;
-                for (var x = 0; x < ins7; x++) {
-                    datas.append("fileSostek[]", document.getElementById('fileSostek').files[x]);
-                }
-                var ins8 = document.getElementById('filePBB').files.length;
-                for (var x = 0; x < ins8; x++) {
-                    datas.append("filePBB[]", document.getElementById('filePBB').files[x]);
-                }
-                var ins9 = document.getElementById('filePerW').files.length;
-                for (var x = 0; x < ins9; x++) {
-                    datas.append("filePerW[]", document.getElementById('filePerW').files[x]);
-                }
-                var ins10 = document.getElementById('fileUMKM').files.length;
-                for (var x = 0; x < ins10; x++) {
-                    datas.append("fileUMKM[]", document.getElementById('fileUMKM').files[x]);
-                }
                 var ins11 = document.getElementById('fileStatusLahan').files.length;
                 for (var x = 0; x < ins11; x++) {
                     datas.append("fileStatusLahan[]", document.getElementById('fileStatusLahan').files[x]);
@@ -978,22 +925,218 @@ $('#btn-modalmaps').click(function(event) {
                 cache: false,
                 processData: false,
                 beforeSend:function() {
-                    $("#text-loader").html('Mohon Tunggu');
-                    $('#page-loader').fadeIn('slow');
+                    // $("#text-loader").html('Mohon Tunggu');
+                    // $('#page-loader').fadeIn('slow');
                 },
                 success:function(data) {
                     if (data.success) {
-                        e.preventDefault();
-                        $('.ijin').remove();
-                        $(summary).appendTo('.container');
-                        disableButtons=true;
-                        $('.navigation__btn').addClass('navigation__btn--disabled');
-                        $('#page-loader').fadeOut('slow'); 
-                        swal({
-                            type: 'success',
-                            title: data.msg,
-                            showCancelButton: true
-                        });
+                        var ins1 = document.getElementById('foto_luar_bangunan').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('foto_luar_bangunan').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffLuarBangunan;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
+                        for (var x = 0; x < ins2; x++) {
+                            var file = document.getElementById('foto_dalam_bangunan').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffDalamBangunan;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileIMB').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileIMB').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffLuarBangunan;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileSLF').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileSLF').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileSuratP').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileSuratP').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileDamkar').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileDamkar').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileTKT').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileTKT').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileSostek').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileSostek').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('filePerW').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('filePerW').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileUMKM').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileUMKM').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('filePerW').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('filePerW').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileStatusLahan').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileStatusLahan').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        var ins1 = document.getElementById('fileAsuransi').files.length;
+                        for (var x = 0; x < ins1; x++) {
+                            var file = document.getElementById('fileAsuransi').files[x];
+                            var reader = new FileReader();
+                            if (file != undefined) {
+                                reader.readAsDataURL(file);
+                                reader.onload = shipOffAllSlf;
+                                var a = new Date();
+                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                var name = datenya + file.name;
+                                console.log(data);
+                                updateFoto(name, data.idslf);
+
+                            }
+                        }
+                        // $('.ijin').remove();
+                        // $(summary).appendTo('.container');
+                        // disableButtons=true;
+                        // $('.navigation__btn').addClass('navigation__btn--disabled');
+
+
+                        // $('#page-loader').fadeOut('slow'); 
+                        // swal({
+                        //     type: 'success',
+                        //     title: data.msg,
+                        //     showCancelButton: true
+                        // });
                     }else{
                         $('#page-loader').fadeOut('slow');
                         swal({
@@ -1015,25 +1158,56 @@ function shipOffLuarBangunan(event) {
     var result = event.target.result;
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    debugger;
     var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoluar].name;
     $nofotoluar+=1;
-    debugger;
-    return;
+    console.log(fileName);
 
     $.ajax({
-        url: api_url + 'Helpdesk/addAttachment',
+        url: BASE_URL + 'ValidasiController/addAttachment',
         method: 'post',
         data: {data: result, name: fileName},
         success: function (dt) {
-            window.location.reload();
-            // window.location.reload();
         }
     })
 }
+function shipOffDalamBangunan(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    debugger;
+    var fileName = datenya + document.getElementById('foto_dalam_bangunan').files[$nofotoluar].name;
+    $nofotoluar+=1;
+    console.log(fileName);
 
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+        }
+    })
+}
+function shipOffAllSlf(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    debugger;
+    var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoluar].name;
+    $nofotoluar+=1;
+    console.log(fileName);
+
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+        }
+    })
+}
 function updateFoto(name, id) {
     $.ajax({
-        url: api_url + 'Helpdesk/updateData',
+        url: BASE_URL + 'ValidasiController/updateData',
         data: {id: id, name: name},
         method: 'post',
         success: function (data) {
