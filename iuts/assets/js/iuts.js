@@ -14,7 +14,6 @@ function statuspemohon() {
         $(".nikPJ").removeAttr('style');
         $(".nibPJ").removeAttr('style');
         $(".npwpPJ").removeAttr('style');
-        $(".fotoNIB").removeAttr('style');
         $(".np").attr('style', 'display:none');
         $(".nikD").attr('style', 'display:none');
         $(".nibP").attr('style', 'display:none');
@@ -28,11 +27,11 @@ function statuspemohon() {
         $(".nikPJ").attr('style', 'display:none');
         $(".nibPJ").attr('style', 'display:none');
         $(".npwpPJ").attr('style', 'display:none');
-        $(".fotoNIB").attr('style', 'display:none');
         $(".np").removeAttr('style');
         $(".nikD").removeAttr('style');
         $(".nibP").removeAttr('style');
         $(".npwpP").removeAttr('style');
+        $(".namaPJ").removeAttr('style');
         $(".akteP").removeAttr('style');
     }
 }
@@ -45,16 +44,16 @@ function rekomendasislf() {
 }
 function slf_change() {
     if ($("#slf option:selected").val() == 3 &&  $("#slf option:selected").val() == 4) {
-        $("#uploadSLF").attr('style', 'display:none');
-        $("#suratPengawas").attr('style', 'display:none');
-        $("#adaSLF").removeAttr('style');
-        $("#suratPengawas").attr('style', 'display:none');
+        $(".uploadSLF").attr('style', 'display:none');
+        $(".suratPengawas").attr('style', 'display:none');
+        $(".adaSLF").removeAttr('style');
+        $(".suratPengawas").attr('style', 'display:none');
     }else if($("#slf option:selected").val() == 1){
-        $("#suratPengawas").removeAttr('style');
+        $(".suratPengawas").removeAttr('style');
     }else{
-        $("#uploadSLF").removeAttr('style');
-        $("#suratPengawas").attr('style', 'display:none');
-        $("#adaSLF").attr('style', 'display:none');
+        $(".uploadSLF").removeAttr('style');
+        $(".suratPengawas").attr('style', 'display:none');
+        $(".adaSLF").attr('style', 'display:none');
     }
 }
 function damkar() {
@@ -286,37 +285,47 @@ $('.navigation__btn--right').click(function(e){
 
     /* Data Administrasi Pemohon */
     localStorage.setItem("status_pemohon", $("#status_pemohon").val());
+    localStorage.setItem("nama_perusahaan", $("#nama_perusahaan").val());
     localStorage.setItem("namapemohon", $("#namaLengkap").val());
     localStorage.setItem("jabatan", $("#jabatan").val());
     localStorage.setItem("nik", $("#nomorInKepen").val());
+    localStorage.setItem("foto_ktp", $("#foto_ktp").text());
     localStorage.setItem("nib", $("#nomorInBeru").val());
     localStorage.setItem("npwp", $("#npwp").val());
+    localStorage.setItem("foto_npwp", $("#foto_npwp").text());
     localStorage.setItem("alamat_perusahaan", $("#alamat_perusahaan").val());
     localStorage.setItem("no_telp", $("#no_telp").val());
     localStorage.setItem("email", $("#emailAktif").val());
 
     var status_pemohon = localStorage.getItem('status_pemohon');
+    var nama_perusahaan = localStorage.getItem('nama_perusahaan');
     var nama = localStorage.getItem('namapemohon');
     var jabatan = localStorage.getItem('jabatan');
     var nik = localStorage.getItem('nik');
+    var foto_ktp = localStorage.getItem('foto_ktp');
     var nib = localStorage.getItem('nib');
     var npwp = localStorage.getItem('npwp');
+    var foto_npwp = localStorage.getItem('foto_npwp');
     var alamat_perusahaan = localStorage.getItem('alamat_perusahaan');
     var no_telp = localStorage.getItem('no_telp');
     var email = localStorage.getItem('email');
 
     $("#statusPemohon").text(status_pemohon);
+    $("#nama_p").text(nama_perusahaan);
     $("#nama").text(nama);
     $("#jabatanlocal").text(jabatan);
     $("#nik").text(nik);
+    $("#foto_ktp").text(foto_ktp);
     $("#nib").text(nib);
     $("#npwplocal").text(npwp);
+    $("#foto_npwp").text(foto_npwp);
     $("#alamatperusahaan").text(alamat_perusahaan);
     $("#nomortelp").text(no_telp);
     $("#email").text(email);
     /* Data Administrasi Pemohon */
 
     /* Data Umum Bangunan */
+    localStorage.setItem("nopd_bangunan", $("#nopd_bangunan").val());
     localStorage.setItem("luas_lahan", $("#luasLahan").val());
     localStorage.setItem("status_milik", $("#status_milik").val());
     localStorage.setItem("luas_tapak", $("#luasTapakB").val());
@@ -327,6 +336,7 @@ $('.navigation__btn--right').click(function(e){
     localStorage.setItem("foto_luar_bangunan", $("#foto_luar_bangunan").val());
     localStorage.setItem("foto_dalam_bangunan", $("#foto_dalam_bangunan").val());
 
+    var nopd_bangunan = localStorage.getItem('nopd_bangunan');
     var luas = localStorage.getItem('luas_lahan');
     var status_milik = localStorage.getItem('status_milik');
     var luastapak = localStorage.getItem('luas_tapak');
@@ -337,6 +347,7 @@ $('.navigation__btn--right').click(function(e){
     var foto_luar_bangunan = localStorage.getItem('foto_luar_bangunan');
     var foto_dalam_bangunan = localStorage.getItem('foto_dalam_bangunan');
 
+    $("#nopd_bangunan_summary").text(nopd_bangunan);
     $("#luas_lahan").text(luas);
     $("#statusmilik").text(status_milik);
     $("#luastapak").text(luastapak);
