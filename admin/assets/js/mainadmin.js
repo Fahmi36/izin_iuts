@@ -17,7 +17,11 @@ function detailtugas(id) {
 				}else if(localStorage.getItem("level") ==2){// Admin Teknis
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
-					window.location.href = 'verifikasi_perizinan_teknis.html';
+					if (data.row[0].id_jenis == '3' || data.row[0].id_jenis == '1') {
+						window.location.href = 'verifikasi_perizinan_teknis.html';
+					}else{
+						window.location.href = 'dashboard_admin.html';
+					}
 				}else if(localStorage.getItem("level") ==3){ // Administrasi
 					localStorage.setItem("idbangunanadmin",id);
 					localStorage.setItem("iduserbangunan",data.row[0].id_pemohon);
@@ -27,7 +31,59 @@ function detailtugas(id) {
 		}
 	});
 }
+function datadetailPemohon(id) {
+	var datas = {code:id};
+	$('#detailPerizinan').modal('show');
+	$.ajax({
+		url: BASE_URL + 'OfficeController/getBangunanDetail',
+		type: 'POST',
+		dataType: 'json',
+		data: datas,
+		beforeSend:function(argument) {
+			jQuery('#loader').fadeIn('slow');
+		},
+		success:function(data) {
+			if (data.success) {
+				var code = [];
+				var nama = [];
+				var nib = [];
+				var npwp = [];
+				var tgl = [];
+				var alamat = [];
+				var zona = [];
+				var kode_sublok = [];
+				var lat = [];
+				var lon = [];
+				for(var coba in data.row){
+					code.push(data.row[coba].code);
+					nama.push(data.row[coba].nama);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					alamat.push(data.row[coba].alamat);
+					zona.push(data.row[coba].zona);
+					kode_sublok.push(data.row[coba].kode_sublok);
+					lat.push(data.row[coba].lat);
+					lon.push(data.row[coba].lon);
+					tgl.push(data.row[coba].tanggal);
 
+				}
+				$('#tokenbangunan').text(code);
+				$('#namabangunan').text(nama);
+				$('#nibpemohon').text(nib);
+				$('#npwppemohon').text(npwp);
+				$('#tglpemohon').text(tgl);
+				$('#zonasi').text(zona);
+				$('#kodesublock').text(kode_sublok);
+				$('#alamatpemohon').text(alamat);
+				$('#lat').val(lat);
+				$('#long').val(lon);
+				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
+				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
+                });
+			}
+		}
+	});
+}
 function detailSuratsk(id) {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/getBangunan',
@@ -332,8 +388,23 @@ datadetailPemohon:function() {
 				$('#lat').val(lat);
 				$('#long').val(lon);
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
-				$.getScript("https://iuts.pkkmart.com/admin/assets/scripts/mapsadmin.js", function() {
+				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
                 });
+                $.ajax({
+                	url: BASE_URL + 'OfficeController/getAllFoto',
+                	type: 'POST',
+                	dataType: 'json',
+                	data: datas,
+                	beforeSend:function() {
+						jQuery('#loader').fadeIn('slow');
+                	},
+                	success:function(data) {
+                		if (data.success) {
+							jQuery('#loader').fadeOut('slow');
+							console.log(data);
+                		}
+                	}
+                })
 			}
 		}
 	});

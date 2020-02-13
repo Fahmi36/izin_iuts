@@ -76,11 +76,10 @@ function Detailpemohon(id) {
 					$('#idbangunan').val(id);
 					$('#lat').val(lat);
 					$('#long').val(lon);
-					$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
+					$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 					$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
 					});	
 					localStorage.setItem('idbangunanuser',id);
-					adminitrasi();
 					adminteknis();
 					kepaladinas();
 				}
@@ -135,7 +134,6 @@ function adminteknis() {
 				var skorjarakpasar = [];
 				var skorrenjalan = [];
 				var skorjalaneksis = [];
-				var skortataruang = [];
 				var skorpenglahan = [];
 				var skormanfaat = [];
 				var skorjarakusaha = [];
@@ -143,17 +141,16 @@ function adminteknis() {
 					skorjarakpasar.push(data.row[coba].skorjarakpasar);
 					skorrenjalan.push(data.row[coba].skorrenjalan);
 					skorjalaneksis.push(data.row[coba].skorjalaneksis);
-					skortataruang.push(data.row[coba].skortataruang);
 					skorjarakusaha.push(data.row[coba].skorjarakusaha);
 					skorpenglahan.push(data.row[coba].skorpenglahan);
 					skormanfaat.push(data.row[coba].skormanfaat);
 				}
-				var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skortataruang)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
-				var skorakumulasi = parseFloat(skor)/6;
+				var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
+				var skorakumulasi = parseFloat(skor)/5;
 				if (data.rowCount > 0) {
 					$('#ket_pemohon').removeAttr('style');
-					$('#ket_teknis').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
-					$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
+					$('#ket_teknis').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
+					$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+skormanfaat[0]+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>');
 					
 				}
 			}
@@ -277,16 +274,20 @@ timeline = {
 			success:function(data) {
 				var nama = [];
 				var status = [];
-				var email = [];
+				var jenis = [];
 				var code = [];
 				var tanggal = [];
 				var tujuan = [];
-				var id_bangunan = [];
+				var id_slf = [];
+				var id_izin = [];
+				var id_iuts = [];
 				for(var coba in data.row){
-					id_bangunan.push(data.row[coba].id_slf);
+					id_izin.push(data.row[coba].id_izin);
+					id_slf.push(data.row[coba].id_slf);
+					id_iuts.push(data.row[coba].id_iuts);
 					nama.push(data.row[coba].nama);
 					status.push(data.row[coba].status);
-					email.push(data.row[coba].email);
+					jenis.push(data.row[coba].jenis);
 					code.push(data.row[coba].code);
 					tanggal.push(data.row[coba].created_at);
 				}
@@ -313,7 +314,12 @@ timeline = {
 						var css = 'expired';
 						var warna = 'primary';
 					}
-					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="Detailpemohon('+"'"+id_bangunan[i]+"'"+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+					if (id_slf[i] == '') {
+						var idnya = id_iuts[i];
+					}else{
+						var idnya = id_slf[i];
+					}
+					$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="Detailpemohon('+"'"+id_izin[i]+"'"+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">'+jenis[i]+'</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 				}
 			}
 		})
@@ -328,17 +334,21 @@ timeline = {
 			success:function(data) {
 				var nama = [];
 				var status = [];
-				var email = [];
+				var jenis = [];
 				var code = [];
 				var tanggal = [];
-				var id_bangunan = [];
+				var id_slf = [];
+				var id_iuts = [];
+				var id_izin = [];
 				for(var coba in data.row){
+					id_izin.push(data.row[coba].id_izin);
+					id_slf.push(data.row[coba].id_slf);
+					id_iuts.push(data.row[coba].id_iuts);
 					nama.push(data.row[coba].nama);
 					status.push(data.row[coba].status);
-					email.push(data.row[coba].email);
+					jenis.push(data.row[coba].jenis);
 					code.push(data.row[coba].code);
 					tanggal.push(data.row[coba].created_at);
-					id_bangunan.push(data.row[coba].id_slf);
 				}
 
 				if (nama.length == 0) {
@@ -346,7 +356,7 @@ timeline = {
 				$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 			}
 			for (var i = 0; i < nama.length; i++) {
-				console.log(email[i]);
+				// console.log(email[i]);
 				if (status[i] == '0') {
 					var statuscard = 'Di Proses';
 					var warna = 'yellow';
@@ -364,7 +374,12 @@ timeline = {
 					var css = 'expired';
 					var warna = 'primary';
 				}
-				$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+"'"+id_bangunan[i]+"'"+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">Izin Usaha Toko Swalayan</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
+				if (id_slf[i] == '') {
+						var idnya = id_iuts[i];
+					}else{
+						var idnya = id_slf[i];
+					}
+				$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+"'"+id_izin[i]+"'"+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">'+jenis[i]+'</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 			}
 		}
 	})
@@ -388,41 +403,7 @@ timeline = {
 						$('#pemohon').addClass('active');
 						$('#ket_pemohon').removeAttr('style');
 						$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(tgl[i]))+'</p>');
-					}else if(status[i] == '1'){
-						$.ajax({
-							url: BASE_URL + 'UserController/detailPemohonAdministrasi',
-							type: 'POST',
-							dataType: 'json',
-							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
-							success:function(data) {
-								if (data.success) {
-									var skorlengkap = [];
-									var skorwaktu = [];
-									var skorpbb = [];
-									var skornpwp = [];
-									var skoradministrasi = [];
-									for(var coba in data.row){
-										skorlengkap.push(data.row[coba].skorlengkap);
-										skorwaktu.push(data.row[coba].skorwaktu);
-										skorpbb.push(data.row[coba].skorpbb);
-										skornpwp.push(data.row[coba].skornpwp);
-										skoradministrasi.push(data.row[coba].skoradministrasi);
-									}
-
-									var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
-									var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
-									var skorakumulasi = skoradmin/2;
-									var totalakhir = skorakumulasi*skortotal;
-									if (data.rowCount > 0) {
-										$('#ket_pemohon').removeAttr('style');
-										$('#ket_pemohon').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
-									}
-								}
-							}
-						});
-						$('#pemohon').addClass('active');
-						$('#adminitrasi').addClass('active');
-					}else if(status[i] == '2'){
+					}if(status[i] == '1'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -436,7 +417,6 @@ timeline = {
 									var skorjarakpasar = [];
 									var skorrenjalan = [];
 									var skorjalaneksis = [];
-									var skortataruang = [];
 									var skorpenglahan = [];
 									var skormanfaat = [];
 									var skorjarakusaha = [];
@@ -444,21 +424,20 @@ timeline = {
 										skorjarakpasar.push(data.row[coba].skorjarakpasar);
 										skorrenjalan.push(data.row[coba].skorrenjalan);
 										skorjalaneksis.push(data.row[coba].skorjalaneksis);
-										skortataruang.push(data.row[coba].skortataruang);
 										skorjarakusaha.push(data.row[coba].skorjarakusaha);
 										skorpenglahan.push(data.row[coba].skorpenglahan);
 										skormanfaat.push(data.row[coba].skormanfaat);
 									}
-									var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skortataruang)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
-									var skorakumulasi = parseFloat(skor)/6;
+									var skor = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorjalaneksis)+parseFloat(skorjarakusaha)+parseFloat(skorpenglahan);
+									var skorakumulasi = parseFloat(skor)/5;
 									if (data.rowCount > 0) {
 										$('#ket_pemohon').removeAttr('style');
-										$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+String(skorakumulasi).substr(0, 4)+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li><li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">'+skortataruang[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>'); 
+										$('#ket_pemohon').html('<p>Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">'+String(skorakumulasi).substr(0, 4)+'</span> (Akumulasi Nilai Teknis)</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">'+skorrenjalan[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">'+skorpenglahan[0]+'</span></li><li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">'+skorjarakusaha[0]+'</span></li><li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">'+skorjalaneksis[0]+'</span></li></ul></div></div>'); 
 									}
 								}
 							}
 						});
-					}else if (status[i] == '3') {
+					}else if (status[i] == '2') {
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -496,7 +475,7 @@ timeline = {
 								}
 							}
 						});
-					}else if (status[i] == '4'){
+					}else if (status[i] == '3'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -536,7 +515,7 @@ timeline = {
 							}
 						});
 
-					}else if (status[i] == '6'){
+					}else if (status[i] == '4'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
