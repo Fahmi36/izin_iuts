@@ -74,7 +74,8 @@
             <div class="form-group row namaPJ" style="display: none;">
               <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Direktur :</label>
               <div class="col-md-6">
-                <input type="text" class="form-control" name="nama_lengkap_direktur" id="namaLengkap" placeholder="-">
+
+                <input type="text" class="form-control" name="nama_lengkap_direktur" id="nama_lengkap_direktur" placeholder="-">
               </div>
             </div>
             <div class="form-group row jabatan_row" style="display: none;">
@@ -108,6 +109,19 @@
               <label for="nomorInBeru" class="col-md-6 col-form-label nibPJ" style="">NIB Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row fotoNIB">
+              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NIB :</label>
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-6 imgUpNIB">
+                    <div class="imagePreview" id="img-NIB"></div>
+                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                      <input type="file" class="uploadFile img" name="foto_nib" id="foto_nib" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                    </label>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
@@ -531,7 +545,7 @@
             <div class="col-md-6">
               <div class="file-input multiple">
                 <div class="file-input-wrapper">
-                  <input type="file" name="fileSostek[]" id="fileKajianSostek" multiple >
+                  <input type="file" name="fileAsuransi[]" id="fileAsuransi" multiple >
                   <label for="fileKajianSostek" class="upload-cta">
                     Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
@@ -611,7 +625,7 @@
           <div class="form-group row">
             <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak Daerah Usaha :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
+              <input type="text" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-" data-inputmask="'mask': '999.99.99.99.9999'">
             </div>
           </div>
           <div class="form-group row">
@@ -884,57 +898,67 @@
               </div>
               <div id="identitasP" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne5">
                 <div class="panel-body">
-                  <table class="table">
+                  <table class="table" style="text-align: left;">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Nomor</th>
                         <th scope="col">Kriteria</th>
                         <th scope="col">Data Anda</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
                       <tr>
-                        <th scope="row">1</th>
                         <td>Status Pemohon</td>
                         <td id="statusPemohon"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Nama Penanggung Jawab</td>
+                      <tr class="statusP" style="display:none;">
+                        <td class="np" style="display: none;">Nama Penanggung Jawab</td>
+                        <td class="npj">Nama Penanggung Jawab</td>
                         <td id="nama"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">3</th>
+                      <tr style="display: none;" class="namaPJ">
+                        <td>Status Pemohon</td>
+                        <td id="statusPemohon"></td>
+                      </tr>
+                      <tr class="statusP jabatan_row" style="display:none;">
                         <td>Jabatan</td>
                         <td id="jabatanlocal"></td>
                       </tr>
-                      <tr> 
-                        <th scope="row">4</th>
-                        <td>NIK Penanggung Jawab</td>
+                      <tr class="statusP" style="display:none;">
+                        <td class="nikD" style="display: none;">NIK Direktur</td>
+                        <td class="nikPJ">NIK Penanggung Jawab</td>
                         <td id="nik"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>NIB Penanggung Jawab</td>
+                      <tr class="statusP" style="display: none;">
+                        <td>Foto KTP</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
+                        <td class="nibP" style="display: none;">NIB Penanggung Jawab</td>
+                        <td class="nibPJ">NIB Penanggung Jawab</td>
                         <td id="nib"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>NPWP Penanggung Jawab</td>
+                      <tr class="statusP fotoNIB" style="display: none;">
+                        <td>Foto NIB</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
+                        <td class="npwpP" style="display: none;">NPWP Penanggung Jawab</td>
+                        <td class="npwpPJ">NPWP Penanggung Jawab</td>
                         <td id="npwplocal"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">7</th>
+                      <tr class="statusP" style="display: none;">
+                        <td>Foto NPWP</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
                         <td>Alamat Perusahaan</td>
                         <td id="alamatperusahaan"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">8</th>
+                      <tr class="statusP" style="display:none;">
                         <td>Nomor telepon/fax</td>
                         <td id="nomortelp"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">9</th>
+                      <tr class="statusP" style="display:none;">
                         <td>Email</td>
                         <td id="email"></td>
                       </tr>  
@@ -1456,7 +1480,7 @@
           </p>
           <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
           <center>
-            <button type="button" class="btn btn3d btn-danger mb-4 btn-block navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin SLF & IUTS</button>
+            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
             <!-- <a href="index_slf.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin SLF</button></a>
             <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a> -->
             <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
@@ -1478,14 +1502,17 @@
   </footer>
 
   <script src="assets/js/jquery.min.js"></script>
+  <script src="https://raw.githubusercontent.com/marioizquierdo/jquery.serializeJSON/master/jquery.serializejson.js"></script>
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/jquery.easing.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
   <script src="assets/js/iuts.js"></script>
   <script src="https://js.arcgis.com/4.8/"></script>
   <script src="assets/js/arcgis.js"></script>
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
   <script type="text/javascript">
     $('#kelengkapan').modal('show');
+    $(":input").inputmask();
   </script>
 </body>
 </html>

@@ -882,7 +882,63 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
-            var datas = new FormData($(this)[0]);
+            // var datas = new FormData($(this)[0]);
+                var datas = new FormData($(this)[0]);
+                datas.append('datas', JSON.stringify(datas));
+
+                var ins1 = document.getElementById('foto_luar_bangunan').files.length;
+                for (var x = 0; x < ins1; x++) {
+                    datas.append("fotoluar[]", document.getElementById('foto_luar_bangunan').files[x]);
+                }
+                var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
+                for (var x = 0; x < ins2; x++) {
+                    datas.append("foto_dalam_bangunan[]", document.getElementById('foto_dalam_bangunan').files[x]);
+                }
+                var ins3 = document.getElementById('fileIMB').files.length;
+                for (var x = 0; x < ins3; x++) {
+                    datas.append("fileIMB[]", document.getElementById('fileIMB').files[x]);
+                }
+                var ins4 = document.getElementById('fileSLF').files.length;
+                for (var x = 0; x < ins4; x++) {
+                    datas.append("fileSLF[]", document.getElementById('fileSLF').files[x]);
+                }
+                var ins5 = document.getElementById('fileSuratP').files.length;
+                for (var x = 0; x < ins5; x++) {
+                    datas.append("fileSuratP[]", document.getElementById('fileSuratP').files[x]);
+                }
+                var ins6 = document.getElementById('fileDamkar').files.length;
+                for (var x = 0; x < ins6; x++) {
+                    datas.append("fileDamkar[]", document.getElementById('fileDamkar').files[x]);
+                }
+                var ins = document.getElementById('fileTKT').files.length;
+                for (var x = 0; x < ins; x++) {
+                    datas.append("fileTKT[]", document.getElementById('fileTKT').files[x]);
+                }
+                var ins7 = document.getElementById('fileSostek').files.length;
+                for (var x = 0; x < ins7; x++) {
+                    datas.append("fileSostek[]", document.getElementById('fileSostek').files[x]);
+                }
+                var ins8 = document.getElementById('filePBB').files.length;
+                for (var x = 0; x < ins8; x++) {
+                    datas.append("filePBB[]", document.getElementById('filePBB').files[x]);
+                }
+                var ins9 = document.getElementById('filePerW').files.length;
+                for (var x = 0; x < ins9; x++) {
+                    datas.append("filePerW[]", document.getElementById('filePerW').files[x]);
+                }
+                var ins10 = document.getElementById('fileUMKM').files.length;
+                for (var x = 0; x < ins10; x++) {
+                    datas.append("fileUMKM[]", document.getElementById('fileUMKM').files[x]);
+                }
+                var ins11 = document.getElementById('fileStatusLahan').files.length;
+                for (var x = 0; x < ins11; x++) {
+                    datas.append("fileStatusLahan[]", document.getElementById('fileStatusLahan').files[x]);
+                }
+                var ins12 = document.getElementById('fileAsuransi').files.length;
+                for (var x = 0; x < ins12; x++) {
+                    datas.append("fileAsuransi[]", document.getElementById('fileAsuransi').files[x]);
+                }
+            
             $.ajax({
                 url: BASE_URL + 'ValidasiController/ValidasiIzin',
                 type: 'POST',
