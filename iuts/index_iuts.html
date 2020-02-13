@@ -96,7 +96,7 @@
                   <div class="col-md-6 imgUpKTP">
                     <div class="imagePreview" id="img-KTP"></div>
                     <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                      <input type="file" class="uploadFile img" name="foto_ktp[]" id="foto_ktp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                      <input type="file" class="uploadFile img" name="foto_ktp" id="foto_ktp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
                     </label>
                   </div>
                 </div>
@@ -176,443 +176,7 @@
             </div>
           </div>
         </div>
-        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Umum Bangunan</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
-          <div class="form-group row">
-            <label for="luasLahan" class="col-md-6 col-form-label">NOPD Bangunan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="nopd_bangunan" id="nopd_bangunan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="luasLahan" class="col-md-6 col-form-label">Luas Lahan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="luas_lahan" id="luasLahan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Kepemilikan Lahan :</label>
-            <div class="col-md-6">
-              <select required="" onchange="statusLahan()" aria-label="statusBangunan" class="text-center form-control" id="status_kepem_lahan" name="status_kepem_lahan">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="Hak Milik">Hak Milik</option>
-                <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
-                <option value="Hak Pakai">Hak Pakai</option>
-                <option value="Hak Pengelola">Hak Pengelola</option>
-                <option value="Girik/Verpounding/Surat Tanah Lainnya">Girik/Verpounding/Surat Tanah Lainnya</option>
-                <option value="Milik Pemerintah Provinsi DKI Jakarta">Milik Pemerintah Provinsi DKI Jakarta</option>
-                <option value="Tidak Ada">Tidak Ada</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadStatusL" style="display: none;">
-            <label for="statusL" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileStatusLahan[]" multiple id="fileStatusLahan">
-                  <label for="fileStatusLahan" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="luasTapakB" class="col-md-6 col-form-label">Luas Tapak Bangunan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="ltb" id="luasTapakB" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jmlLantai" class="col-md-6 col-form-label">Jumlah Lantai :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="jmlLantai" class="text-center form-control" id="jml_lantai" name="jml_lantai">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="1">1 Lantai</option>
-                <option value="2">2 Lantai</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Luas Total Bangunan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="luas_bangunan" id="luas_bangunan" placeholder="-">
-              <div id="alertLuas" style='text-align: left !important;'></div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="tinggiBangunan" class="col-md-6 col-form-label">Tinggi Bangunan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="tinggi_bangunan" id="tinggi_bangunan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="peruntukanBang" class="col-md-6 col-form-label">Peruntukan Bangunan :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="peruntukan_bangunan" id="peruntukan_bangunan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Luar Bangunan :</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6 imgUpLuar">
-                  <div class="imagePreview" id="img-luar-bangunan"></div>
-                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-                  </label>
-                </div>
-                <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Dalam Bangunan :</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6 imgUpDalam">
-                  <div class="imagePreview" id="img-dalam-bangunan"></div>
-                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-                  </label>
-                </div>
-                <button type="button" class="btn btn3d btn-white imgAddDalam">Tambah</button>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="form-group row">
-            <label for="luasLantaiB" class="col-md-6 col-form-label">Luas Lantai Usaha :</label>
-            <div class="col-md-6">
-              <select required="" onchange="luaslantai()" aria-label="luasLantaiB" class="text-center form-control" id="luasLantaiB" name="luas_lantai">
-                
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="luas_lantai_row" style="display: none;">
-            <label for="luaslantairow" class="col-md-6 col-form-label">Total Luas Lantai :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="luas_lantai" id="luas_lantai_input" placeholder="-">
-            </div>
-          </div> -->
-          <!-- <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Kondisi Eksisting</label>
-            <div class="col-md-6">
-              <select required="" onchange="kondisieksis();" aria-label="statusBangunan" class="text-center form-control" id="kondisi_eksisting" name="kondisi_eksisting">
-                
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="kondisieksis" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
-            </div>
-          </div> -->
-          <!-- <div class="form-group row">
-            <label for="nomorRegistrasiB" class="col-md-6 col-form-label">Nomor Registrasi Bangunan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="nrb" id="nomorRegistrasiB" placeholder="-">
-            </div>
-          </div> -->
-          <!-- <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Kontak Pemohon (E-mail/Nomor telepon)</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="kontak_pemohon" id="kontak_pemohon" placeholder="-">
-            </div>
-          </div> -->
-        </div>
-        <div data-question="4" class="ijin__step--4 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keseimbangan, Keserasian, Keselarasan Lingkungan</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
-          <div class="form-group row">
-            <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Eksisting :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
-
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="kondisiKDH" class="col-md-6 col-form-label">Kondisi KDH :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="kondisiKDH" class="text-center form-control" id="kondisi_kdh" name="kondisi_kdh">
-
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="volumeSumur" class="col-md-6 col-form-label">Volume Sumur Resapan :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="slfEksisting" class="text-center form-control" id="volumeSumur" name="volume_sumur_r">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="kondisiPertandaanToko" class="col-md-6 col-form-label">Kondisi Pertandaan Toko :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="kondisiPertandaanToko" class="text-center form-control" id="kondisi_pertandaan_toko" name="kondisi_pertandaan_toko">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="kondisiSumurR" class="col-md-6 col-form-label">Kondisi Sumur Resapan :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="kondisiSumurR" class="text-center form-control" id="kondisi_sumur_r" name="kondisi_sumur_r">
-
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="drainase" class="col-md-6 col-form-label">Drainase Disekeliling Tapak :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="drainase" class="text-center form-control" id="drainase_disekeliling" name="drainase_disekeliling">
-
-              </select>
-            </div>
-          </div>
-          <!-- <h1 class="judul-ijin">Lengkapi Administrasi Bangunan</h1>
-          <div class="form-group row" id="kondisieksis" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Beroperasi :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="detai_kondisi_eksisting" id="detail_kondisi_input" placeholder="-">
-            </div>
-          </div> -->
-          <!-- <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Sudah Berapa Lama Mengajukan Izin</label>
-            <div class="col-md-6">
-              <select required="" onchange="lamaizin();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan">
-                
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="lama_izin_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Waktu mengajukan izin :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="lama_izin" id="lama_izin_input" placeholder="-">
-            </div>
-          </div> -->
-          <!-- 
-          <div class="form-group row">
-            <label for="perjanjianSewa" class="col-md-6 col-form-label">Perjanjian Sewa :</label>
-            <div class="col-md-6">
-              <select required="" onchange="janjisewa();" aria-label="perjanjianSewa" class="text-center form-control" id="perjanjian_sewa" name="perjanjian_sewa">
-               
-              </select>
-            </div>
-          </div>
-            <div class="form-group row" id="janji_sewa_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Lama Waktu Perjanjian Sewa :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="janji_sewa" id="janji_sewa_input" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="njop" class="col-md-6 col-form-label">Barang / Jasa Dagangan Utama :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="barang_jasa" name="barang_jasa" placeholder="-">
-            </div>
-          </div> -->
-        </div>
-        <div data-question="5" class="ijin__step--5 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keselamatan dan Keamanan</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
-          <div class="form-group row">
-            <label for="imbEksisting" class="col-md-6 col-form-label">Izin Mendirikan Bangunan :</label>
-            <div class="col-md-6">
-              <select required="" onchange="imb_change()" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadIMB" style="display: none;">
-            <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileIMB[]" multiple id="fileIMB">
-                  <label for="fileIMB" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="sertifikatLF" class="col-md-6 col-form-label">Sertifikat Layak Fungsi  :</label>
-            <div class="col-md-6">
-              <select required="" onchange="slf_change()" aria-label="sertifikatLF" class="text-center form-control" id="slf" name="slf">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadSLF" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileSLF[]" multiple id="fileSLF">
-                  <label for="fileSLF" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row" id="suratPengawas" style="display: none;">
-            <label for="suratP" class="col-md-6 col-form-label">Surat Pernyataan Pengawas/pengkaji Teknis :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileSuratP[]" id="fileSuratP" multiple>
-                  <label for="fileSuratP" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
-            </div>
-          </div>
-          <div id="adaSLF">
-            <div class="form-group row">
-              <label for="izinDinasPKP" class="col-md-6 col-form-label">Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
-              <div class="col-md-6">
-                <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
-                </select>
-              </div>
-            </div>
-            <div class="form-group row" id="uploadDamkar" style="display: none;">
-              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-              <div class="col-md-6">
-                <div class="file-input multiple">
-                  <div class="file-input-wrapper">
-                    <input type="file" name="fileDamkar[]" id="fileDamkar" multiple>
-                    <label for="fileDamkar" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                    </label>
-                  </div>
-                  <ul class="selected-files"></ul>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi :</label>
-              <div class="col-md-6">
-                <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
-                </select>
-              </div>
-            </div>
-            <div class="form-group row" id="uploadTKT" style="display: none;">
-              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-              <div class="col-md-6">
-                <div class="file-input multiple">
-                  <div class="file-input-wrapper">
-                    <input type="file" name="fileTKT[]" id="fileTKT" multiple>
-                    <label for="fileTKT" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                    </label>
-                  </div>
-                  <ul class="selected-files"></ul>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
-              <div class="col-md-6">
-                <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="ketersediaanAsuransiToko" class="col-md-6 col-form-label">Ketersediaan Asuransi Toko :</label>
-            <div class="col-md-6">
-              <select required="" onchange="asuransiToko()" aria-label="ketersediaanAsuransiToko" class="text-center form-control" id="ketersediaan_asuransi_toko" name="ketersediaan_asuransi_toko">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadAsuransiT" style="display: none;">
-            <label for="asurasiT" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileSostek[]" id="fileKajianSostek" multiple >
-                  <label for="fileKajianSostek" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="waktuPembaruanLayakG" class="col-md-6 col-form-label">Waktu Pembaharuan Terakhir Kelayakan Gedung :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="waktuPembaruanLayakG" class="text-center form-control" id="waktu_pembaruan_k_g" name="waktu_pembaruan_k_g">
-              </select>
-            </div>
-          </div>
-        </div>
-        <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kesehatan</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
-          <div class="form-group row">
-            <label for="airBersih" class="col-md-6 col-form-label">Ketersediaan Air Bersih :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="airBersih" class="text-center form-control" id="air_bersih" name="air_bersih">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="sumberAirBersih" class="col-md-6 col-form-label">Sumber Air Bersih :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="sumber_air_bersih" id="sumber_air_bersih" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="pengAirKotorLimbah" class="col-md-6 col-form-label">Pengelolaan Air Kotor/Limbah :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="pengAirKotorLimbah" class="text-center form-control" id="pengelolaan_air_kotor" name="pengelolaan_air_kotor">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="pengelolaanSampah" class="col-md-6 col-form-label">Pengelolaan Sampah :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="pengelolaanSampah" class="text-center form-control" id="pengelolaan_sampah" name="pengelolaan_sampah">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="ketersediaanListrik" class="col-md-6 col-form-label">Ketersediaan Listrik :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="ketersediaanListrik" class="text-center form-control" id="ketersediaan_listrik" name="ketersediaan_listrik">
-              </select>
-            </div>
-          </div>
-        </div>
-        <div data-question="7" class="ijin__step--7 ijin__step mb-150 ijin__summary">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kemudahan</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
-          <div class="form-group row">
-            <label for="ketersediaanToilet" class="col-md-6 col-form-label">Ketersediaan Toilet :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="ketersediaanToilet" class="text-center form-control" id="ketersediaan_toilet" name="ketersediaan_toilet">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="Ketersediaan" class="col-md-6 col-form-label">Ketersediaan Parkir :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="Ketersediaan" class="text-center form-control" id="kondisi_parkir" name="kondisi_parkir">
-
-              </select>
-            </div>
-          </div>
-        </div>
-        <div data-question="8" class="ijin__step--8 ijin__step mb-150 ijin__summary">
+        <div data-question="3" class="ijin__step--3 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Usaha</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
           <div class="form-group row">
@@ -729,7 +293,7 @@
           </div>
           <!-- end Modal -->
         </div>
-        <div data-question="9" class="ijin__step--9 ijin__step mb-150 ijin__summary">
+        <div data-question="4" class="ijin__step--4 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kebermanfaatan Usaha</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
           <div class="form-group row">
@@ -832,7 +396,7 @@
             </div>
           </div>
         </div>
-        <div data-question="10" class="ijin__step--10 ijin__step mb-150 ijin__summary">
+        <div data-question="5" class="ijin__step--5 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Antisipasi Dampak/Resiko</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
           <div class="form-group row">
@@ -878,7 +442,7 @@
             </div>
           </div>
         </div>
-        <div data-question="11" class="ijin__step--11 ijin__step mb-150 ijin__summary">
+        <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin">Ringkasan Pemohon</h1>
           <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
@@ -1448,7 +1012,7 @@
       </div>
     </form>
   </div>
-  <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
+<!--   <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
     <div class="modal-dialog" role="document" style="max-width: 600px;">
       <div class="modal-content">
         <div class="modal-header" style="display: block;">
@@ -1463,15 +1027,13 @@
           </p>
           <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
           <center>
-            <button type="button" class="btn btn3d btn-danger mb-4 btn-block navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin SLF & IUTS</button>
-            <a href="index_slf.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin SLF</button></a>
-            <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a>
+            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
             <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
           </center>
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <footer class="bottom">
     <section class="bottom__container">
       <div class="progress">
