@@ -8,30 +8,32 @@ var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 /* Add Row */
 function statuspemohon() {
     if ($("#status_pemohon option:selected").val() == "Perorangan") {
-        $("#statusP").removeAttr('style');
-        $("#jabatan_row").removeAttr('style');
-        $("#npj").removeAttr('style');
-        $("#nikPJ").removeAttr('style');
-        $("#nibPJ").removeAttr('style');
-        $("#npwpPJ").removeAttr('style');
-        $("#np").attr('style', 'display:none');
-        $("#nikD").attr('style', 'display:none');
-        $("#nibP").attr('style', 'display:none');
-        $("#npwpP").attr('style', 'display:none');
-        $("#namaPJ").attr('style', 'display:none');
+        $(".statusP").removeAttr('style');
+        $(".jabatan_row").removeAttr('style');
+        $(".npj").removeAttr('style');
+        $(".nikPJ").removeAttr('style');
+        $(".nibPJ").removeAttr('style');
+        $(".npwpPJ").removeAttr('style');
+        $(".fotoNIB").removeAttr('style');
+        $(".np").attr('style', 'display:none');
+        $(".nikD").attr('style', 'display:none');
+        $(".nibP").attr('style', 'display:none');
+        $(".npwpP").attr('style', 'display:none');
+        $(".namaPJ").attr('style', 'display:none');
+        $(".akteP").attr('style', 'display:none');
     }else{
-        $("#statusP").removeAttr('style');
-        $("#jabatan_row").attr('style', 'display:none');
-        $("#npj").attr('style', 'display:none');
-        $("#nikPJ").attr('style', 'display:none');
-        $("#nibPJ").attr('style', 'display:none');
-        $("#npwpPJ").attr('style', 'display:none');
-        $("#fotoNIB").attr('style', 'display:none');
-        $("#np").removeAttr('style');
-        $("#nikD").removeAttr('style');
-        $("#nibP").removeAttr('style');
-        $("#npwpP").removeAttr('style');
-        $("#namaPJ").removeAttr('style');
+        $(".statusP").removeAttr('style');
+        $(".jabatan_row").attr('style', 'display:none');
+        $(".npj").attr('style', 'display:none');
+        $(".nikPJ").attr('style', 'display:none');
+        $(".nibPJ").attr('style', 'display:none');
+        $(".npwpPJ").attr('style', 'display:none');
+        $(".fotoNIB").attr('style', 'display:none');
+        $(".np").removeAttr('style');
+        $(".nikD").removeAttr('style');
+        $(".nibP").removeAttr('style');
+        $(".npwpP").removeAttr('style');
+        $(".akteP").removeAttr('style');
     }
 }
 function rekomendasislf() {
@@ -85,9 +87,9 @@ function kondisieksis() {
 }
 function statusbangunan() {
     if ($("#status_bangunan option:selected").val() == "Sewa") {
-        $("#rowSewa").removeAttr('style');
+        $(".rowSewa").removeAttr('style');
     }else{
-        $("#rowSewa").attr('style', 'display:none');
+        $(".rowSewa").attr('style', 'display:none');
     }
 }
 function kelompokusaha() {
@@ -99,16 +101,16 @@ function kelompokusaha() {
 }
 function rekomendasiUMKM() {
     if ($("#rekomendasi_umkm option:selected").val() == "4") {
-        $("#uploadUMKM").removeAttr('style');
+        $(".uploadUMKM").removeAttr('style');
     }else{
-        $("#uploadUMKM").attr('style', 'display:none');
+        $(".uploadUMKM").attr('style', 'display:none');
     }
 }
 function kajianSostek() {
     if ($("#kajian_sostek option:selected").val() != 1 &&  $("#kajian_sostek option:selected").val() != 2) {
-        $("#uploadSostek").removeAttr('style');
+        $(".uploadSostek").removeAttr('style');
     }else{
-        $("#uploadSostek").attr('style', 'display:none');
+        $(".uploadSostek").attr('style', 'display:none');
     }
 }
 function asuransiToko() {

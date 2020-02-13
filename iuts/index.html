@@ -62,29 +62,29 @@
               </select>
             </div>
           </div>
-          <div id="statusP" style="display: none;">
+          <div class="statusP" style="display: none;">
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="np" style="display: none;">Nama Perusahaan :</label>
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="npj" style="">Nama Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label np" style="display: none;">Nama Perusahaan :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label npj" style="">Nama Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="namaPJ" style="display: none;">
+            <div class="form-group row namaPJ" style="display: none;">
               <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Direktur :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="jabatan_row" style="display: none;">
+            <div class="form-group row jabatan_row" style="display: none;">
               <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="nikD" style="display: none;">NIK Direktur :</label>
-              <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ" style="">NIK Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label nikD" style="display: none;">NIK Direktur :</label>
+              <label for="nomorInKepen" class="col-md-6 col-form-label nikPJ" style="">NIK Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
               </div>
@@ -103,28 +103,15 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="nibP" style="display: none;">NIB Perusahaan :</label>
-              <label for="nomorInBeru" class="col-md-6 col-form-label" id="nibPJ" style="">NIB Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label nibP" style="display: none;">NIB Perusahaan :</label>
+              <label for="nomorInBeru" class="col-md-6 col-form-label nibPJ" style="">NIB Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="fotoNIB">
-              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NIB :</label>
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-6 imgUpNIB">
-                    <div class="imagePreview" id="img-NIB"></div>
-                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                      <input type="file" class="uploadFile img" name="foto_nib" id="foto_nib" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
-              <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ" style="">NPWP Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label npwpP" style="display: none;">NPWP Perusahaan :</label>
+              <label for="npwp" class="col-md-6 col-form-label npwpPJ" style="">NPWP Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
               </div>
@@ -142,7 +129,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row akteP">
               <label for="akteP" class="col-md-6 col-form-label">Akte Perusahaan :</label>
               <div class="col-md-6">
                 <div class="file-input single">
@@ -740,7 +727,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadPBB" style="display: none;">
+          <div class="form-group row uploadPBB" style="display: none;">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Pemutahiran PBB :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -762,7 +749,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
+          <div class="form-group row keterlibatan_umkm_row" style="display: none;">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Keterlibatan UMKM :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
@@ -775,7 +762,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadPW" style="display: none;">
+          <div class="form-group row uploadPW" style="display: none;">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Persetujuan Warga Sekitar :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
