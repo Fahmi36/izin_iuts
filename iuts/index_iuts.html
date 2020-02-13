@@ -62,29 +62,29 @@
               </select>
             </div>
           </div>
-          <div id="statusP" style="display: none;">
+          <div class="statusP" style="display: none;">
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="np" style="display: none;">Nama Perusahaan :</label>
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="npj" style="">Nama Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label np" style="display: none;">Nama Perusahaan :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label npj" style="">Nama Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="namaPJ" style="display: none;">
+            <div class="form-group row namaPJ" style="display: none;">
               <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Direktur :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="jabatan_row" style="display: none;">
+            <div class="form-group row jabatan_row" style="display: none;">
               <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="nikD" style="display: none;">NIK Direktur :</label>
-              <label for="nomorInKepen" class="col-md-6 col-form-label" id="nikPJ" style="">NIK Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label nikD" style="display: none;">NIK Direktur :</label>
+              <label for="nomorInKepen" class="col-md-6 col-form-label nikPJ" style="">NIK Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
               </div>
@@ -103,13 +103,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="nibP" style="display: none;">NIB Perusahaan :</label>
-              <label for="nomorInBeru" class="col-md-6 col-form-label" id="nibPJ" style="">NIB Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label nibP" style="display: none;">NIB Perusahaan :</label>
+              <label for="nomorInBeru" class="col-md-6 col-form-label nibPJ" style="">NIB Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
               </div>
             </div>
-            <div class="form-group row" id="fotoNIB">
+            <div class="form-group row fotoNIB">
               <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NIB :</label>
               <div class="col-md-6">
                 <div class="row">
@@ -123,8 +123,8 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label" id="npwpP" style="display: none;">NPWP Perusahaan :</label>
-              <label for="npwp" class="col-md-6 col-form-label" id="npwpPJ" style="">NPWP Penanggung Jawab :</label>
+              <label for="namaLengkap" class="col-md-6 col-form-label npwpP" style="display: none;">NPWP Perusahaan :</label>
+              <label for="npwp" class="col-md-6 col-form-label npwpPJ" style="">NPWP Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
               </div>
@@ -142,7 +142,7 @@
                 </div>
               </div>
             </div>
-            <div class="form-group row">
+            <div class="form-group row akteP">
               <label for="akteP" class="col-md-6 col-form-label">Akte Perusahaan :</label>
               <div class="col-md-6">
                 <div class="file-input single">
@@ -249,7 +249,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="rowSewa" style="display: none;">
+          <div class="form-group row rowSewa" style="display: none;">
             <label for="lamaSewa" class="col-md-6 col-form-label">Lama Perjanjian Sewa :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="lama_sewa_input" id="lama_sewa_input" placeholder="-">
@@ -406,7 +406,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadUMKM" style="display: none;">
+          <div class="form-group row uploadUMKM" style="display: none;">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Rekomendasi UMKM :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -427,7 +427,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadSostek" style="display: none;">
+          <div class="form-group row uploadSostek" style="display: none;">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -455,330 +455,70 @@
               </div>
               <div id="identitasP" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne5">
                 <div class="panel-body">
-                  <table class="table">
+                  <table class="table" style="text-align: left;">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Nomor</th>
                         <th scope="col">Kriteria</th>
                         <th scope="col">Data Anda</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
                       <tr>
-                        <th scope="row">1</th>
                         <td>Status Pemohon</td>
                         <td id="statusPemohon"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Nama Penanggung Jawab</td>
+                      <tr class="statusP" style="display:none;">
+                        <td class="np" style="display: none;">Nama Penanggung Jawab</td>
+                        <td class="npj">Nama Penanggung Jawab</td>
                         <td id="nama"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">3</th>
+                      <tr style="display: none;" class="namaPJ">
+                        <td>Status Pemohon</td>
+                        <td id="statusPemohon"></td>
+                      </tr>
+                      <tr class="statusP jabatan_row" style="display:none;">
                         <td>Jabatan</td>
                         <td id="jabatanlocal"></td>
                       </tr>
-                      <tr> 
-                        <th scope="row">4</th>
-                        <td>NIK Penanggung Jawab</td>
+                      <tr class="statusP" style="display:none;">
+                        <td class="nikD" style="display: none;">NIK Direktur</td>
+                        <td class="nikPJ">NIK Penanggung Jawab</td>
                         <td id="nik"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>NIB Penanggung Jawab</td>
+                      <tr class="statusP" style="display: none;">
+                        <td>Foto KTP</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
+                        <td class="nibP" style="display: none;">NIB Penanggung Jawab</td>
+                        <td class="nibPJ">NIB Penanggung Jawab</td>
                         <td id="nib"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>NPWP Penanggung Jawab</td>
+                      <tr class="statusP fotoNIB" style="display: none;">
+                        <td>Foto NIB</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
+                        <td class="npwpP" style="display: none;">NPWP Penanggung Jawab</td>
+                        <td class="npwpPJ">NPWP Penanggung Jawab</td>
                         <td id="npwplocal"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">7</th>
+                      <tr class="statusP" style="display: none;">
+                        <td>Foto NPWP</td>
+                        <td id=""></td>
+                      </tr>
+                      <tr class="statusP" style="display:none;">
                         <td>Alamat Perusahaan</td>
                         <td id="alamatperusahaan"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">8</th>
+                      <tr class="statusP" style="display:none;">
                         <td>Nomor telepon/fax</td>
                         <td id="nomortelp"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">9</th>
+                      <tr class="statusP" style="display:none;">
                         <td>Email</td>
                         <td id="email"></td>
                       </tr>  
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="headingTwo5">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#dataUmum5" aria-expanded="false" aria-controls="dataUmum5">
-                    Data Umum Bangunan (SLF)
-                  </a>
-                </h4>
-              </div>
-              <div id="dataUmum5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo5">
-                <div class="panel-body">
-                  <table class="table">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Nomor</th>
-                        <th scope="col">Kriteria</th>
-                        <th scope="col">Data Anda</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Luas Lahan</td>
-                        <td id="luas_lahan"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Status Kepemilikan Lahan</td>
-                        <td id="statusmilik"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Luas Tapak Bangunan</td>
-                        <td id="luastapak"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Jumlah Lantai</td>
-                        <td id="jmllantai"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Luas Total Bangunan</td>
-                        <td id="totalBangunan"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Tinggi Bangunan</td>
-                        <td id="tinggiBangunan"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7</th>
-                        <td>Peruntukkan Bangunan</td>
-                        <td id="peruntukanBangunan"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">8</th>
-                        <td>Foto Tampak Luar Bangunan</td>
-                        <td id="fotoLuar"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">9</th>
-                        <td>Foto Tampak Dalam Bangunan</td>
-                        <td id="fotoDalam"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="lingkungan">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#kkklingkungan" aria-expanded="false" aria-controls="kkklingkungan">
-                    Keseimbangan, Keserasian, Keselarasan Lingkungan (SLF)
-                  </a>
-                </h4>
-              </div>
-              <div id="kkklingkungan" class="panel-collapse collapse" role="tabpanel" aria-labelledby="lingkungan">
-                <div class="panel-body">
-                  <table class="table">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Nomor</th>
-                        <th scope="col">Kriteria</th>
-                        <th scope="col">Data Anda</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>KDH Minimum</td>
-                        <td id="kdh_minimum_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Kondisi KDH</td>
-                        <td id="kondisi_kdh_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Volume Sumur Resapan</td>
-                        <td id="volume_sumur_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Kondisi Pertandaan Toko</td>
-                        <td id="kondisi_toko_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Kondisi Sumur Resapan</td>
-                        <td id="kondisi_sumur_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Drainase Disekeliling Tapak</td>
-                        <td id="drainase_disekeliling_summary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="keselamatanKeamanan">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#keselamatan" aria-expanded="false" aria-controls="keselamatan">
-                    Data Keselamatan dan Keamanan (SLF)
-                  </a>
-                </h4>
-              </div>
-              <div id="keselamatan" class="panel-collapse collapse" role="tabpanel" aria-labelledby="keselamatanKeamanan">
-                <div class="panel-body">
-                  <table class="table">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Nomor</th>
-                        <th scope="col">Kriteria</th>
-                        <th scope="col">Data Anda</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Rekomendasi terkait SLF dari DCKTRP</td>
-                        <td id="rekomendasi_slf_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Sertifikat Layak Fungsi</td>
-                        <td id="slf_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Izin dari Dinas Penanggunlangan Kebakaran dan Penyelamatan</td>
-                        <td id="izin_pkp_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Izin dari Dinas Tenaga Kerja dan Transmigrasi</td>
-                        <td id="izin_tkt_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Izin Mendirikan Bangunan</td>
-                        <td id="imb_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Fasilitas Penanggulangan Kebakaran</td>
-                        <td id="fasilitas_kebakaran_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">7</th>
-                        <td>Ketersediaan Asuransi Toko</td>
-                        <td id="asuransi_toko_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">8</th>
-                        <td>Waktu Pembaharuan Terakhir Kelayakan Gedung</td>
-                        <td id="kelayakan_gedung_summary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="dataKesehatan">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#kesehatan" aria-expanded="false" aria-controls="kesehatan">
-                    Data Kesehatan (SLF)
-                  </a>
-                </h4>
-              </div>
-              <div id="kesehatan" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataKesehatan">
-                <div class="panel-body">
-                  <table class="table">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Nomor</th>
-                        <th scope="col">Kriteria</th>
-                        <th scope="col">Data Anda</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Ketersediaan Air Bersih</td>
-                        <td id="air_bersih_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Sumber Air Bersih</td>
-                        <td id="sumber_air_b_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Pengelolaan Air Kotor/Limbah</td>
-                        <td id="pengelola_air_k_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>Pengelolaan Sampah</td>
-                        <td id="pengelolaan_sampah_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Ketersediaan Listrik</td>
-                        <td id="listrik_summary"></td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <div class="panel-heading" role="tab" id="dataKemudahan">
-                <h4 class="panel-title">
-                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#kemudahan" aria-expanded="false" aria-controls="kemudahan">
-                    Data Kemudahan (SLF)
-                  </a>
-                </h4>
-              </div>
-              <div id="kemudahan" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataKemudahan">
-                <div class="panel-body">
-                  <table class="table">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Nomor</th>
-                        <th scope="col">Kriteria</th>
-                        <th scope="col">Data Anda</th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white">
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Ketersediaan Toilet</td>
-                        <td id="ketersediaan_toilet_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Ketersediaan Parkir</td>
-                        <td id="kondisi_parkir_summary"></td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -794,62 +534,55 @@
               </div>
               <div id="administrasiUsaha" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataAdministrasiU">
                 <div class="panel-body">
-                  <table class="table">
+                  <table class="table" style="text-align: left;">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Nomor</th>
                         <th scope="col">Kriteria</th>
                         <th scope="col">Data Anda</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Nomor Objek Pajak Daerah</td>
+                        <td>Nomor Objek Pajak Daerah Usaha</td>
                         <td id="nop"></td>
                       </tr>
                       <tr>
-                        <th scope="row">2</th>
                         <td>Nilai Jual Objek Pajak</td>
                         <td id="njoplocal"></td>
                       </tr>
                       <tr>
-                        <th scope="row">3</th>
                         <td>Nama Toko</td>
                         <td id="namatoko"></td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
                         <td>Kelompok Usaha</td>
                         <td id="kelompokusaha"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
                         <td>Nama Badan Usaha</td>
                         <td id="namausaha"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
                         <td>Kategori Usaha</td>
                         <td id="kategori_usaha_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">6</th>
                         <td>Omset Usaha Per-bulan</td>
                         <td id="omset_perbulan_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">7</th>
                         <td>Peruntukkan IMB untuk Toko Anda</td>
                         <td id="peruntukan_toko_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">8</th>
                         <td>Status Bangunan yang Digunakan Usaha</td>
                         <td id="statusbangunan_summary"></td>
                       </tr>
+                      <tr class="rowSewa" style="display: none;">
+                        <td>Lama Perjanjian Sewa</td>
+                        <td id="lamasewa_summary"></td>
+                      </tr>
                       <tr>
-                        <th scope="row">9</th>
                         <td>Alamat</td>
                         <td id="alamatlocal"></td>
                       </tr>
@@ -882,52 +615,43 @@
               </div>
               <div id="infKeberUsaha" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataKeberUsaha">
                 <div class="panel-body">
-                  <table class="table">
+                  <table class="table" style="text-align: left;">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Nomor</th>
                         <th scope="col">Kriteria</th>
                         <th scope="col">Data Anda</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
                       <tr>
-                        <th scope="row">1</th>
                         <td>Pemutahiran PBB</td>
                         <td id="pbb_summary"></td>
                       </tr>
                       <tr> 
-                        <th scope="row">2</th>
                         <td>Keterlibatan UMKM</td>
                         <td id="keterlibatan_umkm_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">3</th>
                         <td>Persetujuan Warga Sekitar</td>
                         <td id="persetujuan_warga_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">4</th>
                         <td>Jumlah Karyawan</td>
                         <td id="jumlah_karyawan_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">5</th>
                         <td>Asal Karyawan</td>
                         <td id="asal_karyawan_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">6</th>
                         <td>Jumlah instalasi mesin ATM</td>
                         <td id="jumlah_atm_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">7</th>
                         <td>Jumlah Pengunjung Per-bulan</td>
                         <td id="jumlah_pengunjung_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">8</th>
                         <td>Status Kepemilikan Usaha</td>
                         <td id="status_mlk_ush_summary"></td>
                       </tr>
@@ -946,49 +670,29 @@
               </div>
               <div id="informasiDampak5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive5">
                 <div class="panel-body">
-                  <table class="table">
+                  <table class="table" style="text-align: left;">
                     <thead class="thead-light">
                       <tr>
-                        <th scope="col">Nomor</th>
                         <th scope="col">Kriteria</th>
                         <th scope="col">Data Anda</th>
                       </tr>
                     </thead>
                     <tbody class="bg-white">
-                      <tr> 
-                        <th scope="row">1</th>
-                        <td>Jarak Terhadap Pasar Tradisional</td>
-                        <td id="jarak_pasar_summary"></td>
-                      </tr>
                       <tr>
-                        <th scope="row">2</th>
-                        <td>Rencana Jalan Memadai</td>
-                        <td id="rencana_jalan_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Jalan Eksisting Memadai</td>
-                        <td id="jalan_eksisting_summary"></td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
                         <td>Ada Rekomendasi UMKM</td>
                         <td id="rek_umkm_summary"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">5</th>
-                        <td>Kesesuaian Rencana Tata Ruang</td>
-                        <td id="tata_ruang_summary"></td>
+                      <tr class="uploadUMKM" style="display: none;">
+                        <td>Upload File Rekomendasi UMKM</td>
+                        <td id="foto_umkm_summary"></td>
                       </tr>
                       <tr>
-                        <th scope="row">6</th>
                         <td>Kajian Sosial Ekonomi</td>
                         <td id="kajian_sostek_summary"></td>
                       </tr>
-                      <tr>
-                        <th scope="row">6</th>
-                        <td>Jarak ke Usaha Sejenis</td>
-                        <td id="jarak_sejenis_summary"></td>
+                      <tr class="uploadSostek" style="display: none;">
+                        <td>Upload File Kajian Sosial Ekonom</td>
+                        <td id="foto_sostek_summary"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1000,40 +704,9 @@
             <a href="#" type="submit" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
           </div>
         </div>
-        <!-- <div data-question="7" class="ijin__step--7 ijin__step ijin__summary">
-          <h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1>
-          <div id="summary"></div>
-          <div class="submit__container">
-            <a href="#" class="submit btn">Selesai</a>
-          </div> 
-          <p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p>
-          <p>Perkiran Waktu Perizinan Selesai (0) Hari</p>
-        </div> -->
       </div>
     </form>
   </div>
-<!--   <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
-    <div class="modal-dialog" role="document" style="max-width: 600px;">
-      <div class="modal-content">
-        <div class="modal-header" style="display: block;">
-          <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
-        </div>
-        <div class="modal-body" style="padding: 2rem;">
-          <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
-          <p class="text-danger">
-            1. Memiliki Nomor izin Berusaha<br>
-            2. Memiliki NPWP dan NOP<br>
-            3. Telah melakukan pelunasan pajak<br>
-          </p>
-          <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
-          <center>
-            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
-            <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
-          </center>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <footer class="bottom">
     <section class="bottom__container">
       <div class="progress">

@@ -552,17 +552,18 @@ img {max-width: 100%;}
 		padding-left: 1em;
 		overflow: hidden;
 		display: none;
+		margin-top: 10px;
 	}
 	ul.accordion-resume .inner.show {
 		/*display: block;*/
 	}
-	ul.accordion-resume li {
+	ul.accordion-resume li.accordion-li {
 		margin: 0.5em 0;
 	}
 	ul.accordion-resume li a.toggle {
 		width: 100%;
 		display: block;
-		background: rgba(0, 0, 0, 0.78);
+		background: #666;
 		color: #fefefe;
 		padding: 0.75em;
 		border-radius: 0.15em;

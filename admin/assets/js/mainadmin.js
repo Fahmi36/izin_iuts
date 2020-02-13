@@ -79,7 +79,7 @@ function datadetailPemohon(id) {
 				$('#long').val(lon);
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
-                });
+				});
 			}
 		}
 	});
@@ -197,7 +197,7 @@ timeline = {
 				var skorjarakusaha = [];
 				var skorpenglahan = [];
 				var skorkondisieksis = [];
-				var skotpempbb = [];
+				var skorpempbb = [];
 				var skorketumkm = [];
 				var skorsewa = [];
 				var skorwarga = [];
@@ -235,7 +235,7 @@ timeline = {
 					skorjarakusaha.push(data.row[coba].skorjarakusaha);
 					skorpenglahan.push(data.row[coba].skorpenglahan);
 					skorkondisieksis.push(data.row[coba].skorkondisieksis);
-					skotpempbb.push(data.row[coba].skotpempbb);
+					skorpempbb.push(data.row[coba].skorpempbb);
 					skorketumkm.push(data.row[coba].skorketumkm);
 					skorsewa.push(data.row[coba].skorsewa);
 					skorwarga.push(data.row[coba].skorwarga);
@@ -272,7 +272,7 @@ timeline = {
 				$('#nilaipbb').text(skorpbb);
 				$('#nilainpwp').text(skornpwp);
 
-				$('#pempbb').text(skotpempbb);
+				$('#pempbb').text(skorpempbb);
 				$('#ketumkm').text(skorketumkm);
 				$('#persewa').text(skorsewa);
 
@@ -292,9 +292,9 @@ timeline = {
 				$('#jarakusaha').text(skorjarakusaha);
 				$('#sumurserap').text(skorvolsumur);
 				$('#kdhmini').text(skorkdhmini);
- 
+
 				var totaladmin = parseFloat(skorkondisieksis);
-				var totalmanfaat = parseFloat(skotpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
+				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
 				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
@@ -315,13 +315,13 @@ timeline = {
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
 
 				if (parseFloat(totalasli) < 1.5) {
-						var statuswebsite = 'Di Tolak';
-					}else if (parseFloat(totalasli) < 2.5) {
-						var statuswebsite = 'Di Terima Dengan Catatan';
-					}else if(parseFloat(totalasli) > 2.5) {
-						var statuswebsite = 'Di Terima';
-					}
-					
+					var statuswebsite = 'Di Tolak';
+				}else if (parseFloat(totalasli) < 2.5) {
+					var statuswebsite = 'Di Terima Dengan Catatan';
+				}else if(parseFloat(totalasli) > 2.5) {
+					var statuswebsite = 'Di Terima';
+				}
+
 				$('#statusweb').text(statuswebsite);
 
 
@@ -389,22 +389,22 @@ datadetailPemohon:function() {
 				$('#long').val(lon);
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
-                });
-                $.ajax({
-                	url: BASE_URL + 'OfficeController/getAllFoto',
-                	type: 'POST',
-                	dataType: 'json',
-                	data: datas,
-                	beforeSend:function() {
+				});
+				$.ajax({
+					url: BASE_URL + 'OfficeController/getAllFoto',
+					type: 'POST',
+					dataType: 'json',
+					data: datas,
+					beforeSend:function() {
 						jQuery('#loader').fadeIn('slow');
-                	},
-                	success:function(data) {
-                		if (data.success) {
+					},
+					success:function(data) {
+						if (data.success) {
 							jQuery('#loader').fadeOut('slow');
 							console.log(data);
-                		}
-                	}
-                })
+						}
+					}
+				})
 			}
 		}
 	});
@@ -851,7 +851,23 @@ $("#inputadminteknis").submit(function (event) {
 					})();
 					alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 				}
-$("#logout").click(function(event) {
-	localStorage.clear();
-	window.location.href = '../login.html';
-});
+				$("#logout").click(function(event) {
+					localStorage.clear();
+					window.location.href = '../login.html';
+				});
+
+				$('.toggle').click(function(e) {
+					e.preventDefault();
+
+					var $this = $(this);
+
+					if ($this.next().hasClass('show')) {
+						$this.next().removeClass('show');
+						$this.next().slideUp(350);
+					} else {
+						$this.parent().parent().find('li .inner').removeClass('show');
+						$this.parent().parent().find('li .inner').slideUp(350);
+						$this.next().toggleClass('show');
+						$this.next().slideToggle(350);
+					}
+				});
