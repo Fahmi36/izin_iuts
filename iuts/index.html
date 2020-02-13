@@ -35,17 +35,12 @@
       <button id="buttonbacktohome" class="btn btn3d btn-white resetDataLocal" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-home"></i></button>
       <button id="buttonreload" class="btn btn3d btn-white btnRefresh" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-reload"></i></button> 
     </div>
-    <form class="ijin" enctype="multipart/form-data">
+    <form class="ijin" id="formizinslfiuts"  action='javascript:void(0);' method="post" enctype="multipart/form-data" accept-charset="utf-8">
       <center><div class="img-jkt"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
       <div class="ijin__inner">
         <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step no-background">
           <h1 class="judul-ijin">Izin Usaha Toko Swalayan</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>Perizinan ini merupakan jenis paket izin untuk memudahkan Anda melakukan usaha toko swalayan. Paket izin ini memiliki Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan. Anda akan mengisi informasi secara online pada website yang telah kami sediakan. Informasi yang akan diisi berupa persyaratan Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan.</p>
           <div class="answer navigation__btn--right m-0">
             <label class="btn3d btn btn-danger btn-lg">Ajukan Izin</label>
           </div>
@@ -57,8 +52,8 @@
             <div class="col-md-6">
               <select required="" onchange="statuspemohon();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="Perorangan">Perorangan</option>
-                <option value="Perusahaan">Perusahaan</option>
+                <option value="1">Perorangan</option>
+                <option value="2">Perusahaan</option>
               </select>
             </div>
           </div>
@@ -72,7 +67,8 @@
             <div class="form-group row npj">
               <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Penanggung Jawab :</label>
               <div class="col-md-6">
-                <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+                <input type="text" class="form-control" name="nama_lengkap_jawab" id="namaLengkap" placeholder="-">
+                <input type="hidden" class="form-control" name="jenis_izin" id="jenis_izin" value="3" placeholder="-">
               </div>
             </div>
             <div class="form-group row namaPJ" style="display: none;">
@@ -249,15 +245,19 @@
           </div>
           <div class="form-group row">
             <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Luar Bangunan :</label>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-md-6 imgUpLuar">
-                  <div class="imagePreview" id="img-luar-bangunan"></div>
-                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-                  </label>
+            <div class="col-md-6"> 
+              <div class="controls-terlantar">
+                <div class="forms-terlantar">
+                  <div class="entry-terlantar">
+                    <div class="imgUpLuar">
+                      <div class="imagePreview" id="img-luar-bangunan"></div>
+                      <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                        <input type="file" class="uploadFile img" name="fotoluar[]" id="foto_luar_bangunan" style="width: 0px;height: 0px;overflow: hidden;" multiple>
+                      </label>
+                    </div>
+                    <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
+                  </div>
                 </div>
-                <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
               </div>
             </div>
           </div>
@@ -268,7 +268,7 @@
                 <div class="col-md-6 imgUpDalam">
                   <div class="imagePreview" id="img-dalam-bangunan"></div>
                   <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan[]" id="foto_dalam_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
                   </label>
                 </div>
                 <button type="button" class="btn btn3d btn-white imgAddDalam">Tambah</button>
@@ -418,7 +418,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadIMB" style="display: none;">
+          <div class="form-group row uploadIMB" style="display: none;">
             <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -475,7 +475,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row" id="uploadDamkar" style="display: none;">
+            <div class="form-group row uploadDamkar" style="display: none;">
               <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
                 <div class="file-input multiple">
@@ -496,7 +496,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row" id="uploadTKT" style="display: none;">
+            <div class="form-group row uploadTKT" style="display: none;">
               <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
                 <div class="file-input multiple">
@@ -525,12 +525,12 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadAsuransiT" style="display: none;">
+          <div class="form-group row uploadAsuransiT" style="display: none;">
             <label for="asurasiT" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
                 <div class="file-input-wrapper">
-                  <input type="file" name="fileSostek[]" id="fileKajianSostek" multiple >
+                  <input type="file" name="fileAsuransi[]" id="fileAsuransi" multiple >
                   <label for="fileKajianSostek" class="upload-cta">
                     Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
@@ -677,7 +677,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="rowSewa" style="display: none;">
+          <div class="form-group row rowSewa" style="display: none;">
             <label for="lamaSewa" class="col-md-6 col-form-label">Lama Perjanjian Sewa :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="lama_sewa_input" id="lama_sewa_input" placeholder="-">
@@ -757,7 +757,7 @@
           <div class="form-group row keterlibatan_umkm_row" style="display: none;">
             <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Keterlibatan UMKM :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
+              <input type="text" class="form-control" name="keterlibatan_umkm_input" id="keterlibatan_umkm_input" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -834,7 +834,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadUMKM" style="display: none;">
+          <div class="form-group row uploadUMKM" style="display: none;">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Rekomendasi UMKM :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -855,7 +855,7 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadSostek" style="display: none;">
+          <div class="form-group row uploadSostek" style="display: none;">
             <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
             <div class="col-md-6">
               <div class="file-input multiple">
@@ -1088,7 +1088,7 @@
                         <td id="slf_summary"></td>
                       </tr>
                       <tr class="suratPengawas" style="display: none;">
-                        <td>Sertifikat Layak Fungsi</td>
+                        <td>Surat Pernyataan Pengawas/pengkaji Teknis</td>
                         <td id="slf_summary"></td>
                       </tr>
                       <tr class="adaSLF">
@@ -1209,7 +1209,7 @@
                     </thead>
                     <tbody class="bg-white">
                       <tr>
-                        <td>Nomor Objek Pajak Daerah</td>
+                        <td>Nomor Objek Pajak Daerah Usaha</td>
                         <td id="nop"></td>
                       </tr>
                       <tr>
@@ -1340,33 +1340,13 @@
                       </tr>
                     </thead>
                     <tbody class="bg-white">
-                      <tr> 
-                        <td>Jarak Terhadap Pasar Tradisional</td>
-                        <td id="jarak_pasar_summary"></td>
-                      </tr>
-                      <tr>
-                        <td>Rencana Jalan Memadai</td>
-                        <td id="rencana_jalan_summary"></td>
-                      </tr>
-                      <tr>
-                        <td>Jalan Eksisting Memadai</td>
-                        <td id="jalan_eksisting_summary"></td>
-                      </tr>
                       <tr>
                         <td>Ada Rekomendasi UMKM</td>
                         <td id="rek_umkm_summary"></td>
                       </tr>
                       <tr>
-                        <td>Kesesuaian Rencana Tata Ruang</td>
-                        <td id="tata_ruang_summary"></td>
-                      </tr>
-                      <tr>
                         <td>Kajian Sosial Ekonomi</td>
                         <td id="kajian_sostek_summary"></td>
-                      </tr>
-                      <tr>
-                        <td>Jarak ke Usaha Sejenis</td>
-                        <td id="jarak_sejenis_summary"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1375,7 +1355,7 @@
             </div>
           </div> 
           <div class="submit__container">
-            <a href="#" type="submit" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
+            <button type="submit" class="btn3d submit btn btn-danger btn-lg">Konfirmasi</button>
           </div>
         </div>
         <!-- <div data-question="7" class="ijin__step--7 ijin__step ijin__summary">
@@ -1427,6 +1407,7 @@
   </footer>
 
   <script src="assets/js/jquery.min.js"></script>
+  <script src="https://raw.githubusercontent.com/marioizquierdo/jquery.serializeJSON/master/jquery.serializejson.js"></script>
   <script src="assets/js/bootstrap.js"></script>
   <script src="assets/js/jquery.easing.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
