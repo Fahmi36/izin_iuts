@@ -242,44 +242,68 @@
 												<table class="table bg-white">
 													<thead class="thead-light">
 														<tr>
-															<th scope="col">No</th>
-															<th scope="col">Persyaratan</th>
-															<th scope="col">Kategori</th>
-															<th scope="col">Nilai</th>
+															<th scope="col" class="text-center">No</th>
+															<th scope="col" class="text-center">Persyaratan</th>
+															<th scope="col" class="text-center">Berkas Pemohon</th>
+															<th scope="col" class="text-center">Nilai</th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
+															<td colspan="2">Administrasi Pemohon</td>
+															<td></td>
+															<td></td>
+														</tr>
+														<tr>
 															<th scope="row">1</th>
-															<td>Kelengkapan Administrasi</td>
+															<td>KTP</td>
+															<td>ktp.jpg</td>
 															<td>
-																<select aria-label="" onchange="cekKelengkapan()" class="text-center form-control" id="kelengkapan_admin" name="kelengkapan_admin"></select>
+																<div class="form-check-inline">
+																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																	  <input type="radio" checked="checked" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>        
+																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																	  <input type="radio" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>
+																</div>
 															</td>
-															<td id="nilaiadmin">-</td>
 														</tr>
 														<tr>
-															<th scope="row">2</th>
-															<td>Sudah berapa lama mengajukan izin</td>
+															<th scope="row">1</th>
+															<td>KTP</td>
+															<td>ktp.jpg</td>
 															<td>
-																<select required="" onchange="cekLama();" aria-label="statusBangunan" class="text-center form-control" id="lama_izin" name="lama_mengajukan"></select>
+																<div class="form-check-inline">
+																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																	  <input type="radio" checked="checked" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>        
+																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																	  <input type="radio" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>
+																</div>
 															</td>
-															<td id="nilaiizin">-</td>
 														</tr>
 														<tr>
-															<th scope="row">3</th>
-															<td>Status NPWP</td>
+															<th scope="row">1</th>
+															<td>KTP</td>
+															<td>ktp.jpg</td>
 															<td>
-																<select aria-label="" onchange="ceknpwp()" class="text-center form-control" id="statusNPWP" name="statusNPWP"></select>
+																<div class="form-check-inline">
+																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																	  <input type="radio" checked="checked" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>        
+																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																	  <input type="radio" name="radio">
+																	  <span class="checkmark"></span>
+																	</label>
+																</div>
 															</td>
-															<td id="nilainpwp"></td>
-														</tr>
-														<tr>
-															<th scope="row">4</th>
-															<td>Status PBB</td>
-															<td>
-																<select aria-label="" onchange="cekPbb()" class="text-center form-control" id="statusPBB" name="statusPBB"></select>
-															</td>
-															<td id="nilaipbb">-</td>
 														</tr>
 													</tbody>
 												</table>
