@@ -209,6 +209,19 @@ timeline = {
 				var skordrainase = [];
 				var skorkondisisumur = [];
 				var skorkdhmini = [];
+				var skorkondisikdh = [];
+				var skorpetandaan = [];
+				var skordamkar = [];
+				var skorfdamkar = [];
+				var skortkt = [];
+				var skorasuransi = [];								
+				var skorlayak = [];
+				var skorketersediaan = [];				
+				var skorlimbah = [];				
+				var skorsampah = [];				
+				var skorlistrik = [];
+				var skortoilet = [];								
+				var skorparkir = [];								
 				var code = [];
 				var nama = [];
 				var nib = [];
@@ -247,6 +260,19 @@ timeline = {
 					skordrainase.push(data.row[coba].skordrainase);
 					skorkondisisumur.push(data.row[coba].skorkondisisumur);
 					skorkdhmini.push(data.row[coba].skorkdhmini);
+					skorkondisikdh.push(data.row[coba].skorkondisikdh);
+					skorpetandaan.push(data.row[coba].skorpetandaan);
+					skordamkar.push(data.row[coba].skordamkar);
+					skorfdamkar.push(data.row[coba].skorfdamkar);
+					skortkt.push(data.row[coba].skortkt);
+					skorasuransi.push(data.row[coba].skorasuransi);
+					skorlayak.push(data.row[coba].skorlayak);
+					skorketersediaan.push(data.row[coba].skorketersediaan);
+					skorlimbah.push(data.row[coba].skorlimbah);
+					skorlistrik.push(data.row[coba].skorlistrik);
+					skorsampah.push(data.row[coba].skorsampah);
+					skortoilet.push(data.row[coba].skortoilet);
+					skorparkir.push(data.row[coba].skorparkir);
 					skorjarakpasar.push(data.row[coba].skorjarakpasar);
 					code.push(data.row[coba].code);
 					nama.push(data.row[coba].nama);
@@ -292,19 +318,61 @@ timeline = {
 				$('#jarakusaha').text(skorjarakusaha);
 				$('#sumurserap').text(skorvolsumur);
 				$('#kdhmini').text(skorkdhmini);
+				$('#konkdh').text(skorkondisikdh);
+				$('#konpertoko').text(skorpetandaan);
+				$('#damkar').text(skordamkar);
+				$('#fdamkar').text(skorfdamkar);
+				$('#tkt').text(skortkt);
+				$('#asuransi').text(skorasuransi);
+				$('#layak').text(skorlayak);
+				$('#ketair').text(skorketersediaan);
+				$('#limbah').text(skorlimbah);
+				$('#sampah').text(skorsampah);
+				$('#listrik').text(skorlistrik);
+				$('#toilet').text(skortoilet);
+				$('#parkir').text(skorparkir);
 
+				/*iuts*/
 				var totaladmin = parseFloat(skorkondisieksis);
-				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(skorwarga)+parseFloat(skorjalaneksis);
-				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorrenjalan)+parseFloat(skorrekumkm)+parseFloat(skorslf)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skortataruang)+parseFloat(skorkajian)+parseFloat(skorimb)+parseFloat(skorjarakusaha)+parseFloat(skorvolsumur)+parseFloat(skorkdhmini);
-				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
+				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorwarga)+parseFloat(skorsewa)+parseFloat(skorpenglahan);
+				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjalaneksis)+parseFloat(skorrenjalan)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
+				/*iuts*/
+				
+				/*slf*/
+				var totalkeseimbangan = parseFloat(skorkdhmini)+parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase);
+				var totalkeamanan = parseFloat(skorimb)+parseFloat(skorslf)+parseFloat(skordamkar)+parseFloat(skortkt)+parseFloat(skorfdamkar)+parseFloat(skorasuransi)+parseFloat(skorlayak);
+				var totalkesehatan = parseFloat(skorketersediaan)+parseFloat(skorlimbah)+parseFloat(skorsampah)+parseFloat(skorlistrik);
+				var totalkemudahan = parseFloat(skortoilet)+parseFloat(skorparkir);
+				/*slf*/
 
+				/*iuts*/
 				var hasiladmin = parseFloat(totaladmin/1);
 				var hasilmanfaat = parseFloat(totalmanfaat/6);
-				var hasildampak = parseFloat(totaldampak/12);
+				var hasildampak = parseFloat(totaldampak/6);
+				/*iuts*/
+				
+				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
+				/*slf*/
+				var hasilkeseimbangan = parseFloat(totalkeseimbangan/6);
+				var hasilkeamanan = parseFloat(totalkeamanan/7);
+				var hasilkesehatan = parseFloat(totalkesehatan/4);
+				var hasilkemudahan = parseFloat(totalkemudahan/2);
+				/*slf*/
+
+				/*iuts*/
 				$('#totaladminis').text(String(hasiladmin).substr(0, 4));
 				$('#totalmanfaat').text(String(hasilmanfaat).substr(0, 4));
 				$('#totaldampak').text(String(hasildampak).substr(0, 4));
+				/*iuts*/
+
+				/*slf*/
+				$('#totalkeseimbangan').text(String(hasilkeseimbangan).substr(0, 4));
+				$('#totalkeamanan').text(String(hasilkeamanan).substr(0, 4));
+				$('#totalkesehatan').text(String(hasilkesehatan).substr(0, 4));
+				$('#totalkemudahan').text(String(hasilkemudahan).substr(0, 4));
+				/*slf*/
+
 				$('#totaltax').text(totaltax);
 
 				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
