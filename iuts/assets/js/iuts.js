@@ -281,6 +281,11 @@ $('.navigation__btn--right').click(function(e){
     //      console.log('input empty');
     //      return false;
     // }
+    let currentIndex = Number($('.ijin__step--current').attr('data-question'));
+    if(currentIndex == 11){
+        $.getScript("https://iuts.pkkmart.com/iuts/assets/js/mapsuser.js", function() {
+                });
+    }
     localStorage.clear();
 
     /* Data Administrasi Pemohon */
@@ -621,7 +626,6 @@ $('.navigation__btn--left').click(function(e){
         $(this).addClass('navigation__btn--disabled');
         return false;
     }
-
     $('.navigation__btn--right').removeClass('navigation__btn--disabled')
     $('.ijin__step--current').hide('300');
     $('.ijin__step--current').removeClass('ijin__step--current');
@@ -904,7 +908,7 @@ $('#btn-modalmaps').click(function(event) {
                     if (result.value) {
             // var datas = new FormData($(this)[0]);
   
-                var datas = new FormData($(this)[0]);
+            var datas = new FormData($(this)[0]);
             $.ajax({
                 url: BASE_URL + 'ValidasiController/ValidasiIzin',
                 type: 'POST',
@@ -914,8 +918,8 @@ $('#btn-modalmaps').click(function(event) {
                 cache: false,
                 processData: false,
                 beforeSend:function() {
-                    // $("#text-loader").html('Mohon Tunggu');
-                    // $('#page-loader').fadeIn('slow');
+                    $("#text-loader").html('Mohon Tunggu');
+                    $('#page-loader').fadeIn('slow');
                 },
                 success:function(data) {
                     if (data.success) {
