@@ -282,11 +282,6 @@ $('.navigation__btn--right').click(function(e){
     //      console.log('input empty');
     //      return false;
     // }
-    let currentIndex = Number($('.ijin__step--current').attr('data-question'));
-    if(currentIndex == 11){
-        $.getScript("https://iuts.pkkmart.com/iuts/assets/js/mapsuser.js", function() {
-                });
-    }
     localStorage.clear();
 
     /* Data Administrasi Pemohon */
@@ -580,8 +575,10 @@ $('.navigation__btn--right').click(function(e){
     var dataPermohonan = JSON.stringify([{test:'1'}]);
     localStorage.setItem("dataPermohonan", dataPermohonan);
     let currentIndex = Number($('.ijin__step--current').attr('data-question'));
-    if(currentIndex == numberSteps + 1 || disableButtons==true){
+    if(currentIndex == numberSteps + 1 || currentIndex == 11 || disableButtons==true){
         //console.log('last')
+        $.getScript("https://iuts.pkkmart.com/iuts/assets/js/mapsuser.js", function() {
+                });
         return false;
     }
     // if($('.ijin__step--current input' + 2).value != null){
