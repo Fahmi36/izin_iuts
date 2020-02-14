@@ -52,8 +52,8 @@
             <div class="col-md-6">
               <select required="" onchange="statuspemohon();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="1">Perorangan</option>
-                <option value="2">Perusahaan</option>
+                <option value="Perorangan">Perorangan</option>
+                <option value="Perusahaan">Perusahaan</option>
               </select>
             </div>
           </div>
@@ -201,7 +201,7 @@
                 <div class="file-input-wrapper">
                   <input type="file" name="fileStatusLahan[]" multiple id="fileStatusLahan">
                   <label for="fileStatusLahan" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
                 </div>
                 <ul class="selected-files"></ul>
@@ -245,19 +245,15 @@
           </div>
           <div class="form-group row">
             <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Luar Bangunan :</label>
-            <div class="col-md-6"> 
-              <div class="controls-terlantar">
-                <div class="forms-terlantar">
-                  <div class="entry-terlantar">
-                    <div class="imgUpLuar">
-                      <div class="imagePreview" id="img-luar-bangunan"></div>
-                      <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                        <input type="file" class="uploadFile img" name="fotoluar[]" id="foto_luar_bangunan" style="width: 0px;height: 0px;overflow: hidden;" multiple>
-                      </label>
-                    </div>
-                    <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
-                  </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpLuar">
+                  <div class="imagePreview" id="img-luar-bangunan"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="fotoluar[]" id="foto_luar_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
                 </div>
+                <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
               </div>
             </div>
           </div>
@@ -425,7 +421,7 @@
                 <div class="file-input-wrapper">
                   <input type="file" name="fileIMB[]" multiple id="fileIMB">
                   <label for="fileIMB" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
                 </div>
                 <ul class="selected-files"></ul>
@@ -446,7 +442,7 @@
                 <div class="file-input-wrapper">
                   <input type="file" name="fileSLF[]" multiple id="fileSLF">
                   <label for="fileSLF" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
                 </div>
                 <ul class="selected-files"></ul>
@@ -460,62 +456,60 @@
                 <div class="file-input-wrapper">
                   <input type="file" name="fileSuratP[]" id="fileSuratP" multiple>
                   <label for="fileSuratP" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
                   </label>
                 </div>
                 <ul class="selected-files"></ul>
               </div>
             </div>
           </div>
-          <div class="adaSLF">
-            <div class="form-group row">
-              <label for="izinDinasPKP" class="col-md-6 col-form-label">Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
-              <div class="col-md-6">
-                <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
-                </select>
-              </div>
+          <div class="form-group row rekDamkar" style="display: none;">
+            <label for="izinDinasPKP" class="col-md-6 col-form-label">Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
+            <div class="col-md-6">
+              <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
+              </select>
             </div>
-            <div class="form-group row uploadDamkar" style="display: none;">
-              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-              <div class="col-md-6">
-                <div class="file-input multiple">
-                  <div class="file-input-wrapper">
-                    <input type="file" name="fileDamkar[]" id="fileDamkar" multiple>
-                    <label for="fileDamkar" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                    </label>
-                  </div>
-                  <ul class="selected-files"></ul>
+          </div>
+          <div class="form-group row uploadDamkar" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileDamkar[]" id="fileDamkar" multiple>
+                  <label for="fileDamkar" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
                 </div>
+                <ul class="selected-files"></ul>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi :</label>
-              <div class="col-md-6">
-                <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
-                </select>
-              </div>
+          </div>
+          <div class="form-group row rekTKT" style="display: none;">
+            <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi :</label>
+            <div class="col-md-6">
+              <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
+              </select>
             </div>
-            <div class="form-group row uploadTKT" style="display: none;">
-              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-              <div class="col-md-6">
-                <div class="file-input multiple">
-                  <div class="file-input-wrapper">
-                    <input type="file" name="fileTKT[]" id="fileTKT" multiple>
-                    <label for="fileTKT" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                    </label>
-                  </div>
-                  <ul class="selected-files"></ul>
+          </div>
+          <div class="form-group row uploadTKT" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="file-input multiple">
+                <div class="file-input-wrapper">
+                  <input type="file" name="fileTKT[]" id="fileTKT" multiple>
+                  <label for="fileTKT" class="upload-cta">
+                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                  </label>
                 </div>
+                <ul class="selected-files"></ul>
               </div>
             </div>
-            <div class="form-group row">
-              <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
-              <div class="col-md-6">
-                <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
-                </select>
-              </div>
+          </div>
+          <div class="form-group row fasilitasDamkar" style="display: none;">
+            <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
+              </select>
             </div>
           </div>
           <div class="form-group row">
@@ -686,7 +680,7 @@
           <div class="form-group row">
             <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
             <div class="col-md-6">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_map" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_npwp" id="status_npwp" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_pbb" id="statusPBB" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="lat" id="lat" placeholder="Masukan Alamat Pemohon">
@@ -1371,53 +1365,134 @@
     </form>
   </div>
   <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
-    <div class="modal-dialog" role="document" style="max-width: 600px;">
+    <div class="modal-dialog" role="document" style="max-width: 85%;">
       <div class="modal-content">
         <div class="modal-header" style="display: block;">
           <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
         </div>
         <div class="modal-body" style="padding: 2rem;">
+          <h4 class="text-center">PENJELASAN MENGENAI PAKET IZIN BERUSAHA (TOKO SWALAYAN)</h4>
+          <p>Dalam mengajukan permohonan ini, ada beberapa hal yang harus Anda perhatikan dan persiapkan agar selanjutnya Anda tidak akan mengalami kesulitan dan penyesalan dalam seluruh tahapan proses ini.</p>
+          <p>Yuk simak, baca, dan pahami baik – baik persyaratan berikut ini.</p>
+          <p>Perizinan ini merupakan jenis paket izin untuk memudahkan Anda melakukan usaha toko swalayan. Paket izin ini memiliki Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan. Anda akan mengisi informasi secara online pada website yang telah kami sediakan. Informasi yang akan diisi berupa persyaratan Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan.</p>
+          <p>Persyaratan akan dibagi menjadi tiga bagian, yaitu Administrasi, SLF, dan IUTS. Berikut ini adalah persyaratan yang harus Anda persiapkan terlebih dahulu sebelum Anda mengajukan permohonan secara online.</p>
           <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
+          <h4><strong>Kewajiban</strong></h4>
           <p class="text-danger">
-            1. Memiliki Nomor izin Berusaha<br>
-            2. Memiliki NPWP dan NOP<br>
-            3. Telah melakukan pelunasan pajak<br>
+            1. Harus memiliki Nomor Induk Berusaha (NIB) yang berasal dari Online Single Submission (OSS)<br>
+            2. Memiliki NPWP dan NOP/NOPD<br>
+            3. Telah Melakukan Pelunasan Pajak<br>
           </p>
-          <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
+          <h4><strong>Administrasi Pemohon</strong></h4>
+          <p class="text-danger">
+            1. Status Pemohon<br>
+            2. Nama Penanggung Jawab/Direktur<br>
+            3. Jabatan<br>
+            4. NIK Penanggung Jawab<br>
+            5. NIB Penanggung Jawab/Perusahaan<br>
+            6. NPWP Penanggung Jawab/Perusahaan<br>
+            7. Alamat Perusahaan<br>
+            8. Nomor Telepon/Fax<br>
+            9. Email<br>
+          </p>
+          <h4><strong>Sertifikat Layak Fungsi</strong></h4>
+          <p class="text-danger">
+            <div class="row">
+              <div class="col-md-6 text-danger">
+                1. Luas Lahan<br>
+                2. Status Kepemilikan Lahan<br>
+                3. Luas Tapak Bangunan<br>
+                4. Jumlah Lantai<br>
+                5. Luas Total Bangunan<br>
+                6. Tinggi Bangunan<br>
+                7. Peruntukkan Bangunan<br>
+                8. Foto Tampak Luar Bangunan<br>
+                9. Foto Tampak Dalam Bangunan<br>
+                10. Koefisien Dasar Hijau (KDH) Eksisting<br>
+                11. Kondisi Koefisien Dasar (KDH) Hijau<br>
+                12. Volume Sumur Resapan<br>
+                13. Kondisi Pertandaan Toko<br>
+                14. Kondisi Sumur Resapan<br>
+                15. Drainase Sekeliling Tapak<br>
+              </div>
+              <div class="col-md-6 text-danger">
+                <div class="text-primary">
+                  16. Dokumen Teknis dari Pengawas/Pengkaji Teknis*<br>
+                  17. Sertifikat Layak Fungsi<br>
+                  18. Izin dari Dinas Penanggulangan Kebakaran dan Penyelamatan*<br>
+                  19. Izin dari Dinas Tenaga Kerja dan Transmigrasi*<br>
+                  20. Izin Mendirikan Bangunan<br>
+                </div>
+                21. Fasilitas Penanggulangan Kebakaran<br>
+                <div class="text-primary">22. Ketersediaan Asuransi Toko</div><br>
+                23. Waktu Pembaharuan Terakhir Kelayakan Gedung<br>
+                24. Ketersediaan Air Bersih<br>
+                25. Sumber Air Bersih<br>
+                26. Pengelolaan Air Kotor/Limbah<br>
+                27. Pengelolaan Sampah<br>
+                28. Ketersediaan Listrik<br>
+                29. Ketersediaan Toilet<br>
+                30. Ketersediaan Parkir<br>
+              </div>
+            </div>
+          </p>
+          <p>*)jika pemohon belum memiliki Sertifikat Layak Fungsi</p>
+          <h4><strong>Izin Usaha Toko Swalayan</strong></h4>
+          <p class="text-danger">
+            <div class="row">
+              <div class="col-md-6 text-danger">
+                1. Bukti Pemutahiran PBB<br>
+                2. Jumlah keterlibatan UMKM<br>
+                <div class="text-primary">3. Bukti Persetujuan Warga Sekitar</div><br>
+                4. Jumlah Karyawan<br>
+                5. Asal Karyawan<br>
+              </div>
+              <div class="col-md-6 text-danger">
+                6. Bukti Rekomendasi dari UMKM<br>
+                7. Jumlah Instalasi Mesin ATM<br>
+                8. Jumlah Pengunjung per-bulan<br>
+                9. Status Kepemilikan Usaha<br>
+                <div class="text-primary">10. Dokumen Kajian Sosial Ekonomi</div><br>
+              </div>
+            </div>
+          </p>
+          <!-- <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p> -->
+          <p>Catatan: Persyaratan dengan warna <span class="text-primary">biru</span> bukan merupakan prioritas dalam proses permohonan izin ini karena dapat dipenuhi ketika izin telah terbit.</p>
+          <p>Saya telah memahami dan memenuhi persayaratan diatas. Oleh karena itu, saya tidak akan menyalahkan PMPTSP DKI Jakarta apabila permohonan izin saya ditolak karena kesalahan yang saya perbuat dalam menyiapkan persyaratan diatas.</p>
           <center>
-            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
+            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Saya Setuju, Ajukan Izin</button>
             <!-- <a href="index_slf.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin SLF</button></a>
-            <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a> -->
-            <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
-          </center>
+              <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a> -->
+              <!-- <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p> -->
+            </center>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <footer class="bottom">
-    <section class="bottom__container">
-      <div class="progress">
-        <div class="progress__inner"></div>
-      </div>
-      <div class="navigation">
-        <div class="navigation__btn navigation__btn--left ">Kembali</div>
-        <div class="navigation__btn navigation__btn--right">Selanjutnya</div>
-      </div>
-    </section>  
-  </footer>
+    <footer class="bottom">
+      <section class="bottom__container">
+        <div class="progress">
+          <div class="progress__inner"></div>
+        </div>
+        <div class="navigation">
+          <div class="navigation__btn navigation__btn--left ">Kembali</div>
+          <div class="navigation__btn navigation__btn--right">Selanjutnya</div>
+        </div>
+      </section>  
+    </footer>
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/bootstrap.js"></script>
-  <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
-  <script src="assets/js/jquery.easing.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-  <script src="assets/js/iuts.js"></script>
-  <script src="https://js.arcgis.com/4.8/"></script>
-  <script src="assets/js/arcgis.js"></script>
-  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-  <script type="text/javascript">
-    $('#kelengkapan').modal('show');
-    $(":input").inputmask();
-  </script>
-</body>
-</html>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+    <script src="assets/js/iuts.js"></script>
+    <script src="https://js.arcgis.com/4.8/"></script>
+    <script src="assets/js/arcgis.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script type="text/javascript">
+      $('#kelengkapan').modal('show');
+      $(":input").inputmask();
+    </script>
+  </body>
+  </html>
