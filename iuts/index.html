@@ -686,7 +686,7 @@
           <div class="form-group row">
             <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
             <div class="col-md-6">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_map" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_npwp" id="status_npwp" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_pbb" id="statusPBB" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="lat" id="lat" placeholder="Masukan Alamat Pemohon">
@@ -1371,24 +1371,105 @@
     </form>
   </div>
   <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
-    <div class="modal-dialog" role="document" style="max-width: 600px;">
+    <div class="modal-dialog" role="document" style="max-width: 85%;">
       <div class="modal-content">
         <div class="modal-header" style="display: block;">
           <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
         </div>
         <div class="modal-body" style="padding: 2rem;">
+          <h4 class="text-center">PENJELASAN MENGENAI PAKET IZIN BERUSAHA (TOKO SWALAYAN)</h4>
+          <p>Dalam mengajukan permohonan ini, ada beberapa hal yang harus Anda perhatikan dan persiapkan agar selanjutnya Anda tidak akan mengalami kesulitan dan penyesalan dalam seluruh tahapan proses ini.</p>
+          <p>Yuk simak, baca, dan pahami baik – baik persyaratan berikut ini.</p>
+          <p>Perizinan ini merupakan jenis paket izin untuk memudahkan Anda melakukan usaha toko swalayan. Paket izin ini memiliki Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan. Anda akan mengisi informasi secara online pada website yang telah kami sediakan. Informasi yang akan diisi berupa persyaratan Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan.</p>
+          <p>Persyaratan akan dibagi menjadi tiga bagian, yaitu Administrasi, SLF, dan IUTS. Berikut ini adalah persyaratan yang harus Anda persiapkan terlebih dahulu sebelum Anda mengajukan permohonan secara online.</p>
           <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
+          <h4><strong>Kewajiban</strong></h4>
           <p class="text-danger">
-            1. Memiliki Nomor izin Berusaha<br>
-            2. Memiliki NPWP dan NOP<br>
-            3. Telah melakukan pelunasan pajak<br>
+            1. Harus memiliki Nomor Induk Berusaha (NIB) yang berasal dari Online Single Submission (OSS)<br>
+            2. Memiliki NPWP dan NOP/NOPD<br>
+            3. Telah Melakukan Pelunasan Pajak<br>
           </p>
-          <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p>
+          <h4><strong>Administrasi Pemohon</strong></h4>
+          <p class="text-danger">
+            1. Status Pemohon<br>
+            2. Nama Penanggung Jawab/Direktur<br>
+            3. Jabatan<br>
+            4. NIK Penanggung Jawab<br>
+            5. NIB Penanggung Jawab/Perusahaan<br>
+            6. NPWP Penanggung Jawab/Perusahaan<br>
+            7. Alamat Perusahaan<br>
+            8. Nomor Telepon/Fax<br>
+            9. Email<br>
+          </p>
+          <h4><strong>Sertifikat Layak Fungsi</strong></h4>
+          <p class="text-danger">
+            <div class="row">
+              <div class="col-md-6 text-danger">
+                1. Luas Lahan<br>
+                2. Status Kepemilikan Lahan<br>
+                3. Luas Tapak Bangunan<br>
+                4. Jumlah Lantai<br>
+                5. Luas Total Bangunan<br>
+                6. Tinggi Bangunan<br>
+                7. Peruntukkan Bangunan<br>
+                8. Foto Tampak Luar Bangunan<br>
+                9. Foto Tampak Dalam Bangunan<br>
+                10. Koefisien Dasar Hijau (KDH) Eksisting<br>
+                11. Kondisi Koefisien Dasar (KDH) Hijau<br>
+                12. Volume Sumur Resapan<br>
+                13. Kondisi Pertandaan Toko<br>
+                14. Kondisi Sumur Resapan<br>
+                15. Drainase Sekeliling Tapak<br>
+              </div>
+              <div class="col-md-6 text-danger">
+                <div class="text-primary">
+                16. Dokumen Teknis dari Pengawas/Pengkaji Teknis*<br>
+                17. Sertifikat Layak Fungsi<br>
+                18. Izin dari Dinas Penanggulangan Kebakaran dan Penyelamatan*<br>
+                19. Izin dari Dinas Tenaga Kerja dan Transmigrasi*<br>
+                20. Izin Mendirikan Bangunan<br>
+                </div>
+                21. Fasilitas Penanggulangan Kebakaran<br>
+                <div class="text-primary">22. Ketersediaan Asuransi Toko</div><br>
+                23. Waktu Pembaharuan Terakhir Kelayakan Gedung<br>
+                24. Ketersediaan Air Bersih<br>
+                25. Sumber Air Bersih<br>
+                26. Pengelolaan Air Kotor/Limbah<br>
+                27. Pengelolaan Sampah<br>
+                28. Ketersediaan Listrik<br>
+                29. Ketersediaan Toilet<br>
+                30. Ketersediaan Parkir<br>
+              </div>
+            </div>
+          </p>
+          <p>*)jika pemohon belum memiliki Sertifikat Layak Fungsi</p>
+          <h4><strong>Izin Usaha Toko Swalayan</strong></h4>
+          <p class="text-danger">
+            <div class="row">
+              <div class="col-md-6 text-danger">
+                1. Bukti Pemutahiran PBB<br>
+                2. Jumlah keterlibatan UMKM<br>
+                <div class="text-primary">3. Bukti Persetujuan Warga Sekitar</div><br>
+                4. Jumlah Karyawan<br>
+                5. Asal Karyawan<br>
+              </div>
+              <div class="col-md-6 text-danger">
+                6. Bukti Rekomendasi dari UMKM<br>
+                7. Jumlah Instalasi Mesin ATM<br>
+                8. Jumlah Pengunjung per-bulan<br>
+                9. Status Kepemilikan Usaha<br>
+                <div class="text-primary">10. Dokumen Kajian Sosial Ekonomi</div><br>
+              </div>
+            </div>
+          </p>
+          <!-- <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p> -->
+          <p>Catatan: Persyaratan dengan warna <span class="text-primary">biru</span> bukan merupakan prioritas dalam proses permohonan izin ini karena dapat dipenuhi ketika izin telah terbit.</p>
+          <p>Saya telah memahami dan memenuhi persayaratan diatas. Oleh karena itu, saya tidak akan menyalahkan PMPTSP DKI Jakarta apabila permohonan izin saya ditolak karena kesalahan yang saya perbuat dalam menyiapkan persyaratan diatas.</p>
           <center>
-            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Mulai Ajukan Izin</button>
+            <button type="button" class="btn btn3d btn-danger mb-4 navigation__btn--right" data-dismiss="modal">Saya Setuju, Ajukan Izin</button>
             <!-- <a href="index_slf.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin SLF</button></a>
             <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a> -->
-            <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p>
+            <!-- <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p> -->
           </center>
         </div>
       </div>
