@@ -903,19 +903,8 @@ $('#btn-modalmaps').click(function(event) {
                 .then((result) => {
                     if (result.value) {
             // var datas = new FormData($(this)[0]);
-
-                var form_name = '#formizinslfiuts';   
+  
                 var datas = new FormData($(this)[0]);
-
-                var ins11 = document.getElementById('fileStatusLahan').files.length;
-                for (var x = 0; x < ins11; x++) {
-                    datas.append("fileStatusLahan[]", document.getElementById('fileStatusLahan').files[x]);
-                }
-                var ins12 = document.getElementById('fileAsuransi').files.length;
-                for (var x = 0; x < ins12; x++) {
-                    datas.append("fileAsuransi[]", document.getElementById('fileAsuransi').files[x]);
-                }
-            
             $.ajax({
                 url: BASE_URL + 'ValidasiController/ValidasiIzin',
                 type: 'POST',
