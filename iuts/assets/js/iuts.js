@@ -43,17 +43,18 @@ function rekomendasislf() {
     }
 }
 function slf_change() {
-    if ($("#slf option:selected").val() == 3 &&  $("#slf option:selected").val() == 4) {
-        $(".uploadSLF").attr('style', 'display:none');
-        $(".suratPengawas").attr('style', 'display:none');
-        $(".adaSLF").removeAttr('style');
-        $(".suratPengawas").attr('style', 'display:none');
-    }else if($("#slf option:selected").val() == 1){
-        $(".suratPengawas").removeAttr('style');
-    }else{
+    if ($("#slf option:selected").val() == 3 ||  $("#slf option:selected").val() == 4) {
         $(".uploadSLF").removeAttr('style');
         $(".suratPengawas").attr('style', 'display:none');
-        $(".adaSLF").attr('style', 'display:none');
+        $(".rekDamkar").attr('style', 'display:none');
+        $(".rekTKT").attr('style', 'display:none');
+        $(".fasilitasDamkar").attr('style', 'display:none');
+    }else{
+        $(".uploadSLF").attr('style', 'display:none');
+        $(".suratPengawas").removeAttr('style');
+        $(".rekDamkar").removeAttr('style');
+        $(".rekTKT").removeAttr('style');
+        $(".fasilitasDamkar").removeAttr('style');
     }
 }
 function damkar() {
@@ -121,9 +122,9 @@ function asuransiToko() {
 }
 function pemutahiranPBB() {
     if ($("#pemutakhiran_pbb option:selected").val() == 4) {
-        $("#uploadPBB").removeAttr('style');
+        $(".uploadPBB").removeAttr('style');
     }else{
-        $("#uploadPBB").attr('style', 'display:none');
+        $(".uploadPBB").attr('style', 'display:none');
     }
 }
 function persetujuanWarga() {
@@ -144,7 +145,7 @@ function lamaizin() {
     $("#lama_izin_row").removeAttr('style');
 }
 function umkm() {
-    $("#keterlibatan_umkm_row").removeAttr('style');
+    $(".keterlibatan_umkm_row").removeAttr('style');
 }
 function janjisewa() {
     $("#janji_sewa_row").removeAttr('style');
@@ -914,8 +915,8 @@ $('#btn-modalmaps').click(function(event) {
                 cache: false,
                 processData: false,
                 beforeSend:function() {
-                    // $("#text-loader").html('Mohon Tunggu');
-                    // $('#page-loader').fadeIn('slow');
+                    $("#text-loader").html('Mohon Tunggu');
+                    $('#page-loader').fadeIn('slow');
                 },
                 success:function(data) {
                     if (data.success) {
