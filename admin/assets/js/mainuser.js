@@ -93,31 +93,29 @@ function adminitrasi() {
 		url: BASE_URL + 'UserController/detailPemohonAdministrasi',
 		type: 'POST',
 		dataType: 'json',
-		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+		data: {idizin:localStorage.getItem('idbangunanuser')},
 		success:function(data) {
 			if (data.success) {
-				var skorlengkap = [];
-				var skorwaktu = [];
-				var skorpbb = [];
-				var skornpwp = [];
-				var skoradministrasi = [];
+				var statusiuts = [];
+				var fotoiuts = [];
+				var statusslf = [];
+				var fotoiuts = [];
+				var jenisslf = [];
+				var jenisiuts = [];
 				for(var coba in data.row){
-					skorlengkap.push(data.row[coba].skorlengkap);
-					skorwaktu.push(data.row[coba].skorwaktu);
-					skorpbb.push(data.row[coba].skorpbb);
-					skornpwp.push(data.row[coba].skornpwp);
-					skoradministrasi.push(data.row[coba].skoradministrasi);
-					var skoradmin = parseFloat(skorlengkap)+parseFloat(skorwaktu);
-					var skortotal = parseFloat(skorpbb)*parseFloat(skornpwp);
-					var skorakumulasi = skoradmin/2;
-					var totalakhir = skorakumulasi*skortotal;
+					statusiuts.push(data.row[coba].statusiuts);
+					fotoiuts.push(data.row[coba].fotoiuts);
+					statusslf.push(data.row[coba].statusslf);
+					fotoiuts.push(data.row[coba].fotoiuts);
+					jenisslf.push(data.row[coba].jenisslf);
+					jenisiuts.push(data.row[coba].jenisiuts);
 				}
 				if (data.rowCount > 0) {
 					$('#ket_pemohon').removeAttr('style');
-					$('#ket_administrasi').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
-					$('#ket_pemohon').html('<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">'+String(totalakhir).substr(0, 4)+'</span>(Akumulasi Nilai Administrasi)</p> <p>Berikut ini adalah rincian nilai administrasi Anda :</p> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">'+skorlengkap[0]+'</span></li> <li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">'+skorwaktu[0]+'</span></li> <li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">'+skornpwp[0]+'</span></li> <li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">'+skorpbb[0]+'</span></li> </ul>'); 
-
-					
+					$('#ket_pemohon').removeAttr('style');
+					for(var coba in data.row){
+						$('#ket_pemohon').html('<p>'+data.row[coba].jenisslf+' <span class="badge badge-default">'+data.row[coba].statusslf+'</span></p><p>'+data.row[coba].jenisiuts+' <span class="badge badge-default">'+data.row[coba].statusiuts+'</span></p>'); 
+					}
 				}
 			}
 		}
@@ -375,10 +373,10 @@ timeline = {
 					var warna = 'primary';
 				}
 				if (id_slf[i] == '') {
-						var idnya = id_iuts[i];
-					}else{
-						var idnya = id_slf[i];
-					}
+					var idnya = id_iuts[i];
+				}else{
+					var idnya = id_slf[i];
+				}
 				$("#izinnya").append('<div class="col-xl-3 col-lg-6"><a href="javascript:void(0);" onclick="lihatpemohon('+"'"+id_izin[i]+"'"+')" class="text-default"><div class="card card-stats mb-4 mb-xl-0"><div class="ribbon ribbon-top-right '+css+'"><span class="bg-'+warna+'">'+statuscard+'</span></div><div class="card-body"><div class="row"><div class="col"><h5 class="card-title text-uppercase text-darker mb-0">Nama Pemohon</h5><span class="font-weight-bold">'+nama[i]+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Tanggal Pengajuan</h5><span class="font-weight-bold">'+datePHPJS("d/F/Y", new Date(data.row[i].created_at))+'</span><label class="hr-card"></label><h5 class="card-title text-uppercase text-darker mb-0">Jenis Izin</h5><span class="font-weight-bold">'+jenis[i]+'</span></div></div><p class="mt-3 mb-0 text-darker text-sm"><span class="text-danger mr-2 badge badge-primary" style="font-size: 18px;">#'+code[i]+'</span><span class="text-nowrap">Nomor Token</span></p></div></div></a></div>');
 			}
 		}
@@ -403,7 +401,38 @@ timeline = {
 						$('#pemohon').addClass('active');
 						$('#ket_pemohon').removeAttr('style');
 						$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(tgl[i]))+'</p>');
-					}if(status[i] == '1'){
+					}else if () {
+						$.ajax({
+							url: BASE_URL + 'UserController/detailPemohonAdministrasi',
+							type: 'POST',
+							dataType: 'json',
+							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+							success:function(data) {
+								if (data.success) {
+									var statusiuts = [];
+									var fotoiuts = [];
+									var statusslf = [];
+									var fotoiuts = [];
+									var jenisslf = [];
+									var jenisiuts = [];
+									for(var coba in data.row){
+										statusiuts.push(data.row[coba].statusiuts);
+										fotoiuts.push(data.row[coba].fotoiuts);
+										statusslf.push(data.row[coba].statusslf);
+										fotoiuts.push(data.row[coba].fotoiuts);
+										jenisslf.push(data.row[coba].jenisslf);
+										jenisiuts.push(data.row[coba].jenisiuts);
+									}
+									if (data.rowCount > 0) {
+										$('#ket_pemohon').removeAttr('style');
+										for(var coba in data.row){
+											$('#ket_pemohon').html('<p>'+data.row[coba].jenisslf+' <span class="badge badge-default">'+data.row[coba].statusslf+'</span></p><p>'+data.row[coba].jenisiuts+' <span class="badge badge-default">'+data.row[coba].statusiuts+'</span></p>'); 
+										}
+									}
+								}
+							}
+						})
+					}else if(status[i] == '2'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -411,7 +440,7 @@ timeline = {
 							url: BASE_URL + 'UserController/detailPemohonteknis',
 							type: 'POST',
 							dataType: 'json',
-							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+							data: {idizin:localStorage.getItem('idbangunanuser')},
 							success:function(data) {
 								if (data.success) {
 									var skorjarakpasar = [];
@@ -437,7 +466,7 @@ timeline = {
 								}
 							}
 						});
-					}else if (status[i] == '2') {
+					}else if (status[i] == '3') {
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -475,7 +504,7 @@ timeline = {
 								}
 							}
 						});
-					}else if (status[i] == '3'){
+					}else if (status[i] == '4'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -515,7 +544,7 @@ timeline = {
 							}
 						});
 
-					}else if (status[i] == '4'){
+					}else if (status[i] == '5'){
 						$('#pemohon').addClass('active');
 						$('#adminitrasi').addClass('active');
 						$('#adminteknis').addClass('active');
@@ -858,17 +887,17 @@ function datePHPJS(format, timestamp) {
 }
 
 $('.toggle').click(function(e) {
-  	e.preventDefault();
-  
-    var $this = $(this);
-  
-    if ($this.next().hasClass('show')) {
-        $this.next().removeClass('show');
-        $this.next().slideUp(350);
-    } else {
-        $this.parent().parent().find('li .inner').removeClass('show');
-        $this.parent().parent().find('li .inner').slideUp(350);
-        $this.next().toggleClass('show');
-        $this.next().slideToggle(350);
-    }
+	e.preventDefault();
+
+	var $this = $(this);
+
+	if ($this.next().hasClass('show')) {
+		$this.next().removeClass('show');
+		$this.next().slideUp(350);
+	} else {
+		$this.parent().parent().find('li .inner').removeClass('show');
+		$this.parent().parent().find('li .inner').slideUp(350);
+		$this.next().toggleClass('show');
+		$this.next().slideToggle(350);
+	}
 });
