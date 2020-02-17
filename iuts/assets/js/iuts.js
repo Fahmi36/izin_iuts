@@ -600,8 +600,10 @@ $('.navigation__btn--right').click(function(e){
     var dataPermohonan = JSON.stringify([{test:'1'}]);
     localStorage.setItem("dataPermohonan", dataPermohonan);
     let currentIndex = Number($('.ijin__step--current').attr('data-question'));
-    if(currentIndex == numberSteps + 1 || disableButtons==true){
+    if(currentIndex == numberSteps + 1 || currentIndex == 11 || disableButtons==true){
         //console.log('last')
+        $.getScript("https://iuts.pkkmart.com/iuts/assets/js/mapsuser.js", function() {
+                });
         return false;
     }
     // if($('.ijin__step--current input' + 2).value != null){
@@ -647,7 +649,6 @@ $('.navigation__btn--left').click(function(e){
         $(this).addClass('navigation__btn--disabled');
         return false;
     }
-
     $('.navigation__btn--right').removeClass('navigation__btn--disabled')
     $('.ijin__step--current').hide('300');
     $('.ijin__step--current').removeClass('ijin__step--current');
@@ -930,7 +931,7 @@ $('#btn-modalmaps').click(function(event) {
                     if (result.value) {
             // var datas = new FormData($(this)[0]);
   
-                var datas = new FormData($(this)[0]);
+            var datas = new FormData($(this)[0]);
             $.ajax({
                 url: BASE_URL + 'ValidasiController/ValidasiIzin',
                 type: 'POST',
@@ -1058,8 +1059,8 @@ $('#btn-modalmaps').click(function(event) {
                             }
                         }
                         
-                        var ins11 = document.getElementById('fileStatusLahan').files.length;
-                        for (var x = 0; x < ins11; x++) {
+                        var ins8 = document.getElementById('fileStatusLahan').files.length;
+                        for (var x = 0; x < ins8; x++) {
                             var file = document.getElementById('fileStatusLahan').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {
@@ -1074,8 +1075,8 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        var ins12 = document.getElementById('fileAsuransi').files.length;
-                        for (var x = 0; x < ins12; x++) {
+                        var ins9 = document.getElementById('fileAsuransi').files.length;
+                        for (var x = 0; x < ins9; x++) {
                             var file = document.getElementById('fileAsuransi').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {
@@ -1092,8 +1093,8 @@ $('#btn-modalmaps').click(function(event) {
                         }
 
                         // IUTS
-                        var ins9 = document.getElementById('filePerW').files.length;
-                        for (var x = 0; x < ins9; x++) {
+                        var ins10 = document.getElementById('filePerW').files.length;
+                        for (var x = 0; x < ins10; x++) {
                             var file = document.getElementById('filePerW').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {
@@ -1108,8 +1109,8 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        var ins13 = document.getElementById('filePBB').files.length;
-                        for (var x = 0; x < ins12; x++) {
+                        var ins11 = document.getElementById('filePBB').files.length;
+                        for (var x = 0; x < ins11; x++) {
                             var file = document.getElementById('filePBB').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {
@@ -1124,8 +1125,8 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        var ins8 = document.getElementById('fileSostek').files.length;
-                        for (var x = 0; x < ins8; x++) {
+                        var ins12 = document.getElementById('fileSostek').files.length;
+                        for (var x = 0; x < ins12; x++) {
                             var file = document.getElementById('fileSostek').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {
@@ -1140,8 +1141,8 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        var ins10 = document.getElementById('fileUMKM').files.length;
-                        for (var x = 0; x < ins10; x++) {
+                        var ins13 = document.getElementById('fileUMKM').files.length;
+                        for (var x = 0; x < ins13; x++) {
                             var file = document.getElementById('fileUMKM').files[x];
                             var reader = new FileReader();
                             if (file != undefined) {

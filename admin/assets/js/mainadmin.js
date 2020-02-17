@@ -239,6 +239,7 @@ timeline = {
 				var skordampak = [];
 				var skortax = [];
 				var skorjarakpasar = [];
+				var asalkaryawan = [];
 				for(var coba in data.row){
 					skorpbb.push(data.row[coba].skorpbb);
 					skornpwp.push(data.row[coba].skornpwp);
@@ -252,6 +253,7 @@ timeline = {
 					skorketumkm.push(data.row[coba].skorketumkm);
 					skorsewa.push(data.row[coba].skorsewa);
 					skorwarga.push(data.row[coba].skorwarga);
+					asalkaryawan.push(data.row[coba].asalkaryawan);
 					skorrekumkm.push(data.row[coba].skorrekumkm);
 					skorslf.push(data.row[coba].skorslf);
 					skorimb.push(data.row[coba].skorimb);
@@ -334,7 +336,7 @@ timeline = {
 
 				/*iuts*/
 				var totaladmin = parseFloat(skorkondisieksis);
-				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorwarga)+parseFloat(skorsewa)+parseFloat(skorpenglahan);
+				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorwarga)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
 				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjalaneksis)+parseFloat(skorrenjalan)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
 				/*iuts*/
 				
@@ -377,7 +379,7 @@ timeline = {
 
 				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
 				var akumulasi = parseFloat(total/3)
-				var totalasli = parseFloat(totaltax) * parseFloat(akumulasi);
+				var totalasli = 1 * parseFloat(akumulasi);
 
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
