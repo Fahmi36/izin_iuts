@@ -33,6 +33,44 @@
 		.col-form-label{
 			padding-bottom: 0;
 		}
+		.zui-table {
+			border: none;
+			border-right: solid 1px #eee;
+			border-collapse: separate;
+			border-spacing: 0;
+			font: normal 13px Arial, sans-serif;
+		}
+		.zui-table thead th {
+			background-color: #eee;
+			border: none;
+			color: #336B6B;
+			text-align: left;
+			text-shadow: 1px 1px 1px #fff;
+			white-space: nowrap;
+		}
+		.zui-table tbody td {
+			/*border-bottom: solid 1px #eee;*/
+			color: #333;
+			text-shadow: 1px 1px 1px #fff;
+			white-space: nowrap;
+		}
+		.zui-wrapper {
+			position: relative;
+		}
+		.zui-scroller {
+			overflow-x: scroll;
+			overflow-y: visible;
+			padding-bottom: 5px;
+			width: 59%;
+		}
+		.zui-table .zui-sticky-col {
+			border-left: solid 1px #eee;
+			border-right: solid 1px #eee;
+			right: 0;
+			position: absolute;
+			top: auto;
+			width: 40%;
+		}
 	</style>
 	<div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
 		<div class="cssload-container">
@@ -238,272 +276,268 @@
 									<div class="card-body">
 										<form action="javascript:void(0);" method="post" id="inputadministrasi">
 											<input type="hidden" id="codebangunan" name="id_bangunan">
-											<div class="table-responsive">
-												<table class="table bg-white">
-													<thead class="thead-light">
-														<tr>
-															<th scope="col" class="text-center">No</th>
-															<th scope="col">Persyaratan</th>
-															<th scope="col" class="text-center">Berkas Pemohon</th>
-															<th scope="col" class="text-center">Nilai</th>
-														</tr>
-													</thead>
-													<tbody>
-														<tr>
-															<td colspan="2">Administrasi Pemohon</td>
-															<td></td>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>KTP</td>
-															<td>ktp.jpg</td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="ktp">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="ktp">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">2</th>
-															<td>NPWP</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="npwp">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="npwp">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">3</th>
-															<td>Akta Perusahaan</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="aktaperusahaan">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="aktaperusahaan">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td colspan="2">Sertifikat Layak Fungsi</td>
-															<td></td>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Foto tampak luar bangunan</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="fotoluar">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="fotoluar">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">2</th>
-															<td>Foto tampak dalam bangunan</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="fotodalam">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="fotodalam">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">3</th>
-															<td>Izin Mendirikan Bangunan</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="imb">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="imb">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">4</th>
-															<td>Sertifikat Layak Fungsi</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="slf">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="slf">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">5</th>
-															<td>Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="damkar">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="damkar">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">6</th>
-															<td>Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="tkt">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="tkt">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">7</th>
-															<td>Asuransi Toko</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="asuransi">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="asuransi">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<td colspan="2">Izin Usaha Toko Swalayan</td>
-															<td></td>
-															<td></td>
-														</tr>
-														<tr>
-															<th scope="row">1</th>
-															<td>Bukti Pemutahiran PBB</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="pbb">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="pbb">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">2</th>
-															<td>Persetujuan Warga Sekitar</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="persetujuan_warga">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="persetujuan_warga">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">3</th>
-															<td>Rekomendasi UMKM</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="umkm">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="umkm">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-														<tr>
-															<th scope="row">7</th>
-															<td>Kajian Sosial Ekonomi</td>
-															<td></td>
-															<td>
-																<div class="form-check-inline">
-																	<label class="customradio"><span class="radiotextsty">Sesuai</span>
-																	  <input type="radio" name="kajian_sostek">
-																	  <span class="checkmark"></span>
-																	</label>        
-																	<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
-																	  <input type="radio" name="kajian_sostek">
-																	  <span class="checkmark"></span>
-																	</label>
-																</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
+											<div class="zui-wrapper">
+												<div class="zui-scroller">
+													<table class="table zui-table">
+														<tbody>
+															<tr>
+																<td colspan="4">Administrasi Pemohon</td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="ktp">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="ktp">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>1</td>
+																<td>KTP</td>
+																<td>KTP.jpg</td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="npwp">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="npwp">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>2</td>
+																<td>NPWP</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="aktaperusahaan">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="aktaperusahaan">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>3</td>
+																<td>Akta Perusahaan</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td colspan="4">Sertifikat Layak Fungsi</td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="fotoluar">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="fotoluar">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>1</td>
+																<td>Foto tampak luar bangunan</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="fotodalam">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="fotodalam">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>2</td>
+																<td>Foto tampak dalam bangunan</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="imb">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="imb">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>3</td>
+																<td>Izin Mendirikan Bangunan</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="slf">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="slf">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>4</td>
+																<td>Sertifikat Layak Fungsi</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="damkar">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="damkar">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>5</td>
+																<td>Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="tkt">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="tkt">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>6</td>
+																<td>Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="asuransi">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="asuransi">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>7</td>
+																<td>Asuransi Toko</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td colspan="4">Izin Usaha Toko Swalayan</td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="pbb">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="pbb">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>1</td>
+																<td>Bukti Pemutahiran PBB</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="persetujuan_warga">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="persetujuan_warga">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>2</td>
+																<td>Persetujuan Warga Sekitar</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="umkm">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="umkm">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>3</td>
+																<td>Rekomendasi UMKM</td>
+																<td></td>
+															</tr>
+															<tr>
+																<td class="zui-sticky-col">
+																	<div class="form-check-inline">
+																		<label class="customradio"><span class="radiotextsty">Sesuai</span>
+																			<input type="radio" name="kajian_sostek">
+																			<span class="checkmark"></span>
+																		</label>        
+																		<label class="customradio"><span class="radiotextsty">Tidak Sesuai</span>
+																			<input type="radio" name="kajian_sostek">
+																			<span class="checkmark"></span>
+																		</label>
+																	</div>
+																</td>
+																<td>4</td>
+																<td>Kajian Sosial Ekonomi</td>
+																<td></td>
+															</tr>
+															<thead>
+																<tr>
+																	<th class="zui-sticky-col text-center">Nilai</th>
+																	<th>No</th>
+																	<th>Persyaratan</th>
+																	<th>Berkas Pemohon</th>
+																</tr>
+															</thead>
+														</tbody>
+													</table>
+												</div>
 											</div>
 											<div class="col-md-12">
 												<div id="mapsadmin" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
@@ -603,31 +637,36 @@
 	<script src="https://js.arcgis.com/4.8/"></script>
 	<script src="../assets/js/mapsadmin.js"></script>
 	<script type="text/javascript">
-    	timeline.datadetailPemohon();
+		timeline.datadetailPemohon();
     	// timeline.datadetailFotoPemohon();
-		jQuery(window).load(function () {
-			jQuery('#loader').fadeOut('slow');
-		});
-	</script>
-	<script type="text/javascript">
-		$(".scrollbar").addClass("thin");
-		$(".scrollbar").mouseover(function(){
-			$(this).removeClass("thin");
-		});
-		$(".scrollbar").mouseout(function(){
-			$(this).addClass("thin");
-		});
-		$(".scrollbar").scroll(function () {
-			$(".scrollbar").addClass("thin");
-		});
-		$('#sayaSetuju').on('click',function () {
-			if ($('#sayaSetuju').is(':checked')) {
-				$('#btnKirim').removeAttr('disabled');	            
-			}else{
-				$('#btnKirim').attr('disabled', 'disabled');
-			}
-		});
-	</script>
+    	jQuery(window).load(function () {
+    		jQuery('#loader').fadeOut('slow');
+    	});
+    </script>
+    <script type="text/javascript">
+    	$(".scrollbar").addClass("thin");
+    	$(".scrollbar").mouseover(function(){
+    		$(this).removeClass("thin");
+    	});
+    	$(".scrollbar").mouseout(function(){
+    		$(this).addClass("thin");
+    	});
+    	$(".scrollbar").scroll(function () {
+    		$(".scrollbar").addClass("thin");
+    	});
+    	$('#sayaSetuju').on('click',function () {
+    		if ($('#sayaSetuju').is(':checked')) {
+    			$('#btnKirim').removeAttr('disabled');	            
+    		}else{
+    			$('#btnKirim').attr('disabled', 'disabled');
+    		}
+    	});
+    </script>
+    <script type="text/javascript">
+    	jQuery(document).ready(function() {
+    		jQuery(".main-table").clone(true).appendTo('#table-scroll').addClass('clone');   
+    	});
+    </script>
 	<!-- <script>
 		function kelengkapanAdminChange() {
 			var selObj = document.getElementById("kelengkapan_admin");

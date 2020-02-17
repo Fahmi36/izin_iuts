@@ -316,11 +316,9 @@
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keseimbangan, Keserasian, Keselarasan Lingkungan</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
           <div class="form-group row">
-            <label for="kdhMinumum" class="col-md-6 col-form-label">KDH Eksisting :</label>
+            <label for="kdhMinumum" class="col-md-6 col-form-label">Luas Daerah Hijau :</label>
             <div class="col-md-6">
-              <select required="" aria-label="kdhMinumum" class="text-center form-control" id="kdh_minimum" name="kdh_minimum">
-
-              </select>
+              <input type="number" class="form-control" name="kdh_minimum" id="kdh_minimum" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -1257,7 +1255,7 @@
               </div>
               <div id="maps5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix5">
                 <div class="panel-body">
-                  <div id="maps" style="width: 500px;"></div>
+                  <div id="mapsadmin" style="width: 500px;"></div>
                 </div>
               </div>
             </div>
@@ -1424,7 +1422,7 @@
                   20. Izin Mendirikan Bangunan<br>
                 </div>
                 21. Fasilitas Penanggulangan Kebakaran<br>
-                <div class="text-primary">22. Ketersediaan Asuransi Toko</div><br>
+                <div class="text-primary">22. Ketersediaan Asuransi Toko</div>
                 23. Waktu Pembaharuan Terakhir Kelayakan Gedung<br>
                 24. Ketersediaan Air Bersih<br>
                 25. Sumber Air Bersih<br>
@@ -1443,7 +1441,7 @@
               <div class="col-md-6 text-danger">
                 1. Bukti Pemutahiran PBB<br>
                 2. Jumlah keterlibatan UMKM<br>
-                <div class="text-primary">3. Bukti Persetujuan Warga Sekitar</div><br>
+                <div class="text-primary">3. Bukti Persetujuan Warga Sekitar</div>
                 4. Jumlah Karyawan<br>
                 5. Asal Karyawan<br>
               </div>
@@ -1489,6 +1487,7 @@
     <script src="assets/js/iuts.js"></script>
     <script src="https://js.arcgis.com/4.8/"></script>
     <script src="assets/js/arcgis.js"></script>
+    <!-- <script src="https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js"></script> -->
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     <script type="text/javascript">
       $('#kelengkapan').modal('show');

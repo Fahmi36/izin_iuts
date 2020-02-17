@@ -145,7 +145,11 @@ function lamaizin() {
     $("#lama_izin_row").removeAttr('style');
 }
 function umkm() {
-    $(".keterlibatan_umkm_row").removeAttr('style');
+    if ($("#keterlibatan_umkm option:selected").val() != 1) {
+        $(".keterlibatan_umkm_row").attr('style', 'display:none');
+    }else{
+         $(".keterlibatan_umkm_row").removeAttr('style');
+    }
 }
 function janjisewa() {
     $("#janji_sewa_row").removeAttr('style');
@@ -284,6 +288,27 @@ $('.navigation__btn--right').click(function(e){
     // }
     localStorage.clear();
 
+    // bannerImage = document.getElementById('bannerImg');
+    // imgData = getBase64Image(bannerImage);
+    // localStorage.setItem("imgData", imgData);
+
+    // function getBase64Image(img) {
+    //     var canvas = document.createElement("canvas");
+    //     canvas.width = img.width;
+    //     canvas.height = img.height;
+
+    //     var ctx = canvas.getContext("2d");
+    //     ctx.drawImage(img, 0, 0);
+
+    //     var dataURL = canvas.toDataURL("image/png");
+
+    //     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    // }
+    // var dataImage = localStorage.getItem('imgData');
+    // bannerImg = document.getElementById('tableBanner');
+    // bannerImg.src = "data:image/png;base64," + dataImage;
+
+    $("#statusPemohon").text(status_pemohon);
     /* Data Administrasi Pemohon */
     localStorage.setItem("status_pemohon", $("#status_pemohon").val());
     localStorage.setItem("nama_perusahaan", $("#nama_perusahaan").val());
@@ -362,7 +387,7 @@ $('.navigation__btn--right').click(function(e){
 
     /*Data Keseimbangan, Keserasian, Keselarasan Lingkungan*/
     localStorage.setItem("kdh_zonasi", $("#kdh_zonasi").val());
-    localStorage.setItem("kdh_minimum", $("#kdh_minimum option:selected").text());
+    localStorage.setItem("kdh_minimum", $("#kdh_minimum").val());
     localStorage.setItem("kondisi_kdh", $("#kondisi_kdh option:selected").text());
     localStorage.setItem("volumeSumur", $("#volumeSumur option:selected").text());
     localStorage.setItem("kondisi_pertandaan_toko", $("#kondisi_pertandaan_toko option:selected").text());
