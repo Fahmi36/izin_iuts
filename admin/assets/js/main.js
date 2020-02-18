@@ -23,7 +23,7 @@ user.addEventListener('click', () => {
 var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 	if (typeof(Storage) !== "undefined") {
 		if (localStorage.getItem('iduser') != null ) {
-			window.location.href = 'dashboard.html';
+			// window.location.href = 'dashboard.html';
 		}
 	}else{
 		navigator.sayswho= (function(){

@@ -294,6 +294,7 @@ timeline = {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}
 				for (var i = 0; i < nama.length; i++) {
+					$('#nama_pj').text(nama[i]);
 					// console.log(status[i]);
 					if (status[i] == '0') {
 						var statuscard = 'Di Proses';
@@ -401,7 +402,7 @@ timeline = {
 						$('#pemohon').addClass('active');
 						$('#ket_pemohon').removeAttr('style');
 						$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(tgl[i]))+'</p>');
-					}else if () {
+					}else if ('') {
 						$.ajax({
 							url: BASE_URL + 'UserController/detailPemohonAdministrasi',
 							type: 'POST',
@@ -669,8 +670,8 @@ $("#logout").click(function(event) {
 	window.location.href = 'login.html';
 });
 if (typeof(Storage) !== "undefined") {
-	if (localStorage.getItem('iduser') === null) {
-		// window.location.href = 'login.html';
+	if (localStorage.getItem('iduser') == null) {
+		window.location.href = 'login.html';
 	}
 }else{
 	navigator.sayswho= (function(){
