@@ -402,7 +402,7 @@ timeline = {
 						$('#pemohon').addClass('active');
 						$('#ket_pemohon').removeAttr('style');
 						$('#ket_pemohon').html('<p>Anda mengajukan izin '+datePHPJS("d-F-Y", new Date(tgl[i]))+'</p>');
-					}else if ('') {
+					}else if (status[i] == '1') {
 						$.ajax({
 							url: BASE_URL + 'UserController/detailPemohonAdministrasi',
 							type: 'POST',
@@ -670,7 +670,7 @@ $("#logout").click(function(event) {
 	window.location.href = 'login.html';
 });
 if (typeof(Storage) !== "undefined") {
-	if (localStorage.getItem('iduser') == null) {
+	if (localStorage.getItem('iduser') === null) {
 		window.location.href = 'login.html';
 	}
 }else{

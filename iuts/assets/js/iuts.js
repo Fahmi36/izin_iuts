@@ -381,8 +381,8 @@ $('.navigation__btn--right').click(function(e){
     $("#totalBangunan").text(luas_bangunan);
     $("#tinggiBangunan").text(tinggi_bangunan);
     $("#peruntukanBangunan").text(peruntukan_bangunan);
-    $("#fotoDalam").text(foto_dalam_bangunan);
-    $("#fotoLuar").text(foto_luar_bangunan);
+    $("#fotoDalam").text(foto_dalam_bangunan.replace("C:\\fakepath\\", ""));
+    $("#fotoLuar").text(foto_luar_bangunan.replace("C:\\fakepath\\", ""));
     /* Data Umum Bangunan */
 
     /*Data Keseimbangan, Keserasian, Keselarasan Lingkungan*/
@@ -1157,18 +1157,18 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        // $('.ijin').remove();
-                        // $(summary).appendTo('.container');
-                        // disableButtons=true;
-                        // $('.navigation__btn').addClass('navigation__btn--disabled');
+                        $('.ijin').remove();
+                        $(summary).appendTo('.container');
+                        disableButtons=true;
+                        $('.navigation__btn').addClass('navigation__btn--disabled');
 
 
-                        // $('#page-loader').fadeOut('slow'); 
-                        // swal({
-                        //     type: 'success',
-                        //     title: data.msg,
-                        //     showCancelButton: true
-                        // });
+                        $('#page-loader').fadeOut('slow'); 
+                        swal({
+                            type: 'success',
+                            title: data.msg,
+                            showCancelButton: true
+                        });
                     }else{
                         $('#page-loader').fadeOut('slow');
                         swal({
