@@ -1157,18 +1157,18 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
-                        // $('.ijin').remove();
-                        // $(summary).appendTo('.container');
-                        // disableButtons=true;
-                        // $('.navigation__btn').addClass('navigation__btn--disabled');
+                        $('.ijin').remove();
+                        $(summary).appendTo('.container');
+                        disableButtons=true;
+                        $('.navigation__btn').addClass('navigation__btn--disabled');
 
 
-                        // $('#page-loader').fadeOut('slow'); 
-                        // swal({
-                        //     type: 'success',
-                        //     title: data.msg,
-                        //     showCancelButton: true
-                        // });
+                        $('#page-loader').fadeOut('slow'); 
+                        swal({
+                            type: 'success',
+                            title: data.msg,
+                            showCancelButton: true
+                        });
                     }else{
                         $('#page-loader').fadeOut('slow');
                         swal({
