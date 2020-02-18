@@ -44,6 +44,7 @@ function datadetailPemohon(id) {
 		},
 		success:function(data) {
 			if (data.success) {
+				jQuery('#loader').fadeOut('slow');
 				var code = [];
 				var nama = [];
 				var nib = [];
@@ -189,6 +190,7 @@ timeline = {
 			data: datas,
 			dataType : 'json',
 			success:function(data) {
+			jQuery('#loader').fadeOut('slow');
 				var skorpbb = [];
 				var skornpwp = [];
 				var skorrenjalan = [];
@@ -901,7 +903,7 @@ $("#inputadminteknis").submit(function (event) {
 				}
 				if (typeof(Storage) !== "undefined") {
 					if (localStorage.getItem('idadmin') === null) {
-						// window.location.href = '../login.html';
+						window.location.href = '../login.html';
 					}
 				}else{
 					navigator.sayswho= (function(){
