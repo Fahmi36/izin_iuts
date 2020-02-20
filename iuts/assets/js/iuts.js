@@ -1235,7 +1235,7 @@ function shipOffLuarBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1268,7 +1268,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileIMB').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1284,7 +1284,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileSLF').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1300,7 +1300,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileSuratP').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1316,7 +1316,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileDamkar').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1332,7 +1332,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileTKT').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1348,7 +1348,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileStatusLahan').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1364,7 +1364,7 @@ function shipOffDalamBangunan(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileAsuransi').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachment',
@@ -1382,7 +1382,7 @@ function shipOffFilePerW(event) {
     // debugger;
     var fileName = datenya + document.getElementById('filePerW').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachmentIUTS',
@@ -1399,7 +1399,7 @@ function shipOffFilePBB(event) {
     // debugger;
     var fileName = datenya + document.getElementById('filePBB').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachmentIUTS',
@@ -1417,7 +1417,7 @@ function shipOffFileSostek(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileSostek').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachmentIUTS',
@@ -1434,7 +1434,7 @@ function shipOffFileUMKM(event) {
     // debugger;
     var fileName = datenya + document.getElementById('fileUMKM').files[$nofotoluar].name;
     $nofotoluar+=1;
-    console.log(fileName);
+    // console.log(fileName);
 
     $.ajax({
         url: BASE_URL + 'ValidasiController/addAttachmentIUTS',

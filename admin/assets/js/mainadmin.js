@@ -125,7 +125,7 @@ function terimadinas() {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/InsertAdminDinas',
 		type: 'POST',
-		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skor:$('#totalakhir2').val(),status:'1'},
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skoriuts:$('#totalakhir2').val(),skorslf:$('#totalakhir4').val(),status:'1'},
 		dataType: 'json',
 		beforeSend: function () {
 		},
@@ -283,7 +283,7 @@ timeline = {
 					nib.push(data.row[coba].nib);
 					npwp.push(data.row[coba].npwp);
 					tgl.push(data.row[coba].tgl);
-					alamat.push(data.row[coba].alamat);
+					alamat.push(data.row[coba].alamat_usaha);
 					ketadmin.push(data.row[coba].ketadmin);
 					ketteknis.push(data.row[coba].ketteknis);
 					ketdinas.push(data.row[coba].ketdinas);
@@ -338,12 +338,12 @@ timeline = {
 
 				/*iuts*/
 				var totaladmin = parseFloat(skorkondisieksis);
-				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorwarga)+parseFloat(skorsewa)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
+				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
 				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjalaneksis)+parseFloat(skorrenjalan)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
 				/*iuts*/
 				
 				/*slf*/
-				var totalkeseimbangan = parseFloat(skorkdhmini)+parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase);
+				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase);
 				var totalkeamanan = parseFloat(skorimb)+parseFloat(skorslf)+parseFloat(skordamkar)+parseFloat(skortkt)+parseFloat(skorfdamkar)+parseFloat(skorasuransi)+parseFloat(skorlayak);
 				var totalkesehatan = parseFloat(skorketersediaan)+parseFloat(skorlimbah)+parseFloat(skorsampah)+parseFloat(skorlistrik);
 				var totalkemudahan = parseFloat(skortoilet)+parseFloat(skorparkir);
@@ -351,14 +351,14 @@ timeline = {
 
 				/*iuts*/
 				var hasiladmin = parseFloat(totaladmin/1);
-				var hasilmanfaat = parseFloat(totalmanfaat/6);
+				var hasilmanfaat = parseFloat(totalmanfaat/4);
 				var hasildampak = parseFloat(totaldampak/6);
 				/*iuts*/
 				
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
 				/*slf*/
-				var hasilkeseimbangan = parseFloat(totalkeseimbangan/6);
+				var hasilkeseimbangan = parseFloat(totalkeseimbangan/5);
 				var hasilkeamanan = parseFloat(totalkeamanan/7);
 				var hasilkesehatan = parseFloat(totalkesehatan/4);
 				var hasilkemudahan = parseFloat(totalkemudahan/2);
@@ -379,12 +379,19 @@ timeline = {
 
 				$('#totaltax').text(totaltax);
 
-				var total = parseFloat(String(hasiladmin).substr(0, 4))+parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
-				var akumulasi = parseFloat(total/3)
+				/*iuts*/
+				var total = parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
+				var akumulasi = parseFloat(total/2)
 				var totalasli = 1 * parseFloat(akumulasi);
-
 				$('#totalakhir').text(String(totalasli).substr(0, 4));
 				$('#totalakhir2').val(String(totalasli).substr(0, 4));
+				/*iuts*/
+
+				var totalslf = parseFloat(String(hasilkeseimbangan).substr(0, 4))+parseFloat(String(hasilkeamanan).substr(0, 4))+parseFloat(String(hasilkesehatan).substr(0, 4))+parseFloat(String(hasilkemudahan).substr(0, 4));
+				var akumulasislf = parseFloat(totalslf/4)
+				var totalaslislf = 1 * parseFloat(akumulasislf);
+				$('#totalakhir3').text(String(totalaslislf).substr(0, 4));
+				$('#totalakhir4').val(String(totalaslislf).substr(0, 4));
 
 				if (parseFloat(totalasli) < 1.5) {
 					var statuswebsite = 'Di Tolak';
@@ -394,8 +401,15 @@ timeline = {
 					var statuswebsite = 'Di Terima';
 				}
 
+				if (parseFloat(totalaslislf) < 1.5) {
+					var statuswebsiteslf = 'Di Tolak';
+				}else if (parseFloat(totalaslislf) < 2.5) {
+					var statuswebsiteslf = 'Di Terima Dengan Catatan';
+				}else if(parseFloat(totalaslislf) > 2.5) {
+					var statuswebsiteslf = 'Di Terima';
+				}
 				$('#statusweb').text(statuswebsite);
-
+				$('#statuswebslf').text(statuswebsiteslf);
 
 				$('#catatan').text(ketdinas);
 
