@@ -51,7 +51,6 @@ function Detailpemohon(id) {
 		success:function(data) {
 			if (data.success) {
 				var code = [];
-				var nama = [];
 				var nib = [];
 				var npwp = [];
 				var tgl = [];
@@ -60,22 +59,165 @@ function Detailpemohon(id) {
 				var kode_sublok = [];
 				var lat = [];
 				var lon = [];
+				/* data administrasi pemohon*/
+				var nama = [];
+				var jenis_pemohon = [];
+				var jabatan = [];
+				var nik = [];
+				var nib = [];
+				var npwp = [];
+				var alamat_usaha = [];
+				var no_hp = [];
+				var email = [];
+				/* data administrasi pemohon*/
+
+				/* Data Umum Bangunan */
+				var nopd = [];
+				var luas_lahan = [];
+				var status_bangunan = [];
+				var luas_tapak = [];
+				var jumlah_lantai = [];
+				var luas_total_bangunan = [];
+				var tinggi_bangunan = [];
+				var peruntukan_bangunan = [];
+				/* Data Umum Bangunan */
+
+				/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+				var id_kdh_minimum = [];
+				var id_kondisi_kdh = [];
+				var id_volume_sumur = [];
+				var id_pertandaan_toko = [];
+				var id_kondisi_sumur = [];
+				var id_drainase = [];
+				/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+				/* Data Keselamatan dan Keamanan */
+				var id_imb = [];
+				var id_layak = [];
+				var id_asuransi = [];
+				var id_renovasi = [];
+				/* Data Keselamatan dan Keamanan */
+
+				/* Data Kesehatan */
+				var id_bersih = [];
+				var sumber_air = [];
+				var id_limbah = [];
+				var id_sampah = [];
+				var id_listrik = [];
+				/* Data Kesehatan */
 				for(var coba in data.row){
 					code.push(data.row[coba].code);
-					nama.push(data.row[coba].nama);
-					nib.push(data.row[coba].nib);
-					npwp.push(data.row[coba].npwp);
 					alamat.push(data.row[coba].alamat);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
 					tgl.push(data.row[coba].created_at);
 					lat.push(data.row[coba].lat);
 					lon.push(data.row[coba].lon);
+					/* data administrasi pemohon*/
+					nama.push(data.row[coba].nama);
+					jenis_pemohon.push(data.row[coba].jenis_pemohon);
+					jabatan.push(data.row[coba].jabatan);
+					nik.push(data.row[coba].nik);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					alamat_usaha.push(data.row[coba].alamat_usaha);
+					no_hp.push(data.row[coba].no_hp);
+					email.push(data.row[coba].email);
+					/* data administrasi pemohon*/
+
+					/* Data Umum Bangunan */
+					nopd.push(data.row[coba].nopd);
+					luas_lahan.push(data.row[coba].luas_lahan);
+					status_bangunan.push(data.row[coba].status_bangunan);
+					luas_tapak.push(data.row[coba].luas_tapak);
+					jumlah_lantai.push(data.row[coba].jumlah_lantai);
+					luas_total_bangunan.push(data.row[coba].luas_total_bangunan);
+					tinggi_bangunan.push(data.row[coba].tinggi_bangunan);
+					peruntukan_bangunan.push(data.row[coba].peruntukan_bangunan);
+					/* Data Umum Bangunan */
+
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+					id_kdh_minimum.push(data.row[coba].id_kdh_minimum);
+					id_kondisi_kdh.push(data.row[coba].id_kondisi_kdh);
+					id_volume_sumur.push(data.row[coba].id_volume_sumur);
+					id_pertandaan_toko.push(data.row[coba].id_pertandaan_toko);
+					id_kondisi_sumur.push(data.row[coba].id_kondisi_sumur);
+					id_drainase.push(data.row[coba].id_drainase);
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+					/* Data Keselamatan dan Keamanan */
+					id_imb.push(data.row[coba].id_imb);
+					id_layak.push(data.row[coba].id_layak);
+					id_asuransi.push(data.row[coba].id_asuransi);
+					id_renovasi.push(data.row[coba].id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Kesehatan */
+					id_bersih.push(data.row[coba].id_bersih);
+					sumber_air.push(data.row[coba].sumber_air);
+					id_limbah.push(data.row[coba].id_limbah);
+					id_sampah.push(data.row[coba].id_sampah);
+					id_listrik.push(data.row[coba].id_listrik);
+					/* Data Kesehatan */
 				}
 				if (data.rowCount > 0) {
 					$('#idbangunan').val(id);
 					$('#lat').val(lat);
 					$('#long').val(lon);
+					/* data administrasi pemohon*/
+					$('#nama_pj').text(nama);
+					$('#status_pemohon').text(jenis_pemohon);
+					$('#jabatan').text(jabatan);
+					$('#nik').text(nik);
+					$('#nib').text(nib);
+					$('#npwp').text(npwp);
+					$('#alamat_p').text(alamat_usaha);
+					$('#nomor_telp').text(no_hp);
+					$('#email').text(email);
+					/* data administrasi pemohon*/
+
+					/* Data Umum Bangunan */
+					$('#nopd_b').text(nopd);
+					$('#luas_lahan').text(luas_lahan);
+					$('#status_lahan').text(status_bangunan);
+					$('#luas_tapak').text(luas_tapak);
+					$('#jumlah_lantai').text(jumlah_lantai);
+					$('#luas_total').text(luas_total_bangunan);
+					$('#tinggi_bangunan').text(tinggi_bangunan);
+					$('#peruntukan_bangunan').text(peruntukan_bangunan);
+					/* Data Umum Bangunan */
+
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+					$('#luas_daerah_h').text(id_kdh_minimum);
+					$('#kondisi_kdh').text(id_kondisi_kdh);
+					$('#volume_sumur').text(id_volume_sumur);
+					$('#kondisi_pertandaan_t').text(id_pertandaan_toko);
+					$('#kondisi_sumur').text(id_kondisi_sumur);
+					$('#drainase').text(id_drainase);
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#imb').text(id_imb);
+					$('#slf').text(id_layak);
+					$('#asuransi').text(id_asuransi);
+					$('#layak_gedung').text(id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#imb').text(id_imb);
+					$('#slf').text(id_layak);
+					$('#asuransi').text(id_asuransi);
+					$('#layak_gedung').text(id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#air_bersih').text(id_bersih);
+					$('#sumber_air').text(sumber_air);
+					$('#limbah').text(id_limbah);
+					$('#sampah').text(id_sampah);
+					$('#listrik').text(id_listrik);
+					/* Data Keselamatan dan Keamanan */
+
 					// $('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 					$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
 					});	
@@ -294,7 +436,6 @@ timeline = {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
 				}
 				for (var i = 0; i < nama.length; i++) {
-					$('#nama_pj').text(nama[i]);
 					// console.log(status[i]);
 					if (status[i] == '0') {
 						var statuscard = 'Di Proses';

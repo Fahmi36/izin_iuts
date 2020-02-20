@@ -371,12 +371,24 @@
 												<input type="hidden" id="codebangunan" name="id_bangunan">
 												<input type="hidden" id="totalakhir2">
 												<div id="mapsadmin" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
-												<label for="keterangan">Kolom Komentar</label>
-												<div class="form-group">
-													<textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
+												<div class="row">
+													<div class="col-md-6">
+														<label for="keterangan">Kolom Komentar IUTS</label>
+														<div class="form-group">
+															<textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
+														</div>
+														<button class="btn btn-success" onclick="terimadinas()" type="submit">Terima</button>
+														<button class="btn btn-danger" onclick="tolakdinas()" type="submit">Tolak</button>
+													</div>
+													<div class="col-md-6">
+														<label for="keterangan">Kolom Komentar SLF</label>
+														<div class="form-group">
+															<textarea class="form-control" name="keterangan_slf" id="keterangan_slf" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
+														</div>
+														<button class="btn btn-success" onclick="terimadinasslf()" type="submit">Terima</button>
+														<button class="btn btn-danger" onclick="tolakdinasslf()" type="submit">Tolak</button>
+													</div>	
 												</div>
-												<button class="btn btn-success" onclick="terimadinas()" type="submit">Terima</button>
-												<button class="btn btn-danger" onclick="tolakdinas()" type="submit">Tolak</button>
 											</div>
 										</form>
 									</div>

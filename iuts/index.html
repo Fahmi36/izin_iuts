@@ -57,6 +57,35 @@
               </select>
             </div>
           </div>
+          <div class="form-group row sistemU" style="display: none;">
+            <label for="sistemUsaha" class="col-md-6 col-form-label">Sistem Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="sistemUsaha();" aria-label="sistemUsaha" class="text-center form-control" id="sistem_usaha" name="sistem_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="Waralaba">Waralaba</option>
+                <option value="Mandiri">Mandiri</option>
+              </select>
+            </div>
+          </div>
+          <div class="form_nib" style="display: none;">
+            <div class="form-group row">
+              <label for="nomorInBeru" class="col-md-6 col-form-label" style="">NIB :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="sistemUsaha" class="col-md-6 col-form-label">Status Kepemilikan NIB :</label>
+              <div class="col-md-6">
+                <select required="" onchange="statusKepemIMB();" aria-label="sistemUsaha" class="text-center form-control" id="sistem_usaha" name="sistem_usaha">
+                  <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                  <option value="Penerima Waralaba">Penerima Waralaba</option>
+                  <option value="Pelaku Waralaba">Pelaku Waralaba</option>
+                  <option value="Penanggung Jawab">Penanggung Jawab</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="statusP" style="display: none;">
             <div class="form-group row np" style="display: none;">
               <label for="namaLengkap" class="col-md-6 col-form-label">Nama Perusahaan :</label>
@@ -101,13 +130,6 @@
                     </label>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label nibP" style="display: none;">NIB Perusahaan :</label>
-              <label for="nomorInBeru" class="col-md-6 col-form-label nibPJ" style="">NIB Penanggung Jawab :</label>
-              <div class="col-md-6">
-                <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
@@ -412,17 +434,25 @@
               </select>
             </div>
           </div>
-          <div class="form-group row uploadIMB" style="display: none;">
-            <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileIMB[]" multiple id="fileIMB">
-                  <label for="fileIMB" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
+          <div class="uploadIMB" style="display: none;">
+            <div class="form-group row">
+              <label for="noIMB" class="col-md-6 col-form-label">Nomor IMB :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="no_imb" id="no_imb" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="file-input multiple">
+                  <div class="file-input-wrapper">
+                    <input type="file" name="fileIMB[]" multiple id="fileIMB">
+                    <label for="fileIMB" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    </label>
+                  </div>
+                  <ul class="selected-files"></ul>
                 </div>
-                <ul class="selected-files"></ul>
               </div>
             </div>
           </div>
@@ -433,17 +463,25 @@
               </select>
             </div>
           </div>
-          <div class="form-group row uploadSLF" style="display: none;">
-            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileSLF[]" multiple id="fileSLF">
-                  <label for="fileSLF" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
+          <div class="uploadIMB uploadSLF" style="display: none;">
+            <div class="form-group row">
+              <label for="noSLF" class="col-md-6 col-form-label">Nomor SLF :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="no_slf" id="no_slf" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="file-input multiple">
+                  <div class="file-input-wrapper">
+                    <input type="file" name="fileSLF[]" multiple id="fileSLF">
+                    <label for="fileSLF" class="upload-cta">
+                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
+                    </label>
+                  </div>
+                  <ul class="selected-files"></ul>
                 </div>
-                <ul class="selected-files"></ul>
               </div>
             </div>
           </div>
@@ -637,7 +675,7 @@
               <input type="text" class="form-control" name="nama_badan_usaha" id="nama_badan_usaha" placeholder="-">
             </div>
           </div>
-          <div class="form-group row">
+          <!-- <div class="form-group row">
             <label for="perjanjianSewa" class="col-md-6 col-form-label">Kategori Usaha :</label>
             <div class="col-md-6">
               <select required="" aria-label="perjanjianSewa" class="text-center form-control" id="kategori_usaha" name="kategori_usaha">
@@ -646,7 +684,7 @@
                 <option value="Bukan">Bukan</option>
               </select>
             </div>
-          </div>
+          </div> -->
           <div class="form-group row">
             <label for="omsetPerbulan" class="col-md-6 col-form-label">Omset Usaha Per-bulan :</label>
             <div class="col-md-6">
@@ -906,11 +944,10 @@
                       </tr>
                       <tr class="statusP" style="display: none;">
                         <td>Foto KTP</td>
-                        <td id="fotoKTP"></td>
+                        <td id="foto_ktp_summary"></td>
                       </tr>
                       <tr class="statusP" style="display:none;">
-                        <td class="nibP" style="display: none;">NIB Penanggung Jawab</td>
-                        <td class="nibPJ">NIB Penanggung Jawab</td>
+                        <td>NIB Penanggung Jawab</td>
                         <td id="nib"></td>
                       </tr>
                       <tr class="statusP" style="display:none;">
@@ -920,7 +957,7 @@
                       </tr>
                       <tr class="statusP" style="display: none;">
                         <td>Foto NPWP</td>
-                        <td id="fotoNPWP"></td>
+                        <td id="foto_npwp_summary"></td>
                       </tr>
                       <tr class="akteP">
                         <td>Akte Perusahaan</td>
@@ -1220,10 +1257,10 @@
                         <td>Nama Badan Usaha</td>
                         <td id="namausaha"></td>
                       </tr>
-                      <tr>
+                      <!-- <tr>
                         <td>Kategori Usaha</td>
                         <td id="kategori_usaha_summary"></td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td>Omset Usaha Per-bulan</td>
                         <td id="omset_perbulan_summary"></td>

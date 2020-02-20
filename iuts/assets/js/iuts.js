@@ -7,16 +7,24 @@ var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
 /* Add Row */
 function statuspemohon() {
+    if ($("#status_pemohon option:selected").val()) {
+        $(".sistemU").removeAttr('style');
+    }
+}
+function sistemUsaha() {
+    if ($("#sistem_usaha option:selected").val()) {
+        $(".form_nib").removeAttr('style');
+    }
+}
+function statusKepemIMB() {
     if ($("#status_pemohon option:selected").val() == "Perorangan") {
         $(".statusP").removeAttr('style');
         $(".jabatan_row").removeAttr('style');
         $(".npj").removeAttr('style');
         $(".nikPJ").removeAttr('style');
-        $(".nibPJ").removeAttr('style');
         $(".npwpPJ").removeAttr('style');
         $(".np").attr('style', 'display:none');
         $(".nikD").attr('style', 'display:none');
-        $(".nibP").attr('style', 'display:none');
         $(".npwpP").attr('style', 'display:none');
         $(".namaPJ").attr('style', 'display:none');
         $(".akteP").attr('style', 'display:none');
@@ -25,7 +33,6 @@ function statuspemohon() {
         $(".jabatan_row").attr('style', 'display:none');
         $(".npj").attr('style', 'display:none');
         $(".nikPJ").attr('style', 'display:none');
-        $(".nibPJ").attr('style', 'display:none');
         $(".npwpPJ").attr('style', 'display:none');
         $(".np").removeAttr('style');
         $(".nikD").removeAttr('style');
@@ -35,6 +42,7 @@ function statuspemohon() {
         $(".akteP").removeAttr('style');
     }
 }
+
 function rekomendasislf() {
     if ($("#rekomendasi_slf option:selected").val() != 1 &&  $("#rekomendasi_slf option:selected").val() != 2) {
         $("#uploadReSLF").removeAttr('style');
@@ -148,8 +156,8 @@ function umkm() {
     if ($("#keterlibatan_umkm option:selected").val() != 1) {
         $(".keterlibatan_umkm_row").attr('style', 'display:none');
     }else{
-         $(".keterlibatan_umkm_row").removeAttr('style');
-    }
+       $(".keterlibatan_umkm_row").removeAttr('style');
+   }
 }
 function janjisewa() {
     $("#janji_sewa_row").removeAttr('style');
@@ -315,10 +323,11 @@ $('.navigation__btn--right').click(function(e){
     localStorage.setItem("namapemohon", $("#namaLengkap").val());
     localStorage.setItem("jabatan", $("#jabatan").val());
     localStorage.setItem("nik", $("#nomorInKepen").val());
-    localStorage.setItem("foto_ktp", $("#foto_ktp").text());
+    localStorage.setItem("foto_ktp", $("#foto_ktp").val());
     localStorage.setItem("nib", $("#nomorInBeru").val());
     localStorage.setItem("npwp", $("#npwp").val());
-    localStorage.setItem("foto_npwp", $("#foto_npwp").text());
+    localStorage.setItem("foto_npwp", $("#foto_npwp").val());
+    localStorage.setItem("aktePerusahaan", $("#aktePerusahaan").val());
     localStorage.setItem("alamat_perusahaan", $("#alamat_perusahaan").val());
     localStorage.setItem("no_telp", $("#no_telp").val());
     localStorage.setItem("email", $("#emailAktif").val());
@@ -332,6 +341,7 @@ $('.navigation__btn--right').click(function(e){
     var nib = localStorage.getItem('nib');
     var npwp = localStorage.getItem('npwp');
     var foto_npwp = localStorage.getItem('foto_npwp');
+    var aktePerusahaan = localStorage.getItem('aktePerusahaan');
     var alamat_perusahaan = localStorage.getItem('alamat_perusahaan');
     var no_telp = localStorage.getItem('no_telp');
     var email = localStorage.getItem('email');
@@ -341,10 +351,11 @@ $('.navigation__btn--right').click(function(e){
     $("#nama").text(nama);
     $("#jabatanlocal").text(jabatan);
     $("#nik").text(nik);
-    $("#foto_ktp").text(foto_ktp);
+    $("#foto_ktp_summary").text(foto_ktp.replace("C:\\fakepath\\", ""));
     $("#nib").text(nib);
     $("#npwplocal").text(npwp);
-    $("#foto_npwp").text(foto_npwp);
+    $("#foto_npwp_summary").text(foto_npwp.replace("C:\\fakepath\\", ""));
+    $("#akte_p_summary").text(aktePerusahaan);
     $("#alamatperusahaan").text(alamat_perusahaan);
     $("#nomortelp").text(no_telp);
     $("#email").text(email);
@@ -603,7 +614,7 @@ $('.navigation__btn--right').click(function(e){
     if(currentIndex == numberSteps + 1 || currentIndex == 11 || disableButtons==true){
         //console.log('last')
         $.getScript("https://iuts.pkkmart.com/iuts/assets/js/mapsuser.js", function() {
-                });
+        });
         return false;
     }
     // if($('.ijin__step--current input' + 2).value != null){
@@ -929,34 +940,34 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
-            // var datas = new FormData($(this)[0]);
-  
-            var datas = new FormData($(this)[0]);
-            $.ajax({
-                url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                type: 'POST',
-                dataType: 'json',
-                data:datas,
-                contentType: false,
-                cache: false,
-                processData: false,
-                beforeSend:function() {
-                    $("#text-loader").html('Mohon Tunggu');
-                    $('#page-loader').fadeIn('slow');
-                },
-                success:function(data) {
-                    if (data.success) {
-                        var ins1 = document.getElementById('foto_luar_bangunan').files.length;
-                        for (var x = 0; x < ins1; x++) {
-                            var file = document.getElementById('foto_luar_bangunan').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffLuarBangunan;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Tampak Luar Bangunan';
+                    // var datas = new FormData($(this)[0]);
+                    
+                    var datas = new FormData($(this)[0]);
+                    $.ajax({
+                        url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                        type: 'POST',
+                        dataType: 'json',
+                        data:datas,
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        beforeSend:function() {
+                            $("#text-loader").html('Mohon Tunggu');
+                            $('#page-loader').fadeIn('slow');
+                        },
+                        success:function(data) {
+                            if (data.success) {
+                                var ins1 = document.getElementById('foto_luar_bangunan').files.length;
+                                for (var x = 0; x < ins1; x++) {
+                                    var file = document.getElementById('foto_luar_bangunan').files[x];
+                                    var reader = new FileReader();
+                                    if (file != undefined) {
+                                        reader.readAsDataURL(file);
+                                        reader.onload = shipOffLuarBangunan;
+                                        var a = new Date();
+                                        var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+                                        var name = datenya + file.name;
+                                        var jenis = 'File Tampak Luar Bangunan';
                                 // console.log(data);
                                 updateFoto(name, data.idslf,jenis);
 
@@ -1180,8 +1191,8 @@ $('#btn-modalmaps').click(function(event) {
                     $('#page-loader').fadeOut('slow');
                 }
             });
-                                                                
-    }
+
+}
 })
 });
 
@@ -2160,7 +2171,7 @@ $(document).ready(function() {
 
 //      e.preventDefault();
 //      return false;
-  
+
 // });
 $(".imgAdd").click(function(){
   $(this).closest(".row").find('.imgAdd').before('<div class="col-md-6 imgUpLuar"> <div class="imagePreview" id="img-luar-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_luar_bangunan" id="foto_luar_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
