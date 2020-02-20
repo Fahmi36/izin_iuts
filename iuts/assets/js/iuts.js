@@ -940,6 +940,7 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
+<<<<<<< HEAD
                     // var datas = new FormData($(this)[0]);
                     
                     var datas = new FormData($(this)[0]);
@@ -968,206 +969,236 @@ $('#btn-modalmaps').click(function(event) {
                                         var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
                                         var name = datenya + file.name;
                                         var jenis = 'File Tampak Luar Bangunan';
+=======
+            // var datas = new FormData($(this)[0]);
+  
+            var datas = new FormData($(this)[0]);
+            $.ajax({
+                url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                type: 'POST',
+                dataType: 'json',
+                data:datas,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend:function() {
+                    $("#text-loader").html('Mohon Tunggu');
+                    $('#page-loader').fadeIn('slow');
+                },
+                success:function(data) {
+                    if (data.success) {
+                        var ins1 = document.getElementById('foto_luar_bangunan').files.length;
+                        for (var x1 = 0; x1 < ins1; x1++) {
+                            var file1 = document.getElementById('foto_luar_bangunan').files[x1];
+                            var reader1 = new FileReader();
+                            if (file1 != undefined) {
+                                reader1.readAsDataURL(file1);
+                                reader1.onload = shipOffLuarBangunan;
+                                var a1 = new Date();
+                                var datenya1 = a1.getHours() + a1.getMinutes() + a1.getMilliseconds();
+                                var name1 = datenya1 + file1.name;
+                                var jenis1 = 'File Tampak Luar Bangunan';
+>>>>>>> 632bd90254a090d6a15fade18af9c9bada89724b
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name1, data.idslf,jenis1);
 
                             }
                         }
                         var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
-                        for (var x = 0; x < ins2; x++) {
-                            var file = document.getElementById('foto_dalam_bangunan').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffDalamBangunan;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Tampak Dalam Bangunan';
+                        for (var x2 = 0; x2 < ins2; x2++) {
+                            var file2 = document.getElementById('foto_dalam_bangunan').files[x2];
+                            var reader2 = new FileReader();
+                            if (file2 != undefined) {
+                                reader2.readAsDataURL(file2);
+                                reader2.onload = shipOffDalamBangunan;
+                                var a2 = new Date();
+                                var datenya2 = a2.getHours() + a2.getMinutes() + a2.getMilliseconds();
+                                var name2 = datenya2 + file2.name;
+                                var jenis2 = 'File Tampak Dalam Bangunan';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name2, data.idslf,jenis2);
 
                             }
                         }
                         var ins3 = document.getElementById('fileIMB').files.length;
-                        for (var x = 0; x < ins3; x++) {
-                            var file = document.getElementById('fileIMB').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileIIMB;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File IMB Eksiting';
+                        for (var x3 = 0; x3 < ins3; x3++) {
+                            var file3 = document.getElementById('fileIMB').files[x3];
+                            var reader3 = new FileReader();
+                            if (file3 != undefined) {
+                                reader3.readAsDataURL(file3);
+                                reader3.onload = shipOffFileIIMB;
+                                var a3 = new Date();
+                                var datenya3 = a3.getHours() + a3.getMinutes() + a3.getMilliseconds();
+                                var name3 = datenya3 + file3.name;
+                                var jenis3 = 'File IMB Eksiting';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name3, data.idslf,jenis3);
                             }
                         }
                         var ins4 = document.getElementById('fileSLF').files.length;
-                        for (var x = 0; x < ins4; x++) {
-                            var file = document.getElementById('fileSLF').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileSLF;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                
-                                var jenis = 'File SLF';
+                        for (var x4 = 0; x4 < ins4; x4++) {
+                            var file4 = document.getElementById('fileSLF').files[x4];
+                            var reader4 = new FileReader();
+                            if (file4 != undefined) {
+                                reader4.readAsDataURL(file4);
+                                reader4.onload = shipOffFileSLF;
+                                var a4 = new Date();
+                                var datenya4 = a4.getHours() + a4.getMinutes() + a4.getMilliseconds();
+                                var name4 = datenya4 + file4.name;
+                                var jenis4 = 'File SLF';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name4, data.idslf,jenis4);
 
                             }
                         }
                         var ins5 = document.getElementById('fileSuratP').files.length;
-                        for (var x = 0; x < ins5; x++) {
-                            var file = document.getElementById('fileSuratP').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileSuratP;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Pernyataan Pengawas';
+                        for (var x5 = 0; x5 < ins5; x5++) {
+                            var file5 = document.getElementById('fileSuratP').files[x5];
+                            var reader5 = new FileReader();
+                            if (file5 != undefined) {
+                                reader5.readAsDataURL(file5);
+                                reader5.onload = shipOffFileSuratP;
+                                var a5 = new Date();
+                                var datenya5 = a5.getHours() + a5.getMinutes() + a5.getMilliseconds();
+                                var name5 = datenya5 + file5.name;
+                                var jenis5 = 'File Pernyataan Pengawas';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name5, data.idslf,jenis5);
 
                             }
                         }
                         var ins6 = document.getElementById('fileDamkar').files.length;
-                        for (var x = 0; x < ins6; x++) {
-                            var file = document.getElementById('fileDamkar').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileDamkar;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Rekomendasi Dari Dinas Penanggunlangan Kebakaran dan Penyelamatan';
+                        for (var x6 = 0; x6 < ins6; x6++) {
+                            var file6 = document.getElementById('fileDamkar').files[x6];
+                            var reader6 = new FileReader();
+                            if (file6 != undefined) {
+                                reader6.readAsDataURL(file6);
+                                reader6.onload = shipOffFileDamkar;
+                                var a6 = new Date();
+                                var datenya6 = a6.getHours() + a6.getMinutes() + a6.getMilliseconds();
+                                var name6 = datenya6 + file6.name;
+                                var jenis6 = 'File Rekomendasi Dari Dinas Penanggunlangan Kebakaran dan Penyelamatan';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name6, data.idslf,jenis6);
 
                             }
                         }
                         var ins7 = document.getElementById('fileTKT').files.length;
-                        for (var x = 0; x < ins7; x++) {
-                            var file = document.getElementById('fileTKT').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileTKT;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Rekomendasi Dari Dinas Tenaga Kerja dan Transmigrasi';
+                        for (var x7 = 0; x7 < ins7; x7++) {
+                            var file7 = document.getElementById('fileTKT').files[x7];
+                            var reader7 = new FileReader();
+                            if (file7 != undefined) {
+                                reader7.readAsDataURL(file7);
+                                reader7.onload = shipOffFileTKT;
+                                var a7 = new Date();
+                                var datenya7 = a7.getHours() + a7.getMinutes() + a7.getMilliseconds();
+                                var name7 = datenya7 + file7.name;
+                                var jenis7 = 'File Rekomendasi Dari Dinas Tenaga Kerja dan Transmigrasi';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name7, data.idslf,jenis7);
 
                             }
                         }
                         
                         var ins8 = document.getElementById('fileStatusLahan').files.length;
-                        for (var x = 0; x < ins8; x++) {
-                            var file = document.getElementById('fileStatusLahan').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileStatusLahan;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Bukti Status Lahan';
+                        for (var x8 = 0; x8 < ins8; x8++) {
+                            var file8 = document.getElementById('fileStatusLahan').files[x8];
+                            var reader8 = new FileReader();
+                            if (file8 != undefined) {
+                                reader8.readAsDataURL(file8);
+                                reader8.onload = shipOffFileStatusLahan;
+                                var a8 = new Date();
+                                var datenya8 = a8.getHours() + a8.getMinutes() + a8.getMilliseconds();
+                                var name8 = datenya8 + file8.name;
+                                var jenis8 = 'File Bukti Status Lahan';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name8, data.idslf,jenis8);
 
                             }
                         }
                         var ins9 = document.getElementById('fileAsuransi').files.length;
-                        for (var x = 0; x < ins9; x++) {
-                            var file = document.getElementById('fileAsuransi').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileAsuransi;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Asuransi Toko';
+                        for (var x9 = 0; x9 < ins9; x9++) {
+                            var file9 = document.getElementById('fileAsuransi').files[x9];
+                            var reader9 = new FileReader();
+                            if (file9 != undefined) {
+                                reader9.readAsDataURL(file9);
+                                reader9.onload = shipOffFileAsuransi;
+                                var a9 = new Date();
+                                var datenya9 = a9.getHours() + a9.getMinutes() + a9.getMilliseconds();
+                                var name9 = datenya9 + file9.name;
+                                var jenis9 = 'File Asuransi Toko';
                                 // console.log(data);
-                                updateFoto(name, data.idslf,jenis);
+                                updateFoto(name9, data.idslf,jenis9);
 
                             }
                         }
 
                         // IUTS
                         var ins10 = document.getElementById('filePerW').files.length;
-                        for (var x = 0; x < ins10; x++) {
-                            var file = document.getElementById('filePerW').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFilePerW;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Persetujuan Warga';
+                        for (var x10 = 0; x10 < ins10; x10++) {
+                            var file10 = document.getElementById('filePerW').files[x10];
+                            var reader10 = new FileReader();
+                            if (file10 != undefined) {
+                                reader10.readAsDataURL(file10);
+                                reader10.onload = shipOffFilePerW;
+                                var a10 = new Date();
+                                var datenya10 = a10.getHours() + a10.getMinutes() + a10.getMilliseconds();
+                                var name10 = datenya10 + file10.name;
+                                var jenis10 = 'File Persetujuan Warga';
                                 // console.log(data);
-                                updateFotoiuts(name, data.idiuts,jenis);
+                                updateFotoiuts(name10, data.idiuts,jenis10);
 
                             }
                         }
                         var ins11 = document.getElementById('filePBB').files.length;
-                        for (var x = 0; x < ins11; x++) {
-                            var file = document.getElementById('filePBB').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFilePBB;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Pemutakhiran PBB';
+                        for (var x11 = 0; x11 < ins11; x11++) {
+                            var file11 = document.getElementById('filePBB').files[x11];
+                            var reader11 = new FileReader();
+                            if (file11 != undefined) {
+                                reader11.readAsDataURL(file11);
+                                reader11.onload = shipOffFilePBB;
+                                var a11 = new Date();
+                                var datenya11 = a11.getHours() + a11.getMinutes() + a11.getMilliseconds();
+                                var name11 = datenya11 + file11.name;
+                                var jenis11 = 'File Pemutakhiran PBB';
                                 // console.log(data);
-                                updateFotoiuts(name, data.idiuts,jenis);
+                                updateFotoiuts(name11, data.idiuts,jenis11);
 
                             }
                         }
                         var ins12 = document.getElementById('fileSostek').files.length;
-                        for (var x = 0; x < ins12; x++) {
-                            var file = document.getElementById('fileSostek').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileSostek;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Kajian Sostek';
+                        for (var x12 = 0; x12 < ins12; x12++) {
+                            var file12 = document.getElementById('fileSostek').files[x12];
+                            var reader12 = new FileReader();
+                            if (file12 != undefined) {
+                                reader12.readAsDataURL(file12);
+                                reader12.onload = shipOffFileSostek;
+                                var a12 = new Date();
+                                var datenya12 = a12.getHours() + a12.getMinutes() + a12.getMilliseconds();
+                                var name12 = datenya12 + file12.name;
+                                var jenis12 = 'File Kajian Sostek';
                                 // console.log(data);
-                                updateFotoiuts(name, data.idiuts,jenis);
+                                updateFotoiuts(name12, data.idiuts,jenis12);
 
                             }
                         }
                         var ins13 = document.getElementById('fileUMKM').files.length;
-                        for (var x = 0; x < ins13; x++) {
-                            var file = document.getElementById('fileUMKM').files[x];
-                            var reader = new FileReader();
-                            if (file != undefined) {
-                                reader.readAsDataURL(file);
-                                reader.onload = shipOffFileUMKM;
-                                var a = new Date();
-                                var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                var name = datenya + file.name;
-                                var jenis = 'File Rekomendasi UMKM';
+                        for (var x13 = 0; x13 < ins13; x13++) {
+                            var file13 = document.getElementById('fileUMKM').files[x13];
+                            var reader13 = new FileReader();
+                            if (file13 != undefined) {
+                                reader13.readAsDataURL(file13);
+                                reader13.onload = shipOffFileUMKM;
+                                var a13 = new Date();
+                                var datenya13 = a13.getHours() + a13.getMinutes() + a13.getMilliseconds();
+                                var name13 = datenya13 + file13.name;
+                                var jenis13 = 'File Rekomendasi UMKM';
                                 // console.log(data);
-                                updateFotoiuts(name, data.idiuts,jenis);
+                                updateFotoiuts(name13, data.idiuts,jenis13);
 
                             }
                         }
+                        debugger
                         $('.ijin').remove();
                         $(summary).appendTo('.container');
                         disableButtons=true;
