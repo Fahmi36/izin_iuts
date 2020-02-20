@@ -156,8 +156,8 @@ function umkm() {
     if ($("#keterlibatan_umkm option:selected").val() != 1) {
         $(".keterlibatan_umkm_row").attr('style', 'display:none');
     }else{
-       $(".keterlibatan_umkm_row").removeAttr('style');
-   }
+     $(".keterlibatan_umkm_row").removeAttr('style');
+ }
 }
 function janjisewa() {
     $("#janji_sewa_row").removeAttr('style');
@@ -940,38 +940,8 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
-<<<<<<< HEAD
-                    // var datas = new FormData($(this)[0]);
-                    
-                    var datas = new FormData($(this)[0]);
-                    $.ajax({
-                        url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                        type: 'POST',
-                        dataType: 'json',
-                        data:datas,
-                        contentType: false,
-                        cache: false,
-                        processData: false,
-                        beforeSend:function() {
-                            $("#text-loader").html('Mohon Tunggu');
-                            $('#page-loader').fadeIn('slow');
-                        },
-                        success:function(data) {
-                            if (data.success) {
-                                var ins1 = document.getElementById('foto_luar_bangunan').files.length;
-                                for (var x = 0; x < ins1; x++) {
-                                    var file = document.getElementById('foto_luar_bangunan').files[x];
-                                    var reader = new FileReader();
-                                    if (file != undefined) {
-                                        reader.readAsDataURL(file);
-                                        reader.onload = shipOffLuarBangunan;
-                                        var a = new Date();
-                                        var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
-                                        var name = datenya + file.name;
-                                        var jenis = 'File Tampak Luar Bangunan';
-=======
             // var datas = new FormData($(this)[0]);
-  
+
             var datas = new FormData($(this)[0]);
             $.ajax({
                 url: BASE_URL + 'ValidasiController/ValidasiIzin',
@@ -998,7 +968,6 @@ $('#btn-modalmaps').click(function(event) {
                                 var datenya1 = a1.getHours() + a1.getMinutes() + a1.getMilliseconds();
                                 var name1 = datenya1 + file1.name;
                                 var jenis1 = 'File Tampak Luar Bangunan';
->>>>>>> 632bd90254a090d6a15fade18af9c9bada89724b
                                 // console.log(data);
                                 updateFoto(name1, data.idslf,jenis1);
 
@@ -1224,7 +1193,7 @@ $('#btn-modalmaps').click(function(event) {
             });
 
 }
-})
+});
 });
 
 
