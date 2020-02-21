@@ -146,7 +146,7 @@ function terimadinas() {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/InsertAdminDinas',
 		type: 'POST',
-		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skoriuts:$('#totalakhir2').val(),skorslf:$('#totalakhir4').val(),status:$("input[name='gender']:checked").val()},
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skoriuts:$('#totalakhir2').val(),skorslf:$('#totalakhir4').val(),status:$("input[name='status']:checked").val()},
 		dataType: 'json',
 		beforeSend: function () {
 		},
