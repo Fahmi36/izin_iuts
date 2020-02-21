@@ -346,8 +346,8 @@ function kepaladinas() {
 					}
 
 					$('#catatan').html(keterangan);
-					$('#ket_dinas').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Izin Usaha Toko Swalayan Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
-					$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Izin Usaha Toko Swalayan Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
+					$('#ket_dinas').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Izin Usaha Toko Swalayan Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p><label>Catatan Keterangan Kepala Dinas :</label><p>'+keterangan[0]+'</p>');  
+					$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Izin Usaha Toko Swalayan Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p><label>Catatan Keterangan Kepala Dinas :</label><p>'+keterangan[0]+'</p>');  
 				}
 			}
 		}
@@ -637,6 +637,7 @@ timeline = {
 										skorakhiriuts.push(data.row[coba].skorakhiriuts);
 										status.push(data.row[coba].status);
 										tgl.push(data.row[coba].tanggal);
+										keterangan.push(data.row[coba].keterangan);
 									}
 
 									if (data.rowCount > 0) {
@@ -671,7 +672,7 @@ timeline = {
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhiIzin Usaha Toko Swalayan Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhiIzin Usaha Toko Swalayan Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p><label>Catatan Keterangan Kepala Dinas :</label><p>'+keterangan[0]+'</p>'); 
 									}
 								}
 							}
@@ -734,48 +735,48 @@ timeline = {
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhiIzin Usaha Toko Swalayan Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
-									}
-								}
+										$('#ket_pemohon').html('<ul class="accordion accordion-resume"> <li class="accordion-li"> <a class="toggle" href="javascript:void(0);">SLF</a> <ul class="inner"> <div id=""> <p class="m-0">Nilai permohonan ini pada kategori Data Keseimbangan, Keserasian, Keselarasan Lingkungan sebesar<span class="badge badge-default" id="totalkeseimbangan">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <div class="row"> <div class="col-md-6"> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Kondisi KDH: <span class="badge badge-default" id="konkdh">(Nilai)</span></li> <li class="list-group-item p-1">- Volume Sumur Resapan: <span class="badge badge-default" id="sumurserap">(Nilai)</span></li> <li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span class="badge badge-default" id="konpertoko">(Nilai)</span></li> <li class="list-group-item p-1">- Jalan Eksisting Memadai: <span class="badge badge-default" id="eksismadai">(Nilai)</span></li> </ul> </div> <div class="col-md-6"> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Kondisi Sumur Resapan: <span class="badge badge-default" id="kondisisumur"></span></li> <li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span class="badge badge-default" id="drainasesek"></span></li> </ul> </div> </div> <p class="m-0">Nilai permohonan ini pada kategori Keselamatan dan Keamanan sebesar <span class="badge badge-default" id="totalkeamanan">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <div class="row"> <div class="col-md-6"> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Izin Mendirikan Bangunan : <span class="badge badge-default" id="imbeksis">(Nilai)</span></li> <li class="list-group-item p-1">- Sertifikat Layak Fungsi: <span class="badge badge-default" id="slfeksis">(Nilai)</span></li> <li class="list-group-item p-1">- Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan: <span class="badge badge-default" id="damkar">(Nilai)</span></li> <li class="list-group-item p-1">- Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi: <span class="badge badge-default" id="tkt">(Nilai)</span></li> </ul> </div> <div class="col-md-6"> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Fasilitas Penanggulangan Kebakaran: <span class="badge badge-default" id="fdamkar">(Nilai)</span></li> <li class="list-group-item p-1">- Ketersediaan Asuransi Toko: <span class="badge badge-default" id="asuransi">(Nilai)</span></li> <li class="list-group-item p-1">- Waktu Pembaharuan Terakhir Kelayakan Gedung: <span class="badge badge-default" id="layak">(Nilai)</span></li> </ul> </div> </div> <p class="m-0">Nilai permohonan ini pada kategori Kesehatan sebesar <span class="badge badge-default" id="totalkesehatan">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <div class="row"> <div class="col-md-6"> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Ketersediaan Air Bersih: <span class="badge badge-default" id="ketair">(Nilai)</span></li> <li class="list-group-item p-1">- Pengelolaan Air Kotor/Limbah: <span class="badge badge-default" id="limbah">(Nilai)</span></li> </ul> </div> <div class="col-md-6"> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Pengelolaan Sampah: <span class="badge badge-default" id="sampah">(Nilai)</span></li> <li class="list-group-item p-1">- Ketersediaan Listrik: <span class="badge badge-default" id="listrik">(Nilai)</span></li> </ul> </div> </div> <p class="m-0">Nilai permohonan ini pada kategori Kemudahan sebesar <span class="badge badge-default" id="totalkemudahan">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Ketersediaan Toilet: <span class="badge badge-default" id="toilet">(Nilai)</span></li> <li class="list-group-item p-1">- Ketersediaan Parkir: <span class="badge badge-default" id="parkir">(Nilai)</span></li> </ul> <p class="m-0 text-center">Nilai akhir permohonan ini sebesar <span class="badge badge-default" id="totalakhir3"></span></p> <p class="m-0 text-center">Perizinan SLF ini <span class="badge badge-success" id="statuswebslf"></span></p> </div> </ul> </li> <li class="accordion-li"> <a class="toggle" href="javascript:void(0);">IUTS</a> <ul class="inner"> <div id=""> <p class="m-0">Nilai permohonan ini pada kategori Kebermanfaatan Usaha <span class="badge badge-default" id="totalmanfaat">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <div class="row"> <div class="col-md-6"> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Pemutakhiran PBB: <span class="badge badge-default" id="pempbb">(Nilai)</span></li> <li class="list-group-item p-1">- Keterlibatan UMKM: <span class="badge badge-default" id="ketumkm">(Nilai)</span></li> <li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span class="badge badge-default" id="setwarga">(Nilai)</span></li> </ul> </div> <div class="col-md-6"> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default" id="penglahan"></span></li> </ul> </div> </div> <p class="m-0">Nilai permohonan ini pada kategori Antisipasi Dampak/Resiko sebesar <span class="badge badge-default" id="totaldampak">(Nilai)</span></p> <p class="m-0">Berikut ini adalah rincian nilai:</p> <div class="row"> <div class="col-md-6"> <ul class="list-group list-group-flush mb-3"> <li class="list-group-item p-1">- Jarak rencana terhadap Pasar Tradisional: <span class="badge badge-default" id="jarakpasar">(Nilai)</span></li> <li class="list-group-item p-1">- Jarak ke usaha sejenis: <span class="badge badge-default" id="jarakusaha">(Nilai)</span></li> </ul> </div> <div class="col-md-6"> <ul class="list-group list-group-flush"> <li class="list-group-item p-1">- Ada rekomendasi UMKM: <span class="badge badge-default" id="rekumkm">(Nilai)</span></li> <li class="list-group-item p-1">- Kajian sostek: <span class="badge badge-default" id="kajiansostek">(Nilai)</span></li> </ul> </div> </div> <p class="m-0 text-center">Nilai akhir permohonan IUTS ini sebesar <span class="badge badge-default" id="totalakhir"></span></p> <p class="m-0 text-center">Perizinan IUTS ini <span class="badge badge-success" id="statusweb"></span></p> </div> </ul> </li> <li class="accordion-li"> <a class="toggle" href="javascript:void(0);">Catatan Kepala Dinas</a> <ul class="inner"> <div id=""> </div> </ul> </li> <li class="accordion-li"> <a class="toggle" href="javascript:void(0);">Berkas Yang Harus Dibawa</a> <ul class="inner"> <div id=""> </div> </ul> </li> </ul>'); 
+									} 
+								} 
 							}
 						});
 
-					}else if (status[i] == '5'){
-						$('#pemohon').addClass('active');
-						$('#adminitrasi').addClass('active');
-						$('#adminteknis').addClass('active');
-						$('#kepaladinas').addClass('active');
-						$('#adminstrasiselanjutnya').addClass('active');
-						$('#pemohonselajutnya').addClass('active');
-						$.ajax({
-							url: BASE_URL + 'UserController/detailPemohonAmbil',
-							type: 'POST',
-							dataType: 'json',
-							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
-							success:function(data) {
-								if (data.success) {
-									var tgl_ambil = [];
-									for(var coba in data.row){
-										tgl_ambil.push(data.row[coba].tgl_ambil);
-									}
+}else if (status[i] == '5'){
+	$('#pemohon').addClass('active');
+	$('#adminitrasi').addClass('active');
+	$('#adminteknis').addClass('active');
+	$('#kepaladinas').addClass('active');
+	$('#adminstrasiselanjutnya').addClass('active');
+	$('#pemohonselajutnya').addClass('active');
+	$.ajax({
+		url: BASE_URL + 'UserController/detailPemohonAmbil',
+		type: 'POST',
+		dataType: 'json',
+		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+		success:function(data) {
+			if (data.success) {
+				var tgl_ambil = [];
+				for(var coba in data.row){
+					tgl_ambil.push(data.row[coba].tgl_ambil);
+				}
 
-									if (data.rowCount > 0) {
-										$('#ket_pemohon').removeAttr('style');
-										if (tgl_ambil[0] == '0000-00-00' || tgl_ambil[0] == null) {
-											var tgl = 'Silakan Selesai Kan Permohonan Anda';
-										}else{
-											var tgl = tgl_ambil[0];
-										}
-										$('#ket_pemohon').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
-									}
-								}
-							}
-						});
+				if (data.rowCount > 0) {
+					$('#ket_pemohon').removeAttr('style');
+					if (tgl_ambil[0] == '0000-00-00' || tgl_ambil[0] == null) {
+						var tgl = 'Silakan Selesai Kan Permohonan Anda';
+					}else{
+						var tgl = tgl_ambil[0];
 					}
-
+					$('#ket_pemohon').html('<p class="m-0">Anda telah mengambil izin pada '+datePHPJS("d-F-Y", new Date(tgl))+'</p>'); 
 				}
 			}
-		})
+		}
+	});
+}
+
+}
+}
+})
 },
 };
 $("#serahForm").submit(function (event) {
