@@ -424,7 +424,7 @@ editdataizin:function (argument) {
 				/*iuts*/
 				var hasiladmin = parseFloat(totaladmin/1);
 				var hasilmanfaat = parseFloat(totalmanfaat/4);
-				var hasildampak = parseFloat(totaldampak/3);
+				var hasildampak = parseFloat(totaldampak/4);
 				/*iuts*/
 				
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
