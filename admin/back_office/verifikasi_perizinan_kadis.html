@@ -72,7 +72,7 @@
 								<span id="namapemohon"></span>
 							</a>
 							<div class="dropdown-divider"></div>
-							<a  id="logout" href="javascript:void(0);" class="dropdown-item">
+							<a href="javascript:void(0);" class="dropdown-item logout">
 								<i class="ni ni-user-run"></i>
 								<span>Keluar</span>
 							</a>
@@ -176,7 +176,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="javascript:void(0)" id="logout">
+							<a class="nav-link logout" href="javascript:void(0)">
 								<i class="ni ni-user-run text-warning"></i> Keluar
 							</a>
 						</li>
@@ -213,7 +213,7 @@
 									<span id="namapemohon"></span>
 								</a>
 								<div class="dropdown-divider"></div>
-								<a  id="logout" href="javascript:void(0);" class="dropdown-item">
+								<a href="javascript:void(0);" class="dropdown-item logout">
 									<i class="ni ni-user-run"></i>
 									<span>Keluar</span>
 								</a>
@@ -248,14 +248,13 @@
 															<div class="row">
 																<div class="col-md-6">
 																	<ul class="list-group list-group-flush mb-3">
-																		<li class="list-group-item p-1">- KDH Eksisting: <span class="badge badge-default" id="kdhmini">(Nilai)</span></li>
 																		<li class="list-group-item p-1">- Kondisi KDH: <span class="badge badge-default" id="konkdh">(Nilai)</span></li>
 																		<li class="list-group-item p-1">- Volume Sumur Resapan: <span class="badge badge-default" id="sumurserap">(Nilai)</span></li>
+																		<li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span class="badge badge-default" id="konpertoko">(Nilai)</span></li>
 																	</ul>
 																</div>
 																<div class="col-md-6">
 																	<ul class="list-group list-group-flush">
-																		<li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span class="badge badge-default" id="konpertoko">(Nilai)</span></li>
 																		<li class="list-group-item p-1">- Kondisi Sumur Resapan: <span class="badge badge-default" id="kondisisumur"></span></li>
 																		<li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span class="badge badge-default" id="drainasesek"></span></li>
 																	</ul>
@@ -373,22 +372,35 @@
 												<div id="mapsadmin" class="mb-3 mt-3" style="width: 100%;height: 300px;"></div>
 												<div class="row">
 													<div class="col-md-6">
-														<label for="keterangan">Kolom Komentar IUTS</label>
-														<div class="form-group">
-															<textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
-														</div>
-														<button class="btn btn-success" onclick="terimadinas()" type="submit">Terima</button>
-														<button class="btn btn-danger" onclick="tolakdinas()" type="submit">Tolak</button>
+														<label class="customradio">
+															<span class="radiotextsty">Terima SLF Tolak IUTS</span>
+															<input type="radio" name="status" id="status" value="1">
+															<span class="checkmark"></span>
+														</label>        
+														<label class="customradio">
+															<span class="radiotextsty">Terima IUTS Tolak SLF</span>
+															<input type="radio" name="status" id="status" value="2">
+															<span class="checkmark"></span>
+														</label>
 													</div>
 													<div class="col-md-6">
-														<label for="keterangan">Kolom Komentar SLF</label>
-														<div class="form-group">
-															<textarea class="form-control" name="keterangan_slf" id="keterangan_slf" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
-														</div>
-														<button class="btn btn-success" onclick="terimadinasslf()" type="submit">Terima</button>
-														<button class="btn btn-danger" onclick="tolakdinasslf()" type="submit">Tolak</button>
+														<label class="customradio">
+															<span class="radiotextsty">Terima Semua Izin</span>
+															<input type="radio" name="status" id="status" value="3">
+															<span class="checkmark"></span>
+														</label>        
+														<label class="customradio">
+															<span class="radiotextsty">Tolak Semua Izin</span>
+															<input type="radio" name="status" id="status" value="4">
+															<span class="checkmark"></span>
+														</label>
 													</div>	
 												</div>
+												<label for="keterangan" class="mt-4">Kolom Komentar IUTS</label>
+												<div class="form-group">
+													<textarea class="form-control" name="keterangan" id="keterangan" rows="3" placeholder="Masukkan Catatan Anda"></textarea>
+												</div>
+												<button class="btn btn-success" onclick="terimadinas()" type="submit">Kirim</button>
 											</div>
 										</form>
 									</div>
