@@ -500,8 +500,8 @@ editdataizin:function (argument) {
 				$('#alamatpemohon').text(alamat);
 				$('#ketadministrasi').text(ketadmin);
 				$('#ketadminteknis').text(ketteknis);
-				$('#lat').text(lat);
-				$('#long').text(lon);
+				$('#lat').val(lat);
+				$('#long').val(lon);
 				// $('#status').text(statuskepaladinas);
 				if (nama.length == 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
