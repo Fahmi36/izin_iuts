@@ -18,6 +18,10 @@ function filterizin(id) {
 	localStorage.setItem("typestatus",id);
 	window.location.href = 'perizinan_saya_s.html';
 }
+function Klikubah() {
+	window.location.href = 'edit_perizinan.html';
+}
+
 function pemohon() {
 	$.ajax({ 
 		url: BASE_URL + 'UserController/getTimelinePemohon',

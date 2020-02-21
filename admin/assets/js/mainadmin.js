@@ -2,6 +2,27 @@
 var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 $("#namapemohon").html(localStorage.getItem("nama"));
 $("#namapemohonnav").html(localStorage.getItem("nama"));
+
+$.ajax({
+	url: BASE_URL + 'OfficeController/countsideoffice',
+	type: 'POST',
+	dataType: 'json',
+	success:function(data) {
+		$("#terima").html(data.selesai);
+		$("#tolak").html(data.tolak);
+		$("#expired").html(data.expired);
+		$("#all").html(data.all);
+	}
+});
+$.ajax({
+	url: BASE_URL + 'OfficeController/countsidelevel',
+	type: 'POST',
+	dataType: 'json',
+	data: {level: localStorage.getItem("level")},
+	success:function(data) {
+		$("#countproses").html(data.hitung);
+	}
+});
 function detailtugas(id) {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/getBangunan',
