@@ -528,6 +528,8 @@ datadetailPemohon:function() {
 				var foto_ktp = [];
 				var foto_npwp = [];
 				var akta_perusahaan = [];
+				var foto_luar = [];
+
 				for(var coba in data.row){
 					code.push(data.row[coba].code);
 					nama.push(data.row[coba].nama);

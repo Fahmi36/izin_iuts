@@ -137,16 +137,16 @@ function pemutahiranPBB() {
 }
 function persetujuanWarga() {
     if ($("#persetujuan_warga option:selected").val() == 4) {
-        $("#uploadPW").removeAttr('style');
+        $(".uploadPW").removeAttr('style');
     }else{
-        $("#uploadPW").attr('style', 'display:none');
+        $(".uploadPW").attr('style', 'display:none');
     }
 }
 function statusLahan() {
     if ($("#status_kepem_lahan option:selected").val() != "Tidak Ada") {
-        $("#uploadStatusL").removeAttr('style');
+        $(".uploadStatusL").removeAttr('style');
     }else{
-        $("#uploadStatusL").attr('style', 'display:none');
+        $(".uploadStatusL").attr('style', 'display:none');
     }
 }
 function lamaizin() {
@@ -154,10 +154,10 @@ function lamaizin() {
 }
 function umkm() {
     if ($("#keterlibatan_umkm option:selected").val() != 1) {
-        $(".keterlibatan_umkm_row").attr('style', 'display:none');
+        $(".keterlibatan_umkm_row").removeAttr('style');
     }else{
-     $(".keterlibatan_umkm_row").removeAttr('style');
- }
+        $(".keterlibatan_umkm_row").attr('style', 'display:none');
+    }
 }
 function janjisewa() {
     $("#janji_sewa_row").removeAttr('style');
@@ -2178,6 +2178,39 @@ $(".imgAdd").click(function(){
 });
 $(".imgAddDalam").click(function(){
   $(this).closest(".row").find('.imgAddDalam').before('<div class="col-md-6 imgUpDalam"> <div class="imagePreview" id="img-dalam-bangunan"></div> <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;"> </label><i class="fa fa-times del"></i></div>');
+});
+$(".addStatusLahan").click(function(){
+  $(this).closest(".row").find('.addStatusLahan').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileStatusLahan[]" id="fileStatusLahan" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addIMB").click(function(){
+  $(this).closest(".row").find('.addIMB').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileIMB[]" id="fileIMB" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addSLF").click(function(){
+  $(this).closest(".row").find('.addSLF').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileSLF[]" id="fileSLF" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addTeknis").click(function(){
+  $(this).closest(".row").find('.addTeknis').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileSuratP[]" id="fileSuratP" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addDamkar").click(function(){
+  $(this).closest(".row").find('.addDamkar').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileDamkar[]" id="fileDamkar" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addTKT").click(function(){
+  $(this).closest(".row").find('.addTKT').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileTKT[]" id="fileTKT" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addAsuransi").click(function(){
+  $(this).closest(".row").find('.addAsuransi').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileAsuransi[]" id="fileAsuransi" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addPBB").click(function(){
+  $(this).closest(".row").find('.addPBB').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="filePBB[]" id="filePBB" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addWarga").click(function(){
+  $(this).closest(".row").find('.addWarga').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="filePerW[]" id="filePerW" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addUMKM").click(function(){
+  $(this).closest(".row").find('.addUMKM').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileUMKM[]" id="fileUMKM" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
+});
+$(".addKajian").click(function(){
+  $(this).closest(".row").find('.addKajian').before('<div class="imgUpLuar" style="display:inline-flex;"> <input type="file" name="fileSostek[]" id="fileSostek" style="width:100%;"> <i class="fa fa-times del" style="position: relative;"></i></div>'); 
 });
 $(document).on("click", "i.del" , function() {
     $(this).parent().remove();
