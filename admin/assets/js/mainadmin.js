@@ -587,7 +587,7 @@ $("#inputadministrasi").submit(function (event) {
 		url: BASE_URL + 'OfficeController/InsertAdministrasi',
 		type: "POST",
 		dataType:'json',
-		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),kelengkapan_admin:$("#kelengkapan_admin").val(),lama_mengajukan:$('#lama_izin').val(),statusNPWP:$('#statusNPWP').val(),statusPBB:$('#statusPBB').val(),keterangan:$("#keterangan").val()},
+		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),keterangan:$("#keterangan").val()},
 		// contentType: false,
 		// cache: false,
 		// processData: false,
