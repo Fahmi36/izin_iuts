@@ -230,6 +230,30 @@
 
         </div>
 
+        <div class="modal fade bd-example-modal-lg" id="modalfeedback" tabindex="-1" role="dialog" aria-hidden="true">
+         <div class="modal-dialog" style="height: 68%;">
+          <!-- Modal content-->
+          <div class="modal-content">
+           <div class="modal-header">
+            <h4 class="modal-title" id="modal-title-default">Mohon Isi Ulasan Anda Tentang Website Ini</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="javascript:void(0);" id="kirimfeedback" method="post" accept-charset="utf-8">
+              <div class="form-group focused">
+                <label for="keterangan" class="form-control-label">Masukan Ulasan</label>
+                <textarea class="form-control" name="feed" autocomplete="off"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Kirim</button>
+              <button type="button" class="btn btn-link ml-auto pull-right" data-dismiss="modal">Tutup</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
         <!-- modal -->
         <div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
           <div class="modal-dialog modal-lg" style="max-width: 100%;width: 90%;">
@@ -520,7 +544,7 @@
                       <div id="confirm_sk">
                         <p class="text-default p-10 font-weight-bold text-center">Serah Terima Surat Keputusan</p>
                         <div class="card">
-                          <form id="serahForm" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+                          <form id="serahForm" method="post" action="javascript:void(0)" enctype="multipart/form-data" accept-charset="utf-8">
                             <div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
                               <p>Upload foto bukti serah terima Surat Keputusan</p>
                               <input type="file" name="file" class="mb-3">
@@ -539,8 +563,8 @@
               <br>
             </div>
             <div class="modal-footer">
-              <a href="edit_perizinan.html"><button type="button" class="btn btn-warning">Edit</button></a>
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <a href="edit_perizinan.html"><button type="button" class="btn btn-warning">Ubah</button></a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
             </div>
           </div>
         </div>

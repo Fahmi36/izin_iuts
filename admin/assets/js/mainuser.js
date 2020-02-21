@@ -730,7 +730,7 @@ $("#serahForm").submit(function (event) {
 		url: BASE_URL + 'UserController/KonfirmasiIzin',
 		type: "POST",
 		dataType:'json',
-		data: {id:localStorage.getItem('iduser'),pesan:$('#pesan').val()},
+		data: {id:localStorage.getItem('idbangunanuser'),pesan:$('#pesan').val()},
 		contentType: false,
 		cache: false,
 		processData: false,
@@ -743,8 +743,41 @@ $("#serahForm").submit(function (event) {
 					''+response.msg+'',
 					);
 			}else{
+				$('#modalfeedback').modal('show');
+				$("#serahForm")[0].reset();
+			}
+
+		},
+		error: function () {
+			Swal.fire(
+				'"'+response.msg+'"',
+				'Hubungi Tim Terkait',
+				);
+		}
+	});
+});
+$("#kirimfeedback").submit(function (event) {
+	var data = new FormData($(this)[0]);
+	$.ajax({
+		url: BASE_URL + 'UserController/KirimFeedBack',
+		type: "POST",
+		dataType:'json',
+		data: {id:localStorage.getItem('idbangunanuser'),pesan:$('#feed').val()},
+		contentType: false,
+		cache: false,
+		processData: false,
+		beforeSend:function(argument) {
+			$(".loader-overlay").removeAttr('style');
+		},
+		success: function (response) {
+			if (response.success == false) {
 				Swal.fire(
-					'Silakan Menunggu Balasan dari petugas',
+					''+response.msg+'',
+					);
+			}else{
+				$('#modalfeedback').modal('show');
+				Swal.fire(
+					'Trima Kasih Sudah memberikan Ulasan',
 					);
 
 				$("#serahForm")[0].reset();
@@ -759,6 +792,7 @@ $("#serahForm").submit(function (event) {
 		}
 	});
 });
+
 $("#kirimpesan").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
