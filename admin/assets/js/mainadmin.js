@@ -415,7 +415,7 @@ editdataizin:function (argument) {
 				/*iuts*/
 				
 				/*slf*/
-				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase);
+				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skorjalaneksis);
 				var totalkeamanan = parseFloat(skorimb)+parseFloat(skorslf)+parseFloat(skordamkar)+parseFloat(skortkt)+parseFloat(skorfdamkar)+parseFloat(skorasuransi)+parseFloat(skorlayak);
 				var totalkesehatan = parseFloat(skorketersediaan)+parseFloat(skorlimbah)+parseFloat(skorsampah)+parseFloat(skorlistrik);
 				var totalkemudahan = parseFloat(skortoilet)+parseFloat(skorparkir);
@@ -430,7 +430,7 @@ editdataizin:function (argument) {
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
 				/*slf*/
-				var hasilkeseimbangan = parseFloat(totalkeseimbangan/5);
+				var hasilkeseimbangan = parseFloat(totalkeseimbangan/6);
 				var hasilkeamanan = parseFloat(totalkeamanan/7);
 				var hasilkesehatan = parseFloat(totalkesehatan/4);
 				var hasilkemudahan = parseFloat(totalkemudahan/2);
