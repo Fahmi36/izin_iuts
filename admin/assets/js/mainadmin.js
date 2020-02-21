@@ -314,6 +314,8 @@ editdataizin:function (argument) {
 				var skormanfaat = [];
 				var skordampak = [];
 				var skortax = [];
+				var lat = [];
+				var lon = [];
 				var skorjarakpasar = [];
 				var asalkaryawan = [];
 				for(var coba in data.row){
@@ -367,6 +369,9 @@ editdataizin:function (argument) {
 					skormanfaat.push(data.row[coba].skormanfaat);
 					skordampak.push(data.row[coba].skordampak);
 					skortax.push(data.row[coba].skortax);
+
+					lat.push(data.row[coba].lat);
+					lon.push(data.row[coba].lon);
 
 				}
 				// console.log(nama.length);
@@ -495,6 +500,8 @@ editdataizin:function (argument) {
 				$('#alamatpemohon').text(alamat);
 				$('#ketadministrasi').text(ketadmin);
 				$('#ketadminteknis').text(ketteknis);
+				$('#lat').text(lat);
+				$('#long').text(lon);
 				// $('#status').text(statuskepaladinas);
 				if (nama.length == 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
