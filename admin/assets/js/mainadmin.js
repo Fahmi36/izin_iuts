@@ -146,7 +146,7 @@ function terimadinas() {
 	$.ajax({
 		url: BASE_URL + 'OfficeController/InsertAdminDinas',
 		type: 'POST',
-		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skoriuts:$('#totalakhir2').val(),skorslf:$('#totalakhir4').val(),status:'1'},
+		data : {id_bangunan:localStorage.getItem("idbangunanadmin"),admin:localStorage.getItem("idadmin"),keterangan:$('#keterangan').val(),skoriuts:$('#totalakhir2').val(),skorslf:$('#totalakhir4').val(),status:$("input[name='status']:checked").val()},
 		dataType: 'json',
 		beforeSend: function () {
 		},
@@ -268,7 +268,6 @@ editdataizin:function (argument) {
 			jQuery('#loader').fadeOut('slow');
 				var skorpbb = [];
 				var skornpwp = [];
-				var skorrenjalan = [];
 				var skorjalaneksis = [];
 				var skortataruang = [];
 				var skorjarakusaha = [];
@@ -315,12 +314,13 @@ editdataizin:function (argument) {
 				var skormanfaat = [];
 				var skordampak = [];
 				var skortax = [];
+				var lat = [];
+				var lon = [];
 				var skorjarakpasar = [];
 				var asalkaryawan = [];
 				for(var coba in data.row){
 					skorpbb.push(data.row[coba].skorpbb);
 					skornpwp.push(data.row[coba].skornpwp);
-					skorrenjalan.push(data.row[coba].skorrenjalan);
 					skorjalaneksis.push(data.row[coba].skorjalaneksis);
 					skortataruang.push(data.row[coba].skortataruang);
 					skorjarakusaha.push(data.row[coba].skorjarakusaha);
@@ -370,6 +370,9 @@ editdataizin:function (argument) {
 					skordampak.push(data.row[coba].skordampak);
 					skortax.push(data.row[coba].skortax);
 
+					lat.push(data.row[coba].lat);
+					lon.push(data.row[coba].lon);
+
 				}
 				// console.log(nama.length);
 				$('#nilaieksiting').text(skorkondisieksis);
@@ -386,7 +389,6 @@ editdataizin:function (argument) {
 				$('#eksismadai').text(skorjalaneksis);
 
 				$('#jarakpasar').text(skorjarakpasar);
-				$('#renjalan').text(skorrenjalan);
 				$('#rekumkm').text(skorrekumkm);
 				$('#slfeksis').text(skorslf);
 				$('#kondisisumur').text(skorkondisisumur);
@@ -414,11 +416,11 @@ editdataizin:function (argument) {
 				/*iuts*/
 				var totaladmin = parseFloat(skorkondisieksis);
 				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
-				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjalaneksis)+parseFloat(skorrenjalan)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
+				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
 				/*iuts*/
 				
 				/*slf*/
-				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase);
+				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skorjalaneksis);
 				var totalkeamanan = parseFloat(skorimb)+parseFloat(skorslf)+parseFloat(skordamkar)+parseFloat(skortkt)+parseFloat(skorfdamkar)+parseFloat(skorasuransi)+parseFloat(skorlayak);
 				var totalkesehatan = parseFloat(skorketersediaan)+parseFloat(skorlimbah)+parseFloat(skorsampah)+parseFloat(skorlistrik);
 				var totalkemudahan = parseFloat(skortoilet)+parseFloat(skorparkir);
@@ -427,13 +429,13 @@ editdataizin:function (argument) {
 				/*iuts*/
 				var hasiladmin = parseFloat(totaladmin/1);
 				var hasilmanfaat = parseFloat(totalmanfaat/4);
-				var hasildampak = parseFloat(totaldampak/6);
+				var hasildampak = parseFloat(totaldampak/4);
 				/*iuts*/
 				
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
 
 				/*slf*/
-				var hasilkeseimbangan = parseFloat(totalkeseimbangan/5);
+				var hasilkeseimbangan = parseFloat(totalkeseimbangan/6);
 				var hasilkeamanan = parseFloat(totalkeamanan/7);
 				var hasilkesehatan = parseFloat(totalkesehatan/4);
 				var hasilkemudahan = parseFloat(totalkemudahan/2);
@@ -498,6 +500,8 @@ editdataizin:function (argument) {
 				$('#alamatpemohon').text(alamat);
 				$('#ketadministrasi').text(ketadmin);
 				$('#ketadminteknis').text(ketteknis);
+				$('#lat').val(lat);
+				$('#long').val(lon);
 				// $('#status').text(statuskepaladinas);
 				if (nama.length == 0) {
 					$("#izinnya").html('<div class="col-md-12"><div class="card card-stats mb-4 mb-xl-0"><div class="card-body"><p class="m-0">Tidak ada Data</p></div></div></div>');
@@ -535,7 +539,7 @@ datadetailPemohon:function() {
 					nama.push(data.row[coba].nama);
 					nib.push(data.row[coba].nib);
 					npwp.push(data.row[coba].npwp);
-					alamat.push(data.row[coba].alamat);
+					alamat.push(data.row[coba].alamat_usaha);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
 					lat.push(data.row[coba].lat);
@@ -625,7 +629,7 @@ $("#inputadminteknis").submit(function (event) {
 		url: BASE_URL + 'OfficeController/InsertAdminTeknis',
 		type: "POST",
 		dataType:'json',
-		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),lahansekitar:$("#lahansekitar").val(),rencanajalan:$('#rencanajalan').val(),eksitingjalan:$('#eksitingjalan').val(),tataruang:$('#tataruang').val(),statususaha:$('#statususaha').val(),statuspasar:$('#statuspasar').val(),keterangan:$("#keterangan").val()},
+		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),lahansekitar:$("#lahansekitar").val(),statususaha:$('#statususaha').val(),statuspasar:$('#statuspasar').val(),keterangan:$("#keterangan").val()},
 		// contentType: false,
 		// cache: false,
 		// processData: false,
