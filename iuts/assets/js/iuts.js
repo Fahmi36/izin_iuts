@@ -926,6 +926,20 @@ $('#btn-modalmaps').click(function(event) {
 
             // localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
             $nofotoluar = 0;
+            $nofotodalam = 0;
+            $nofileimb = 0;
+            $nofileslf = 0;
+            $nofileimb = 0;
+            $nofileslf = 0;
+            $nofilesuratp = 0;
+            $nofiledamkar = 0;
+            $nofiletkt = 0;
+            $nofilestatuslahan = 0;
+            $nofileasuransi = 0;
+            $nofileperw = 0;
+            $nofilepbb = 0;
+            $nofilesostek = 0;
+            $nofileumkm = 0;
 
             $("#formizinslfiuts").submit(function (event) {
                 event.preventDefault();
@@ -1219,8 +1233,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('foto_dalam_bangunan').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('foto_dalam_bangunan').files[$nofotodalam].name;
+    $nofotodalam+=1;
     console.log(fileName);
 
     $.ajax({
@@ -1235,8 +1249,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileIMB').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileIMB').files[$nofileimb].name;
+    $nofileimb+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1251,8 +1265,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileSLF').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileSLF').files[$nofileslf].name;
+    $nofileslf+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1267,8 +1281,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileSuratP').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileSuratP').files[$nofilesuratp].name;
+    $nofilesuratp+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1283,8 +1297,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileDamkar').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileDamkar').files[$nofiledamkar].name;
+    $nofiledamkar+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1299,8 +1313,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileTKT').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileTKT').files[$nofiletkt].name;
+    $nofiletkt+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1315,8 +1329,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileStatusLahan').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileStatusLahan').files[$nofilestatuslahan].name;
+    $nofilestatuslahan+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1331,8 +1345,8 @@ function shipOffDalamBangunan(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileAsuransi').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileAsuransi').files[$nofileasuransi].name;
+    $nofileasuransi+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1349,8 +1363,8 @@ function shipOffFilePerW(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('filePerW').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('filePerW').files[$nofileperw].name;
+    $nofileperw+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1366,8 +1380,8 @@ function shipOffFilePBB(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('filePBB').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('filePBB').files[$nofilepbb].name;
+    $nofilepbb+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1384,8 +1398,8 @@ function shipOffFileSostek(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileSostek').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileSostek').files[$nofilesostek].name;
+    $nofilesostek+=1;
     // console.log(fileName);
 
     $.ajax({
@@ -1401,8 +1415,8 @@ function shipOffFileUMKM(event) {
     var a = new Date();
     var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
     // debugger;
-    var fileName = datenya + document.getElementById('fileUMKM').files[$nofotoluar].name;
-    $nofotoluar+=1;
+    var fileName = datenya + document.getElementById('fileUMKM').files[$nofileumkm].name;
+    $nofileumkm+=1;
     // console.log(fileName);
 
     $.ajax({
