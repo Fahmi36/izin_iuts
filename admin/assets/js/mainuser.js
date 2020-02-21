@@ -743,6 +743,7 @@ $("#serahForm").submit(function (event) {
 					''+response.msg+'',
 					);
 			}else{
+				$('#detailPerizinan').modal('hide');
 				$('#modalfeedback').modal('show');
 				$("#serahForm")[0].reset();
 			}
@@ -750,7 +751,6 @@ $("#serahForm").submit(function (event) {
 		},
 		error: function () {
 			Swal.fire(
-				'"'+response.msg+'"',
 				'Hubungi Tim Terkait',
 				);
 		}
@@ -762,10 +762,7 @@ $("#kirimfeedback").submit(function (event) {
 		url: BASE_URL + 'UserController/KirimFeedBack',
 		type: "POST",
 		dataType:'json',
-		data: {id:localStorage.getItem('idbangunanuser'),pesan:$('#feed').val()},
-		contentType: false,
-		cache: false,
-		processData: false,
+		data: {id:localStorage.getItem('idbangunanuser'),pesan:$('#feedbacknya').val()},
 		beforeSend:function(argument) {
 			$(".loader-overlay").removeAttr('style');
 		},
