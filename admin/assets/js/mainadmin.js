@@ -533,7 +533,7 @@ datadetailPemohon:function() {
 					nama.push(data.row[coba].nama);
 					nib.push(data.row[coba].nib);
 					npwp.push(data.row[coba].npwp);
-					alamat.push(data.row[coba].alamat);
+					alamat.push(data.row[coba].alamat_usaha);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
 					lat.push(data.row[coba].lat);
