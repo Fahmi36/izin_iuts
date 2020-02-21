@@ -1021,7 +1021,7 @@ $("#inputadminteknis").submit(function (event) {
 					})();
 					alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 				}
-				$("#logout").click(function(event) {
+				$(".logout").click(function(event) {
 					localStorage.clear();
 					window.location.href = '../login.html';
 				});

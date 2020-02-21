@@ -841,7 +841,7 @@ function lihatpemohon(code) {
 		}
 	})
 }
-$("#logout").click(function(event) {
+$(".logout").click(function(event) {
 	localStorage.clear();
 	window.location.href = 'login.html';
 });
