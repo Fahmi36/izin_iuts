@@ -305,38 +305,49 @@ function kepaladinas() {
 		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
 		success:function(data) {
 			if (data.success) {
-				var skor_akhir = [];
+				var skorakhirslf = [];
+				var skorakhiriuts = [];
 				var status = [];
 				var tgl = [];
 				var keterangan = [];
 				for(var coba in data.row){
-					skor_akhir.push(data.row[coba].skor_akhir);
+					skorakhirslf.push(data.row[coba].skorakhirslf);
+					skorakhiriuts.push(data.row[coba].skorakhiriuts);
 					status.push(data.row[coba].status);
 					tgl.push(data.row[coba].tanggal);
 					keterangan.push(data.row[coba].keterangan);
 				}
 				if (data.rowCount > 0) {
 					$('#ket_pemohon').removeAttr('style');
-					if (status[0] == '1') {
+					if (status[0] == '3') {
 						var statuskepaladinas = 'Di Terima';
+					}else if (status[0] == '5') {
+						var statuskepaladinas = 'Izin IUTS anda Di tolak';
+					}else if (status[0] == '6') {
+						var statuskepaladinas = 'Izin SLF anda di tolak';
 					}else{
 						var statuskepaladinas = 'Di Tolak';
 					}
-					if (tgl[0] == '0000-00-00' || tgl[0] == null) {
-						var tanggal = 'Belum ada Tanggal';
-					}else{
-						var tanggal = tgl[0];
+
+					if (parseFloat(skorakhirslf[0]) < 1.5) {
+						var statusslf = 'Di Tolak';
+					}else if (parseFloat(skorakhirslf[0]) < 2.5) {
+						var statusslf = 'Di Terima Dengan Catatan';
+					}else if(parseFloat(skorakhirslf[0]) > 2.5) {
+						var statusslf = 'Di Terima';
 					}
-					if (parseFloat(skor_akhir[0]) < 1.5) {
-						var statuswebsite = 'Di Tolak';
-					}else if (parseFloat(skor_akhir[0]) < 2.5) {
-						var statuswebsite = 'Di Terima Dengan Catatan';
-					}else if(parseFloat(skor_akhir[0]) > 2.5) {
-						var statuswebsite = 'Di Terima';
+
+					if (parseFloat(skorakhiriuts[0]) < 1.5) {
+						var statusiuts = 'Di Tolak';
+					}else if (parseFloat(skorakhiriuts[0]) < 2.5) {
+						var statusiuts = 'Di Terima Dengan Catatan';
+					}else if(parseFloat(skorakhiriuts[0]) > 2.5) {
+						var statusiuts = 'Di Terima';
 					}
+
 					$('#catatan').html(keterangan);
-					$('#ket_dinas').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuswebsite+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
-					$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+					$('#ket_dinas').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
+					$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
 				}
 			}
 		}
@@ -616,28 +627,51 @@ timeline = {
 							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
 							success:function(data) {
 								if (data.success) {
-									var skor_akhir = [];
+									var skorakhirslf = [];
+									var skorakhiriuts = [];
 									var status = [];
 									var tgl = [];
+									var keterangan = [];
 									for(var coba in data.row){
-										skor_akhir.push(data.row[coba].skor_akhir);
+										skorakhirslf.push(data.row[coba].skorakhirslf);
+										skorakhiriuts.push(data.row[coba].skorakhiriuts);
 										status.push(data.row[coba].status);
 										tgl.push(data.row[coba].tanggal);
 									}
 
 									if (data.rowCount > 0) {
 										$('#ket_pemohon').removeAttr('style');
-										if (status[0] == '1') {
+										if (status[0] == '3') {
 											var statuskepaladinas = 'Di Terima';
+										}else if (status[0] == '5') {
+											var statuskepaladinas = 'Izin IUTS anda Di tolak';
+										}else if (status[0] == '6') {
+											var statuskepaladinas = 'Izin SLF anda di tolak';
 										}else{
 											var statuskepaladinas = 'Di Tolak';
+										}
+
+										if (parseFloat(skorakhirslf[0]) < 1.5) {
+											var statusslf = 'Di Tolak';
+										}else if (parseFloat(skorakhirslf[0]) < 2.5) {
+											var statusslf = 'Di Terima Dengan Catatan';
+										}else if(parseFloat(skorakhirslf[0]) > 2.5) {
+											var statusslf = 'Di Terima';
+										}
+
+										if (parseFloat(skorakhiriuts[0]) < 1.5) {
+											var statusiuts = 'Di Tolak';
+										}else if (parseFloat(skorakhiriuts[0]) < 2.5) {
+											var statusiuts = 'Di Terima Dengan Catatan';
+										}else if(parseFloat(skorakhiriuts[0]) > 2.5) {
+											var statusiuts = 'Di Terima';
 										}
 										if (tgl[0] == '0000-00-00' || tgl[0] == null) {
 											var tanggal = 'Belum ada Tanggal';
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>'); 
 									}
 								}
 							}
@@ -655,28 +689,52 @@ timeline = {
 							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
 							success:function(data) {
 								if (data.success) {
-									var skor_akhir = [];
+									var skorakhirslf = [];
+									var skorakhiriuts = [];
 									var status = [];
 									var tgl = [];
+									var keterangan = [];
 									for(var coba in data.row){
-										skor_akhir.push(data.row[coba].skor_akhir);
+										skorakhirslf.push(data.row[coba].skorakhirslf);
+										skorakhiriuts.push(data.row[coba].skorakhiriuts);
 										status.push(data.row[coba].status);
 										tgl.push(data.row[coba].tanggal);
+										keterangan.push(data.row[coba].keterangan);
 									}
 
 									if (data.rowCount > 0) {
 										$('#ket_pemohon').removeAttr('style');
-										if (status[0] == '1') {
+										if (status[0] == '3') {
 											var statuskepaladinas = 'Di Terima';
+										}else if (status[0] == '5') {
+											var statuskepaladinas = 'Izin IUTS anda Di tolak';
+										}else if (status[0] == '6') {
+											var statuskepaladinas = 'Izin SLF anda di tolak';
 										}else{
 											var statuskepaladinas = 'Di Tolak';
+										}
+
+										if (parseFloat(skorakhirslf[0]) < 1.5) {
+											var statusslf = 'Di Tolak';
+										}else if (parseFloat(skorakhirslf[0]) < 2.5) {
+											var statusslf = 'Di Terima Dengan Catatan';
+										}else if(parseFloat(skorakhirslf[0]) > 2.5) {
+											var statusslf = 'Di Terima';
+										}
+
+										if (parseFloat(skorakhiriuts[0]) < 1.5) {
+											var statusiuts = 'Di Tolak';
+										}else if (parseFloat(skorakhiriuts[0]) < 2.5) {
+											var statusiuts = 'Di Terima Dengan Catatan';
+										}else if(parseFloat(skorakhiriuts[0]) > 2.5) {
+											var statusiuts = 'Di Terima';
 										}
 										if (tgl[0] == '0000-00-00' || tgl[0] == null) {
 											var tanggal = 'Belum ada Tanggal';
 										}else{
 											var tanggal = tgl[0];
 										}
-										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Anda sebesar<span class="badge badge-default">'+skor_akhir[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statuskepaladinas+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP<br>Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br><label><b>Pada '+tanggal+'.</b></label></p>'); 
+										$('#ket_pemohon').html('<p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhirslf[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusslf+'</span></p><p class="m-0">Nilai akhir permohonan Sertifikat Layak Fungsi Anda sebesar<span class="badge badge-default">'+skorakhiriuts[0]+'</span>(Nilai Akhir)</p><p>Perizinan Anda<span class="badge badge-success">'+statusiuts+'</span></p><p>Permohonan Anda<span class="badge badge-success">'+statuskepaladinas+'</span>oleh Kepala Dinas PMPTSP</p>');  
 									}
 								}
 							}
