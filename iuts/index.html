@@ -42,7 +42,7 @@
           <h1 class="judul-ijin">Buat Permohonan Izin Anda</h1>
           <p>Izin Kelayakan dan Usaha merupakan paket izin yang akan memudahkan masyarakat dalam mendapatkan legalitas izin untuk usaha. Perizinan yang ada pada paket ini yaitu, Izin untuk Usaha Toko Swalayan, Usaha Toko Kelontong/IUMK, dan Koperasi.<br>
           Paket Izin mencakup Sertifikat Layak Fungsi dan Izin Usaha untuk Toko Swalayan dan Koperasi, sedangkan Toko Kelontong/IUMK hanya Izin Usaha saja.</p>
-          <div class="answer navigation__btn--right m-0">
+          <div class="answer navigation__btn--right m-0" id="iuts_modal">
             <label class="btn3d btn btn-danger btn-lg">Izin Kelayakan dan Usaha Toko Swalayan</label>
           </div>
           <a href="izin_koperasi.html" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">Izin Kelayakan dan Usaha Koperasi</label></a>
@@ -67,6 +67,7 @@
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                 <option value="Waralaba">Waralaba</option>
                 <option value="Mandiri">Mandiri</option>
+                <option value="Cabang">Cabang</option>
               </select>
             </div>
           </div>
@@ -80,12 +81,13 @@
             <div class="form-group row">
               <label for="sistemUsaha" class="col-md-6 col-form-label">Status Kepemilikan NIB :</label>
               <div class="col-md-6">
-                <select required="" onchange="statusKepemIMB();" aria-label="sistemUsaha" class="text-center form-control" id="sistem_usaha" name="status_nib">
+                <select required="" onchange="statusKepemIMB();" aria-label="sistemUsaha" class="text-center form-control" id="status_nib" name="status_nib">
                   <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                   <option value="Penerima Waralaba">Penerima Waralaba</option>
                   <option value="Pelaku Waralaba">Pelaku Waralaba</option>
                   <option value="Penanggung Jawab">Penanggung Jawab</option>
                 </select>
+                <div id="select-waralaba"></div>
               </div>
             </div>
           </div>
@@ -1356,6 +1358,30 @@
     </form>
   </div>
   <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="max-width: 40%;">
+      <div class="modal-content">
+        <div class="modal-header" style="display: block;">
+          <center><h5 class="modal-title" id="exampleModalCenterTitle">Izin Usaha Toko Swalayan</h5></center>
+        </div>
+        <div class="modal-body" style="padding: 2rem;">
+          <h4 class="text-center">Pemberitahuan Penting</h4>
+          <h4><strong>Kewajiban</strong></h4>
+          <p class="text-danger">
+            1. Harus memiliki Nomor Induk Berusaha (NIB) yang berasal dari Online Single Submission (OSS)<br>
+            2. Memiliki NPWP dan NOP/NOPD<br>
+            3. Telah Melakukan Pelunasan Pajak<br>
+          </p>
+          <p class="m-0">Jika belum memiliki Nomor Induk Berusaha (NIB) <a href="https://oss.go.id/portal/" target="_blank">Klik Disini</a></p>
+          <p class="m-0">Jika belum memiliki NPWP <a href="https://ereg.pajak.go.id/" target="_blank">Klik Disini</a></p>
+          <center>
+            <button type="button" class="btn btn3d btn-danger mb-4" data-dismiss="modal">Saya Setuju, Ajukan Izin</button>
+          </center>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="kelengkapan_iuts" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
     <div class="modal-dialog" role="document" style="max-width: 85%;">
       <div class="modal-content">
         <div class="modal-header" style="display: block;">
@@ -1368,12 +1394,6 @@
           <p>Perizinan ini merupakan jenis paket izin untuk memudahkan Anda melakukan usaha toko swalayan. Paket izin ini memiliki Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan. Anda akan mengisi informasi secara online pada website yang telah kami sediakan. Informasi yang akan diisi berupa persyaratan Izin Sertifikat Layak Fungsi dan Izin Usaha Toko Swalayan.</p>
           <p>Persyaratan akan dibagi menjadi tiga bagian, yaitu Administrasi, SLF, dan IUTS. Berikut ini adalah persyaratan yang harus Anda persiapkan terlebih dahulu sebelum Anda mengajukan permohonan secara online.</p>
           <p>Dalam melakukan permohonan ini, Anda diharuskan sudah memiliki persyaratan berikut ini :</p>
-          <h4><strong>Kewajiban</strong></h4>
-          <p class="text-danger">
-            1. Harus memiliki Nomor Induk Berusaha (NIB) yang berasal dari Online Single Submission (OSS)<br>
-            2. Memiliki NPWP dan NOP/NOPD<br>
-            3. Telah Melakukan Pelunasan Pajak<br>
-          </p>
           <h4><strong>Administrasi Pemohon</strong></h4>
           <p class="text-danger">
             1. Status Pemohon<br>
@@ -1447,44 +1467,43 @@
               </div>
             </div>
           </p>
-          <!-- <p class="m-0">Apabila seluruh syarat tersebut telah <b>terpenuhi</b> Klik Tombol Ajukan Izin dibawah ini :</p> -->
           <p>Catatan: Persyaratan dengan warna <span class="text-primary">biru</span> bukan merupakan prioritas dalam proses permohonan izin ini karena dapat dipenuhi ketika izin telah terbit.</p>
           <p>Saya telah memahami dan memenuhi persayaratan diatas. Oleh karena itu, saya tidak akan menyalahkan PMPTSP DKI Jakarta apabila permohonan izin saya ditolak karena kesalahan yang saya perbuat dalam menyiapkan persyaratan diatas.</p>
           <center>
-            <button type="button" class="btn btn3d btn-danger mb-4" data-dismiss="modal">Saya Setuju, Ajukan Izin</button>
-            <!-- <a href="index_slf.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin SLF</button></a>
-              <a href="index_iuts.html" style="text-decoration: none;"><button type="button" class="btn btn3d btn-danger mb-4 btn-block">Mulai Ajukan Izin IUTS</button></a> -->
-              <!-- <p>Belum memiliki Nomor Izin Berusaha? Urus NIB dahulu <a href="https://app.oss.go.id/app/#front/home" target="_blank">Disini</a></p> -->
-            </center>
-          </div>
+            <button type="button" class="btn btn3d btn-danger mb-4" data-dismiss="modal">Ajukan Izin</button>
+          </center>
         </div>
       </div>
     </div>
-    <footer class="bottom">
-      <section class="bottom__container">
-        <div class="progress">
-          <div class="progress__inner"></div>
-        </div>
-        <div class="navigation">
-          <div class="navigation__btn navigation__btn--left ">Kembali</div>
-          <div class="navigation__btn navigation__btn--right">Selanjutnya</div>
-        </div>
-      </section>  
-    </footer>
+  </div>
+  <footer class="bottom">
+    <section class="bottom__container">
+      <div class="progress">
+        <div class="progress__inner"></div>
+      </div>
+      <div class="navigation">
+        <div class="navigation__btn navigation__btn--left ">Kembali</div>
+        <div class="navigation__btn navigation__btn--right">Selanjutnya</div>
+      </div>
+    </section>  
+  </footer>
 
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
-    <script src="assets/js/jquery.easing.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
-    <script src="assets/js/iuts.js"></script>
-    <script src="https://js.arcgis.com/4.8/"></script>
-    <script src="assets/js/arcgis.js"></script>
-    <!-- <script src="https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js"></script> -->
-    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
-    <script type="text/javascript">
-      $('#kelengkapan').modal('show');
-      $(":input").inputmask();
-    </script>
-  </body>
-  </html>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.js"></script>
+  <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+  <script src="assets/js/jquery.easing.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
+  <script src="assets/js/iuts.js"></script>
+  <script src="https://js.arcgis.com/4.8/"></script>
+  <script src="assets/js/arcgis.js"></script>
+  <!-- <script src="https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js"></script> -->
+  <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+  <script type="text/javascript">
+    $('#kelengkapan').modal('show');
+    $( "#iuts_modal" ).click(function(){
+      $('#kelengkapan_iuts').modal('show');
+    });
+    $(":input").inputmask();
+  </script>
+</body>
+</html>

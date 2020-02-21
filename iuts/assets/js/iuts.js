@@ -28,6 +28,8 @@ function statusKepemIMB() {
         $(".npwpP").attr('style', 'display:none');
         $(".namaPJ").attr('style', 'display:none');
         $(".akteP").attr('style', 'display:none');
+    // }else if($("#sistem_usaha option:selected").val() == "Waralaba" && $("#status_nib option:selected").val() == "Pelaku Waralaba") {
+    //     $(".select-waralaba").removeAttr('style');
     }else{
         $(".statusP").removeAttr('style');
         $(".jabatan_row").attr('style', 'display:none');
@@ -42,6 +44,14 @@ function statusKepemIMB() {
         $(".akteP").removeAttr('style');
     }
 }
+
+$("#status_nib").on("change", function() {
+    if($("#sistem_usaha option:selected").val() == "Waralaba" || $("#sistem_usaha option:selected").val() == "Mandiri" && $("#status_nib option:selected").val() == "Pelaku Waralaba"){
+        $("#select-waralaba").html("<p class='text-danger text-left'>NIB yang digunakan seharusnya NIB pemilik Usaha, silahkan membuat NIB di OSS</p>"); 
+    } else {
+        $("#select-waralaba").html("");
+    }
+});
 
 function rekomendasislf() {
     if ($("#rekomendasi_slf option:selected").val() != 1 &&  $("#rekomendasi_slf option:selected").val() != 2) {
