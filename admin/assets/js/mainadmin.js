@@ -268,7 +268,6 @@ editdataizin:function (argument) {
 			jQuery('#loader').fadeOut('slow');
 				var skorpbb = [];
 				var skornpwp = [];
-				var skorrenjalan = [];
 				var skorjalaneksis = [];
 				var skortataruang = [];
 				var skorjarakusaha = [];
@@ -320,7 +319,6 @@ editdataizin:function (argument) {
 				for(var coba in data.row){
 					skorpbb.push(data.row[coba].skorpbb);
 					skornpwp.push(data.row[coba].skornpwp);
-					skorrenjalan.push(data.row[coba].skorrenjalan);
 					skorjalaneksis.push(data.row[coba].skorjalaneksis);
 					skortataruang.push(data.row[coba].skortataruang);
 					skorjarakusaha.push(data.row[coba].skorjarakusaha);
@@ -386,7 +384,6 @@ editdataizin:function (argument) {
 				$('#eksismadai').text(skorjalaneksis);
 
 				$('#jarakpasar').text(skorjarakpasar);
-				$('#renjalan').text(skorrenjalan);
 				$('#rekumkm').text(skorrekumkm);
 				$('#slfeksis').text(skorslf);
 				$('#kondisisumur').text(skorkondisisumur);
@@ -414,7 +411,7 @@ editdataizin:function (argument) {
 				/*iuts*/
 				var totaladmin = parseFloat(skorkondisieksis);
 				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
-				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjalaneksis)+parseFloat(skorrenjalan)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
+				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
 				/*iuts*/
 				
 				/*slf*/
@@ -427,7 +424,7 @@ editdataizin:function (argument) {
 				/*iuts*/
 				var hasiladmin = parseFloat(totaladmin/1);
 				var hasilmanfaat = parseFloat(totalmanfaat/4);
-				var hasildampak = parseFloat(totaldampak/6);
+				var hasildampak = parseFloat(totaldampak/3);
 				/*iuts*/
 				
 				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
@@ -625,7 +622,7 @@ $("#inputadminteknis").submit(function (event) {
 		url: BASE_URL + 'OfficeController/InsertAdminTeknis',
 		type: "POST",
 		dataType:'json',
-		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),lahansekitar:$("#lahansekitar").val(),rencanajalan:$('#rencanajalan').val(),eksitingjalan:$('#eksitingjalan').val(),tataruang:$('#tataruang').val(),statususaha:$('#statususaha').val(),statuspasar:$('#statuspasar').val(),keterangan:$("#keterangan").val()},
+		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),lahansekitar:$("#lahansekitar").val(),statususaha:$('#statususaha').val(),statuspasar:$('#statuspasar').val(),keterangan:$("#keterangan").val()},
 		// contentType: false,
 		// cache: false,
 		// processData: false,
