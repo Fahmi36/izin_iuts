@@ -430,7 +430,7 @@ function AdministrasiPemohon() {
 		url: BASE_URL + 'OfficeController/detailBangunanDinas',
 		type: 'POST',
 		dataType: 'json',
-		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+		data: {id:localStorage.getItem('idbangunanuser')},
 		success:function(data) {
 			if (data.success) {
 				var skorpbb = [];
@@ -1130,7 +1130,7 @@ timeline = {
 		url: BASE_URL + 'OfficeController/detailBangunanDinas',
 		type: 'POST',
 		dataType: 'json',
-		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
+		data: {id:localStorage.getItem('idbangunanuser')},
 		success:function(data) {
 			if (data.success) {
 				var skorpbb = [];
