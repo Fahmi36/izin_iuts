@@ -284,87 +284,107 @@ function adminitrasi() {
 					for(var coba in data.row){
 						if (data.row[coba].fotoktp == '1') {
 							var statusktp = 'Berkas di Terima';
-						}else if (data.row[coba].fotonpwp == '1') {
-							var statusnpwp = 'Berkas di Terima';
-						}else if (data.row[coba].fotoakta == '1') {
-							var statusakta = 'Berkas di Terima';
-						}else if (data.row[coba].fotoluar == '1') {
-							var statusluar = 'Berkas di Terima';
-						}else if (data.row[coba].fotodalam == '1') {
-							var statusdalam = 'Berkas di Terima';
-						}else if (data.row[coba].fotoimb == '1') {
-							var statusimb = 'Berkas di Terima';
-						}else if (data.row[coba].fotoslf == '1') {
-							var statusslf = 'Berkas di Terima';
-						}else if (data.row[coba].fotodamkar == '1') {
-							var statusdamkar = 'Berkas di Terima';
-						}else if (data.row[coba].fototkt == '1') {
-							var statustkt = 'Berkas di Terima';
-						}else if (data.row[coba].fotoasuransi == '1') {
-							var statusasu = 'Berkas di Terima';
-						}else if (data.row[coba].fotopbb == '1') {
-							var statuspbb = 'Berkas di Terima';
-						}else if (data.row[coba].fotoperw == '1') {
-							var statusperw = 'Berkas di Terima';
-						}else if (data.row[coba].fotorekumkm == '1') {
-							var statusumkm = 'Berkas di Terima';
-						}else if (data.row[coba].fotokajian == '1') {
-							var statuskajian = 'Berkas di Terima';
 						}else if (data.row[coba].fotoktp == '2') {
 							var statusktp = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusktp = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotonpwp == '1') {
+							var statusnpwp = 'Berkas di Terima';
 						}else if (data.row[coba].fotonpwp == '2') {
 							var statusnpwp = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else {
+							var statusnpwp = 'Tidak ada Berkas';
+						}
+
+						if (data.row[coba].fotoakta == '1') {
+							var statusakta = 'Berkas di Terima';
 						}else if (data.row[coba].fotoakta == '2') {
 							var statusakta = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusakta = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotoluar == '1') {
+							var statusluar = 'Berkas di Terima';
 						}else if (data.row[coba].fotoluar == '2') {
 							var statusluar = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else {
+							var statusluar = 'Tidak ada Berkas';
+						}
+						if (data.row[coba].fotodalam == '1') {
+							var statusdalam = 'Berkas di Terima';
 						}else if (data.row[coba].fotodalam == '2') {
 							var statusdalam = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusdalam = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotoimb == '1') {
+							var statusimb = 'Berkas di Terima';
 						}else if (data.row[coba].fotoimb == '2') {
 							var statusimb = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else {
+							var statusimb = 'Tidak ada Berkas';
+						}
+						if (data.row[coba].fotoslf == '1') {
+							var statusslf = 'Berkas di Terima';
 						}else if (data.row[coba].fotoslf == '2') {
 							var statusslf = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusslf = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotodamkar == '1') {
+							var statusdamkar = 'Berkas di Terima';
 						}else if (data.row[coba].fotodamkar == '2') {
 							var statusdamkar = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusdamkar = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fototkt == '1') {
+							var statustkt = 'Berkas di Terima';
 						}else if (data.row[coba].fototkt == '2') {
 							var statustkt = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statustkt = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotoasuransi == '1') {
+							var statusasu = 'Berkas di Terima';
 						}else if (data.row[coba].fotoasuransi == '2') {
 							var statusasu = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else {
+							var statusasu = 'Tidak ada Berkas';
+						}
+						if (data.row[coba].fotopbb == '1') {
+							var statuspbb = 'Berkas di Terima';
 						}else if (data.row[coba].fotopbb == '2') {
 							var statuspbb = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else {
+						}
+						if (data.row[coba].fotoperw == '1') {
+							var statusperw = 'Berkas di Terima';
 						}else if (data.row[coba].fotoperw == '2') {
 							var statusperw = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusperw = 'Tidak ada Berkas';
+						} 
+
+						if (data.row[coba].fotorekumkm == '1') {
+							var statusumkm = 'Berkas di Terima';
 						}else if (data.row[coba].fotorekumkm == '2') {
 							var statusumkm = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else{
+							var statusumkm = 'Tidak ada Berkas';
+						} 
+						if (data.row[coba].fotokajian == '1') {
+							var statuskajian = 'Berkas di Terima';
 						}else if (data.row[coba].fotokajian == '2') {
 							var statuskajian = 'Silakan Bawa Berkas Ke DPMPTSP';
-						}else if (data.row[coba].fotoktp == null) {
-							var statusktp = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotonpwp == null) {
-							var statusnpwp = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoakta == null) {
-							var statusakta = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoluar == null) {
-							var statusluar = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotodalam == null) {
-							var statusdalam = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoimb == null) {
-							var statusimb = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoslf == null) {
-							var statusslf = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotodamkar == null) {
-							var statusdamkar = 'Tidak ada Berkas';
-						}else if (data.row[coba].fototkt == null) {
-							var statustkt = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoasuransi == null) {
-							var statusasu = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotopbb == null) {
-							var statuspbb = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotoperw == null) {
-							var statusperw = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotorekumkm == null) {
-							var statusumkm = 'Tidak ada Berkas';
-						}else if (data.row[coba].fotokajian == null) {
+						}else{
 							var statuskajian = 'Tidak ada Berkas';
 						}
 
@@ -711,87 +731,107 @@ timeline = {
 										for(var coba in data.row){
 											if (data.row[coba].fotoktp == '1') {
 												var statusktp = 'Berkas di Terima';
-											}else if (data.row[coba].fotonpwp == '1') {
-												var statusnpwp = 'Berkas di Terima';
-											}else if (data.row[coba].fotoakta == '1') {
-												var statusakta = 'Berkas di Terima';
-											}else if (data.row[coba].fotoluar == '1') {
-												var statusluar = 'Berkas di Terima';
-											}else if (data.row[coba].fotodalam == '1') {
-												var statusdalam = 'Berkas di Terima';
-											}else if (data.row[coba].fotoimb == '1') {
-												var statusimb = 'Berkas di Terima';
-											}else if (data.row[coba].fotoslf == '1') {
-												var statusslf = 'Berkas di Terima';
-											}else if (data.row[coba].fotodamkar == '1') {
-												var statusdamkar = 'Berkas di Terima';
-											}else if (data.row[coba].fototkt == '1') {
-												var statustkt = 'Berkas di Terima';
-											}else if (data.row[coba].fotoasuransi == '1') {
-												var statusasu = 'Berkas di Terima';
-											}else if (data.row[coba].fotopbb == '1') {
-												var statuspbb = 'Berkas di Terima';
-											}else if (data.row[coba].fotoperw == '1') {
-												var statusperw = 'Berkas di Terima';
-											}else if (data.row[coba].fotorekumkm == '1') {
-												var statusumkm = 'Berkas di Terima';
-											}else if (data.row[coba].fotokajian == '1') {
-												var statuskajian = 'Berkas di Terima';
 											}else if (data.row[coba].fotoktp == '2') {
 												var statusktp = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusktp = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotonpwp == '1') {
+												var statusnpwp = 'Berkas di Terima';
 											}else if (data.row[coba].fotonpwp == '2') {
 												var statusnpwp = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else {
+												var statusnpwp = 'Tidak ada Berkas';
+											}
+
+											if (data.row[coba].fotoakta == '1') {
+												var statusakta = 'Berkas di Terima';
 											}else if (data.row[coba].fotoakta == '2') {
 												var statusakta = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusakta = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotoluar == '1') {
+												var statusluar = 'Berkas di Terima';
 											}else if (data.row[coba].fotoluar == '2') {
 												var statusluar = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else {
+												var statusluar = 'Tidak ada Berkas';
+											}
+											if (data.row[coba].fotodalam == '1') {
+												var statusdalam = 'Berkas di Terima';
 											}else if (data.row[coba].fotodalam == '2') {
 												var statusdalam = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusdalam = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotoimb == '1') {
+												var statusimb = 'Berkas di Terima';
 											}else if (data.row[coba].fotoimb == '2') {
 												var statusimb = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else {
+												var statusimb = 'Tidak ada Berkas';
+											}
+											if (data.row[coba].fotoslf == '1') {
+												var statusslf = 'Berkas di Terima';
 											}else if (data.row[coba].fotoslf == '2') {
 												var statusslf = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusslf = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotodamkar == '1') {
+												var statusdamkar = 'Berkas di Terima';
 											}else if (data.row[coba].fotodamkar == '2') {
 												var statusdamkar = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusdamkar = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fototkt == '1') {
+												var statustkt = 'Berkas di Terima';
 											}else if (data.row[coba].fototkt == '2') {
 												var statustkt = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statustkt = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotoasuransi == '1') {
+												var statusasu = 'Berkas di Terima';
 											}else if (data.row[coba].fotoasuransi == '2') {
 												var statusasu = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else {
+												var statusasu = 'Tidak ada Berkas';
+											}
+											if (data.row[coba].fotopbb == '1') {
+												var statuspbb = 'Berkas di Terima';
 											}else if (data.row[coba].fotopbb == '2') {
 												var statuspbb = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else {
+											}
+											if (data.row[coba].fotoperw == '1') {
+												var statusperw = 'Berkas di Terima';
 											}else if (data.row[coba].fotoperw == '2') {
 												var statusperw = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusperw = 'Tidak ada Berkas';
+											} 
+
+											if (data.row[coba].fotorekumkm == '1') {
+												var statusumkm = 'Berkas di Terima';
 											}else if (data.row[coba].fotorekumkm == '2') {
 												var statusumkm = 'Silakan Bawa Berkas Ke DPMPTSP';
+											}else{
+												var statusumkm = 'Tidak ada Berkas';
+											} 
+											if (data.row[coba].fotokajian == '1') {
+												var statuskajian = 'Berkas di Terima';
 											}else if (data.row[coba].fotokajian == '2') {
 												var statuskajian = 'Silakan Bawa Berkas Ke DPMPTSP';
-											}else if (data.row[coba].fotoktp == null) {
-												var statusktp = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotonpwp == null) {
-												var statusnpwp = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoakta == null) {
-												var statusakta = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoluar == null) {
-												var statusluar = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotodalam == null) {
-												var statusdalam = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoimb == null) {
-												var statusimb = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoslf == null) {
-												var statusslf = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotodamkar == null) {
-												var statusdamkar = 'Tidak ada Berkas';
-											}else if (data.row[coba].fototkt == null) {
-												var statustkt = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoasuransi == null) {
-												var statusasu = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotopbb == null) {
-												var statuspbb = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotoperw == null) {
-												var statusperw = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotorekumkm == null) {
-												var statusumkm = 'Tidak ada Berkas';
-											}else if (data.row[coba].fotokajian == null) {
+											}else{
 												var statuskajian = 'Tidak ada Berkas';
 											}
 											$('#ket_pemohon').html('<p>Berkas yang sudah di verifikasi</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Foto KTP Anda: <span class="badge badge-default">'+statusktp+'</span></li><li class="list-group-item p-1">- Foto NPWP Anda: <span class="badge badge-default">'+statusnpwp+'</span></li><li class="list-group-item p-1">- Foto Akta Anda: <span class="badge badge-default">'+statusakta+'</span></li><li class="list-group-item p-1">- Foto Luar Bangunan Anda : <span class="badge badge-default">'+statusluar+'</span></li><li class="list-group-item p-1">- Foto Dalam Bangunan Anda: <span class="badge badge-default">'+statusdalam+'</span></li><li class="list-group-item p-1">- Berkas Izin Mendirikan Bangunan Anda: <span class="badge badge-default">'+statusimb+'</span></li><li class="list-group-item p-1">- Berkas Sertifikat Layak Fungsi: <span class="badge badge-default">'+statusslf+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan: <span class="badge badge-default">'+statusdamkar+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi: <span class="badge badge-default">'+statustkt+'</span></li><li class="list-group-item p-1">- Berkas Asuransi Toko: <span class="badge badge-default">'+statusasu+'</span></li><li class="list-group-item p-1">- Bukti Pemutahiran PBB: <span class="badge badge-default">'+statuspbb+'</span></li><li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span class="badge badge-default">'+statusperw+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi UMKM: <span class="badge badge-default">'+statusumkm+'</span></li><li class="list-group-item p-1">- Berkas Kajian Sosial Ekonomi: <span class="badge badge-default">'+statuskajian+'</span></li></ul></div></div><label>Ulasan Petugas</label><p>'+keterangan[0]+'</p>'); 
