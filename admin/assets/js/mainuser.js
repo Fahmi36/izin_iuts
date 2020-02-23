@@ -427,7 +427,7 @@ function adminteknis() {
 }
 function AdministrasiPemohon() {
 	$.ajax({
-		url: BASE_URL + 'UserController/detailBangunanDinas',
+		url: BASE_URL + 'OfficeController/detailBangunanDinas',
 		type: 'POST',
 		dataType: 'json',
 		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
@@ -1127,7 +1127,7 @@ timeline = {
 	$('#kepaladinas').addClass('active');
 	$('#adminstrasiselanjutnya').addClass('active');
 	$.ajax({
-		url: BASE_URL + 'UserController/detailBangunanDinas',
+		url: BASE_URL + 'OfficeController/detailBangunanDinas',
 		type: 'POST',
 		dataType: 'json',
 		data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
