@@ -935,6 +935,9 @@ $('#btn-modalmaps').click(function(event) {
             // dataRegis[0].janji_sewa_input = dataInput.janji_sewa_input;
 
             // localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+            $nofotoktp = 0;
+            $nofotonpwp = 0;
+            $nofotoakta = 0;
             $nofotoluar = 0;
             $nofotodalam = 0;
             $nofileimb = 0;
@@ -981,6 +984,55 @@ $('#btn-modalmaps').click(function(event) {
                 },
                 success:function(data) {
                     if (data.success) {
+                        var nsktp = document.getElementById('foto_luar_bangunan').files.length;
+                        for (var noktp = 0; noktp < nsktp; noktp++) {
+                            var filektp = document.getElementById('foto_luar_bangunan').files[noktp];
+                            var readerktp = new FileReader();
+                            if (filektp != undefined) {
+                                readerktp.readAsDataURL(filektp);
+                                readerktp.onload = shipOffAdministrasi;
+                                var aktp = new Date();
+                                var datenyaktp = aktp.getHours() + aktp.getMinutes() + aktp.getMilliseconds();
+                                var namektp = datenyaktp + filektp.name;
+                                var jenisktp = 'File KTP';
+                                // console.log(data);
+                                updateFotoAdmin(namektp, data.idizin,jenisktp);
+
+                            }
+                        }
+                        var nsnpwp = document.getElementById('foto_luar_bangunan').files.length;
+                        for (var nonpwp = 0; nonpwp < nsnpwp; nonpwp++) {
+                            var filenpwp = document.getElementById('foto_luar_bangunan').files[nonpwp];
+                            var readernpwp = new FileReader();
+                            if (filenpwp != undefined) {
+                                readernpwp.readAsDataURL(filenpwp);
+                                readernpwp.onload = shipOffAdministrasinpwp;
+                                var aktp = new Date();
+                                var datenyanpwp = aktp.getHours() + aktp.getMinutes() + aktp.getMilliseconds();
+                                var namenpwp = datenyanpwp + filenpwp.name;
+                                var jenisnpwp = 'File NPWP';
+                                // console.log(data);
+                                updateFotoAdmin(namenpwp, data.idizin,jenisnpwp);
+
+                            }
+                        }
+                        var nsakta = document.getElementById('foto_luar_bangunan').files.length;
+                        for (var noakta = 0; noakta < nsakta; noakta++) {
+                            var fileakta = document.getElementById('foto_luar_bangunan').files[noakta];
+                            var readerakta = new FileReader();
+                            if (fileakta != undefined) {
+                                readerakta.readAsDataURL(fileakta);
+                                readerakta.onload = shipOffAdministrasinoakta;
+                                var aakta = new Date();
+                                var datenyaakta = aakta.getHours() + aakta.getMinutes() + aakta.getMilliseconds();
+                                var nameakta = datenyaakta + fileakta.name;
+                                var jenisakta = 'File Tampak Luar Bangunan';
+                                // console.log(data);
+                                updateFotoAdmin(nameakta, data.idizin,jenisakta);
+
+                            }
+                        }
+                        /*SLF*/
                         var ins1 = document.getElementById('foto_luar_bangunan').files.length;
                         for (var x1 = 0; x1 < ins1; x1++) {
                             var file1 = document.getElementById('foto_luar_bangunan').files[x1];
@@ -1125,6 +1177,7 @@ $('#btn-modalmaps').click(function(event) {
 
                             }
                         }
+                        /*SLF*/
 
                         // IUTS
                         var ins10 = document.getElementById('filePerW').files.length;
@@ -1221,6 +1274,57 @@ $('#btn-modalmaps').click(function(event) {
 });
 
 
+function shipOffAdministrasi(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    // debugger;
+    var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoktp].name;
+    $nofotoktp+=1;
+    // console.log(fileName);
+
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+        }
+    })
+}
+function shipOffAdministrasinpwp(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    // debugger;
+    var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotonpwp].name;
+    $nofotonpwp+=1;
+    // console.log(fileName);
+
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+        }
+    })
+}
+function shipOffAdministrasinoakta(event) {
+    var result = event.target.result;
+    var a = new Date();
+    var datenya = a.getHours() + a.getMinutes() + a.getMilliseconds();
+    // debugger;
+    var fileName = datenya + document.getElementById('foto_luar_bangunan').files[$nofotoakta].name;
+    $nofotoakta+=1;
+    // console.log(fileName);
+
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/addAttachment',
+        method: 'post',
+        data: {data: result, name: fileName},
+        success: function (dt) {
+        }
+    })
+}
 function shipOffLuarBangunan(event) {
     var result = event.target.result;
     var a = new Date();
@@ -1455,7 +1559,15 @@ function updateFotoiuts(name, id,jenis) {
         }
     })
 }
-
+function updateFotoAdmin(name, id,jenis) {
+    $.ajax({
+        url: BASE_URL + 'ValidasiController/updateDataAdmin',
+        data: {id: id, name: name,jenis:jenis},
+        method: 'post',
+        success: function (data) {
+        }
+    })
+}
 /* end konfirmasi ijin */
 
 /* animation */
