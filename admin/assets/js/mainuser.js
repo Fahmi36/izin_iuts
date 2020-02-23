@@ -242,25 +242,105 @@ function adminitrasi() {
 		data: {idizin:localStorage.getItem('idbangunanuser')},
 		success:function(data) {
 			if (data.success) {
-				var statusiuts = [];
-				var fotoiuts = [];
-				var statusslf = [];
-				var fotoiuts = [];
-				var jenisslf = [];
-				var jenisiuts = [];
+				var id_admin = [];
+				var id_izin = [];
+				var fotoktp = [];
+				var fotonpwp = [];
+				var fotoakta = [];
+				var fotoluar = [];
+				var fotodalam = [];
+				var fotoimb = [];
+				var fotoslf = [];
+				var fotodamkar = [];
+				var fototkt = [];
+				var fotoasuransi = [];
+				var fotopbb = [];
+				var fotoperw = [];
+				var fotorekumkm = [];
+				var fotokajian = [];
+				var keterangan = [];
 				for(var coba in data.row){
-					statusiuts.push(data.row[coba].statusiuts);
-					fotoiuts.push(data.row[coba].fotoiuts);
-					statusslf.push(data.row[coba].statusslf);
-					fotoiuts.push(data.row[coba].fotoiuts);
-					jenisslf.push(data.row[coba].jenisslf);
-					jenisiuts.push(data.row[coba].jenisiuts);
+					id_admin.push(data.row[coba].id_admin);
+					id_izin.push(data.row[coba].id_izin);
+					fotoktp.push(data.row[coba].fotoktp);
+					fotonpwp.push(data.row[coba].fotonpwp);
+					fotoakta.push(data.row[coba].fotoakta);
+					fotoluar.push(data.row[coba].fotoluar);
+					fotodalam.push(data.row[coba].fotodalam);
+					fotoimb.push(data.row[coba].fotoimb);
+					fotoslf.push(data.row[coba].fotoslf);
+					fotodamkar.push(data.row[coba].fotodamkar);
+					fototkt.push(data.row[coba].fototkt);
+					fotoasuransi.push(data.row[coba].fotoasuransi);
+					fotopbb.push(data.row[coba].fotopbb);
+					fotoperw.push(data.row[coba].fotoperw);
+					fotorekumkm.push(data.row[coba].fotorekumkm);
+					fotokajian.push(data.row[coba].fotokajian);
+					keterangan.push(data.row[coba].keterangan);
 				}
 				if (data.rowCount > 0) {
 					$('#ket_pemohon').removeAttr('style');
 					$('#ket_pemohon').removeAttr('style');
 					for(var coba in data.row){
-						$('#ket_pemohon').html('<p>'+data.row[coba].jenisslf+' <span class="badge badge-default">'+data.row[coba].statusslf+'</span></p><p>'+data.row[coba].jenisiuts+' <span class="badge badge-default">'+data.row[coba].statusiuts+'</span></p>'); 
+						if (data.row[coba].fotoktp == '1') {
+							var statusktp = 'Berkas di Terima';
+						}else if (data.row[coba].fotonpwp == '1') {
+							var statusnpwp = 'Berkas di Terima';
+						}else if (data.row[coba].fotoakta == '1') {
+							var statusakta = 'Berkas di Terima';
+						}else if (data.row[coba].fotoluar == '1') {
+							var statusluar = 'Berkas di Terima';
+						}else if (data.row[coba].fotodalam == '1') {
+							var statusdalam = 'Berkas di Terima';
+						}else if (data.row[coba].fotoimb == '1') {
+							var statusimb = 'Berkas di Terima';
+						}else if (data.row[coba].fotoslf == '1') {
+							var statusslf = 'Berkas di Terima';
+						}else if (data.row[coba].fotodamkar == '1') {
+							var statusdamkar = 'Berkas di Terima';
+						}else if (data.row[coba].fototkt == '1') {
+							var statustkt = 'Berkas di Terima';
+						}else if (data.row[coba].fotoasuransi == '1') {
+							var statusasu = 'Berkas di Terima';
+						}else if (data.row[coba].fotopbb == '1') {
+							var statuspbb = 'Berkas di Terima';
+						}else if (data.row[coba].fotoperw == '1') {
+							var statusperw = 'Berkas di Terima';
+						}else if (data.row[coba].fotorekumkm == '1') {
+							var statusumkm = 'Berkas di Terima';
+						}else if (data.row[coba].fotokajian == '1') {
+							var statuskajian = 'Berkas di Terima';
+						}else if (data.row[coba].fotoktp == '2') {
+							var statusktp = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotonpwp == '2') {
+							var statusnpwp = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoakta == '2') {
+							var statusakta = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoluar == '2') {
+							var statusluar = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotodalam == '2') {
+							var statusdalam = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoimb == '2') {
+							var statusimb = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoslf == '2') {
+							var statusslf = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotodamkar == '2') {
+							var statusdamkar = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fototkt == '2') {
+							var statustkt = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoasuransi == '2') {
+							var statusasu = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotopbb == '2') {
+							var statuspbb = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotoperw == '2') {
+							var statusperw = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotorekumkm == '2') {
+							var statusumkm = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}else if (data.row[coba].fotokajian == '2') {
+							var statuskajian = 'Silakan Bawa Berkas Ke DPMPTSP';
+						}
+
+						$('#ket_pemohon').html('<p>Berkas yang sudah di verifikasi</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Foto KTP Anda: <span class="badge badge-default">'+statusktp[0]+'</span></li><li class="list-group-item p-1">- Foto NPWP Anda: <span class="badge badge-default">'+statusnpwp[0]+'</span></li><li class="list-group-item p-1">- Foto Akta Anda: <span class="badge badge-default">'+statusakta[0]+'</span></li><li class="list-group-item p-1">- Foto Luar Bangunan Anda : <span class="badge badge-default">'+statusluar[0]+'</span></li><li class="list-group-item p-1">- Foto Dalam Bangunan Anda: <span class="badge badge-default">'+statusdalam[0]+'</span></li><li class="list-group-item p-1">- Berkas Izin Mendirikan Bangunan Anda: <span class="badge badge-default">'+statusimb[0]+'</span></li><li class="list-group-item p-1">- Berkas Sertifikat Layak Fungsi: <span class="badge badge-default">'+statusslf[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan: <span class="badge badge-default">'+statusdamkar[0]+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi: <span class="badge badge-default">'+statustkt[0]+'</span></li><li class="list-group-item p-1">- Berkas Asuransi Toko: <span class="badge badge-default">'+statusasu[0]+'</span></li><li class="list-group-item p-1">- Bukti Pemutahiran PBB: <span class="badge badge-default">'+statuspbb[0]+'</span></li><li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span class="badge badge-default">'+statusperw[0]+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi UMKM: <span class="badge badge-default">'+statusumkm[0]+'</span></li><li class="list-group-item p-1">- Berkas Kajian Sosial Ekonomi: <span class="badge badge-default">'+statuskajian[0]+'</span></li></ul></div></div>'); 
 					}
 				}
 			}
@@ -562,24 +642,46 @@ timeline = {
 							data: {idbangunan:localStorage.getItem('idbangunanuser'),id:localStorage.getItem('iduser')},
 							success:function(data) {
 								if (data.success) {
-									var statusiuts = [];
-									var fotoiuts = [];
-									var statusslf = [];
-									var fotoiuts = [];
-									var jenisslf = [];
-									var jenisiuts = [];
+									var id_admin = [];
+									var id_izin = [];
+									var fotoktp = [];
+									var fotonpwp = [];
+									var fotoakta = [];
+									var fotoluar = [];
+									var fotodalam = [];
+									var fotoimb = [];
+									var fotoslf = [];
+									var fotodamkar = [];
+									var fototkt = [];
+									var fotoasuransi = [];
+									var fotopbb = [];
+									var fotoperw = [];
+									var fotorekumkm = [];
+									var fotokajian = [];
+									var keterangan = [];
 									for(var coba in data.row){
-										statusiuts.push(data.row[coba].statusiuts);
-										fotoiuts.push(data.row[coba].fotoiuts);
-										statusslf.push(data.row[coba].statusslf);
-										fotoiuts.push(data.row[coba].fotoiuts);
-										jenisslf.push(data.row[coba].jenisslf);
-										jenisiuts.push(data.row[coba].jenisiuts);
+										id_admin.push(data.row[coba].id_admin);
+										id_izin.push(data.row[coba].id_izin);
+										fotoktp.push(data.row[coba].fotoktp);
+										fotonpwp.push(data.row[coba].fotonpwp);
+										fotoakta.push(data.row[coba].fotoakta);
+										fotoluar.push(data.row[coba].fotoluar);
+										fotodalam.push(data.row[coba].fotodalam);
+										fotoimb.push(data.row[coba].fotoimb);
+										fotoslf.push(data.row[coba].fotoslf);
+										fotodamkar.push(data.row[coba].fotodamkar);
+										fototkt.push(data.row[coba].fototkt);
+										fotoasuransi.push(data.row[coba].fotoasuransi);
+										fotopbb.push(data.row[coba].fotopbb);
+										fotoperw.push(data.row[coba].fotoperw);
+										fotorekumkm.push(data.row[coba].fotorekumkm);
+										fotokajian.push(data.row[coba].fotokajian);
+										keterangan.push(data.row[coba].keterangan);
 									}
 									if (data.rowCount > 0) {
 										$('#ket_pemohon').removeAttr('style');
 										for(var coba in data.row){
-											$('#ket_pemohon').html('<p>'+data.row[coba].jenisslf+' <span class="badge badge-default">'+data.row[coba].statusslf+'</span></p><p>'+data.row[coba].jenisiuts+' <span class="badge badge-default">'+data.row[coba].statusiuts+'</span></p>'); 
+											$('#ket_pemohon').html('<p>Berkas yang sudah di verifikasi</p><p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Foto KTP Anda: <span class="badge badge-default">'+statusktp[0]+'</span></li><li class="list-group-item p-1">- Foto NPWP Anda: <span class="badge badge-default">'+statusnpwp[0]+'</span></li><li class="list-group-item p-1">- Foto Akta Anda: <span class="badge badge-default">'+statusakta[0]+'</span></li><li class="list-group-item p-1">- Foto Luar Bangunan Anda : <span class="badge badge-default">'+statusluar[0]+'</span></li><li class="list-group-item p-1">- Foto Dalam Bangunan Anda: <span class="badge badge-default">'+statusdalam[0]+'</span></li><li class="list-group-item p-1">- Berkas Izin Mendirikan Bangunan Anda: <span class="badge badge-default">'+statusimb[0]+'</span></li><li class="list-group-item p-1">- Berkas Sertifikat Layak Fungsi: <span class="badge badge-default">'+statusslf[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan: <span class="badge badge-default">'+statusdamkar[0]+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi: <span class="badge badge-default">'+statustkt[0]+'</span></li><li class="list-group-item p-1">- Berkas Asuransi Toko: <span class="badge badge-default">'+statusasu[0]+'</span></li><li class="list-group-item p-1">- Bukti Pemutahiran PBB: <span class="badge badge-default">'+statuspbb[0]+'</span></li><li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span class="badge badge-default">'+statusperw[0]+'</span></li><li class="list-group-item p-1">- Berkas Rekomendasi UMKM: <span class="badge badge-default">'+statusumkm[0]+'</span></li><li class="list-group-item p-1">- Berkas Kajian Sosial Ekonomi: <span class="badge badge-default">'+statuskajian[0]+'</span></li></ul></div></div>'); 
 										}
 									}
 								}

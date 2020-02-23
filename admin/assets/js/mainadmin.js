@@ -560,6 +560,8 @@ datadetailPemohon:function() {
 				$('#alamatpemohon').text(alamat);
 				$('#lat').val(lat);
 				$('#long').val(lon);
+				$('#idadmin').val(localStorage.getItem('idadmin'));
+				$('#codebangunan').val(localStorage.getItem("idbangunanadmin"));
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permoohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
 				});
@@ -604,7 +606,7 @@ $("#inputadministrasi").submit(function (event) {
 		url: BASE_URL + 'OfficeController/InsertAdministrasi',
 		type: "POST",
 		dataType:'json',
-		data: {id_bangunan:localStorage.getItem('idbangunanadmin'),admin:localStorage.getItem('idadmin'),keterangan:$("#keterangan").val()},
+		data: data,
 		// contentType: false,
 		// cache: false,
 		// processData: false,
