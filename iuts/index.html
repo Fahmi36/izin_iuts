@@ -47,8 +47,33 @@
           </div>
           <a href="izin_koperasi.html" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">Izin Kelayakan dan Usaha Koperasi</label></a>
           <a href="https://jakevo.jakarta.go.id/" target="_blank" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">Izin Usaha Toko Kelontong/IUMK</label></a>
-          <!-- <p>Video tutorial Izin Usaha Toko Kelontong / IUMK</p>
-          <iframe src="" width="100%"></iframe> -->
+          <p><a href="#" style="text-decoration: none;" data-toggle="modal" data-target="#modalvideo">Video tutorial Izin Usaha Toko Kelontong / IUMK</a></p>
+
+          <div class="modal modal-backdrop fade" id="modalvideo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Video Tutorial</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="intro">
+                    <div class="popout-video">
+                      <video src="../video/iumk.mp4" playsinline controls class="intro-video" preload="auto" type="video/mp4" autoplay muted></video>
+                      <div class="popout-video__controls">
+                        <div class="close-video"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
         <div data-question="2" class="ijin__step--2 ijin__step mb-150">
@@ -1493,7 +1518,7 @@
 
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/bootstrap.js"></script>
-  <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script>
+  <!-- <script src="assets/js/jquery.serializeJSON/jquery.serializejson.min.js"></script> -->
   <script src="assets/js/jquery.easing.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.2.0/sweetalert2.all.min.js"></script>
   <script src="assets/js/iuts.js"></script>
