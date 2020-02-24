@@ -275,217 +275,203 @@
 												</button>
 											</h5>
 										</div>
-
 										<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
 											<div class="card-body">
-												<div class="card">
-													<div class="card-header no-padd" id="headingOne">
-														<h5 class="mb-0">
-															<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-																<i class="fa fa-minus main"></i><i class="fa fa-angle-double-right mr-3"></i>Resume
-															</button>
-														</h5>
-													</div> 
-
-													<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
-														<div class="card-body">
-															<!-- <div id="cardReview"></div> -->
-															<ul class="accordion accordion-resume">
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Administrasi Pemohon</a>
-																	<ul class="inner show" style="display: block;">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Status Pemohon: <span id="status_pemohon"></span></li>
-																					<li class="list-group-item p-1">- Nama Penanggung Jawab: <span id="nama_pj"></span></li>
-																					<li class="list-group-item p-1">- Jabatan: <span id="jabatan"></span></li>
-																					<li class="list-group-item p-1">- NIK Penanggung Jawab: <span id="nik"></span></li>
-																					<li class="list-group-item p-1">- NIB Penanggung Jawab: <span id="nib"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- NPWP Penanggung Jawab: <span id="npwp"></span></li>
-																					<li class="list-group-item p-1">- Alamat Perusahaan: <span id="alamat_p"></span></li>
-																					<li class="list-group-item p-1">- Nomor telepon/fax: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Email Aktif: <span id="email"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+												<!-- <div id="cardReview"></div> -->
+												<ul class="accordion accordion-resume">
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Administrasi Pemohon</a>
+														<ul class="inner show" style="display: block;">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Status Pemohon: <span id="status_pemohon"></span></li>
+																		<li class="list-group-item p-1">- Nama Penanggung Jawab: <span id="nama_pj"></span></li>
+																		<li class="list-group-item p-1">- Jabatan: <span id="jabatan"></span></li>
+																		<li class="list-group-item p-1">- NIK Penanggung Jawab: <span id="nik"></span></li>
+																		<li class="list-group-item p-1">- NIB Penanggung Jawab: <span id="nib"></span></li>
 																	</ul>
-																</li>
-
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Umum Bangunan</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- NOPD Bangunan: <span id="nopd_b"></span></li>
-																					<li class="list-group-item p-1">- Luas Lahan: <span id="luas_lahan"></span></li>
-																					<li class="list-group-item p-1">- Status Kepemilikan Lahan: <span id="status_lahan"></span></li>
-																					<li class="list-group-item p-1">- Luas Tapak Bangunan: <span id="luas_tapak"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Jumlah Lantai: <span id="jumlah_lantai"></span></li>
-																					<li class="list-group-item p-1">- Luas Total Bangunan: <span id="luas_total"></span></li>
-																					<li class="list-group-item p-1">- Tinggi Bangunan: <span id="tinggi_bangunan"></span></li>
-																					<li class="list-group-item p-1">- Peruntukan Bangunan: <span id="peruntukan_bangunan"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- NPWP Penanggung Jawab: <span id="npwp"></span></li>
+																		<li class="list-group-item p-1">- Alamat Perusahaan: <span id="alamat_p"></span></li>
+																		<li class="list-group-item p-1">- Nomor telepon/fax: <span id="nomor_telp"></span></li>
+																		<li class="list-group-item p-1">- Email Aktif: <span id="email"></span></li>
 																	</ul>
-																</li>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Keseimbangan, Keserasian, Keselarasan Lingkungan</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Luas Daerah Hijau: <span id="luas_daerah_h"></span></li>
-																					<li class="list-group-item p-1">- Kondisi KDH: <span id="kondisi_kdh"></span></li>
-																					<li class="list-group-item p-1">- Volume Sumur Resapan: <span id="volume_sumur"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span id="kondisi_pertandaan_t"></span></li>
-																					<li class="list-group-item p-1">- Kondisi Sumur Resapan: <span id="kondisi_sumur"></span></li>
-																					<li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span id="drainase"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Umum Bangunan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- NOPD Bangunan: <span id="nopd_b"></span></li>
+																		<li class="list-group-item p-1">- Luas Lahan: <span id="luas_lahan"></span></li>
+																		<li class="list-group-item p-1">- Status Kepemilikan Lahan: <span id="status_lahan"></span></li>
+																		<li class="list-group-item p-1">- Luas Tapak Bangunan: <span id="luas_tapak"></span></li>
 																	</ul>
-																</li>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Jumlah Lantai: <span id="jumlah_lantai"></span></li>
+																		<li class="list-group-item p-1">- Luas Total Bangunan: <span id="luas_total"></span></li>
+																		<li class="list-group-item p-1">- Tinggi Bangunan: <span id="tinggi_bangunan"></span></li>
+																		<li class="list-group-item p-1">- Peruntukan Bangunan: <span id="peruntukan_bangunan"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Keselamatan dan Keamanan</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Izin Mendirikan Bangunan: <span id="imb"></span></li>
-																					<li class="list-group-item p-1">- Sertifikat Layak Fungsi: <span id="slf"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Ketersediaan Asuransi Toko: <span id="asuransi"></span></li>
-																					<li class="list-group-item p-1">- Waktu Pembaharuan Terakhir Kelayakan Gedung: <span id="layak_gedung"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Keseimbangan, Keserasian, Keselarasan Lingkungan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Luas Daerah Hijau: <span id="luas_daerah_h"></span></li>
+																		<li class="list-group-item p-1">- Kondisi KDH: <span id="kondisi_kdh"></span></li>
+																		<li class="list-group-item p-1">- Volume Sumur Resapan: <span id="volume_sumur"></span></li>
 																	</ul>
-																</li>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span id="kondisi_pertandaan_t"></span></li>
+																		<li class="list-group-item p-1">- Kondisi Sumur Resapan: <span id="kondisi_sumur"></span></li>
+																		<li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span id="drainase"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Kesehatan</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Ketersediaan Air Bersih: <span id="air_bersih"></span></li>
-																					<li class="list-group-item p-1">- Sumber Air Bersih: <span id="sumber_air"></span></li>
-																					<li class="list-group-item p-1">- Pengelolaan Air Kotor/Limbah: <span id="limbah"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Pengelolaan Sampah: <span id="sampah"></span></li>
-																					<li class="list-group-item p-1">- Ketersediaan Listrik: <span id="listrik"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Keselamatan dan Keamanan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Izin Mendirikan Bangunan: <span id="imb"></span></li>
+																		<li class="list-group-item p-1">- Sertifikat Layak Fungsi: <span id="slf"></span></li>
 																	</ul>
-																</li>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Ketersediaan Asuransi Toko: <span id="asuransi"></span></li>
+																		<li class="list-group-item p-1">- Waktu Pembaharuan Terakhir Kelayakan Gedung: <span id="layak_gedung"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Kemudahan</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-12">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Ketersediaan Toilet: <span id="status_pemohon"></span></li>
-																					<li class="list-group-item p-1">- Ketersediaan Parkir: <span id="np_jawab"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kesehatan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ketersediaan Air Bersih: <span id="air_bersih"></span></li>
+																		<li class="list-group-item p-1">- Sumber Air Bersih: <span id="sumber_air"></span></li>
+																		<li class="list-group-item p-1">- Pengelolaan Air Kotor/Limbah: <span id="limbah"></span></li>
 																	</ul>
-																</li>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Pengelolaan Sampah: <span id="sampah"></span></li>
+																		<li class="list-group-item p-1">- Ketersediaan Listrik: <span id="listrik"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Administrasi Usaha</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Nomor Objek Pajak Daerah Usaha: <span id="status_pemohon">Perorangan</span></li>
-																					<li class="list-group-item p-1">- Nilai Jual Objek Pajak: <span id="np_jawab"></span></li>
-																					<li class="list-group-item p-1">- Nama Toko: <span id="np_jawab"></span></li>
-																					<li class="list-group-item p-1">- Kelompok Usaha: <span id="np_jawab"></span></li>
-																					<li class="list-group-item p-1">- Nama Badan Usaha: <span id="np_jawab"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Kategori Usaha : <span id="nik"></span></li>
-																					<li class="list-group-item p-1">- Omset Usaha Per-bulan: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Peruntukkan IMB untuk Toko Anda: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Status Bangunan yang Digunakan Usaha: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Alamat Usaha: <span id="nomor_telp"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kemudahan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-12">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ketersediaan Toilet: <span id="ketertoilet"></span></li>
+																		<li class="list-group-item p-1">- Ketersediaan Parkir: <span id="keterparkir"></span></li>
 																	</ul>
-																</li>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Kebermanfaatan Usaha</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Pemutahiran PBB: <span id="status_pemohon"></span></li>
-																					<li class="list-group-item p-1">- Keterlibatan UMKM: <span id="np_jawab"></span></li>
-																					<li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span id="np_jawab"></span></li>
-																					<li class="list-group-item p-1">- Jumlah Karyawan: <span id="np_jawab"></span></li>
-																				</ul>
-																			</div>
-																			<div class="col-md-6">
-																				<ul class="list-group list-group-flush">
-																					<li class="list-group-item p-1">- Asal Karyawan : <span id="nik"></span></li>
-																					<li class="list-group-item p-1">- Jumlah instalasi mesin ATM: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Jumlah Pengunjung Per-bulan: <span id="nomor_telp"></span></li>
-																					<li class="list-group-item p-1">- Status Kepemilikan Usaha: <span id="nomor_telp"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Administrasi Usaha</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Nomor Objek Pajak Daerah Usaha: <span id="nopdusaha">Perorangan</span></li>
+																		<li class="list-group-item p-1">- Nilai Jual Objek Pajak: <span id="njop"></span></li>
+																		<li class="list-group-item p-1">- Nama Toko: <span id="nama_toko"></span></li>
+																		<li class="list-group-item p-1">- Kelompok Usaha: <span id="namakelompok"></span></li>
+																		<li class="list-group-item p-1">- Nama Badan Usaha: <span id="namabadanusaha"></span></li>
 																	</ul>
-																</li>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Kategori Usaha : <span id="kategoriusaha"></span></li>
+																		<li class="list-group-item p-1">- Omset Usaha Per-bulan: <span id="omsetperbulan"></span></li>
+																		<li class="list-group-item p-1">- Peruntukkan IMB untuk Toko Anda: <span id="imbtoko"></span></li>
+																		<li class="list-group-item p-1">- Status Bangunan yang Digunakan Usaha: <span id="statusbangunan"></span></li>
+																		<li class="list-group-item p-1">- Alamat Usaha: <span id="alamatusaha"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
 
-																<li>
-																	<a class="toggle" href="javascript:void(0);">Data Antisipasi Dampak/Resiko</a>
-																	<ul class="inner">
-																		<div class="row">
-																			<div class="col-md-12">
-																				<ul class="list-group list-group-flush mb-3">
-																					<li class="list-group-item p-1">- Ada Rekomendasi UMKM : <span id="status_pemohon"></span></li>
-																					<li class="list-group-item p-1">- Kajian Sosial Ekonomi: <span id="np_jawab"></span></li>
-																				</ul>
-																			</div>
-																		</div>
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kebermanfaatan Usaha</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Pemutahiran PBB: <span id="pempbb"></span></li>
+																		<li class="list-group-item p-1">- Keterlibatan UMKM: <span id="ketumkm"></span></li>
+																		<li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span id="perwarga"></span></li>
+																		<li class="list-group-item p-1">- Jumlah Karyawan: <span id="jumlahkarya"></span></li>
 																	</ul>
-																</li>
-															</ul>
-														</div>
-													</div>
-												</div>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Asal Karyawan : <span id="asalkaryawan"></span></li>
+																		<li class="list-group-item p-1">- Jumlah instalasi mesin ATM: <span id="jmlmesin"></span></li>
+																		<li class="list-group-item p-1">- Jumlah Pengunjung Per-bulan: <span id="pengbulan"></span></li>
+																		<li class="list-group-item p-1">- Status Kepemilikan Usaha: <span id="statusmilik"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Antisipasi Dampak/Resiko</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-12">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ada Rekomendasi UMKM : <span id="rekumkm"></span></li>
+																		<li class="list-group-item p-1">- Kajian Sosial Ekonomi: <span id="kajsostek"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+												</ul>
 											</div>
 										</div>
+
 									</div>
 									<div class="card">
 										<div class="card-header no-padd" id="headingTwo">
