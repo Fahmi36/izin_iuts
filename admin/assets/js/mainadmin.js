@@ -199,9 +199,7 @@ function datadetailPemohon(id) {
 					id_kasostek.push(data.row[coba].id_kasostek);
 					id_umkm.push(data.row[coba].id_umkm);
 					id_pem_pbb.push(data.row[coba].id_pem_pbb);
-					id_warga.push(data.row[coba].id_warga);				
-					id_layak.push(data.row[coba].id_layak);				
-					id_kasostek.push(data.row[coba].id_kasostek);				
+					id_warga.push(data.row[coba].id_warga);						
 					no_imb.push(data.row[coba].no_imb);				
 					kelompok.push(data.row[coba].kelompok);				
 					omset.push(data.row[coba].omset);				
