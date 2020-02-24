@@ -430,9 +430,9 @@ function datadetailPemohon(id) {
 			} 
 		}
 	});
-			}
-		}
-	});
+}
+}
+});
 }
 function detailSuratsk(id) {
 	$.ajax({
