@@ -304,7 +304,7 @@ function datadetailPemohon(id) {
 						url: BASE_URL + 'OfficeController/detailBangunanDinas',
 						type: 'POST',
 						dataType: 'json',
-						data: datas,
+						data: {id:id},
 						success:function(data) {
 							if (data.success) {
 								jQuery('#loader').fadeOut('slow');
