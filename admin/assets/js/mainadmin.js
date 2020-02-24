@@ -603,7 +603,7 @@ datadetailPemohon:function() {
 $("#inputadministrasi").submit(function (event) {
 	var data = new FormData($(this)[0]);
 	$.ajax({
-		url: BASE_URL + 'OfficeController/InsertAdministrasi',
+		url: BASE_URL + 'ValidasiController/ValidasiFoto',
 		type: "POST",
 		dataType:'json',
 		data: data,
