@@ -80,6 +80,8 @@ function Detailpemohon(id) {
 
 				/* Data Umum Bangunan */
 				var nopd = [];
+				var njop = [];
+				var nama_toko = [];
 				var luas_lahan = [];
 				var status_bangunan = [];
 				var luas_tapak = [];
@@ -201,6 +203,8 @@ function Detailpemohon(id) {
 					jml_pengunjung.push(data.row[coba].jml_pengunjung);				
 					id_toilet.push(data.row[coba].id_toilet);				
 					id_parkir.push(data.row[coba].id_parkir);				
+					njop.push(data.row[coba].njop);				
+					nama_toko.push(data.row[coba].nama_toko);				
 				}
 				if (data.rowCount > 0) {
 					$('#idbangunan').val(id);
