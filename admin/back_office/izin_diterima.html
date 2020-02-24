@@ -255,7 +255,7 @@
 				</div>
 
 				<!-- modal -->
-				<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
+								<div class="modal fade bd-example-modal-lg" tabindex="-1" id="detailPerizinan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static">
 					<div class="modal-dialog modal-lg">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -274,12 +274,203 @@
 												</button>
 											</h5>
 										</div>
-
 										<div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne" data-parent="#accordionExample">
 											<div class="card-body">
-												Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+												<!-- <div id="cardReview"></div> -->
+												<ul class="accordion accordion-resume">
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Administrasi Pemohon</a>
+														<ul class="inner show" style="display: block;">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Status Pemohon: <span  class="badge badge-default" id="status_pemohon"></span></li>
+																		<li class="list-group-item p-1">- Nama Penanggung Jawab: <span  class="badge badge-default" id="nama_pj"></span></li>
+																		<li class="list-group-item p-1">- Jabatan: <span  class="badge badge-default" id="jabatan"></span></li>
+																		<li class="list-group-item p-1">- NIK Penanggung Jawab: <span  class="badge badge-default" id="nik"></span></li>
+																		<li class="list-group-item p-1">- NIB Penanggung Jawab: <span  class="badge badge-default" id="nib"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- NPWP Penanggung Jawab: <span  class="badge badge-default" id="npwp"></span></li>
+																		<li class="list-group-item p-1">- Alamat Perusahaan: <span  class="badge badge-default" id="alamat_p"></span></li>
+																		<li class="list-group-item p-1">- Nomor telepon/fax: <span  class="badge badge-default" id="nomor_telp"></span></li>
+																		<li class="list-group-item p-1">- Email Aktif: <span  class="badge badge-default" id="email"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Umum Bangunan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- NOPD Bangunan: <span  class="badge badge-default" id="nopd_b"></span></li>
+																		<li class="list-group-item p-1">- Luas Lahan: <span  class="badge badge-default" id="luas_lahan"></span></li>
+																		<li class="list-group-item p-1">- Status Kepemilikan Lahan: <span  class="badge badge-default" id="status_lahan"></span></li>
+																		<li class="list-group-item p-1">- Luas Tapak Bangunan: <span  class="badge badge-default" id="luas_tapak"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Jumlah Lantai: <span  class="badge badge-default" id="jumlah_lantai"></span></li>
+																		<li class="list-group-item p-1">- Luas Total Bangunan: <span  class="badge badge-default" id="luas_total"></span></li>
+																		<li class="list-group-item p-1">- Tinggi Bangunan: <span  class="badge badge-default" id="tinggi_bangunan"></span></li>
+																		<li class="list-group-item p-1">- Peruntukan Bangunan: <span  class="badge badge-default" id="peruntukan_bangunan"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Keseimbangan, Keserasian, Keselarasan Lingkungan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Luas Daerah Hijau: <span  class="badge badge-default" id="luas_daerah_h"></span></li>
+																		<li class="list-group-item p-1">- Kondisi KDH: <span  class="badge badge-default" id="kondisi_kdh"></span></li>
+																		<li class="list-group-item p-1">- Volume Sumur Resapan: <span  class="badge badge-default" id="volume_sumur"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span  class="badge badge-default" id="kondisi_pertandaan_t"></span></li>
+																		<li class="list-group-item p-1">- Kondisi Sumur Resapan: <span  class="badge badge-default" id="kondisi_sumur"></span></li>
+																		<li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span  class="badge badge-default" id="drainase"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Keselamatan dan Keamanan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Izin Mendirikan Bangunan: <span  class="badge badge-default" id="imb"></span></li>
+																		<li class="list-group-item p-1">- Sertifikat Layak Fungsi: <span  class="badge badge-default" id="slf"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Ketersediaan Asuransi Toko: <span  class="badge badge-default" id="asuransi"></span></li>
+																		<li class="list-group-item p-1">- Waktu Pembaharuan Terakhir Kelayakan Gedung: <span  class="badge badge-default" id="layak_gedung"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kesehatan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ketersediaan Air Bersih: <span  class="badge badge-default" id="air_bersih"></span></li>
+																		<li class="list-group-item p-1">- Sumber Air Bersih: <span  class="badge badge-default" id="sumber_air"></span></li>
+																		<li class="list-group-item p-1">- Pengelolaan Air Kotor/Limbah: <span  class="badge badge-default" id="limbah"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Pengelolaan Sampah: <span  class="badge badge-default" id="sampah"></span></li>
+																		<li class="list-group-item p-1">- Ketersediaan Listrik: <span  class="badge badge-default" id="listrik"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kemudahan</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-12">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ketersediaan Toilet: <span  class="badge badge-default" id="ketertoilet"></span></li>
+																		<li class="list-group-item p-1">- Ketersediaan Parkir: <span  class="badge badge-default" id="keterparkir"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Administrasi Usaha</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Nomor Objek Pajak Daerah Usaha: <span  class="badge badge-default" id="nopdusaha">Perorangan</span></li>
+																		<li class="list-group-item p-1">- Nilai Jual Objek Pajak: <span  class="badge badge-default" id="njop"></span></li>
+																		<li class="list-group-item p-1">- Nama Toko: <span  class="badge badge-default" id="nama_toko"></span></li>
+																		<li class="list-group-item p-1">- Kelompok Usaha: <span  class="badge badge-default" id="namakelompok"></span></li>
+																		<li class="list-group-item p-1">- Nama Badan Usaha: <span  class="badge badge-default" id="namabadanusaha"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Kategori Usaha : <span  class="badge badge-default" id="kategoriusaha"></span></li>
+																		<li class="list-group-item p-1">- Omset Usaha Per-bulan: <span  class="badge badge-default" id="omsetperbulan"></span></li>
+																		<li class="list-group-item p-1">- Peruntukkan IMB untuk Toko Anda: <span  class="badge badge-default" id="imbtoko"></span></li>
+																		<li class="list-group-item p-1">- Status Bangunan yang Digunakan Usaha: <span  class="badge badge-default" id="statusbangunan"></span></li>
+																		<li class="list-group-item p-1">- Alamat Usaha: <span  class="badge badge-default" id="alamatusaha"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Kebermanfaatan Usaha</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Pemutahiran PBB: <span  class="badge badge-default" id="pempbb"></span></li>
+																		<li class="list-group-item p-1">- Keterlibatan UMKM: <span  class="badge badge-default" id="ketumkm"></span></li>
+																		<li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span  class="badge badge-default" id="perwarga"></span></li>
+																		<li class="list-group-item p-1">- Jumlah Karyawan: <span  class="badge badge-default" id="jumlahkarya"></span></li>
+																	</ul>
+																</div>
+																<div class="col-md-6">
+																	<ul class="list-group list-group-flush">
+																		<li class="list-group-item p-1">- Asal Karyawan : <span  class="badge badge-default" id="asalkaryawan"></span></li>
+																		<li class="list-group-item p-1">- Jumlah instalasi mesin ATM: <span  class="badge badge-default" id="jmlmesin"></span></li>
+																		<li class="list-group-item p-1">- Jumlah Pengunjung Per-bulan: <span  class="badge badge-default" id="pengbulan"></span></li>
+																		<li class="list-group-item p-1">- Status Kepemilikan Usaha: <span  class="badge badge-default" id="statusmilik"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+
+													<li>
+														<a class="toggle" href="javascript:void(0);">Data Antisipasi Dampak/Resiko</a>
+														<ul class="inner">
+															<div class="row">
+																<div class="col-md-12">
+																	<ul class="list-group list-group-flush mb-3">
+																		<li class="list-group-item p-1">- Ada Rekomendasi UMKM : <span  class="badge badge-default" id="rekumkm"></span></li>
+																		<li class="list-group-item p-1">- Kajian Sosial Ekonomi: <span  class="badge badge-default" id="kajsostek"></span></li>
+																	</ul>
+																</div>
+															</div>
+														</ul>
+													</li>
+												</ul>
 											</div>
 										</div>
+
 									</div>
 									<div class="card">
 										<div class="card-header no-padd" id="headingTwo">
@@ -311,60 +502,7 @@
 										<div id="collapseThree" class="collapse fade" aria-labelledby="headingThree" data-parent="#accordionExample">
 											<div class="card-body">
 												<div id="cardPenilaian">
-													<label><b>Rincian Nilai Permohonan Anda Sebagai Berikut:</b></label>
-													<p class="m-0">Nilai permohonan Anda pada tahap Admin Administrasi sebesar <span class="badge badge-default">(Nilai)</span></p>
-													<p class="m-0">Berikut ini adalah rincian nilai administrasi Anda:</p>
-													<ul class="list-group list-group-flush mb-3">
-														<li class="list-group-item p-1">- Kelengkapan Administrasi: <span class="badge badge-default">(Nilai)</span></li>
-														<li class="list-group-item p-1">- Sudah berapa lama mengajukan izin: <span class="badge badge-default">(Nilai)</span></li>
-														<li class="list-group-item p-1">- Status NPWP: <span class="badge badge-default">(Nilai)</span></li>
-														<li class="list-group-item p-1">- Status PBB: <span class="badge badge-default">(Nilai)</span></li>
-													</ul>
-													<p class="m-0">Nilai permohonan Anda pada tahap Admin Teknis sebesar <span class="badge badge-default">(Nilai)</span></p>
-													<p class="m-0">Berikut ini adalah rincian nilai teknis Anda:</p>
-													<div class="row">
-														<div class="col-md-6">
-															<ul class="list-group list-group-flush mb-3">
-																<li class="list-group-item p-1">- Jarak terhadap Pasar Tradisional: <span class="badge badge-default">(Nilai)</span></li>
-																<li class="list-group-item p-1">- Rencana jalan memadai: <span class="badge badge-default">(Nilai)</span></li>
-																<li class="list-group-item p-1">- Kesesuaian Rencana Tata Ruang: <span class="badge badge-default">(Nilai)</span></li>
-															</ul>
-														</div>
-														<div class="col-md-6">
-															<ul class="list-group list-group-flush">
-																<li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default">(Nilai)</span></li>
-																<li class="list-group-item p-1">- Jarak ke Usaha Sejenis: <span class="badge badge-default">(Nilai)</span></li>
-																<li class="list-group-item p-1">- Jalan eksisting memadai: <span class="badge badge-default">(Nilai)</span></li>
-															</ul>
-														</div>
-													</div>
-													<p class="m-0 text-center">Nilai akhir permohonan Anda sebesar <span class="badge badge-default">(Nilai)</span></p>
-													<!-- jika diterima -->
-													<p class="m-0 text-center">Perizinan Anda <span class="badge badge-success">Diterima</span></p>
-													<!-- end diterima -->
-
-													<!-- jika ditolak -->
-													<p class="m-0 text-center">Perizinan Anda <span class="badge badge-danger">Ditolak</span></p>
-													<!-- end ditolak -->
-												</div>
-												<div class="card mt-3">
-													<div class="card-body text-center" style="border-top: 1px solid rgba(0, 0, 0, .05);">
-														<!-- jika diterima -->
-														<p class="m-0">
-															Permohonan Anda <span class="badge badge-success">Diterima</span> oleh Kepala Dinas PMPTSP<br>
-															Silakan temui Admin Administrasi di Kantor PMPTSP Provinsi, Gedung Mal Pelayanan Publik<br>
-															<label><b>Pada Senin, 3 Februari 2020.</b></label>
-														</p>
-														<!-- diterima -->
-
-														<!-- jika ditolak -->
-														<p class="m-0">
-															Permohonan Anda <span class="badge badge-danger">Ditolak</span> oleh Kepala Dinas PMPTSP<br>
-															Pemohon diharapkan melengkapi dan memperbaiki persyaratan yang memiliki nilai rendah<br>
-															Silakan ajukan izin kembali apabila syarat benar-benar sudah memenuhi persyaratan yang berlaku
-														</p>
-														<!-- end ditolak -->
-													</div>
+													
 												</div>
 											</div>
 										</div>
@@ -380,12 +518,12 @@
 										<div id="collapseFour" class="collapse fade" aria-labelledby="headingFour" data-parent="#accordionExample">
 											<div class="card-body">
 												<div id="review">
-													<center><p class="text-default p-10">Tidak ada Catatan Petugas</p></center>
+													<center><p class="text-default p-10" id="reviewpetugas">Tidak ada Catatan Petugas</p></center>
 												</div>
 											</div>
 										</div>
 									</div>
-									<div class="card">
+									<!-- <div class="card">
 										<div class="card-header no-padd" id="headingFive">
 											<h5 class="mb-0">
 												<button class="btn btn-link collapsed btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
@@ -400,7 +538,7 @@
 												</div>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 								<br>
 							</div>
