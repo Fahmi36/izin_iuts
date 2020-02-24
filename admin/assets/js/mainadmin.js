@@ -65,9 +65,7 @@ function datadetailPemohon(id) {
 		},
 		success:function(data) {
 			if (data.success) {
-				jQuery('#loader').fadeOut('slow');
 				var code = [];
-				var nama = [];
 				var nib = [];
 				var npwp = [];
 				var tgl = [];
@@ -76,19 +74,163 @@ function datadetailPemohon(id) {
 				var kode_sublok = [];
 				var lat = [];
 				var lon = [];
+				/* data administrasi pemohon*/
+				var nama = [];
+				var jenis_pemohon = [];
+				var jabatan = [];
+				var nik = [];
+				var nib = [];
+				var npwp = [];
+				var alamat_usaha = [];
+				var no_hp = [];
+				var email = [];
+				/* data administrasi pemohon*/
+
+				/* Data Umum Bangunan */
+				var nopd = [];
+				var luas_lahan = [];
+				var status_bangunan = [];
+				var luas_tapak = [];
+				var jumlah_lantai = [];
+				var luas_total_bangunan = [];
+				var tinggi_bangunan = [];
+				var peruntukan_bangunan = [];
+				/* Data Umum Bangunan */
+
+				/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+				var id_kdh_minimum = [];
+				var id_kondisi_kdh = [];
+				var id_volume_sumur = [];
+				var id_pertandaan_toko = [];
+				var id_kondisi_sumur = [];
+				var id_drainase = [];
+				/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+				/* Data Keselamatan dan Keamanan */
+				var id_imb = [];
+				var id_layak = [];
+				var id_asuransi = [];
+				var id_renovasi = [];
+				/* Data Keselamatan dan Keamanan */
+
+				/* Data Kesehatan */
+				var id_bersih = [];
+				var sumber_air = [];
+				var id_limbah = [];
+				var id_sampah = [];
+				var id_listrik = [];
+				/* Data Kesehatan */
 				for(var coba in data.row){
 					code.push(data.row[coba].code);
-					nama.push(data.row[coba].nama);
-					nib.push(data.row[coba].nib);
-					npwp.push(data.row[coba].npwp);
 					alamat.push(data.row[coba].alamat);
 					zona.push(data.row[coba].zona);
 					kode_sublok.push(data.row[coba].kode_sublok);
+					tgl.push(data.row[coba].created_at);
 					lat.push(data.row[coba].lat);
 					lon.push(data.row[coba].lon);
-					tgl.push(data.row[coba].tanggal);
+					/* data administrasi pemohon*/
+					nama.push(data.row[coba].nama);
+					jenis_pemohon.push(data.row[coba].jenis_pemohon);
+					jabatan.push(data.row[coba].jabatan);
+					nik.push(data.row[coba].nik);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					alamat_usaha.push(data.row[coba].alamat_usaha);
+					no_hp.push(data.row[coba].no_hp);
+					email.push(data.row[coba].email);
+					/* data administrasi pemohon*/
 
+					/* Data Umum Bangunan */
+					nopd.push(data.row[coba].nopd);
+					luas_lahan.push(data.row[coba].luas_lahan);
+					status_bangunan.push(data.row[coba].status_bangunan);
+					luas_tapak.push(data.row[coba].luas_tapak);
+					jumlah_lantai.push(data.row[coba].jumlah_lantai);
+					luas_total_bangunan.push(data.row[coba].luas_total_bangunan);
+					tinggi_bangunan.push(data.row[coba].tinggi_bangunan);
+					peruntukan_bangunan.push(data.row[coba].peruntukan_bangunan);
+					/* Data Umum Bangunan */
+
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+					id_kdh_minimum.push(data.row[coba].id_kdh_minimum);
+					id_kondisi_kdh.push(data.row[coba].id_kondisi_kdh);
+					id_volume_sumur.push(data.row[coba].id_volume_sumur);
+					id_pertandaan_toko.push(data.row[coba].id_pertandaan_toko);
+					id_kondisi_sumur.push(data.row[coba].id_kondisi_sumur);
+					id_drainase.push(data.row[coba].id_drainase);
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+					/* Data Keselamatan dan Keamanan */
+					id_imb.push(data.row[coba].id_imb);
+					id_layak.push(data.row[coba].id_layak);
+					id_asuransi.push(data.row[coba].id_asuransi);
+					id_renovasi.push(data.row[coba].id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Kesehatan */
+					id_bersih.push(data.row[coba].id_bersih);
+					sumber_air.push(data.row[coba].sumber_air);
+					id_limbah.push(data.row[coba].id_limbah);
+					id_sampah.push(data.row[coba].id_sampah);
+					id_listrik.push(data.row[coba].id_listrik);
+					/* Data Kesehatan */
 				}
+				if (data.rowCount > 0) {
+					$('#idbangunan').val(id);
+					$('#lat').val(lat);
+					$('#long').val(lon);
+					/* data administrasi pemohon*/
+					$('#nama_pj').text(nama);
+					$('#status_pemohon').text(jenis_pemohon);
+					$('#jabatan').text(jabatan);
+					$('#nik').text(nik);
+					$('#nib').text(nib);
+					$('#npwp').text(npwp);
+					$('#alamat_p').text(alamat_usaha);
+					$('#nomor_telp').text(no_hp);
+					$('#email').text(email);
+					/* data administrasi pemohon*/
+
+					/* Data Umum Bangunan */
+					$('#nopd_b').text(nopd);
+					$('#luas_lahan').text(luas_lahan);
+					$('#status_lahan').text(status_bangunan);
+					$('#luas_tapak').text(luas_tapak);
+					$('#jumlah_lantai').text(jumlah_lantai);
+					$('#luas_total').text(luas_total_bangunan);
+					$('#tinggi_bangunan').text(tinggi_bangunan);
+					$('#peruntukan_bangunan').text(peruntukan_bangunan);
+					/* Data Umum Bangunan */
+
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+					$('#luas_daerah_h').text(id_kdh_minimum);
+					$('#kondisi_kdh').text(id_kondisi_kdh);
+					$('#volume_sumur').text(id_volume_sumur);
+					$('#kondisi_pertandaan_t').text(id_pertandaan_toko);
+					$('#kondisi_sumur').text(id_kondisi_sumur);
+					$('#drainase').text(id_drainase);
+					/* Data Keseimbangan, Keserasian, Keselarasan Lingkungan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#imb').text(id_imb);
+					$('#slf').text(id_layak);
+					$('#asuransi').text(id_asuransi);
+					$('#layak_gedung').text(id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#imb').text(id_imb);
+					$('#slf').text(id_layak);
+					$('#asuransi').text(id_asuransi);
+					$('#layak_gedung').text(id_renovasi);
+					/* Data Keselamatan dan Keamanan */
+
+					/* Data Keselamatan dan Keamanan */
+					$('#air_bersih').text(id_bersih);
+					$('#sumber_air').text(sumber_air);
+					$('#limbah').text(id_limbah);
+					$('#sampah').text(id_sampah);
+					$('#listrik').text(id_listrik);
 				$('#tokenbangunan').text(code);
 				$('#namabangunan').text(nama);
 				$('#nibpemohon').text(nib);
@@ -97,11 +239,197 @@ function datadetailPemohon(id) {
 				$('#zonasi').text(zona);
 				$('#kodesublock').text(kode_sublok);
 				$('#alamatpemohon').text(alamat);
-				$('#lat').val(lat);
-				$('#long').val(lon);
 				$('#cardReview').html('<div class="row"> <label class="col-md-6 col-form-label">Nomor Token :</label> <label class="col-md-6 col-form-label">'+code[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Nama Pemohon :</label> <label class="col-md-6 col-form-label">'+nama[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NIB :</label> <label class="col-md-6 col-form-label">'+nib[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">NPWP :</label> <label class="col-md-6 col-form-label">'+npwp[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Tanggal Permohonan :</label> <label class="col-md-6 col-form-label">'+tgl[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Status Zonasi :</label> <label class="col-md-6 col-form-label">'+zona[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Kode Sub Blok :</label> <label class="col-md-6 col-form-label">'+kode_sublok[0]+'</label> </div> <div class="row"> <label class="col-md-6 col-form-label">Alamat :</label> <label class="col-md-6 col-form-label">'+alamat[0]+'</label> </div>');
 				$.getScript("https://iuts.pkkmart.com/admin/assets/js/mapsadmin.js", function() {
 				});
+				$.ajax({
+		url: BASE_URL + 'OfficeController/detailBangunanDinas',
+		type: 'POST',
+		dataType: 'json',
+		data: {id:localStorage.getItem('idbangunanadmin')},
+		success:function(data) {
+			if (data.success) {
+				jQuery('#loader').fadeOut('slow');
+				var skorpbb = [];
+				var skornpwp = [];
+				var skorjalaneksis = [];
+				var skortataruang = [];
+				var skorjarakusaha = [];
+				var skorpenglahan = [];
+				var skorkondisieksis = [];
+				var skorpempbb = [];
+				var skorketumkm = [];
+				var skorsewa = [];
+				var skorwarga = [];
+				var skorrekumkm = [];
+				var skorslf = [];
+				var skorimb = [];
+				var skorkajian = [];
+				var skorvolsumur = [];
+				var skordrainase = [];
+				var skorkondisisumur = [];
+				var skorkdhmini = [];
+				var skorkondisikdh = [];
+				var skorpetandaan = [];
+				var skordamkar = [];
+				var skorfdamkar = [];
+				var skortkt = [];
+				var skorasuransi = [];								
+				var skorlayak = [];
+				var skorketersediaan = [];				
+				var skorlimbah = [];				
+				var skorsampah = [];				
+				var skorlistrik = [];
+				var skortoilet = [];								
+				var skorparkir = [];								
+				var code = [];
+				var nama = [];
+				var nib = [];
+				var npwp = [];
+				var status = [];
+				var tgl = [];
+				var alamat = [];
+				var ketadmin = [];
+				var ketteknis = [];
+				var ketdinas = [];
+				var zona = [];
+				var kode_sublok = [];
+				var skoradministrasi = [];
+				var skormanfaat = [];
+				var skordampak = [];
+				var skortax = [];
+				var lat = [];
+				var lon = [];
+				var skorjarakpasar = [];
+				var asalkaryawan = [];
+				for(var coba in data.row){
+					skorpbb.push(data.row[coba].skorpbb);
+					skornpwp.push(data.row[coba].skornpwp);
+					skorjalaneksis.push(data.row[coba].skorjalaneksis);
+					skortataruang.push(data.row[coba].skortataruang);
+					skorjarakusaha.push(data.row[coba].skorjarakusaha);
+					skorpenglahan.push(data.row[coba].skorpenglahan);
+					skorkondisieksis.push(data.row[coba].skorkondisieksis);
+					skorpempbb.push(data.row[coba].skorpempbb);
+					skorketumkm.push(data.row[coba].skorketumkm);
+					skorsewa.push(data.row[coba].skorsewa);
+					skorwarga.push(data.row[coba].skorwarga);
+					asalkaryawan.push(data.row[coba].asalkaryawan);
+					skorrekumkm.push(data.row[coba].skorrekumkm);
+					skorslf.push(data.row[coba].skorslf);
+					skorimb.push(data.row[coba].skorimb);
+					skorkajian.push(data.row[coba].skorkajian);
+					skorvolsumur.push(data.row[coba].skorvolsumur);
+					skordrainase.push(data.row[coba].skordrainase);
+					skorkondisisumur.push(data.row[coba].skorkondisisumur);
+					skorkdhmini.push(data.row[coba].skorkdhmini);
+					skorkondisikdh.push(data.row[coba].skorkondisikdh);
+					skorpetandaan.push(data.row[coba].skorpetandaan);
+					skordamkar.push(data.row[coba].skordamkar);
+					skorfdamkar.push(data.row[coba].skorfdamkar);
+					skortkt.push(data.row[coba].skortkt);
+					skorasuransi.push(data.row[coba].skorasuransi);
+					skorlayak.push(data.row[coba].skorlayak);
+					skorketersediaan.push(data.row[coba].skorketersediaan);
+					skorlimbah.push(data.row[coba].skorlimbah);
+					skorlistrik.push(data.row[coba].skorlistrik);
+					skorsampah.push(data.row[coba].skorsampah);
+					skortoilet.push(data.row[coba].skortoilet);
+					skorparkir.push(data.row[coba].skorparkir);
+					skorjarakpasar.push(data.row[coba].skorjarakpasar);
+					code.push(data.row[coba].code);
+					nama.push(data.row[coba].nama);
+					nib.push(data.row[coba].nib);
+					npwp.push(data.row[coba].npwp);
+					tgl.push(data.row[coba].tgl);
+					alamat.push(data.row[coba].alamat_usaha);
+					ketadmin.push(data.row[coba].ketadmin);
+					ketteknis.push(data.row[coba].ketteknis);
+					ketdinas.push(data.row[coba].ketdinas);
+					zona.push(data.row[coba].zona);
+					kode_sublok.push(data.row[coba].kode_sublok);
+
+					skoradministrasi.push(data.row[coba].skoradministrasi);
+					skormanfaat.push(data.row[coba].skormanfaat);
+					skordampak.push(data.row[coba].skordampak);
+					skortax.push(data.row[coba].skortax);
+
+					lat.push(data.row[coba].lat);
+					lon.push(data.row[coba].lon);
+
+				}
+
+				if (data.rowCount > 0) {
+					$('#ket_pemohon').removeAttr('style');
+					var totaladmin = parseFloat(skorkondisieksis);
+				var totalmanfaat = parseFloat(skorpempbb)+parseFloat(skorketumkm)+parseFloat(skorpenglahan)+parseFloat(asalkaryawan);
+				var totaldampak = parseFloat(skorjarakpasar)+parseFloat(skorjarakusaha)+parseFloat(skorrekumkm)+parseFloat(skorkajian);
+				/*iuts*/
+				
+				/*slf*/
+				var totalkeseimbangan = parseFloat(skorkondisikdh)+parseFloat(skorvolsumur)+parseFloat(skorpetandaan)+parseFloat(skorkondisisumur)+parseFloat(skordrainase)+parseFloat(skorjalaneksis);
+				var totalkeamanan = parseFloat(skorimb)+parseFloat(skorslf)+parseFloat(skordamkar)+parseFloat(skortkt)+parseFloat(skorfdamkar)+parseFloat(skorasuransi)+parseFloat(skorlayak);
+				var totalkesehatan = parseFloat(skorketersediaan)+parseFloat(skorlimbah)+parseFloat(skorsampah)+parseFloat(skorlistrik);
+				var totalkemudahan = parseFloat(skortoilet)+parseFloat(skorparkir);
+				/*slf*/
+
+				/*iuts*/
+				var hasiladmin = parseFloat(totaladmin/1);
+				var hasilmanfaat = parseFloat(totalmanfaat/4);
+				var hasildampak = parseFloat(totaldampak/4);
+				/*iuts*/
+				
+				var totaltax = parseFloat(skorpbb)*parseFloat(skornpwp);
+
+				/*slf*/
+				var hasilkeseimbangan = parseFloat(totalkeseimbangan/6);
+				var hasilkeamanan = parseFloat(totalkeamanan/7);
+				var hasilkesehatan = parseFloat(totalkesehatan/4);
+				var hasilkemudahan = parseFloat(totalkemudahan/2);
+				/*slf*/
+
+				/*iuts*/
+				$('#totaladminis').text(String(hasiladmin).substr(0, 4));
+				/*iuts*/
+
+				$('#totaltax').text(totaltax);
+
+				/*iuts*/
+				var total = parseFloat(String(hasilmanfaat).substr(0, 4))+parseFloat(String(hasildampak).substr(0, 4));
+				var akumulasi = parseFloat(total/2)
+				var totalasli = 1 * parseFloat(akumulasi);
+				/*iuts*/
+
+				var totalslf = parseFloat(String(hasilkeseimbangan).substr(0, 4))+parseFloat(String(hasilkeamanan).substr(0, 4))+parseFloat(String(hasilkesehatan).substr(0, 4))+parseFloat(String(hasilkemudahan).substr(0, 4));
+				var akumulasislf = parseFloat(totalslf/4)
+				var totalaslislf = 1 * parseFloat(akumulasislf);
+
+				if (parseFloat(totalasli) < 1.5) {
+					var statuswebsite = 'Di Tolak';
+				}else if (parseFloat(totalasli) < 2.5) {
+					var statuswebsite = 'Di Terima Dengan Catatan';
+				}else if(parseFloat(totalasli) > 2.5) {
+					var statuswebsite = 'Di Terima';
+				}
+
+				if (parseFloat(totalaslislf) < 1.5) {
+					var statuswebsiteslf = 'Di Tolak';
+				}else if (parseFloat(totalaslislf) < 2.5) {
+					var statuswebsiteslf = 'Di Terima Dengan Catatan';
+				}else if(parseFloat(totalaslislf) > 2.5) {
+					var statuswebsiteslf = 'Di Terima';
+				}
+					if (tgl[0] == '0000-00-00' || tgl[0] == null) {
+						var tanggal = 'Belum ada Tanggal';
+					}else{
+						var tanggal = tgl[0];
+					}
+					$('#reviewpetugas').html('<label>Catatan Administrasi</label><p>'+ketadmin+'</p><label>Catatan Admin Teknis</label><p>'+ketteknis+'</p><label>Catatan Kepala Dinas</label><p>'+ketdinas+'</p>')
+				$('#cardPenilaian').html('<ul class="accordion accordion-resume"><li class="accordion-li"><a class="toggle" href="javascript:void(0);">SLF</a><ul class="inner show" style="display: block;"><div id=""><p class="m-0">Nilai permohonan ini pada kategori Data Keseimbangan, Keserasian, Keselarasan Lingkungan sebesar<span class="badge badge-default" id="totalkeseimbangan">'+String(hasilkeseimbangan).substr(0, 4)+'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Kondisi KDH: <span class="badge badge-default" id="konkdh">'+skorkondisikdh[0] +'</span></li><li class="list-group-item p-1">- Volume Sumur Resapan: <span class="badge badge-default" id="sumurserap">'+skorvolsumur[0] +'</span></li><li class="list-group-item p-1">- Kondisi Pertandaan Toko: <span class="badge badge-default" id="konpertoko">'+skorpetandaan[0]+'</span></li><li class="list-group-item p-1">- Jalan Eksisting Memadai: <span class="badge badge-default" id="eksismadai">'+skorjalaneksis[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Kondisi Sumur Resapan: <span class="badge badge-default" id="kondisisumur">'+skorkondisisumur[0]+'</span></li><li class="list-group-item p-1">- Drainase Disekeliling Tapak: <span class="badge badge-default" id="drainasesek">'+skordrainase[0]+'</span></li></ul></div></div><p class="m-0">Nilai permohonan ini pada kategori Keselamatan dan Keamanan sebesar <span class="badge badge-default" id="totalkeamanan">'+String(hasilkeamanan).substr(0, 4)+'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Izin Mendirikan Bangunan : <span class="badge badge-default" id="imbeksis">'+skorimb[0]+'</span></li><li class="list-group-item p-1">- Sertifikat Layak Fungsi: <span class="badge badge-default" id="slfeksis">'+skorslf[0]+'</span></li><li class="list-group-item p-1">- Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan: <span class="badge badge-default" id="damkar">'+skordamkar[0]+'</span></li><li class="list-group-item p-1">- Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi: <span class="badge badge-default" id="tkt">'+skortkt[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Fasilitas Penanggulangan Kebakaran: <span class="badge badge-default" id="fdamkar">'+skorfdamkar[0]+'</span></li><li class="list-group-item p-1">- Ketersediaan Asuransi Toko: <span class="badge badge-default" id="asuransi">'+skorasuransi[0] +'</span></li><li class="list-group-item p-1">- Waktu Pembaharuan Terakhir Kelayakan Gedung: <span class="badge badge-default" id="layak">'+skorlayak[0]+'</span></li></ul></div></div><p class="m-0">Nilai permohonan ini pada kategori Kesehatan sebesar <span class="badge badge-default" id="totalkesehatan">'+String(hasilkesehatan).substr(0, 4)+'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Ketersediaan Air Bersih: <span class="badge badge-default" id="ketair">'+skorketersediaan[0]+'</span></li><li class="list-group-item p-1">- Pengelolaan Air Kotor/Limbah: <span class="badge badge-default" id="limbah">'+skorketersediaan[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Pengelolaan Sampah: <span class="badge badge-default" id="sampah">'+ skorsampah[0]+'</span></li><li class="list-group-item p-1">- Ketersediaan Listrik: <span class="badge badge-default" id="listrik">'+skorlistrik[0] +'</span></li></ul></div></div><p class="m-0">Nilai permohonan ini pada kategori Kemudahan sebesar <span class="badge badge-default" id="totalkemudahan">'+String(hasilkemudahan).substr(0, 4)+'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Ketersediaan Toilet: <span class="badge badge-default" id="toilet">'+skortoilet[0]+'</span></li><li class="list-group-item p-1">- Ketersediaan Parkir: <span class="badge badge-default" id="parkir">'+skorparkir[0]+'</span></li></ul><p class="m-0 text-center">Nilai akhir permohonan ini sebesar <span class="badge badge-default" id="totalakhir3">'+String(totalaslislf).substr(0, 4)+'</span></p><p class="m-0 text-center">Perizinan SLF ini <span class="badge badge-success" id="statuswebslf">'+statuswebsiteslf+'</span></p></div></ul></li><li class="accordion-li"><a class="toggle" href="javascript:void(0);">IUTS</a><ul class="inner show" style="display: block;"><div id=""><p class="m-0">Nilai permohonan ini pada kategori Kebermanfaatan Usaha <span class="badge badge-default" id="totalmanfaat">'+String(hasilmanfaat).substr(0, 4)+'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Pemutakhiran PBB: <span class="badge badge-default" id="pempbb">'+skorpempbb[0]+'</span></li><li class="list-group-item p-1">- Keterlibatan UMKM: <span class="badge badge-default" id="ketumkm">'+skorketumkm[0]+'</span></li><li class="list-group-item p-1">- Persetujuan Warga Sekitar: <span class="badge badge-default" id="setwarga">'+skorwarga[0]+'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Penggunaan lahan sekitar: <span class="badge badge-default" id="penglahan">'+skorpenglahan[0]+'</span></li></ul></div></div><p class="m-0">Nilai permohonan ini pada kategori Antisipasi Dampak/Resiko sebesar <span class="badge badge-default" id="totaldampak">'+String(hasildampak).substr(0, 4) +'</span></p><p class="m-0">Berikut ini adalah rincian nilai:</p><div class="row"><div class="col-md-6"><ul class="list-group list-group-flush mb-3"><li class="list-group-item p-1">- Jarak rencana terhadap Pasar Tradisional: <span class="badge badge-default" id="jarakpasar">'+skorjarakpasar[0]+'</span></li><li class="list-group-item p-1">- Jarak ke usaha sejenis: <span class="badge badge-default" id="jarakusaha">'+skorjarakusaha[0] +'</span></li></ul></div><div class="col-md-6"><ul class="list-group list-group-flush"><li class="list-group-item p-1">- Ada rekomendasi UMKM: <span class="badge badge-default" id="rekumkm">'+skorrekumkm[0]+'</span></li><li class="list-group-item p-1">- Kajian sostek: <span class="badge badge-default" id="kajiansostek">'+skorkajian[0]+'</span></li></ul></div></div><p class="m-0 text-center">Nilai akhir permohonan IUTS ini sebesar <span class="badge badge-default" id="totalakhir">'+String(totalasli).substr(0, 4)+'</span></p><p class="m-0 text-center">Perizinan IUTS ini <span class="badge badge-success" id="statusweb">'+statuswebsite+'</span></p></div></ul></li><li class="accordion-li"><a class="toggle" href="javascript:void(0);">Catatan Kepala Dinas</a><ul class="inner show" style="display: block;"><div id=""><p>'+ketdinas[0]+'</p></div></ul></li></ul>'); 
+				} 
+			} 
+		}
+	});
 			}
 		}
 	});
