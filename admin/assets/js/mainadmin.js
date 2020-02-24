@@ -607,9 +607,9 @@ $("#inputadministrasi").submit(function (event) {
 		type: "POST",
 		dataType:'json',
 		data: data,
-		// contentType: false,
-		// cache: false,
-		// processData: false,
+		contentType: false,
+		cache: false,
+		processData: false,
 		beforeSend:function(argument) {
 			$(".loader-overlay").removeAttr('style');
 		},
