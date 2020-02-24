@@ -136,6 +136,8 @@ function datadetailPemohon(id) {
 				var jml_karyawan = [];
 				var jml_atm = [];
 				var jml_pengunjung = [];
+				var id_toilet = [];
+				var id_parkir = [];
 
 				for(var coba in data.row){
 					code.push(data.row[coba].code);
@@ -207,6 +209,8 @@ function datadetailPemohon(id) {
 					jml_karyawan.push(data.row[coba].jml_karyawan);				
 					jml_atm.push(data.row[coba].jml_atm);				
 					jml_pengunjung.push(data.row[coba].jml_pengunjung);				
+					id_toilet.push(data.row[coba].id_toilet);				
+					id_parkir.push(data.row[coba].id_parkir);				
 				}
 				if (data.rowCount > 0) {
 					$('#idbangunan').val(id);
