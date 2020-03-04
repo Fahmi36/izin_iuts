@@ -52,7 +52,6 @@ $("#status_nib").on("change", function() {
         $("#select-waralaba").html("");
     }
 });
-
 function rekomendasislf() {
     if ($("#rekomendasi_slf option:selected").val() != 1 &&  $("#rekomendasi_slf option:selected").val() != 2) {
         $("#uploadReSLF").removeAttr('style');
