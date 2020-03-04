@@ -26,6 +26,7 @@
 	<link href="../assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 	<link href="../assets/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" href="https://js.arcgis.com/4.8/esri/css/main.css">
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" type="text/css">
 </head>
 </head>
 <body>
@@ -300,7 +301,11 @@
 																</td>
 																<td>1</td>
 																<td>KTP</td>
-																<td id="fotoktp"></td>
+																<td>
+																	<a href="" class="thumbnail fancybox" rel="ligthbox" href="http://placehold.it/300x320.png">
+																		<img class="img-responsive" alt="" src="http://placehold.it/320x320.png" />
+																	</a>
+																</td>
 															</tr>
 															<tr>
 																<td class="zui-sticky-col">
@@ -654,12 +659,20 @@
 	<script src="../assets/js/mapsadmin.js"></script>
 	<script src="https://js.arcgis.com/4.8/"></script>
 	<script src="../assets/js/mapsadmin.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 	<script type="text/javascript">
 		timeline.datadetailPemohon();
     	// timeline.datadetailFotoPemohon();
     	jQuery(window).load(function () {
     		jQuery('#loader').fadeOut('slow');
     	});
+    	$(document).ready(function(){
+		    //FANCYBOX
+		    $(".fancybox").fancybox({
+		        openEffect: "none",
+		        closeEffect: "none"
+		    });
+		});
     </script>
     <script type="text/javascript">
     	$(".scrollbar").addClass("thin");
