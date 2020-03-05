@@ -1261,6 +1261,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Tidak ada Data',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else if(datapajak.pesan == "Panjang Karakter Kurang dari 15"){
                                     $('#page-loader').fadeOut('slow');
                                     swal({
@@ -1268,6 +1269,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else if(datapajak.errorCode == "32"){
                                     $('#page-loader').fadeOut('slow');
                                     swal({
@@ -1275,6 +1277,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else if(datapajak.errorCode == "34"){
                                     $('#page-loader').fadeOut('slow');
                                     swal({
@@ -1282,6 +1285,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else if(datapajak.errorCode == "99"){
                                     $('#page-loader').fadeOut('slow');
                                     swal({
@@ -1289,6 +1293,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else if(datapajak.errorCode == "4"){
                                     $('#page-loader').fadeOut('slow');
                                     swal({
@@ -1296,6 +1301,7 @@ $('#btn-modalmaps').click(function(event) {
                                         title: 'Angka NIK / NPWP Kurang Dari 15',
                                         showCancelButton: true
                                     });
+                                    UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                 }else{
                                     for (var i =0; i < datapajak.length; i++) {
                                         if (datapajak[i].JNS_PAJAK == "PBB" && datapajak[i].NOPD == $('#nopd_bangunan').val()) {
@@ -1317,6 +1323,7 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Tidak ada Data',
                                                                 showCancelButton: true
                                                             });
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else if(response.pesan == "Panjang Karakter Kurang dari 15"){
                                                             $('#page-loader').fadeOut('slow');
                                                             swal({
@@ -1324,6 +1331,8 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
                                                                 showCancelButton: true
                                                             });
+
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else if(response.errorCode == "32"){
                                                             $('#page-loader').fadeOut('slow');
                                                             swal({
@@ -1331,6 +1340,7 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                                                 showCancelButton: true
                                                             });
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else if(response.errorCode == "34"){
                                                             $('#page-loader').fadeOut('slow');
                                                             swal({
@@ -1338,6 +1348,7 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                                                 showCancelButton: true
                                                             });
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else if(response.errorCode == "99"){
                                                             $('#page-loader').fadeOut('slow');
                                                             swal({
@@ -1345,6 +1356,7 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
                                                                 showCancelButton: true
                                                             });
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else if(response.errorCode == "4"){
                                                             $('#page-loader').fadeOut('slow');
                                                             swal({
@@ -1352,6 +1364,8 @@ $('#btn-modalmaps').click(function(event) {
                                                                 title: 'Angka NIK / NPWP Kurang Dari 15',
                                                                 showCancelButton: true
                                                             });
+
+                                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                         }else{
                                                             for (var i = 0; i < response.length; i++) {
                                                                 if (response[i].NOPD == $('#nomorObjekPajak').val() && response[i].NILAI_TUNGGAKAN == 0) {
@@ -1386,10 +1400,12 @@ $('#btn-modalmaps').click(function(event) {
                                                                                     });
                                                                                 }
                                                                                 $('#page-loader').fadeOut('slow');
+                                                                                UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                                             }
                                                                         });
                                                                     }else{
                                                                         $('#page-loader').fadeOut('slow');
+                                                                        UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
                                                                         // BElUM Lunas
                                                                 }
                                                             }
