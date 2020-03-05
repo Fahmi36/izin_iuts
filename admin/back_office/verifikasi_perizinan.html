@@ -71,6 +71,96 @@
 			top: auto;
 			width: 40%;
 		}
+		/* Style the Image Used to Trigger the Modal */
+		.modal-image {
+		    cursor: pointer;
+		    transition: 0.3s;
+		    font-size: 14px;
+		    color: #f5365c;
+		    margin: 0;
+		    line-height: 1;
+		}
+
+		.modal-image:hover {opacity: 0.7;}
+
+		/* The Modal (background) */
+		.modal {
+		    display: none; /* Hidden by default */
+		    position: fixed; /* Stay in place */
+		    z-index: 1; /* Sit on top */
+		    padding-top: 100px; /* Location of the box */
+		    left: 0;
+		    top: 0;
+		    width: 100%; /* Full width */
+		    height: 100%; /* Full height */
+		    overflow: auto; /* Enable scroll if needed */
+		    background-color: rgb(0,0,0); /* Fallback color */
+		    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+		}
+
+		/* Modal Content (Image) */
+		.modal-content {
+		    margin: auto;
+		    display: block;
+		    width: 80%;
+		    max-width: 700px;
+		}
+
+		/* Caption of Modal Image (Image Text) - Same Width as the Image */
+		.caption {
+		    margin: auto;
+		    display: block;
+		    width: 80%;
+		    max-width: 700px;
+		    text-align: center;
+		    color: #ccc;
+		    padding: 10px 0;
+		    height: 150px;
+		}
+
+		/* Add Animation - Zoom in the Modal */
+		.modal-content, .caption { 
+		    -webkit-animation-name: zoom;
+		    -webkit-animation-duration: 0.6s;
+		    animation-name: zoom;
+		    animation-duration: 0.6s;
+		}
+
+		@-webkit-keyframes zoom {
+		    from {-webkit-transform:scale(0)} 
+		    to {-webkit-transform:scale(1)}
+		}
+
+		@keyframes zoom {
+		    from {transform:scale(0)} 
+		    to {transform:scale(1)}
+		}
+
+		/* The Close Button */
+		.close {
+		    position: absolute;
+		    top: 15px;
+		    right: 35px;
+		    color: #fff;
+		    opacity: 1;
+		    font-size: 40px;
+		    font-weight: bold;
+		    transition: 0.3s;
+		}
+
+		.close:hover,
+		.close:focus {
+		    color: #f1f1f1 !important;
+		    text-decoration: none;
+		    cursor: pointer;
+		}
+
+		/* 100% Image Width on Smaller Screens */
+		@media only screen and (max-width: 700px){
+		    .modal-content {
+		        width: 100%;
+		    }
+		}
 	</style>
 	<div id="loader" style="z-index:9999;position: fixed;width: 100%;height:100%;background: rgba(255,255,255,.8);display: flex;align-items: center;justify-content: center">
 		<div class="cssload-container">
@@ -300,7 +390,15 @@
 																</td>
 																<td>1</td>
 																<td>KTP</td>
-																<td id="fotoktp"></td>
+																<td>
+																	<p id="fotoktp" class="modal-image" width="300" height="200">https://bit.ly/2idhXwp</p>
+																	<!-- The Modal -->
+																	<div id="myModal" class="modal">
+																	  <span class="close">&times;</span>
+																	  <img class="modal-content" src="https://bit.ly/2idhXwp">
+																	  <div class="caption">Foto KTP</div>
+																	</div>
+																</td>
 															</tr>
 															<tr>
 																<td class="zui-sticky-col">
@@ -318,7 +416,15 @@
 																</td>
 																<td>2</td>
 																<td>NPWP</td>
-																<td id="fotonpwp"></td>
+																<td>
+																	<p id="fotonpwp" class="modal-image" width="300" height="200">https://bit.ly/2idhXwp</p>
+																	<!-- The Modal -->
+																	<div id="myModalNpwp" class="modal">
+																	  <span class="close">&times;</span>
+																	  <img class="modal-content" src="http://www.fillmurray.com/300/200">
+																	  <div class="caption">Foto NPWP</div>
+																	</div>
+																</td>
 															</tr>
 															<tr>
 																<td class="zui-sticky-col">
@@ -653,13 +759,20 @@
 	<script src="../assets/js/mainadmin.js"></script>
 	<script src="../assets/js/mapsadmin.js"></script>
 	<script src="https://js.arcgis.com/4.8/"></script>
-	<script src="../assets/js/mapsadmin.js"></script>
+	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> -->
 	<script type="text/javascript">
 		timeline.datadetailPemohon();
     	// timeline.datadetailFotoPemohon();
     	jQuery(window).load(function () {
     		jQuery('#loader').fadeOut('slow');
     	});
+    	$(document).ready(function(){
+		    //FANCYBOX
+		    $(".fancybox").fancybox({
+		        openEffect: "none",
+		        closeEffect: "none"
+		    });
+		});
     </script>
     <script type="text/javascript">
     	$(".scrollbar").addClass("thin");
@@ -707,5 +820,24 @@
 			document.getElementById("skor_pbb").value = selValue;	    
 		}
 	</script> -->
+	<script type="text/javascript">
+		// Get the modal
+		var modal = document.getElementById('myModal');
+		var modalnpwp = document.getElementById('myModalNpwp');
+
+		// Get the image and insert it inside the modal - use its "alt" text as a caption
+		var img = document.getElementById('fotoktp');
+		var imgnpwp = document.getElementById('fotonpwp');
+
+		img.onclick = function(){
+		    modal.style.display = "block";
+		}
+		imgnpwp.onclick = function(){
+		    modalnpwp.style.display = "block";
+		}
+		$(".close").click(function () {
+		    $(".modal").css("display", "none");
+		});
+	</script>
 </body>
 </html>

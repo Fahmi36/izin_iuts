@@ -21,8 +21,8 @@ user.addEventListener('click', () => {
 });
 // var BASE_URL = 'http://localhost/rest_api_iuts/';
 var BASE_URL = 'https://rest-iuts.pkkmart.com/';
-	if (typeof(Storage) !== "undefined") {
-		if (localStorage.getItem('iduser') != null ) {
+if (typeof(Storage) !== "undefined") {
+	if (localStorage.getItem('iduser') != null ) {
 			// window.location.href = 'dashboard.html';
 		}
 	}else{
@@ -43,18 +43,18 @@ var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 		})();
 		alert(navigator.sayswho + "Tidak Mendukung, Silakan Perbaharui Browser anda");
 	}
-$(document).ready(function() {
-	$("#proseslogP").submit(function(event) {
-		$.ajax({
-			url: BASE_URL + 'UserController/loginPemohon',
-			type: "POST",
-			data: {email:$("#cek_email").val(), token:$("#cek_token").val()},
-			dataType: 'json',
-			beforeSend:function () {
-				$("#btnLoginP").addClass('active loader');
-			},
-			success:function(data) {
-				if (data.success == true) {
+	$(document).ready(function() {
+		$("#proseslogP").submit(function(event) {
+			$.ajax({
+				url: BASE_URL + 'UserController/loginPemohon',
+				type: "POST",
+				data: {email:$("#cek_email").val(), token:$("#cek_token").val()},
+				dataType: 'json',
+				beforeSend:function () {
+					$("#btnLoginP").addClass('active loader');
+				},
+				success:function(data) {
+					if (data.success == true) {
 						    // console.log(data);
 						    localStorage.setItem("iduser", data.row[0].id_pemohon);
 						    localStorage.setItem("nama", data.row[0].nama);
@@ -78,19 +78,19 @@ $(document).ready(function() {
 						alert(e);
 					}
 				})		
-	});
+		});
 
-	$("#proseslogA").submit(function(event) {
-		$.ajax({
-			url: BASE_URL + 'UserController/loginAdmin',
-			type: "POST",
-			data: {email:$("#cek_email_admin").val(), token:$("#cek_token_admin").val()},
-			dataType: 'json',
-			beforeSend:function () {
-				$("#btnLoginP").addClass('active loader');
-			},
-			success:function(data) {
-				if (data.success == true) {
+		$("#proseslogA").submit(function(event) {
+			$.ajax({
+				url: BASE_URL + 'UserController/loginAdmin',
+				type: "POST",
+				data: {email:$("#cek_email_admin").val(), token:$("#cek_token_admin").val()},
+				dataType: 'json',
+				beforeSend:function () {
+					$("#btnLoginP").addClass('active loader');
+				},
+				success:function(data) {
+					if (data.success == true) {
 						    // console.log(data);
 						    localStorage.setItem("idadmin", data.row[0].id);
 						    localStorage.setItem("namaadmin", data.row[0].username);
@@ -112,5 +112,5 @@ $(document).ready(function() {
 						alert(e);
 					}
 				})		
-	});	
-});
+		});	
+	});
