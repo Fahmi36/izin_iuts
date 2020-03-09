@@ -36,7 +36,7 @@
       <button id="buttonreload" class="btn btn3d btn-white btnRefresh" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-reload"></i></button> 
     </div>
     <form class="ijin" enctype="multipart/form-data">
-      <center><div class="img-jkt"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
+      <center><div class="img-jkt" style="margin-top: 12%;"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
       <div class="ijin__inner">
         <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step no-background">
           <h1 class="judul-ijin">Izin Kelayakan dan Usaha Koperasi</h1>
@@ -55,7 +55,7 @@
           <div class="form-group row">
             <label for="statusPemohon" class="col-md-6 col-form-label">Status Pemohon :</label>
             <div class="col-md-6">
-              <select required="" onchange="statuspemohon();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
+              <select required="" onchange="statuspemohon_k();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                 <option value="Perorangan">Perorangan</option>
                 <option value="Perusahaan">Perusahaan</option>
@@ -64,7 +64,6 @@
           </div>
           <div class="statusP" style="display: none;">
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label np" style="display: none;">Nama Perusahaan :</label>
               <label for="namaLengkap" class="col-md-6 col-form-label npj" style="">Nama Penanggung Jawab :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
@@ -83,14 +82,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label nikD" style="display: none;">NIK Direktur :</label>
-              <label for="nomorInKepen" class="col-md-6 col-form-label nikPJ" style="">NIK Penanggung Jawab :</label>
+              <label for="nomorInKepen" class="col-md-6 col-form-label nikPJ" style="">Nomor Induk Kependudukan (NIK) :</label>
               <div class="col-md-6">
                 <input type="number" class="form-control" name="nomor_induk" id="nomorInKepen" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
-              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto KTP :</label>
+              <label for="foto_ktp" class="col-md-6 col-form-label">Foto Kartu Tanda Penduduk (KTP) :</label>
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6 imgUpKTP">
@@ -103,34 +101,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label nibP" style="display: none;">NIB Perusahaan :</label>
-              <label for="nomorInBeru" class="col-md-6 col-form-label nibPJ" style="">NIB Penanggung Jawab :</label>
-              <div class="col-md-6">
-                <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
-              </div>
-            </div>
-            <div class="form-group row fotoNIB">
-              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NIB :</label>
-              <div class="col-md-6">
-                <div class="row">
-                  <div class="col-md-6 imgUpNIB">
-                    <div class="imagePreview" id="img-NIB"></div>
-                    <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                      <input type="file" class="uploadFile img" name="foto_nib" id="foto_nib" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
-                    </label>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="namaLengkap" class="col-md-6 col-form-label npwpP" style="display: none;">NPWP Perusahaan :</label>
-              <label for="npwp" class="col-md-6 col-form-label npwpPJ" style="">NPWP Penanggung Jawab :</label>
+              <label for="npwp" class="col-md-6 col-form-label npwpPJ" style="">Nomor Pokok Wajib Pajak (NPWP) :</label>
               <div class="col-md-6">
                 <input type="number"  class="form-control" id="npwp" name="npwp" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
-              <label for="peruntukanBang" class="col-md-6 col-form-label">Foto NPWP :</label>
+              <label for="foto_npwp" class="col-md-6 col-form-label">Foto NPWP :</label>
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-md-6 imgUpNPWP">
@@ -142,22 +119,24 @@
                 </div>
               </div>
             </div>
-            <div class="form-group row akteP">
-              <label for="akteP" class="col-md-6 col-form-label">Akte Perusahaan :</label>
+            <div class="form-group row">
+              <label for="nomorInBeru" class="col-md-6 col-form-label" style="">Nomor Induk Berusaha (NIB) :</label>
               <div class="col-md-6">
-                <div class="file-input single">
-                  <div class="file-input-wrapper">
-                    <input type="file" name="aktePerusahaan" id="aktePerusahaan">
-                    <label for="aktePerusahaan" class="upload-cta">
-                      Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                    </label>
-                  </div>
-                  <ul class="selected-files"></ul>
-                </div>
+                <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
-              <label for="alamatPerusahaan" class="col-md-6 col-form-label">Alamat Perusahaan :</label>
+              <label for="peruntukanBang" class="col-md-6 col-form-label">Status Kepemilikan (NIB) :</label>
+              <div class="col-md-6">
+                <select required="" onchange="statusnib();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
+                  <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                  <option value="Perorangan">Perorangan</option>
+                  <option value="Perusahaan">Perusahaan</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="alamatPerusahaan" class="col-md-6 col-form-label">Alamat Penanggungjawab :</label>
               <div class="col-md-6">
                 <input type="text" class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" placeholder="-">
               </div>
@@ -177,88 +156,282 @@
           </div>
         </div>
         <div data-question="3" class="ijin__step--3 ijin__step mb-150 ijin__summary">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Usaha</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Umum Bangunan</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="luasLahan" class="col-md-6 col-form-label">NOPD Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="nopd_bangunan" id="nopd_bangunan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Status Kepemilikan Lahan :</label>
+            <div class="col-md-6">
+              <select required="" onchange="statusLahan()" aria-label="statusBangunan" class="text-center form-control" id="status_kepem_lahan" name="status_kepem_lahan">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="Hak Milik">Hak Milik</option>
+                <option value="Hak Guna Bangunan">Hak Guna Bangunan</option>
+                <option value="Hak Pakai">Hak Pakai</option>
+                <option value="Hak Pengelola">Hak Pengelola</option>
+                <option value="Girik/Verpounding/Surat Tanah Lainnya">Girik/Verpounding/Surat Tanah Lainnya</option>
+                <option value="Milik Pemerintah Provinsi DKI Jakarta">Milik Pemerintah Provinsi DKI Jakarta</option>
+                <option value="Tidak Ada">Tidak Ada</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row uploadStatusL" style="display: none;">
+            <label for="statusL" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="imgUpLuar">
+                <input type="file" name="fileStatusLahan[]" id="fileStatusLahan">
+              </div>
+              <button type="button" class="btn btn3d btn-white addStatusLahan">Tambah</button>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantai" class="col-md-6 col-form-label">Jumlah Lantai :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="jmlLantai" class="text-center form-control" id="jml_lantai" name="jml_lantai">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">1 Lantai</option>
+                <option value="2">2 Lantai</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jmlLantaiB" class="col-md-6 col-form-label">Luas Total Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="luas_bangunan" id="luas_bangunan" placeholder="-">
+              <div id="alertLuas" style='text-align: left !important;'></div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tinggiBangunan" class="col-md-6 col-form-label">Tinggi Bangunan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="tinggi_bangunan" id="tinggi_bangunan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanBang" class="col-md-6 col-form-label">Peruntukan Bangunan :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="peruntukan_bangunan" id="peruntukan_bangunan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Luar Bangunan :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpLuar">
+                  <div class="imagePreview" id="img-luar-bangunan"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="fotoluar[]" id="foto_luar_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+                <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanBang" class="col-md-6 col-form-label">Foto Tampak Dalam Bangunan :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpDalam">
+                  <div class="imagePreview" id="img-dalam-bangunan"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan[]" id="foto_dalam_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+                <button type="button" class="btn btn3d btn-white imgAddDalam">Tambah</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-question="4" class="ijin__step--4 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keseimbangan, Keserasian, Keselarasan Lingkungan</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="kdhMinumum" class="col-md-6 col-form-label">Luas Daerah Hijau :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="kdh_minimum" id="kdh_minimum" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kondisiPertandaanToko" class="col-md-6 col-form-label">Kondisi Pertandaan Koperasi :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kondisiPertandaanToko" class="text-center form-control" id="kondisi_pertandaan_toko" name="kondisi_pertandaan_toko">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kondisiSumurR" class="col-md-6 col-form-label">Kondisi Sumur Resapan :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="kondisiSumurR" class="text-center form-control" id="kondisi_sumur_r" name="kondisi_sumur_r">
+
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="drainase" class="col-md-6 col-form-label">Drainase Disekeliling Tapak :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="drainase" class="text-center form-control" id="drainase_disekeliling" name="drainase_disekeliling">
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div data-question="5" class="ijin__step--5 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Keselamatan dan Keamanan</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="imbEksisting" class="col-md-6 col-form-label">Izin Mendirikan Bangunan :</label>
+            <div class="col-md-6">
+              <select required="" onchange="imb_change()" aria-label="imbEksisting" class="text-center form-control" id="imb" name="imb">
+              </select>
+            </div>
+          </div>
+          <div class="uploadIMB" style="display: none;">
+            <div class="form-group row">
+              <label for="noIMB" class="col-md-6 col-form-label">Nomor IMB :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="no_imb" id="no_imb" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="imgUpLuar">
+                  <input type="file" name="fileIMB[]" id="fileIMB">
+                </div>
+                <button type="button" class="btn btn3d btn-white addIMB">Tambah</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="sertifikatLF" class="col-md-6 col-form-label">Sertifikat Layak Fungsi  :</label>
+            <div class="col-md-6">
+              <select required="" onchange="slf_change()" aria-label="sertifikatLF" class="text-center form-control" id="slf" name="slf">
+              </select>
+            </div>
+          </div>
+          <div class="uploadIMB uploadSLF" style="display: none;">
+            <div class="form-group row">
+              <label for="noSLF" class="col-md-6 col-form-label">Nomor SLF :</label>
+              <div class="col-md-6">
+                <input type="number" class="form-control" name="no_slf" id="no_slf" placeholder="-">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+              <div class="col-md-6">
+                <div class="imgUpLuar">
+                  <input type="file" name="fileSLF[]" id="fileSLF">
+                </div>
+                <button type="button" class="btn btn3d btn-white addSLF">Tambah</button>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row rekDamkar" style="display: none;">
+            <label for="izinDinasPKP" class="col-md-6 col-form-label">Rekomendasi dari Dinas Penanggunlangan Kebakaran dan Penyelamatan :</label>
+            <div class="col-md-6">
+              <select required="" onchange="damkar()" aria-label="izinDinasPKP" class="text-center form-control" id="izin_dinas_pkp" name="izin_dinas_pkp">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row uploadDamkar" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="imgUpLuar">
+                <input type="file" name="fileDamkar[]" id="fileDamkar">
+              </div>
+              <button type="button" class="btn btn3d btn-white addDamkar">Tambah</button>
+            </div>
+          </div>
+          <div class="form-group row rekTKT" style="display: none;">
+            <label for="izinDinasTenagaKerja" class="col-md-6 col-form-label">Rekomendasi dari Dinas Tenaga Kerja dan Transmigrasi :</label>
+            <div class="col-md-6">
+              <select required="" onchange="izinTKT()" aria-label="izinDinasTenagaKerja" class="text-center form-control" id="izin_dinas_tkt" name="izin_dinas_tkt">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row uploadTKT" style="display: none;">
+            <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
+            <div class="col-md-6">
+              <div class="imgUpLuar">
+                <input type="file" name="fileTKT[]" id="fileTKT">
+              </div>
+              <button type="button" class="btn btn3d btn-white addTKT">Tambah</button>
+            </div>
+          </div>
+          <div class="form-group row fasilitasDamkar" style="display: none;">
+            <label for="fasilitasPenangKebakaran" class="col-md-6 col-form-label">Fasilitas Penanggulangan Kebakaran :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="fasilitasPenangKebakaran" class="text-center form-control" id="fasilitas_penang_kebakaran" name="fasilitas_penang_kebakaran">
+              </select>
+            </div>
+          </div>
+        </div>
+         <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kesehatan</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="airBersih" class="col-md-6 col-form-label">Ketersediaan Air Bersih :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="airBersih" class="text-center form-control" id="air_bersih" name="air_bersih">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="pengelolaanSampah" class="col-md-6 col-form-label">Pengelolaan Sampah :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="pengelolaanSampah" class="text-center form-control" id="pengelolaan_sampah" name="pengelolaan_sampah">
+              </select>
+            </div>
+          </div>
+        </div>
+        <div data-question="7" class="ijin__step--7 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kemudahan</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- SLF -</h3>
+          <div class="form-group row">
+            <label for="ketersediaanToilet" class="col-md-6 col-form-label">Ketersediaan Toilet :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="ketersediaanToilet" class="text-center form-control" id="ketersediaan_toilet" name="ketersediaan_toilet">
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="Ketersediaan" class="col-md-6 col-form-label">Ketersediaan Parkir :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="Ketersediaan" class="text-center form-control" id="kondisi_parkir" name="kondisi_parkir">
+
+              </select>
+            </div>
+          </div>
+        </div>
+        <div data-question="8" class="ijin__step--8 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Koperasi</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- KOPERASI -</h3>
           <div class="form-group row">
             <label for="nomorObjekPajak" class="col-md-6 col-form-label">Nomor Objek Pajak Daerah Usaha :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-">
+              <input type="text" class="form-control" name="nop" id="nomorObjekPajak" placeholder="-" data-inputmask="'mask': '999.99.99.99.9999'">
             </div>
           </div>
           <div class="form-group row">
-            <label for="njop" class="col-md-6 col-form-label">Nilai Jual Objek Pajak :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="njop" name="njop" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Nama Toko :</label>
+            <label for="nama_toko" class="col-md-6 col-form-label">Nama Koperasi :</label>
             <div class="col-md-6">
               <input type="text" class="form-control" name="nama_toko" id="nama_toko" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="kelompokusaha" class="col-md-6 col-form-label">Kelompok Usaha :</label>
+            <label for="tujuan_usaha" class="col-md-6 col-form-label">Tujuan Usaha :</label>
             <div class="col-md-6">
-              <select required="" onchange="kelompokusaha()" aria-label="kelompokusaha" class="text-center form-control" id="kelompok_usaha" name="kelompok_usaha">
-
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="rowKelompok" style="display: none;">
-            <label for="lamaSewa" class="col-md-6 col-form-label"></label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="kelompok_input" id="kelompok_input" placeholder="Kelompok Usaha Lainnya">
+              <input type="text" class="form-control" name="tujuan_usaha" id="tujuan_usaha" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Nama Badan Usaha :</label>
+            <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Koperasi :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_badan_usaha" id="nama_badan_usaha" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="perjanjianSewa" class="col-md-6 col-form-label">Kategori Usaha :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="perjanjianSewa" class="text-center form-control" id="kategori_usaha" name="kategori_usaha">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="Franchise">Franchise</option>
-                <option value="Bukan">Bukan</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="omsetPerbulan" class="col-md-6 col-form-label">Omset Usaha Per-bulan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="omset_perbulan" id="omset_perbulan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="peruntukanToko" class="col-md-6 col-form-label">Peruntukkan IMB untuk Toko Anda :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="peruntukan_toko" id="peruntukan_toko" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="statusBangunanUsaha" class="col-md-6 col-form-label">Status Bangunan yang Digunakan Usaha :</label>
-            <div class="col-md-6">
-              <select required="" onchange="statusbangunan()" aria-label="statusBangunanUsaha" class="text-center form-control" id="status_bangunan" name="status_bangunan">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="Milik Sendiri">Milik Sendiri</option>
-                <option value="Sewa">Sewa</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row rowSewa" style="display: none;">
-            <label for="lamaSewa" class="col-md-6 col-form-label">Lama Perjanjian Sewa :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="lama_sewa_input" id="lama_sewa_input" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
-            <div class="col-md-6">
-              <input type="hidden" class="form-control" name="lokasi_pemohon" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
+              <input type="hidden" class="form-control" name="lokasi_map" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_npwp" id="status_npwp" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_pbb" id="statusPBB" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="lat" id="lat" placeholder="Masukan Alamat Pemohon">
@@ -292,10 +465,74 @@
             </div>
           </div>
           <!-- end Modal -->
+          <div class="form-group row">
+            <label for="namaPengawas" class="col-md-6 col-form-label">Nama Pengawas Koperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nama_pengawas" id="nama_pengawas" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="namaPengurus" class="col-md-6 col-form-label">Nama Pengurus Koperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nama_pengurus" id="nama_pengurus" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="kegiatanUsaha" class="col-md-6 col-form-label">Kegiatan Usaha :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="kegiatan_usaha" id="kegiatan_usaha" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="omsetPerbulan" class="col-md-6 col-form-label">Omset Usaha Per-bulan :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="omset_perbulan" id="omset_perbulan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanToko" class="col-md-6 col-form-label">Peruntukkan IMB untuk Koperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="peruntukan_toko" id="peruntukan_toko" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="statusBangunanUsaha" class="col-md-6 col-form-label">Status Bangunan yang Digunakan Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="statusbangunan()" aria-label="statusBangunanUsaha" class="text-center form-control" id="status_bangunan" name="status_bangunan">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="Milik Sendiri">Milik Sendiri</option>
+                <option value="Sewa">Sewa</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row rowSewa" style="display: none;">
+            <label for="lamaSewa" class="col-md-6 col-form-label">Lama Perjanjian Sewa :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="lama_sewa_input" id="lama_sewa_input" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="omsetPerbulan" class="col-md-6 col-form-label">Jangka Waktu Berdiri Koperasi :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="omset_perbulan" id="omset_perbulan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenisUsaha" class="col-md-6 col-form-label">Jenis Usaha :</label>
+            <div class="col-md-6">
+              <select required="" aria-label="statusBangunanUsaha" class="text-center form-control" id="jenis_usaha" name="jenis_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Koperasi Konsumen</option>
+                <option value="2">Koperasi Produsen</option>
+                <option value="3">Koperasi Jasa</option>
+                <option value="4">Koperasi Simpan Pinjam</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div data-question="4" class="ijin__step--4 ijin__step mb-150 ijin__summary">
+         <div data-question="9" class="ijin__step--9 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Kebermanfaatan Usaha</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- Koperasi -</h3>
           <div class="form-group row">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Pemutahiran PBB :</label>
             <div class="col-md-6">
@@ -304,145 +541,89 @@
               </select>
             </div>
           </div>
-          <div class="form-group row" id="uploadPBB" style="display: none;">
+          <div class="form-group row uploadPBB" style="display: none;">
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Pemutahiran PBB :</label>
             <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="filePBB[]" id="filePBB" multiple >
-                  <label for="filePBB" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
+              <div class="imgUpLuar">
+                <input type="file" name="filePBB[]" id="filePBB">
               </div>
+              <button type="button" class="btn btn3d btn-white addPBB">Tambah</button>
             </div>
           </div>
           <div class="form-group row">
-            <label for="keterlibatanUMKM" class="col-md-6 col-form-label">Keterlibatan UMKM :</label>
+            <label for="jumlahAnggota" class="col-md-6 col-form-label">Jumlah Anggota/Jumlah Koperasi Primer :</label>
             <div class="col-md-6">
-              <select required="" onchange="umkm()" aria-label="keterlibatanUMKM" class="text-center form-control" id="keterlibatan_umkm" name="keterlibatan_umkm">
-
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="keterlibatan_umkm_row" style="display: none;">
-            <label for="jmlLantaiB" class="col-md-6 col-form-label">Jumlah Keterlibatan UMKM :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="keterlibatan_umkm" id="keterlibatan_umkm_input" placeholder="-">
+              <input type="number" class="form-control" name="jumlah_anggota" id="jumlah_anggota" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="persetujuanWarga" class="col-md-6 col-form-label">Persetujuan Warga Sekitar :</label>
+            <label for="wilayahCakupan" class="col-md-6 col-form-label">Wilayah Cakupan Koperasi :</label>
             <div class="col-md-6">
-              <select required="" onchange="persetujuanWarga()" aria-label="persetujuanWarga" class="text-center form-control" id="persetujuan_warga" name="persetujuan_warga">
-              </select>
-            </div>
-          </div>
-          <div class="form-group row" id="uploadPW" style="display: none;">
-            <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Persetujuan Warga Sekitar :</label>
-            <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="filePerW[]" id="filePerW" multiple >
-                  <label for="filePerW" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
-              </div>
+              <input type="text" class="form-control" name="wilayah_cakupan" id="wilayah_cakupan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="jumlahKaryawan" class="col-md-6 col-form-label">Jumlah Karyawan :</label>
+            <label for="asalKaryawan" class="col-md-6 col-form-label">Kepemilikan Kemitraan :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="jumlah_karyawan" id="jumlah_karyawan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="asalKaryawan" class="col-md-6 col-form-label">Asal Karyawan :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="asalKaryawan" class="text-center form-control" id="asal_karyawan" name="asal_karyawan">
+              <select required="" onchange="kemitraan()" aria-label="asalKaryawan" class="text-center form-control" id="kepemilikan_kemitraan" name="kepemilikan_kemitraan">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="1">Warga Luar kota</option>
-                <option value="2">Warga Kota Sekitar</option>
-                <option value="3">Warga Kecamatan Sekitar</option>
-                <option value="4">Warga Kelurahan Sekitar</option>
+                <option value="1">Ada</option>
+                <option value="0">Tidak Ada</option>
               </select>
             </div>
           </div>
-          <div class="form-group row">
-            <label for="jmlATM" class="col-md-6 col-form-label">Jumlah instalasi mesin ATM :</label>
+          <div class="form-group row rowJumKem" style="display: none;">
+            <label for="jmlKemitraan" class="col-md-6 col-form-label">Jumlah Kemitraan :</label>
             <div class="col-md-6">
-              <input type="number" class="form-control" name="jumlah_atm" id="jumlah_atm" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jmlPengunjungPerB" class="col-md-6 col-form-label">Jumlah Pengunjung Per-bulan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" name="jumlah_pengunjung_b" id="jumlah_pengunjung_b" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="statusKepUsaha" class="col-md-6 col-form-label">Status Kepemilikan Usaha :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="statusKepUsaha" class="text-center form-control" id="status_milik_usaha" name="status_milik_usaha">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="1">Usaha milik Asing</option>
-                <option value="2">100% Badan Usaha</option>
-                <option value="3">Sharing Modal dan Profit dengan Badan Usaha</option>
-                <option value="4">100% milik Warga</option>
-              </select>
+              <input type="number" class="form-control" name="jumlah_kemitraan" id="jumlah_kemitraan" placeholder="-">
             </div>
           </div>
         </div>
-        <div data-question="5" class="ijin__step--5 ijin__step mb-150 ijin__summary">
+        <div data-question="10" class="ijin__step--10 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Antisipasi Dampak/Resiko</h1>
-          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUTS -</h3>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- KOPERASI -</h3>
           <div class="form-group row">
-            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Ada Rekomendasi UMKM :</label>
+            <label for="aktaKoperasi" class="col-md-6 col-form-label">Akta Pendirian Koperasi :</label>
             <div class="col-md-6">
-              <select required="" onchange="rekomendasiUMKM()" aria-label="rekomendasiUMKM" class="text-center form-control" id="rekomendasi_umkm" name="rekomendasi_umkm">
+              <select required="" onchange="aktaKoperasi()" aria-label="aktaKoperasi" class="text-center form-control" id="akta_koperasi" name="akta_koperasi">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Ada</option>
+                <option value="2">Akan ada dalam 1 bulan</option>
+                <option value="3">Akan ada dalam 3 bulan</option>
+                <option value="4">Tidak Ada</option>
               </select>
             </div>
           </div>
-          <div class="form-group row uploadUMKM" style="display: none;">
-            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Rekomendasi UMKM :</label>
+          <div class="form-group row uploadAkta" style="display: none;">
+            <label for="fileAkta" class="col-md-6 col-form-label">Upload File Akta Koperasi :</label>
             <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileUMKM[]" id="fileUMKM" multiple >
-                  <label for="fileUMKM" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
+              <div class="imgUpLuar">
+                <input type="file" name="fileAkta[]" id="fileAkta">
               </div>
             </div>
           </div>
           <div class="form-group row">
-            <label for="kajianSostek" class="col-md-6 col-form-label">Kajian Sosial Ekonomi :</label>
+            <label for="suratPengawas" class="col-md-6 col-form-label">Surat Pengawas Mentri :</label>
             <div class="col-md-6">
-              <select required="" onchange="kajianSostek()" aria-label="kajianSostek" class="text-center form-control" id="kajian_sostek" name="kajian_sostek">
+              <select required="" onchange="suratPeng()" aria-label="suratPengawas" class="text-center form-control" id="surat_pengawas" name="surat_pengawas">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Ada</option>
+                <option value="2">Akan ada dalam 1 bulan</option>
+                <option value="3">Akan ada dalam 3 bulan</option>
+                <option value="4">Tidak Ada</option>
               </select>
             </div>
           </div>
-          <div class="form-group row uploadSostek" style="display: none;">
-            <label for="rekomendasiUMKM" class="col-md-6 col-form-label">Upload File Kajian Sosial Ekonomi :</label>
+          <div class="form-group row uploadSuratPeng" style="display: none;">
+            <label for="fileSuratP" class="col-md-6 col-form-label">Upload File Surat Pengawas :</label>
             <div class="col-md-6">
-              <div class="file-input multiple">
-                <div class="file-input-wrapper">
-                  <input type="file" name="fileSostek[]" id="fileSostek" multiple >
-                  <label for="fileSostek" class="upload-cta">
-                    Seret files ke sini atau <span class="text-primary">pilih files</span> untuk diunggah
-                  </label>
-                </div>
-                <ul class="selected-files"></ul>
+              <div class="imgUpLuar">
+                <input type="file" name="fileSuratP[]" id="fileSuratP">
               </div>
             </div>
           </div>
         </div>
-        <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
+        <div data-question="11" class="ijin__step--11 ijin__step mb-150 ijin__summary">
           <h1 class="judul-ijin">Ringkasan Pemohon</h1>
           <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
             <div class="panel panel-default">
