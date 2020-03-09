@@ -11,6 +11,19 @@ function statuspemohon() {
         $(".sistemU").removeAttr('style');
     }
 }
+
+function statuspemohon_k() {
+    if ($("#status_pemohon option:selected").val()) {
+        $(".statusP").removeAttr('style');
+    }
+}
+function kemitraan() {
+    if ($("#kepemilikan_kemitraan option:selected").val() == 1) {
+        $(".rowJumKem").removeAttr('style');
+    }else{
+        $(".rowJumKem").attr('style', 'display:none');
+    }
+}
 function sistemUsaha() {
     if ($("#sistem_usaha option:selected").val()) {
         $(".form_nib").removeAttr('style');
@@ -117,7 +130,7 @@ function kelompokusaha() {
     }
 }
 function rekomendasiUMKM() {
-    if ($("#rekomendasi_umkm option:selected").val() == "4") {
+    if ($("#rekomendasi_umkm option:selected").val() == 4) {
         $(".uploadUMKM").removeAttr('style');
     }else{
         $(".uploadUMKM").attr('style', 'display:none');
@@ -128,6 +141,20 @@ function kajianSostek() {
         $(".uploadSostek").removeAttr('style');
     }else{
         $(".uploadSostek").attr('style', 'display:none');
+    }
+}
+function aktaKoperasi() {
+    if ($("#akta_koperasi option:selected").val() == 1) {
+        $(".uploadAkta").removeAttr('style');
+    }else{
+        $(".uploadAkta").attr('style', 'display:none');
+    }
+}
+function suratPeng() {
+    if ($("#surat_pengawas option:selected").val() == 1) {
+        $(".uploadSuratPeng").removeAttr('style');
+    }else{
+        $(".uploadSuratPeng").attr('style', 'display:none');
     }
 }
 function asuransiToko() {
