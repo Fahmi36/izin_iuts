@@ -1197,21 +1197,20 @@ datadetailPemohon:function() {
 					success:function(data) {
 						if (data.success) {
 							jQuery('#loader').fadeOut('slow');
-							$('#fotoktp').text(foto_ktp);
-							$('#fotonpwp').text(foto_npwp);
-							$('#fotoakta').text(akta_perusahaan);
-							$('#fotoluar').text(akta_perusahaan);
-							$('#fotodalam').text(akta_perusahaan);
-							$('#fotoimb').text(akta_perusahaan);
-							$('#fotoslf').text(akta_perusahaan);
-							$('#fotodamkar').text(akta_perusahaan);
-							$('#fototkt').text(akta_perusahaan);
-							$('#fotoasransi').text(akta_perusahaan);
-							$('#fotopbb').text(akta_perusahaan);
-							$('#fotoperw').text(akta_perusahaan);
-							$('#fotorekumkm').text(akta_perusahaan);
-							$('#fotokajian').text(akta_perusahaan);
-							$('#fotoakta').text(akta_perusahaan);
+							$('#fotoktp').text(data.row[0].foto_ktp);
+							$('#fotonpwp').text(data.row[0].foto_npwp);
+							$('#fotoakta').text(data.row[0].foto_akta);
+							$('#fotoluar').text(data.row[0].fotoluar);
+							$('#fotodalam').text(data.row[0].fotodalam);
+							$('#fotoimb').text(data.row[0].fotoimb);
+							$('#fotoslf').text(data.row[0].fotoslf);
+							$('#fotodamkar').text(data.row[0].fotodamkar);
+							$('#fototkt').text(data.row[0].fototkt);
+							$('#fotoasuransi').text(data.row[0].fotoasuransi);
+							$('#fotopbb').text(data.row[0].fotopbb);
+							$('#fotoperw').text(data.row[0].fotoperw);
+							$('#fotorekumkm').text(data.row[0].fotorekumkm);
+							$('#fotokajian').text(data.row[0].fotokajian);
 						}
 					}
 				})

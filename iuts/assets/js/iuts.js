@@ -993,459 +993,197 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
-            // var datas = new FormData($(this)[0]);
-
             var datas = new FormData($(this)[0]);
             $.ajax({
-                url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                url: BASE_URL + "ApiController/ApiPajakNPWP",
                 type: 'POST',
                 dataType: 'json',
-                data:datas,
-                contentType: false,
-                cache: false,
-                processData: false,
+                data : {nik:$('#nomorInKepen').val(),nopd:$('#nopd_bangunan').val(),jenispajak:null},
                 beforeSend:function() {
-                    $("#text-loader").html('Mohon Tunggu');
+                    $("#text-loader").html('Sedang Cek Data PBB Anda');
                     $('#page-loader').fadeIn('slow');
                 },
                 success:function(data) {
-                    if (data.success) {
-                        var nsktp = document.getElementById('foto_ktp').files.length;
-                        for (var noktp = 0; noktp < nsktp; noktp++) {
-                            var filektp = document.getElementById('foto_ktp').files[noktp];
-                            var readerktp = new FileReader();
-                            if (filektp != undefined) {
-                                readerktp.readAsDataURL(filektp);
-                                readerktp.onload = shipOffAdministrasi;
-                                var aktp = new Date();
-                                var datenyaktp = aktp.getHours() + aktp.getMinutes() + aktp.getMilliseconds();
-                                var namektp = datenyaktp + filektp.name;
-                                var jenisktp = 'File KTP';
-                                // console.log(data);
-                                updateFotoAdmin(namektp, data.idizin,jenisktp);
-
-                            }
-                        }
-                        var nsnpwp = document.getElementById('foto_npwp').files.length;
-                        for (var nonpwp = 0; nonpwp < nsnpwp; nonpwp++) {
-                            var filenpwp = document.getElementById('foto_npwp').files[nonpwp];
-                            var readernpwp = new FileReader();
-                            if (filenpwp != undefined) {
-                                readernpwp.readAsDataURL(filenpwp);
-                                readernpwp.onload = shipOffAdministrasinpwp;
-                                var aktp = new Date();
-                                var datenyanpwp = aktp.getHours() + aktp.getMinutes() + aktp.getMilliseconds();
-                                var namenpwp = datenyanpwp + filenpwp.name;
-                                var jenisnpwp = 'File NPWP';
-                                // console.log(data);
-                                updateFotoAdmin(namenpwp, data.idizin,jenisnpwp);
-
-                            }
-                        }
-                        var nsakta = document.getElementById('aktePerusahaan').files.length;
-                        for (var noakta = 0; noakta < nsakta; noakta++) {
-                            var fileakta = document.getElementById('aktePerusahaan').files[noakta];
-                            var readerakta = new FileReader();
-                            if (fileakta != undefined) {
-                                readerakta.readAsDataURL(fileakta);
-                                readerakta.onload = shipOffAdministrasinoakta;
-                                var aakta = new Date();
-                                var datenyaakta = aakta.getHours() + aakta.getMinutes() + aakta.getMilliseconds();
-                                var nameakta = datenyaakta + fileakta.name;
-                                var jenisakta = 'File Akta Bangunan';
-                                // console.log(data);
-                                updateFotoAdmin(nameakta, data.idizin,jenisakta);
-
-                            }
-                        }
-                        /*SLF*/
-                        var ins1 = document.getElementById('foto_luar_bangunan').files.length;
-                        for (var x1 = 0; x1 < ins1; x1++) {
-                            var file1 = document.getElementById('foto_luar_bangunan').files[x1];
-                            var reader1 = new FileReader();
-                            if (file1 != undefined) {
-                                reader1.readAsDataURL(file1);
-                                reader1.onload = shipOffLuarBangunan;
-                                var a1 = new Date();
-                                var datenya1 = a1.getHours() + a1.getMinutes() + a1.getMilliseconds();
-                                var name1 = datenya1 + file1.name;
-                                var jenis1 = 'File Tampak Luar Bangunan';
-                                // console.log(data);
-                                updateFoto(name1, data.idslf,jenis1);
-
-                            }
-                        }
-                        var ins2 = document.getElementById('foto_dalam_bangunan').files.length;
-                        for (var x2 = 0; x2 < ins2; x2++) {
-                            var file2 = document.getElementById('foto_dalam_bangunan').files[x2];
-                            var reader2 = new FileReader();
-                            if (file2 != undefined) {
-                                reader2.readAsDataURL(file2);
-                                reader2.onload = shipOffDalamBangunan;
-                                var a2 = new Date();
-                                var datenya2 = a2.getHours() + a2.getMinutes() + a2.getMilliseconds();
-                                var name2 = datenya2 + file2.name;
-                                var jenis2 = 'File Tampak Dalam Bangunan';
-                                // console.log(data);
-                                updateFoto(name2, data.idslf,jenis2);
-
-                            }
-                        }
-                        var ins3 = document.getElementById('fileIMB').files.length;
-                        for (var x3 = 0; x3 < ins3; x3++) {
-                            var file3 = document.getElementById('fileIMB').files[x3];
-                            var reader3 = new FileReader();
-                            if (file3 != undefined) {
-                                reader3.readAsDataURL(file3);
-                                reader3.onload = shipOffFileIIMB;
-                                var a3 = new Date();
-                                var datenya3 = a3.getHours() + a3.getMinutes() + a3.getMilliseconds();
-                                var name3 = datenya3 + file3.name;
-                                var jenis3 = 'File IMB Eksiting';
-                                // console.log(data);
-                                updateFoto(name3, data.idslf,jenis3);
-                            }
-                        }
-                        var ins4 = document.getElementById('fileSLF').files.length;
-                        for (var x4 = 0; x4 < ins4; x4++) {
-                            var file4 = document.getElementById('fileSLF').files[x4];
-                            var reader4 = new FileReader();
-                            if (file4 != undefined) {
-                                reader4.readAsDataURL(file4);
-                                reader4.onload = shipOffFileSLF;
-                                var a4 = new Date();
-                                var datenya4 = a4.getHours() + a4.getMinutes() + a4.getMilliseconds();
-                                var name4 = datenya4 + file4.name;
-                                var jenis4 = 'File SLF';
-                                // console.log(data);
-                                updateFoto(name4, data.idslf,jenis4);
-
-                            }
-                        }
-                        var ins5 = document.getElementById('fileSuratP').files.length;
-                        for (var x5 = 0; x5 < ins5; x5++) {
-                            var file5 = document.getElementById('fileSuratP').files[x5];
-                            var reader5 = new FileReader();
-                            if (file5 != undefined) {
-                                reader5.readAsDataURL(file5);
-                                reader5.onload = shipOffFileSuratP;
-                                var a5 = new Date();
-                                var datenya5 = a5.getHours() + a5.getMinutes() + a5.getMilliseconds();
-                                var name5 = datenya5 + file5.name;
-                                var jenis5 = 'File Pernyataan Pengawas';
-                                // console.log(data);
-                                updateFoto(name5, data.idslf,jenis5);
-
-                            }
-                        }
-                        var ins6 = document.getElementById('fileDamkar').files.length;
-                        for (var x6 = 0; x6 < ins6; x6++) {
-                            var file6 = document.getElementById('fileDamkar').files[x6];
-                            var reader6 = new FileReader();
-                            if (file6 != undefined) {
-                                reader6.readAsDataURL(file6);
-                                reader6.onload = shipOffFileDamkar;
-                                var a6 = new Date();
-                                var datenya6 = a6.getHours() + a6.getMinutes() + a6.getMilliseconds();
-                                var name6 = datenya6 + file6.name;
-                                var jenis6 = 'File Rekomendasi Dari Dinas Penanggunlangan Kebakaran dan Penyelamatan';
-                                // console.log(data);
-                                updateFoto(name6, data.idslf,jenis6);
-
-                            }
-                        }
-                        var ins7 = document.getElementById('fileTKT').files.length;
-                        for (var x7 = 0; x7 < ins7; x7++) {
-                            var file7 = document.getElementById('fileTKT').files[x7];
-                            var reader7 = new FileReader();
-                            if (file7 != undefined) {
-                                reader7.readAsDataURL(file7);
-                                reader7.onload = shipOffFileTKT;
-                                var a7 = new Date();
-                                var datenya7 = a7.getHours() + a7.getMinutes() + a7.getMilliseconds();
-                                var name7 = datenya7 + file7.name;
-                                var jenis7 = 'File Rekomendasi Dari Dinas Tenaga Kerja dan Transmigrasi';
-                                // console.log(data);
-                                updateFoto(name7, data.idslf,jenis7);
-
-                            }
-                        }
-                        
-                        var ins8 = document.getElementById('fileStatusLahan').files.length;
-                        for (var x8 = 0; x8 < ins8; x8++) {
-                            var file8 = document.getElementById('fileStatusLahan').files[x8];
-                            var reader8 = new FileReader();
-                            if (file8 != undefined) {
-                                reader8.readAsDataURL(file8);
-                                reader8.onload = shipOffFileStatusLahan;
-                                var a8 = new Date();
-                                var datenya8 = a8.getHours() + a8.getMinutes() + a8.getMilliseconds();
-                                var name8 = datenya8 + file8.name;
-                                var jenis8 = 'File Bukti Status Lahan';
-                                // console.log(data);
-                                updateFoto(name8, data.idslf,jenis8);
-
-                            }
-                        }
-                        var ins9 = document.getElementById('fileAsuransi').files.length;
-                        for (var x9 = 0; x9 < ins9; x9++) {
-                            var file9 = document.getElementById('fileAsuransi').files[x9];
-                            var reader9 = new FileReader();
-                            if (file9 != undefined) {
-                                reader9.readAsDataURL(file9);
-                                reader9.onload = shipOffFileAsuransi;
-                                var a9 = new Date();
-                                var datenya9 = a9.getHours() + a9.getMinutes() + a9.getMilliseconds();
-                                var name9 = datenya9 + file9.name;
-                                var jenis9 = 'File Asuransi Toko';
-                                // console.log(data);
-                                updateFoto(name9, data.idslf,jenis9);
-
-                            }
-                        }
-                        /*SLF*/
-
-                        // IUTS
-                        var ins10 = document.getElementById('filePerW').files.length;
-                        for (var x10 = 0; x10 < ins10; x10++) {
-                            var file10 = document.getElementById('filePerW').files[x10];
-                            var reader10 = new FileReader();
-                            if (file10 != undefined) {
-                                reader10.readAsDataURL(file10);
-                                reader10.onload = shipOffFilePerW;
-                                var a10 = new Date();
-                                var datenya10 = a10.getHours() + a10.getMinutes() + a10.getMilliseconds();
-                                var name10 = datenya10 + file10.name;
-                                var jenis10 = 'File Persetujuan Warga';
-                                // console.log(data);
-                                updateFotoiuts(name10, data.idiuts,jenis10);
-
-                            }
-                        }
-                        var ins11 = document.getElementById('filePBB').files.length;
-                        for (var x11 = 0; x11 < ins11; x11++) {
-                            var file11 = document.getElementById('filePBB').files[x11];
-                            var reader11 = new FileReader();
-                            if (file11 != undefined) {
-                                reader11.readAsDataURL(file11);
-                                reader11.onload = shipOffFilePBB;
-                                var a11 = new Date();
-                                var datenya11 = a11.getHours() + a11.getMinutes() + a11.getMilliseconds();
-                                var name11 = datenya11 + file11.name;
-                                var jenis11 = 'File Pemutakhiran PBB';
-                                // console.log(data);
-                                updateFotoiuts(name11, data.idiuts,jenis11);
-
-                            }
-                        }
-                        var ins12 = document.getElementById('fileSostek').files.length;
-                        for (var x12 = 0; x12 < ins12; x12++) {
-                            var file12 = document.getElementById('fileSostek').files[x12];
-                            var reader12 = new FileReader();
-                            if (file12 != undefined) {
-                                reader12.readAsDataURL(file12);
-                                reader12.onload = shipOffFileSostek;
-                                var a12 = new Date();
-                                var datenya12 = a12.getHours() + a12.getMinutes() + a12.getMilliseconds();
-                                var name12 = datenya12 + file12.name;
-                                var jenis12 = 'File Kajian Sostek';
-                                // console.log(data);
-                                updateFotoiuts(name12, data.idiuts,jenis12);
-
-                            }
-                        }
-                        var ins13 = document.getElementById('fileUMKM').files.length;
-                        for (var x13 = 0; x13 < ins13; x13++) {
-                            var file13 = document.getElementById('fileUMKM').files[x13];
-                            var reader13 = new FileReader();
-                            if (file13 != undefined) {
-                                reader13.readAsDataURL(file13);
-                                reader13.onload = shipOffFileUMKM;
-                                var a13 = new Date();
-                                var datenya13 = a13.getHours() + a13.getMinutes() + a13.getMilliseconds();
-                                var name13 = datenya13 + file13.name;
-                                var jenis13 = 'File Rekomendasi UMKM';
-                                // console.log(data);
-                                updateFotoiuts(name13, data.idiuts,jenis13);
-
-                            }
-                        }
-                        $.ajax({
-                            url: BASE_URL + "ApiController/ApiPajakNPWP",
-                            type: 'POST',
-                            dataType: 'json',
-                            data : {nik:$('#nomorInKepen').val(),nopd:$('#nopd_bangunan').val(),jenispajak:null},
-                            beforeSend:function() {
-                                $("#text-loader").html('Sedang Cek Data PBB Anda');
-                                $('#page-loader').fadeIn('slow');
-                            },
-                            success:function(datapajak) {
-                                if (datapajak.pesan == "Data Tidak ditemukan") {
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Tidak ada Data',
-                                        showCancelButton: true
-                                    });
-                                }else if(datapajak.pesan == "Panjang Karakter Kurang dari 15"){
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                                        showCancelButton: true
-                                    });
-                                }else if(datapajak.errorCode == "32"){
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                        showCancelButton: true
-                                    });
-                                }else if(datapajak.errorCode == "34"){
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                        showCancelButton: true
-                                    });
-                                }else if(datapajak.errorCode == "99"){
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                        showCancelButton: true
-                                    });
-                                }else if(datapajak.errorCode == "4"){
-                                    $('#page-loader').fadeOut('slow');
-                                    swal({
-                                        type: 'error',
-                                        title: 'Angka NIK / NPWP Kurang Dari 15',
-                                        showCancelButton: true
-                                    });
-                                }else{
-                                    for (var i =0; i < datapajak.length; i++) {
-                                        if (datapajak[i].JNS_PAJAK == "PBB" && datapajak[i].NOPD == $('#nopd_bangunan').val()) {
-                                            if (datapajak[i].NILAI_TUNGGAKAN == 0) {
-                                                $.ajax({
-                                                    url: BASE_URL + "ApiController/ApiPajakNPWP",
-                                                    type: 'POST',
-                                                    dataType: 'json',
-                                                    data : {nik:$('#npwp').val(),jenispajak:$('#peruntukan_toko').val()},
-                                                    beforeSend:function() {
-                                                        $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
-                                                        $('#page-loader').fadeIn('slow');
-                                                    },
-                                                    success:function(response) {
-                                                        if (response.pesan == "Data Tidak ditemukan") {
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Tidak ada Data',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else if(response.pesan == "Panjang Karakter Kurang dari 15"){
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else if(response.errorCode == "32"){
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else if(response.errorCode == "34"){
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else if(response.errorCode == "99"){
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else if(response.errorCode == "4"){
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'Angka NIK / NPWP Kurang Dari 15',
-                                                                showCancelButton: true
-                                                            });
-                                                        }else{
-                                                            for (var i = 0; i < response.length; i++) {
-                                                                if (response[i].NOPD == $('#nomorObjekPajak').val() && response[i].NILAI_TUNGGAKAN == 0) {
-                                                                        $.ajax({
-                                                                            url: BASE_URL + 'ValidasiController/saveTaxClear',
-                                                                            type: 'POST',
-                                                                            dataType: 'json',
-                                                                            data:{id:data.idizin,status_pbb:'1',status_npwp:'1',jenis:response[i].JNS_PAJAK},
-                                                                            beforeSend:function() {
-                                                                                $("#text-loader").html('Mohon Tunggu');
-                                                                                $('#page-loader').fadeIn('slow');
-                                                                            },
-                                                                            success:function(hasil) {
-                                                                                if (hasil.success) {
-                                                                                    e.preventDefault();
-                                                                                    $('.ijin').remove();
-                                                                                    $(summary).appendTo('.container');
-                                                                                    disableButtons=true;
-                                                                                    $('.navigation__btn').addClass('navigation__btn--disabled');
-                                                                                    $('#page-loader').fadeOut('slow'); 
-                                                                                    swal({
-                                                                                        type: 'success',
-                                                                                        title: hasil.msg,
-                                                                                        showCancelButton: true
-                                                                                    });
-                                                                                }else{
-                                                                                    $('#page-loader').fadeOut('slow');
-                                                                                    swal({
-                                                                                        type: 'error',
-                                                                                        title: data.msg,
-                                                                                        showCancelButton: true
-                                                                                    });
-                                                                                }
-                                                                                $('#page-loader').fadeOut('slow');
-                                                                            }
-                                                                        });
-                                                                    }else{
-                                                                        $('#page-loader').fadeOut('slow');
-                                                                        // BElUM Lunas
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                })
-                                            }else{
-                                                $('#page-loader').fadeOut('slow');
-                                                // BELUM PBB TIDAK TERDAFTAR
-                                                UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
-                                            }
-                                        }else{
-                                            $('#page-loader').fadeOut('slow');
-                                            UpdatePajak(data.idizin,'0','0',datapajak[i].JNS_PAJAK);
-                                        }        
-                                    }       
-                                }
-                            }
-                        });
-                    }else{
+                    // cons);
+                    if (data.pesan == "Data Tidak ditemukan") {
                         $('#page-loader').fadeOut('slow');
                         swal({
                             type: 'error',
-                            title: data.msg,
+                            title: 'Tidak ada Data',
                             showCancelButton: true
                         });
-                    }
-                    $('#page-loader').fadeOut('slow');
-                }
-            });
+                    }else if(data.pesan == "Panjang Karakter Kurang dari 15"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "32"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "34"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "99"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                            showCancelButton: true
+                        });
+                    }else if(data.errorCode == "4"){
+                        $('#page-loader').fadeOut('slow');
+                        swal({
+                            type: 'error',
+                            title: 'Angka NIK / NPWP Kurang Dari 15',
+                            showCancelButton: true
+                        });
+                    }else{
+                        for (var i =0; i < data.length; i++) {
+                            if (data[i].JNS_PAJAK == "PBB" && data[i].NOPD == $('#nopd_bangunan').val()) {
+                                if (data[i].NILAI_TUNGGAKAN == 0) {
+                                    $.ajax({
+                                        url: BASE_URL + "ApiController/ApiPajakNPWP",
+                                        type: 'POST',
+                                        dataType: 'json',
+                                        data : {nik:$('#npwp').val(),jenispajak:$('#peruntukan_toko').val()},
+                                        beforeSend:function() {
+                                            $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
+                                            $('#page-loader').fadeIn('slow');
+                                        },
+                                        success:function(response) {
+                                            var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                            dataRegis[0].status_npwp = '1';
+                                            dataRegis[0].status_pbb = '1';
+                                            localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+
+                                            if (response.pesan == "Data Tidak ditemukan") {
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Tidak ada Data',
+                                                    showCancelButton: true
+                                                });
+                                            }else if(response.pesan == "Panjang Karakter Kurang dari 15"){
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                                                    showCancelButton: true
+                                                });
+                                            }else if(response.errorCode == "32"){
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                    showCancelButton: true
+                                                });
+                                            }else if(response.errorCode == "34"){
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                    showCancelButton: true
+                                                });
+                                            }else if(response.errorCode == "99"){
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                    showCancelButton: true
+                                                });
+                                            }else if(response.errorCode == "4"){
+                                                $('#page-loader').fadeOut('slow');
+                                                swal({
+                                                    type: 'error',
+                                                    title: 'Angka NIK / NPWP Kurang Dari 15',
+                                                    showCancelButton: true
+                                                });
+                                            }else{
+                                                for (var i = 0; i < response.length; i++) {
+                                                    if (response[i].NOPD == $('#nomorObjekPajak').val() && response[i].NILAI_TUNGGAKAN == 0) {
+                                                        if (response[i].NILAI_TUNGGAKAN == 0) {
+                                                            var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                                            dataRegis[0].jns_pajak = response[i].JNS_PAJAK;
+                                                            localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+                                                            $.ajax({
+                                                                url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                                                type: 'POST',
+                                                                dataType: 'json',
+                                                                data:datas,
+                                                                contentType: false,
+                                                                cache: false,
+                                                                processData: false,
+                                                                beforeSend:function() {
+                                                                    $("#text-loader").html('Mohon Tunggu');
+                                                                    $('#page-loader').fadeIn('slow');
+                                                                },
+                                                                success:function(data) {
+                                                                    if (data.success) {
+                                                                        e.preventDefault();
+                                                                        $('.ijin').remove();
+                                                                        $(summary).appendTo('.container');
+                                                                        disableButtons=true;
+                                                                        $('.navigation__btn').addClass('navigation__btn--disabled');
+                                                                        $('#page-loader').fadeOut('slow'); 
+                                                                        swal({
+                                                                            type: 'success',
+                                                                            title: data.msg,
+                                                                            showCancelButton: true
+                                                                        });
+                                                                    }else{
+                                                                        $('#page-loader').fadeOut('slow');
+                                                                        swal({
+                                                                            type: 'error',
+                                                                            title: data.msg,
+                                                                            showCancelButton: true
+                                                                        });
+                                                                    }
+                                                                    $('#page-loader').fadeOut('slow');
+                                                                }
+                                                            });
+                                                        }else{
+                                                            $('#page-loader').fadeOut('slow');
+                                                            swal({
+                                                                type: 'error',
+                                                                title: 'PAJAK ANDA BELUM LUNAS',
+                                                                showCancelButton: true
+                                                            });
+                                                        }
+                                                    }else{
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'PAJAK ANDA BELUM LUNAS',
+                                                            showCancelButton: true
+                                                        });  
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    })
+}else{
+    $('#page-loader').fadeOut('slow');
+    swal({
+        type: 'error',
+        title: 'PAJAK ANDA BELUM LUNAS',
+        showCancelButton: true
+    }); 
+}
+}        
+}       
+}
+}
+})
         }
     });
 });
