@@ -1055,7 +1055,7 @@ $('#btn-modalmaps').click(function(event) {
                                         url: BASE_URL + "ApiController/ApiPajakNPWP",
                                         type: 'POST',
                                         dataType: 'json',
-                                        data : {nik:$('#npwp').val(),jenispajak:$('#peruntukan_toko').val()},
+                                        data : {nik:$('#npwp').val()},
                                         beforeSend:function() {
                                             $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
                                             $('#page-loader').fadeIn('slow');

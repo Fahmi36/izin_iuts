@@ -35,7 +35,7 @@
       <button id="buttonbacktohome" class="btn btn3d btn-white resetDataLocal" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-home"></i></button>
       <button id="buttonreload" class="btn btn3d btn-white btnRefresh" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-reload"></i></button> 
     </div>
-    <form class="ijin" enctype="multipart/form-data">
+    <form class="ijin" id="formizinslfiuts"  action='javascript:void(0);' method="post" enctype="multipart/form-data" accept-charset="utf-8">
       <center><div class="img-jkt" style="margin-top: 12%;"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
       <div class="ijin__inner">
         <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step no-background">
@@ -66,19 +66,8 @@
             <div class="form-group row">
               <label for="namaLengkap" class="col-md-6 col-form-label npj" style="">Nama Penanggung Jawab :</label>
               <div class="col-md-6">
-                <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
-              </div>
-            </div>
-            <div class="form-group row namaPJ" style="display: none;">
-              <label for="namaLengkap" class="col-md-6 col-form-label" style="">Nama Direktur :</label>
-              <div class="col-md-6">
-                <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
-              </div>
-            </div>
-            <div class="form-group row jabatan_row" style="display: none;">
-              <label for="jabatan" class="col-md-6 col-form-label" style="">Jabatan :</label>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+                <input type="text" class="form-control" name="nama_lengkap_jawab" id="namaLengkap" placeholder="-">
+                <input type="hidden" class="form-control" name="jenis_izin" id="jenis_izin" value="2" placeholder="-">
               </div>
             </div>
             <div class="form-group row">
@@ -128,7 +117,7 @@
             <div class="form-group row">
               <label for="peruntukanBang" class="col-md-6 col-form-label">Status Kepemilikan (NIB) :</label>
               <div class="col-md-6">
-                <select required="" onchange="statusnib();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
+                <select required="" onchange="statusnib();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_nib">
                   <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                   <option value="Perorangan">Perorangan</option>
                   <option value="Perusahaan">Perusahaan</option>
@@ -183,7 +172,7 @@
             <label for="statusL" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="fileStatusLahan[]" id="fileStatusLahan">
+                <input type="file" name="fileStatusLahan" id="fileStatusLahan">
               </div>
               <button type="button" class="btn btn3d btn-white addStatusLahan">Tambah</button>
             </div>
@@ -218,7 +207,7 @@
                 <div class="col-md-6 imgUpLuar">
                   <div class="imagePreview" id="img-luar-bangunan"></div>
                   <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="fotoluar[]" id="foto_luar_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
+                    <input type="file" class="uploadFile img" name="fotoluar" id="foto_luar_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
                   </label>
                 </div>
                 <button type="button" class="btn btn3d btn-white imgAdd">Tambah</button>
@@ -232,7 +221,7 @@
                 <div class="col-md-6 imgUpDalam">
                   <div class="imagePreview" id="img-dalam-bangunan"></div>
                   <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
-                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan[]" id="foto_dalam_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
+                    <input type="file" class="uploadFile img" name="foto_dalam_bangunan" id="foto_dalam_bangunan" multiple style="width: 0px;height: 0px;overflow: hidden;">
                   </label>
                 </div>
                 <button type="button" class="btn btn3d btn-white imgAddDalam">Tambah</button>
@@ -288,7 +277,7 @@
               <label for="slffile" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
                 <div class="imgUpLuar">
-                  <input type="file" name="fileIMB[]" id="fileIMB">
+                  <input type="file" name="fileIMB" id="fileIMB">
                 </div>
                 <button type="button" class="btn btn3d btn-white addIMB">Tambah</button>
               </div>
@@ -312,7 +301,7 @@
               <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
               <div class="col-md-6">
                 <div class="imgUpLuar">
-                  <input type="file" name="fileSLF[]" id="fileSLF">
+                  <input type="file" name="fileSLF" id="fileSLF">
                 </div>
                 <button type="button" class="btn btn3d btn-white addSLF">Tambah</button>
               </div>
@@ -329,7 +318,7 @@
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="fileDamkar[]" id="fileDamkar">
+                <input type="file" name="fileDamkar" id="fileDamkar">
               </div>
               <button type="button" class="btn btn3d btn-white addDamkar">Tambah</button>
             </div>
@@ -345,7 +334,7 @@
             <label for="rekomendasiSLF" class="col-md-6 col-form-label">Upload File :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="fileTKT[]" id="fileTKT">
+                <input type="file" name="fileTKT" id="fileTKT">
               </div>
               <button type="button" class="btn btn3d btn-white addTKT">Tambah</button>
             </div>
@@ -502,7 +491,7 @@
           <div class="form-group row">
             <label for="omsetPerbulan" class="col-md-6 col-form-label">Jangka Waktu Berdiri Koperasi :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="omset_perbulan" id="omset_perbulan" placeholder="-">
+              <input type="text" class="form-control" name="jangka_waktu" id="omset_perbulan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -533,7 +522,7 @@
             <label for="pemutahiranPBB" class="col-md-6 col-form-label">Upload File Pemutahiran PBB :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="filePBB[]" id="filePBB">
+                <input type="file" name="filePBB" id="filePBB">
               </div>
               <button type="button" class="btn btn3d btn-white addPBB">Tambah</button>
             </div>
@@ -586,7 +575,7 @@
             <label for="fileAkta" class="col-md-6 col-form-label">Upload File Akta Koperasi :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="fileAkta[]" id="fileAkta">
+                <input type="file" name="fileAkta" id="fileAkta">
               </div>
             </div>
           </div>
@@ -606,7 +595,7 @@
             <label for="fileSuratP" class="col-md-6 col-form-label">Upload File Surat Pengawas :</label>
             <div class="col-md-6">
               <div class="imgUpLuar">
-                <input type="file" name="fileSuratP[]" id="fileSuratP">
+                <input type="file" name="fileSuratP" id="fileSuratP">
               </div>
             </div>
           </div>

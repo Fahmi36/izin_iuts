@@ -50,7 +50,7 @@
             <label class="btn3d btn btn-danger btn-lg">Ajukan Izin</label>
           </div>
         </div>
-        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
+<!--         <div data-question="2" class="ijin__step--2 ijin__step mb-150">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Pemohon</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
           <div class="form-group row">
@@ -80,7 +80,6 @@
               <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
             </div>
           </div>
-          <!-- Modal -->
           <div class="modal fade" id="pilihLokasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 80%;">
               <div class="modal-content">
@@ -99,191 +98,117 @@
               </div>
             </div>
           </div>
-          <!-- end Modal -->
-        </div>
-        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
+          end Modal
+        </div> -->
+        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
           <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Pemohon</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
           <div class="form-group row">
             <label for="namaLengkap" class="col-md-6 col-form-label" style="">NIK :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_lengkap" id="namaLengkap" placeholder="-">
+              <input type="text" class="form-control" name="nik" id="nik" placeholder="-">
             </div>
           </div>
-          <!-- <div class="form-group row">
+          <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">No KK :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="nokk" placeholder="-">
             </div>
-          </div> -->
+          </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Nama Sesuai KTP :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="nama" placeholder="-">
             </div>
           </div>
-          <!-- <div class="form-group row">
+          <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Alamat :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="alamat" placeholder="-">
             </div>
-          </div> -->
-          <!-- <div class="form-group row">
+          </div>
+          <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Wilayah :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="wilayahinput" name="wilayah" placeholder="-">
+              <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="-">
+              <input type="text" class="form-control" id="kota" name="kota" placeholder="-">
+              <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="-">
+              <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">RT :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="rt" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">RW :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="rw" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Tempat Lahir :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="tmplahir" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Tanggal Lahir :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="tglahir" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Jenis Kelamin :</label>
             <div class="col-md-6">
-              <select required="" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
+              <select required="" aria-label="statusPemohon" class="text-center form-control" id="jk" name="jenis_kelamin">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="laki-laki">Laki-laki</option>
-                <option value="perempuan">Perempuan</option>
+                <option value="1">Laki-laki</option>
+                <option value="0">Perempuan</option>
               </select>
             </div>
-          </div> -->
+          </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">NPWP :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="npwp" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">No Telp/HP :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="-">
+              <input type="text" class="form-control" id="jabatan" name="notlp" placeholder="-">
             </div>
           </div>
         </div>
-        <div data-question="4" class="ijin__step--4 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Identitas Usaha</h1>
+        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Data Pemohon</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
-          <div class="form-group row">
-            <label for="namaUsaha" class="col-md-6 col-form-label" style="">Nama Usaha :</label>
+<!--                     <div class="form-group row">
+            <label for="nama_lengkap" class="col-md-6 col-form-label">Masukkan Nama Lengkap :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" placeholder="-">
+              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="-">
+            </div>
+          </div> -->
+          <div class="form-group row">
+            <label for="email" class="col-md-6 col-form-label">Masukkan Email :</label>
+            <div class="col-md-6">
+              <input type="email" class="form-control" name="email" id="email" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="jenisUsaha" class="col-md-6 col-form-label" style="">Jenis Usaha :</label>
+            <label for="password" class="col-md-6 col-form-label">Masukkan Password :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jenis_usaha" name="jenis_usaha" placeholder="-">
+              <input type="password" class="form-control" name="password" id="passwor" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
-            <label for="kegiatanUsaha" class="col-md-6 col-form-label" style="">Kegiatan Usaha :</label>
+            <label for="ulang_password" class="col-md-6 col-form-label">Masukkan Ulang Password :</label>
             <div class="col-md-6">
-              <select required="" aria-label="kegiatanUsaha" class="text-center form-control" id="kegiatan_usaha" name="kegiatan_usaha">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="tenagaKP" class="col-md-6 col-form-label" style="">Jumlah Tenaga Kerja Pria :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="kerja_pria" name="kerja_pria" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatanKW" class="col-md-6 col-form-label" style="">Jumlah Tenaga Kerja Wanita :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="kerja_wanita" name="kerja_wanita" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jenisRekomen" class="col-md-6 col-form-label" style="">Jenis Rekomendasi :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="jenisRekomen" class="text-center form-control" id="jenis_rekomendasi" name="jenis_rekomendasi">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="kewirausahaan" class="col-md-6 col-form-label" style="">Apakah usaha anda termasuk dalam Program Kewirausahaan Terpadu :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="kewirausahaan" class="text-center form-control" id="program_kewirausahaan" name="program_kewirausahaan">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="saranaUsaha" class="col-md-6 col-form-label" style="">Sarana Usaha</label>
-            <div class="col-md-6">
-              <select required="" aria-label="saranaUsaha" class="text-center form-control" id="sarana_usaha" name="sarana_usaha">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="bidangUsaha" class="col-md-6 col-form-label" style="">Bidang Usaha :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="bidangUsaha" class="text-center form-control" id="bidang_usaha" name="bidang_usaha">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="statusLokasi" class="col-md-6 col-form-label" style="">Status Lokasi Usaha :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="statusLokasi" class="text-center form-control" id="status_lokasi" name="status_lokasi">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value=""></option>
-                <option value=""></option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="luasLokasi" class="col-md-6 col-form-label" style="">Luas Lokasi Usaha :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="luas_lokasi" name="luas_lokasi" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="omsetPerbulan" class="col-md-6 col-form-label" style="">Perkiraan Jumlah Omset Sebulan :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="omset_perbulan" name="omset_perbulan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="omsetPertahun" class="col-md-6 col-form-label" style="">Perkiraan Jumlah Omset Setahun :</label>
-            <div class="col-md-6">
-              <input type="number" class="form-control" id="omset_pertahun" name="omset_pertahun" placeholder="-">
+              <input type="password" class="form-control" name="ulang_password" id="ulang_password" placeholder="-">
             </div>
           </div>
         </div>
@@ -311,6 +236,41 @@
   <script src="assets/js/arcgis.js"></script>
   <script type="text/javascript">
     $('#kelengkapan').modal('show');
+    var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+    $(document).ready(function() {
+      $("#wilayahinput").keypress(function(e) {
+        var length = this.value.length;
+        if (length >= 5) {
+          $.ajax({
+            url: BASE_URL + 'ApiController/getWilayah',
+            type: 'POST',
+            dataType: 'json',
+            data: {wilayah: $("#wilayahinput").val()},
+            success:function(data) {
+              for (var i =0; i < data.length; i++) {
+                $("#wilayahinput").html('<a href="#" onclick="pilihwilayah('+data[i].idkelurahan+')"><li>'+data[i].address+'</li></a>');           
+              }
+            }
+          })
+        }
+      });
+    });
+    function pilihwilayah(id) {
+      $.ajax({
+            url: BASE_URL + 'ApiController/pilihWilayah',
+            type: 'POST',
+            dataType: 'json',
+            data: {idkelurahan: id},
+            success:function(data) {
+              for (var i =0; i < data.length; i++) {
+                $("#provinsi").val(data[i].idprovinsi);           
+                $("#kota").val(data[i].idkota);           
+                $("#kecamatan").val(data[i].idkecamatan);           
+                $("#kelurahan").val(data[i].idkelurahan);           
+              }
+            }
+          })
+    }
   </script>
 </body>
 </html>
