@@ -130,7 +130,11 @@
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Wilayah :</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="wilayah" placeholder="-">
+              <input type="text" class="form-control" id="wilayahinput" name="wilayah" placeholder="-">
+              <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="-">
+              <input type="text" class="form-control" id="kota" name="kota" placeholder="-">
+              <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="-">
+              <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -160,7 +164,7 @@
           <div class="form-group row">
             <label for="jabatan" class="col-md-6 col-form-label" style="">Jenis Kelamin :</label>
             <div class="col-md-6">
-              <select required="" aria-label="statusPemohon" class="text-center form-control" id="jk" name="status_pemohon">
+              <select required="" aria-label="statusPemohon" class="text-center form-control" id="jk" name="jenis_kelamin">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
                 <option value="1">Laki-laki</option>
                 <option value="0">Perempuan</option>
@@ -232,6 +236,41 @@
   <script src="assets/js/arcgis.js"></script>
   <script type="text/javascript">
     $('#kelengkapan').modal('show');
+    var BASE_URL = 'https://rest-iuts.pkkmart.com/';
+    $(document).ready(function() {
+      $("#wilayahinput").keypress(function(e) {
+        var length = this.value.length;
+        if (length >= 5) {
+          $.ajax({
+            url: BASE_URL + 'ApiController/getWilayah',
+            type: 'POST',
+            dataType: 'json',
+            data: {wilayah: $("#wilayahinput").val()},
+            success:function(data) {
+              for (var i =0; i < data.length; i++) {
+                $("#wilayahinput").html('<a href="#" onclick="pilihwilayah('+data[i].idkelurahan+')"><li>'+data[i].address+'</li></a>');           
+              }
+            }
+          })
+        }
+      });
+    });
+    function pilihwilayah(id) {
+      $.ajax({
+            url: BASE_URL + 'ApiController/pilihWilayah',
+            type: 'POST',
+            dataType: 'json',
+            data: {idkelurahan: id},
+            success:function(data) {
+              for (var i =0; i < data.length; i++) {
+                $("#provinsi").val(data[i].idprovinsi);           
+                $("#kota").val(data[i].idkota);           
+                $("#kecamatan").val(data[i].idkecamatan);           
+                $("#kelurahan").val(data[i].idkelurahan);           
+              }
+            }
+          })
+    }
   </script>
 </body>
 </html>
