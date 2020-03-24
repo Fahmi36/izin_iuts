@@ -21,93 +21,93 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <style type="text/css">
-.intro {
-  width: 100%;
-  background: rgba(100, 100, 100, 0.1);
-  position: relative;
-}
-
-.popout-video {
-  width: 100%;
-  position: relative;
-
-  &--popout {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 450px;
-    max-width: 100%;
-    height: auto;
-    animation: popin 0.5s ease-in-out forwards;
-
-    @keyframes popin {
-      to {
-        top: 0;
-      }
-    }
-
-    &:hover {
-      .popout-video__controls {
-        opacity: 1;
-      }
-    }
+  .intro {
+    width: 100%;
+    background: rgba(100, 100, 100, 0.1);
+    position: relative;
   }
 
-  video {
+  .popout-video {
     width: 100%;
-    vertical-align: middle;
-  }
+    position: relative;
 
-  &__controls {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 0.5rem;
-    background: rgb(0, 0, 0);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
-    z-index: 1;
-    display: flex;
-    justify-content: flex-end;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    pointer-events: none;
+    &--popout {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 450px;
+      max-width: 100%;
+      height: auto;
+      animation: popin 0.5s ease-in-out forwards;
 
-    .close-video {
-      width: 1.77rem;
-      height: 1.7rem;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      pointer-events: all;
-      border-radius: 50%;
-      transition: background 0.25s ease;
+      @keyframes popin {
+        to {
+          top: 0;
+        }
+      }
 
       &:hover {
-        background: rgba(50, 50, 50, 0.4);
+        .popout-video__controls {
+          opacity: 1;
+        }
       }
+    }
 
-      &:before,
-      &:after {
-        content: "";
-        position: absolute;
-        margin: auto;
-        width: 1rem;
-        height: 2px;
-        background: #fff;
-      }
+    video {
+      width: 100%;
+      vertical-align: middle;
+    }
 
-      &:before {
-        transform: rotate(45deg);
-      }
+    &__controls {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0.5rem;
+      background: rgb(0, 0, 0);
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+      z-index: 1;
+      display: flex;
+      justify-content: flex-end;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
 
-      &:after {
-        transform: rotate(-45deg);
+      .close-video {
+        width: 1.77rem;
+        height: 1.7rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: all;
+        border-radius: 50%;
+        transition: background 0.25s ease;
+
+        &:hover {
+          background: rgba(50, 50, 50, 0.4);
+        }
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          margin: auto;
+          width: 1rem;
+          height: 2px;
+          background: #fff;
+        }
+
+        &:before {
+          transform: rotate(45deg);
+        }
+
+        &:after {
+          transform: rotate(-45deg);
+        }
       }
     }
   }
-}
 </style>
 <body>
   <div class="page-loader" id="page-loader">
@@ -135,7 +135,7 @@
             <label class="btn3d btn btn-danger btn-lg">Izin Kelayakan dan Usaha Toko Swalayan</label>
           </div>
           <a href="izin_koperasi.html" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">Izin Kelayakan dan Usaha Koperasi</label></a>
-          <a href="izin_iumk.html" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">Izin Usaha Toko Kelontong/IUMK</label></a>
+          <a href="izin_iumk.html" style="text-decoration: none;"><label class="btn3d btn btn-danger btn-lg">IUMK & Izin Usaha Toko Kelontong</label></a>
           <br>
           <br>
           <p><label><a href="#" style="text-decoration: none;" data-toggle="modal" data-target="#modalvideo">Video tutorial Izin Usaha Toko Kelontong / IUMK</a></label></p>
@@ -1435,7 +1435,7 @@
             </div>
           </div> 
           <div class="submit__container">
-            <button type="submit" class="btn3d submit btn btn-danger btn-lg">Konfirmasi</button>
+            <button type="submit" class="btn3d formizinslfiuts btn btn-danger btn-lg">Konfirmasi</button>
           </div>
         </div>
         <!-- <div data-question="7" class="ijin__step--7 ijin__step ijin__summary">
@@ -1473,31 +1473,31 @@
       </div>
     </div>
   </div>
-          <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modalvideo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" >
-            <div class="modal-dialog" role="document" style="max-width: 60%;">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Video Tutorial</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="intro">
-                    <div class="popout-video">
-                      <video width="100%" src="../video/iumk.mp4" playsinline controls class="intro-video" preload="auto" type="video/mp4" autoplay muted></video>
-                      <div class="popout-video__controls">
-                        <div class="close-video"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-                </div>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="modalvideo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" >
+    <div class="modal-dialog" role="document" style="max-width: 60%;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Video Tutorial</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="intro">
+            <div class="popout-video">
+              <video width="100%" src="../video/iumk.mp4" playsinline controls class="intro-video" preload="auto" type="video/mp4" autoplay muted></video>
+              <div class="popout-video__controls">
+                <div class="close-video"></div>
               </div>
             </div>
           </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="kelengkapan_iuts" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
     <div class="modal-dialog" role="document" style="max-width: 85%;">
       <div class="modal-content">

@@ -31,17 +31,12 @@
   </div> 
   <canvas id="canvas"></canvas>
   <div class="container">
-    <form class="ijin" enctype="multipart/form-data">
+    <form class="ijin" id="formiumk" enctype="multipart/form-data">
       <center><div class="img-jkt"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
       <div class="ijin__inner">
         <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step mb-150">
           <h1 class="judul-ijin" style="margin-bottom: 30px;">Register</h1>
-          <div class="form-group row">
-            <label for="nama_lengkap" class="col-md-6 col-form-label">Masukkan Nama Lengkap :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="-">
-            </div>
-          </div>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
           <div class="form-group row">
             <label for="email" class="col-md-6 col-form-label">Masukkan Email :</label>
             <div class="col-md-6">
@@ -51,7 +46,7 @@
           <div class="form-group row">
             <label for="password" class="col-md-6 col-form-label">Masukkan Password :</label>
             <div class="col-md-6">
-              <input type="password" class="form-control" name="passwor" id="passwor" placeholder="-">
+              <input type="password" class="form-control" name="password" id="password" placeholder="-">
             </div>
           </div>
           <div class="form-group row">
@@ -60,7 +55,20 @@
               <input type="password" class="form-control" name="ulang_password" id="ulang_password" placeholder="-">
             </div>
           </div>
-          <button type="submit" class="btn3d btn btn-danger btn-lg btn-block mt-20">Daftar</button>
+          <div class="submit__container">
+            <button type="submit" class="btn3d btn formiumk btn-danger btn-lg btn-block mt-20">Daftar</button>
+          </div>
+        </div>
+        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 30px;">Verifikasi Akun</h1>
+          <div class="form-group row">
+            <label for="token" class="col-md-6 col-form-label">Masukkan Token :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="token" id="token" placeholder="-">
+            </div>
+          </div>
+          <hr>
+          <button type="submit" class="btn3d btn btn-danger btn-lg btn-block mt-20">Submit</button>
         </div>
       </div>
     </form>

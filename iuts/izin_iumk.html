@@ -21,6 +21,33 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 <body>
+  <style type="text/css">
+    #autoSuggestionsList > a li {
+      background: none repeat scroll 0 0 #fff;
+      border-bottom: 1px solid #E3E3E3;
+      list-style: none outside none;
+      padding: 8px 8px 8px 14px;
+    }
+    .not_found {
+      background: none repeat scroll 0 0 #fff;
+      border-bottom: 1px solid #E3E3E3;
+      list-style: none outside none;
+      padding: 8px 8px 8px 14px;
+    }
+    #autoSuggestionsList > a li:hover{ 
+      background: #fe6937 !important; color: #fff; 
+    }
+    #autoSuggestionsList > a { color: #333;text-decoration: none; }
+    .auto_list {
+      position: absolute;
+      z-index: 99;
+      margin-top: 7px;
+      border: 0;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 4px 0 #ccc;
+    }
+  </style>
   <div class="page-loader" id="page-loader">
     <div>
       <div id="preloader">
@@ -35,26 +62,21 @@
       <button id="buttonbacktohome" class="btn btn3d btn-white resetDataLocal" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-home"></i></button>
       <button id="buttonreload" class="btn btn3d btn-white btnRefresh" style="padding: 5px 10px;color: #fe6937"><i class="mdi mdi-reload"></i></button> 
     </div>
-    <form class="ijin" enctype="multipart/form-data">
-      <center><div class="img-jkt"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
+    <form class="ijin" id="formiumk" enctype="multipart/form-data">
+      <center><div class="img-jkt" style="margin-top: 15%;"><img src="assets/img/logopemprov.png" alt="Pemprov DKI Jakarta" class="img-fluid w-35 img-logo_pemprov"></div></center>
       <div class="ijin__inner">
         <div data-question="1" class="ijin__step--1 ijin__step--current ijin__step no-background">
-          <h1 class="judul-ijin">Izin Usaha Mikro Kecil</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <h1 class="judul-ijin">Izin Usaha Mikro Kecil & Toko Kelontong</h1>
+          <p>Izin Usaha Mikro dan Kecil (IUMK) & Toko Kelontong adalah izin yang ditujukan untuk masyarakat yang ingin melakukan usaha dalam skala mikro dan kecil ataupun usaha toko kelontong.</p>
           <div class="answer navigation__btn--right m-0">
             <label class="btn3d btn btn-danger btn-lg">Ajukan Izin</label>
           </div>
         </div>
-<!--         <div data-question="2" class="ijin__step--2 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Pemohon</h1>
+        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Identitas Pemohon</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
           <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Tipe Perizinan :</label>
+            <label for="statusPemohon" class="col-md-6 col-form-label">Tipe Pemohon Perizinan :</label>
             <div class="col-md-6">
               <select required="" onchange="statuspemohon();" aria-label="statusPemohon" class="text-center form-control" id="status_pemohon" name="status_pemohon">
                 <option option value='-' readonly='' selected>Pilih Salah Satu</option>
@@ -64,7 +86,317 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat Usaha :</label>
+            <label for="nik" class="col-md-6 col-form-label" style="">NIK :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nik" id="nik" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="fotoKTP" class="col-md-6 col-form-label">Unggah KTP :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpKTP">
+                  <div class="imagePreview" id="img-KTP"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="foto_ktp" id="foto_ktp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="namaPem" class="col-md-6 col-form-label" style="">Nama Pemohon :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="nama" name="nama" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="npwp" class="col-md-6 col-form-label" style="">NPWP :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="npwp" name="npwp" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanBang" class="col-md-6 col-form-label">Unggah NPWP :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpNPWP">
+                  <div class="imagePreview" id="img-NPWP"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="foto_npwp" id="foto_npwp" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="nomorInBeru" class="col-md-6 col-form-label" style="">Nomor Induk Berusaha (NIB) :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" id="nomorInBeru" name="nomor_induk_b" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="noTelp" class="col-md-6 col-form-label" style="">No Telp/HP :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="notlp" name="notlp" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="noKK" class="col-md-6 col-form-label" style="">No KK :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="nokk" name="nokk" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="peruntukanBang" class="col-md-6 col-form-label">Unggah KK :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpKK">
+                  <div class="imagePreview" id="img-KK"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="foto_kk" id="foto_kk" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamat" class="col-md-6 col-form-label" style="">Alamat Pemohon:</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="alamat" name="alamat" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="wilayah" class="col-md-6 col-form-label" style="">Wilayah :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="wilayahinput" name="wilayah" placeholder="-">
+              <div id="suggestions">
+                <div id="autoSuggestionsList"></div>
+              </div>
+              <input type="hidden" class="form-control" id="provinsi" name="provinsi" placeholder="-">
+              <input type="hidden" class="form-control" id="kota" name="kota" placeholder="-">
+              <input type="hidden" class="form-control" id="kecamatan" name="kecamatan" placeholder="-">
+              <input type="hidden" class="form-control" id="kelurahan" name="kelurahan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tglLahir" class="col-md-6 col-form-label" style="">Tanggal Lahir :</label>
+            <div class="col-md-6">
+              <input type="date" class="form-control" id="tglahir" name="tglahir" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tempatLahir" class="col-md-6 col-form-label" style="">Tempat Lahir :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="tmplahir" name="tmplahir" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenisK" class="col-md-6 col-form-label" style="">Jenis Kelamin :</label>
+            <div class="col-md-6">
+              <label class="radio">
+                <span class="text-radio">Laki-Laki</span>
+                <input type="radio" id="jk" value="1" name="jenis_kelamin">
+                <span class="checkround"></span>
+              </label>
+              <label class="radio">
+                <span class="text-radio">Perempuan</span>
+                <input type="radio" id="jk" value="0" name="jenis_kelamin">
+                <span class="checkround"></span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="RT" class="col-md-6 col-form-label" style="">RT :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="rt" name="rt" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="RW" class="col-md-6 col-form-label" style="">RW :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="rw" name="rw" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="fotoPas" class="col-md-6 col-form-label">Pas Foto 4x6 Latar Belakang Merah :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpPasFoto">
+                  <div class="imagePreview" id="img-PasFoto"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="pas_poto" id="pas_poto" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="berkas" class="col-md-6 col-form-label">Surat Permohonan Bermaterai :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpBerkas">
+                  <div class="imagePreview" id="img-Berkas"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="surat_permohonan" id="surat_permohonan" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Identitas Usaha</h1>
+          <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
+          <div class="form-group row">
+            <label for="nama_usaha" class="col-md-6 col-form-label">Nama Usaha :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenis_usaha" class="col-md-6 col-form-label">Jenis Usaha :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="jenis_usaha" id="jenis_usaha" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="statusPemohon" class="col-md-6 col-form-label">Kegiatan Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="" aria-label="kegiatanUsaha" class="text-center form-control" id="kegiatan_usaha" name="kegiatan_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Produksi</option>
+                <option value="2">Perdagangan</option>
+                <option value="3">Jasa</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tenaga_kerja_p" class="col-md-6 col-form-label">Jumlah Tenaga Kerja Pria :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="tenaga_kerja_p" id="tenaga_kerja_p" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tenaga_kerja_w" class="col-md-6 col-form-label">Jumlah Tenaga Kerja Wanita :</label>
+            <div class="col-md-6">
+              <input type="number" class="form-control" name="tenaga_kerja_w" id="tenaga_kerja_w" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="jenisRek" class="col-md-6 col-form-label">Jenis Rekomendasi :</label>
+            <div class="col-md-6">
+              <select required="" onchange="" aria-label="jenisRek" class="text-center form-control" id="jenis_rekomendasi" name="jenis_rekomendasi">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="Bukan Binaan (DPMPTSP)">Bukan Binaan (DPMPTSP)</option>
+                <option value="Keterangan Kelurahan (Lurah)">Keterangan Kelurahan (Lurah)</option>
+                <option value="Suku Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah Kota Administrasi">Suku Dinas Perindustrian, Perdagangan, Koperasi, Usaha Kecil dan Menengah Kota Administrasi</option>
+                <option value="Dinas Ketahanan Pangan, Kelautan dan Pertanian">Dinas Ketahanan Pangan, Kelautan dan Pertanian</option>
+                <option value="Dinas Perindustrian dan Energi">Dinas Perindustrian dan Energi</option>
+                <option value="Dinas Tenaga Kerja dan Trasmigrasi">Dinas Tenaga Kerja dan Trasmigrasi</option>
+                <option value="Dinas Pariwisata dan Kebudayaan">Dinas Pariwisata dan Kebudayaan</option>
+                <option value="Dinas Pemberdayaan Perlindungan Anak dan Pengendalian Penduduk">Dinas Pemberdayaan Perlindungan Anak dan Pengendalian Penduduk</option>
+                <option value="Dinas Sosial">Dinas Sosial</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="programKewira" class="col-md-6 col-form-label" style="">Program Kewirausahaan Terpadu atau Bukan :</label>
+            <div class="col-md-6">
+              <label class="radio">
+                <span class="text-radio">Iya</span>
+                <input type="radio" value="1" name="program_kewirausahaan">
+                <span class="checkround"></span>
+              </label>
+              <label class="radio">
+                <span class="text-radio">Bukan</span>
+                <input type="radio" value="0" name="program_kewirausahaan">
+                <span class="checkround"></span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="saranaUsaha" class="col-md-6 col-form-label">Sarana Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="" aria-label="saranaUsaha" class="text-center form-control" id="sarana_usaha" name="sarana_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Rumah Tinggal</option>
+                <option value="2">Non Rumah Tinggal</option>
+                <option value="3">Lokasi Binaan</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="bidangUsaha" class="col-md-6 col-form-label">Bidang Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="" aria-label="bidangUsaha" class="text-center form-control" id="bidang_usaha" name="bidang_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Usaha Industri</option>
+                <option value="2">Usaha Perdagangan</option>
+                <option value="3">Usaha Jasa</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="bidangUsaha" class="col-md-6 col-form-label">Status Lokasi Usaha :</label>
+            <div class="col-md-6">
+              <select required="" onchange="" aria-label="bidangUsaha" class="text-center form-control" id="bidang_usaha" name="bidang_usaha">
+                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
+                <option value="1">Menetap</option>
+                <option value="0">Berpindah-pindah</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="tenaga_kerja_p" class="col-md-6 col-form-label">Luas Lokasi Usaha :</label>
+            <div class="col-md-6">
+              <div class="input-group">
+                <input type="number" class="form-control" name="tenaga_kerja_p" id="tenaga_kerja_p" placeholder="-">
+                <div class="input-group-append">
+                  <span class="input-group-text">m<sup>2</sup></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="berkas" class="col-md-6 col-form-label">Foto Tempat Usaha :</label>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="col-md-6 imgUpLuar">
+                  <div class="imagePreview" id="img-luar-bangunan"></div>
+                  <label class="btn btn-danger btn3d btn-block m-0">Pilih Foto
+                    <input type="file" class="uploadFile img" name="foto_tempat_usaha" id="foto_tempat_usaha" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="omset_sebulan" class="col-md-6 col-form-label">Perkiraan Jumlah Omset Sebulan :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="omset_sebulan" id="omset_sebulan" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="omset_setahun" class="col-md-6 col-form-label">Perkiraan Jumlah Omset Setahun :</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="omset_setahun" id="omset_setahun" placeholder="-">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="buktiTanah" class="col-md-6 col-form-label">Bukti Kepemilikan Tanah :</label>
+            <div class="col-md-6">
+              <input type="file" name="bukti_kepemilikan_t" id="bukti_kepemilikan_t" value="Upload Berkas">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="suratRekomen" class="col-md-6 col-form-label">Surat Rekomendasi :</label>
+            <div class="col-md-6">
+              <input type="file" name="surat_rekomendasi" id="surat_rekomendasi" value="Upload Berkas">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="alamatPemohon" class="col-md-6 col-form-label">Alamat dan Lokasi Tempat Usaha :</label>
             <div class="col-md-6">
               <input type="hidden" class="form-control" name="lokasi_map" id="alamatPemohon" placeholder="Masukan Alamat Pemohon">
               <input type="hidden" class="form-control" name="status_npwp" id="status_npwp" placeholder="Masukan Alamat Pemohon">
@@ -80,6 +412,7 @@
               <button type="button" class="btn3d btn btn-danger" style="float: left;" data-toggle="modal" data-target="#pilihLokasi">Tentukan Alamat di Peta</button>
             </div>
           </div>
+          <!-- Modal -->
           <div class="modal fade" id="pilihLokasi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document" style="max-width: 80%;">
               <div class="modal-content">
@@ -98,122 +431,354 @@
               </div>
             </div>
           </div>
-          end Modal
-        </div> -->
-        <div data-question="2" class="ijin__step--2 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Lengkapi Data Administrasi Pemohon</h1>
+          <!-- end Modal -->
+        </div>
+        <div data-question="4" class="ijin__step--4 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Modal Usaha</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
-          <div class="form-group row">
-            <label for="namaLengkap" class="col-md-6 col-form-label" style="">NIK :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nik" id="nik" placeholder="-">
-            </div>
+          <label for="Mesin"><b>Mesin/Peralatan Produksi dan Alat Packaging</b></label>
+          <div class="table-responsive">
+            <table class="table mesin">
+              <thead class="thead-light">
+                <th scope="col">No</th>
+                <th scope="col">Jenis Mesin/Alat</th>
+                <th scope="col">Merek</th>
+                <th scope="col">Kuantitas</th>
+                <th scope="col">Harga Satuan</th>
+                <th scope="col">Harga Total</th>
+                <th scope="col">Aksi</th>
+              </thead>
+              <tbody class="jumlah_total_modal">
+
+              </tbody>
+            </table>
           </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">No KK :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="nokk" placeholder="-">
-            </div>
+          <button type="button" class="btn btn3d btn-danger m-0 mb-5" id="addMesin">Tambah Item</button><br>
+          <label for="Mesin"><b>Bahan Baku Produksi dan Kemasan (Produksi)/Produk Jadi Untuk Dijual (Perdagangan)</b></label>
+          <div class="table-responsive">
+            <table class="table produksi">
+              <thead class="thead-light">
+                <th scope="col">No</th>
+                <th scope="col">Jenis Bahan</th>
+                <th scope="col">Kuantitas</th>
+                <th scope="col">Harga Satuan</th>
+                <th scope="col">Harga Total</th>
+                <th scope="col">Aksi</th>
+              </thead>
+              <tbody class="jumlah_total_modal">
+
+              </tbody>
+            </table>
           </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Nama Sesuai KTP :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="nama" placeholder="-">
-            </div>
+          <button type="button" class="btn btn3d btn-danger m-0 mb-5" id="addProduksi">Tambah Item</button><br>
+          <label for="Mesin"><b>Lain - lain</b></label>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="thead-light">
+                <th scope="col">No</th>
+                <th scope="col">Jenis</th>
+                <th scope="col">Harga</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Biaya Transport<span class="text-danger">*</span><br>Perkiraan Biaya Sebulan</td>
+                  <td>
+                    <div class="input-group mb-3 jumlah_total_lain">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                      </div>
+                      <input type="text" id="" name="biaya_transport" class="form-control harga_lain" aria-describedby="basic-addon1">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Biaya Bahan Bakar/Listrik/Air<span class="text-danger">*</span><br>Perkiraan Biaya Sebulan</td>
+                  <td>
+                    <div class="input-group mb-3 jumlah_total_lain">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                      </div>
+                      <input type="text" id="" name="biaya_bahanbakar" class="form-control harga_lain" aria-describedby="basic-addon1">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Biaya Penjualan/Promosi<span class="text-danger">*</span><br>Perkiraan Biaya Sebulan</td>
+                  <td>
+                    <div class="input-group mb-3 jumlah_total_lain">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Rp</span>
+                      </div>
+                      <input type="text" id="" name="biaya_penjualan" class="form-control harga_lain" aria-describedby="basic-addon1">
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="right">Total</td>
+                  <td>
+                    <p align="right" id="total"></p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Alamat :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="alamat" placeholder="-">
+          <label for="Rekap"><b>Rekap Total Modal Usaha</b></label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
             </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Wilayah :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="wilayahinput" name="wilayah" placeholder="-">
-              <input type="text" class="form-control" id="provinsi" name="provinsi" placeholder="-">
-              <input type="text" class="form-control" id="kota" name="kota" placeholder="-">
-              <input type="text" class="form-control" id="kecamatan" name="kecamatan" placeholder="-">
-              <input type="text" class="form-control" id="kelurahan" name="kelurahan" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">RT :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="rt" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">RW :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="rw" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Tempat Lahir :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="tmplahir" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Tanggal Lahir :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="tglahir" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">Jenis Kelamin :</label>
-            <div class="col-md-6">
-              <select required="" aria-label="statusPemohon" class="text-center form-control" id="jk" name="jenis_kelamin">
-                <option option value='-' readonly='' selected>Pilih Salah Satu</option>
-                <option value="1">Laki-laki</option>
-                <option value="0">Perempuan</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">NPWP :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="npwp" placeholder="-">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="jabatan" class="col-md-6 col-form-label" style="">No Telp/HP :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" id="jabatan" name="notlp" placeholder="-">
-            </div>
+            <input type="text" id="total_modal" name="rekap_modal_u" class="form-control" aria-describedby="basic-addon1">
           </div>
         </div>
-        <div data-question="3" class="ijin__step--3 ijin__step mb-150">
-          <h1 class="judul-ijin" style="margin-bottom: 10px;">Data Pemohon</h1>
+        <div data-question="5" class="ijin__step--5 ijin__step mb-150">
+          <h1 class="judul-ijin" style="margin-bottom: 10px;">Kapasitas Produksi</h1>
           <h3 style="margin-bottom: 30px;font-size: 25px;color: #fe6937;">- IUMK -</h3>
-<!--                     <div class="form-group row">
-            <label for="nama_lengkap" class="col-md-6 col-form-label">Masukkan Nama Lengkap :</label>
-            <div class="col-md-6">
-              <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" placeholder="-">
-            </div>
-          </div> -->
-          <div class="form-group row">
-            <label for="email" class="col-md-6 col-form-label">Masukkan Email :</label>
-            <div class="col-md-6">
-              <input type="email" class="form-control" name="email" id="email" placeholder="-">
-            </div>
+          <label for="Mesin"><b>Mesin/Peralatan Produksi dan Alat Packaging</b></label>
+          <div class="table-responsive">
+            <table class="table peralatan">
+              <thead class="thead-light">
+                <th scope="col">No</th>
+                <th scope="col">Komoditi</th>
+                <th scope="col">Kapasitas Terpasang</th>
+                <th scope="col">Harga Terpasang</th>
+                <th scope="col">Kapasitas Produksi</th>
+                <th scope="col">Harga produksi</th>
+                <th scope="col">Tahun</th>
+                <th scope="col">Keterangan</th>
+                <th scope="col">Aksi</th>
+              </thead>
+              <tbody class="jumlah_total_h">
+
+              </tbody>
+            </table>
           </div>
-          <div class="form-group row">
-            <label for="password" class="col-md-6 col-form-label">Masukkan Password :</label>
-            <div class="col-md-6">
-              <input type="password" class="form-control" name="password" id="passwor" placeholder="-">
+          <button type="button" class="btn btn3d btn-danger m-0 mb-5" id="addPeralatan">Tambah Item</button><br>
+          <label for="Rekap"><b>Total Harga Terpasang</b></label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
             </div>
+            <input type="text" id="sum_total_t" readonly="" name="harga_terpasang" class="form-control" aria-describedby="basic-addon1">
           </div>
-          <div class="form-group row">
-            <label for="ulang_password" class="col-md-6 col-form-label">Masukkan Ulang Password :</label>
-            <div class="col-md-6">
-              <input type="password" class="form-control" name="ulang_password" id="ulang_password" placeholder="-">
+          <label for="Rekap"><b>Total Harga Produksi</b></label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Rp</span>
             </div>
+            <input type="text" id="sum_total_p" readonly="" name="total_harga_p" class="form-control" aria-describedby="basic-addon1">
+          </div>
+        </div>
+        <div data-question="6" class="ijin__step--6 ijin__step mb-150 ijin__summary">
+          <h1 class="judul-ijin">Ringkasan Pemohon</h1>
+          <div class="panel-group" id="accordion5" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne5">
+                <h4 class="panel-title">
+                  <a role="button" data-toggle="collapse" data-parent="#accordion5" href="#identitasP" aria-expanded="true" aria-controls="identitasP">
+                    Data Identitas Pemohon
+                  </a>
+                </h4> 
+              </div>
+              <div id="identitasP" class="panel-collapse collapse show" role="tabpanel" aria-labelledby="headingOne5">
+                <div class="panel-body">
+                  <table class="table" style="text-align: left;">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <td>Status Pemohon</td>
+                        <td id="statusPemohon"></td>
+                      </tr>
+                      <tr class="statusP">
+                        <td class="npj">Nama Penanggung Jawab</td>
+                        <td id="nama"></td>
+                      </tr> 
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="dataAdministrasiU">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#administrasiUsaha" aria-expanded="false" aria-controls="administrasiUsaha">
+                    Data Identitas Usaha
+                  </a>
+                </h4>
+              </div>
+              <div id="administrasiUsaha" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataAdministrasiU">
+                <div class="panel-body">
+                  <table class="table" style="text-align: left;">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <td>Nomor Objek Pajak Daerah Usaha</td>
+                        <td id="nop"></td>
+                      </tr>
+                      <tr>
+                        <td>Nilai Jual Objek Pajak</td>
+                        <td id="njoplocal"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingSix5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#maps5" aria-expanded="false" aria-controls="maps5">
+                    Peta Lokasi
+                  </a>
+                </h4>
+              </div>
+              <div id="maps5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix5">
+                <div class="panel-body">
+                  <div id="maps" style="width: 500px;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="dataKeberUsaha">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#infKeberUsaha" aria-expanded="false" aria-controls="infKeberUsaha">
+                    Modal Usaha
+                  </a>
+                </h4>
+              </div>
+              <div id="infKeberUsaha" class="panel-collapse collapse" role="tabpanel" aria-labelledby="dataKeberUsaha">
+                <div class="panel-body">
+                  <table class="table" style="text-align: left;">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <td>Pemutahiran PBB</td>
+                        <td id="pbb_summary"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading" role="tab" id="headingThree5">
+                <h4 class="panel-title">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion5" href="#informasiDampak5" aria-expanded="false" aria-controls="informasiDampak5">
+                    Kapasitas Produksi
+                  </a>
+                </h4>
+              </div>
+              <div id="informasiDampak5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive5">
+                <div class="panel-body">
+                  <table class="table" style="text-align: left;">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Data Anda</th>
+                      </tr>
+                    </thead>
+                    <tbody class="bg-white">
+                      <tr>
+                        <td>Ada Rekomendasi UMKM</td>
+                        <td id="rek_umkm_summary"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div> 
+          <div class="submit__container">
+            <a href="#" type="submit" class="btn3d submit btn btn-danger btn-lg" id="link">Konfirmasi</a>
           </div>
         </div>
       </div>
     </form>
+  </div>
+  <div id="kelengkapan" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-modal="true" data-backdrop="static">
+    <div class="modal-dialog" role="document" style="max-width: 40%;">
+      <div class="modal-content">
+        <div class="modal-header" style="display: block;">
+          <center><h5 class="modal-title" id="exampleModalCenterTitle">Persyaratan IUMK & Toko Kelontong</h5></center>
+        </div>
+        <div class="modal-body" style="padding: 2rem;">
+          <h5><strong>1. Identitas Pemohon</strong></h5>
+          <p class="text-danger">
+            - Tipe Pemohon Perizinan<br>
+            - NIK + Unggah KTP<br>
+            - Nama<br>
+            - NPWP + Unggah NPWP<br>
+            - Nomor Telepon/HP<br>
+            - NIB<br>
+            - KK + Upload KK<br>
+            - Alamat<br>
+            - Wilayah<br>
+            - Tempat Lahir<br>
+            - Jenis Kelamin<br>
+            - RT/RW<br>
+            - Tanggal Lahir<br>
+            - Pas Foto 4x6 Latar Belakang Merah (Unggah)<br>
+            - Surat Permohonan Bermaterai. Unduh format berkas disini.<br>
+          </p>
+          <h5><strong>2. Identitas Usaha</strong></h5>
+          <p class="text-danger">
+            - Nama Usaha<br>
+            - Jenis Usaha<br>
+            - Kegiatan Usaha<br>
+            - Jumlah Tenaga Kerja Pria<br>
+            - Jumlah Tenaga Kerja Wanita<br>
+            - Jenis Rekomendasi<br>
+            - Program Kewirausahaan Terpadu atau Bukan<br>
+            - Sarana Usaha<br>
+            - Bidang Usaha<br>
+            - Status Lokasi Usaha<br>
+            - Luas Lokasi Usaha<br>
+            - Foto Tempat Usaha (Unggah)<br>
+            - Alamat dan Lokasi Tempat Usaha<br>
+            - Perkiraan Jumlah Omset Sebulan<br>
+            - Perkiraan Jumlah Omset Setahun<br>
+            - Bukti Kepemilikan Tanah (Unggah)<br>
+            - Surat Rekomendasi (Unggah)<br>
+          </p>
+          <h5><strong>3. Modal Usaha</strong></h5>
+          <p class="text-danger">
+            - Mesin/Peralatan Produksi dan Alat Packaging<br>
+            *Jenis Mesin/Alat, Merek, Kuantitas, Harga Satuan, Harga Total<br>
+            - Bahan Baku Produksi dan Kemasan (Produksi)/Produk Jadi Untuk Dijual (Perdagangan)<br>
+            *Jenis Bahan, Kuantitas, Harga Satuan, Harga Total<br>
+            - LainLain<br>
+            *Biaya Transport (perkiraan biaya sebulan)<br>
+            *Biaya Bahan Bakar/Listrik/Air (perkiraan biaya sebulan)<br>
+            *Biaya Penjualan/Promosi (perkiraan biaya sebulan)<br>
+            *Rekap Total Modal Usaha<br>
+          </p>
+          <h5><strong>Kapasitas Produksi</strong></h5>
+          <p class="text-danger">*Komoditi, Kapasitas Terpasang, Harga, Kapasitas Produksi, Harga, Tahun, Keterangan</p>
+          <p class="m-0">Jika belum memiliki Nomor Induk Berusaha (NIB) <a href="https://oss.go.id/portal/" target="_blank">Klik Disini</a></p>
+          <p class="m-0">Jika belum memiliki NPWP <a href="https://ereg.pajak.go.id/" target="_blank">Klik Disini</a></p>
+          <center>
+            <button type="button" class="btn btn3d btn-danger mb-4" data-dismiss="modal">Saya Setuju, Ajukan Izin</button>
+          </center>
+        </div>
+      </div>
+    </div>
   </div>
   <footer class="bottom">
     <section class="bottom__container">
@@ -240,7 +805,7 @@
     $(document).ready(function() {
       $("#wilayahinput").keypress(function(e) {
         var length = this.value.length;
-        if (length >= 5) {
+        if(length > 4) {
           $.ajax({
             url: BASE_URL + 'ApiController/getWilayah',
             type: 'POST',
@@ -248,7 +813,9 @@
             data: {wilayah: $("#wilayahinput").val()},
             success:function(data) {
               for (var i =0; i < data.length; i++) {
-                $("#wilayahinput").html('<a href="#" onclick="pilihwilayah('+data[i].idkelurahan+')"><li>'+data[i].address+'</li></a>');           
+                $('#suggestions').show();
+                $('#autoSuggestionsList').addClass('auto_list');
+                $('#autoSuggestionsList').html('<a href="javascript:void()" onclick="pilihwilayah('+data[i].idkelurahan+')"><li>'+data[i].address+'</li></a>');
               }
             }
           })
@@ -257,20 +824,176 @@
     });
     function pilihwilayah(id) {
       $.ajax({
-            url: BASE_URL + 'ApiController/pilihWilayah',
-            type: 'POST',
-            dataType: 'json',
-            data: {idkelurahan: id},
-            success:function(data) {
-              for (var i =0; i < data.length; i++) {
-                $("#provinsi").val(data[i].idprovinsi);           
-                $("#kota").val(data[i].idkota);           
-                $("#kecamatan").val(data[i].idkecamatan);           
-                $("#kelurahan").val(data[i].idkelurahan);           
-              }
-            }
-          })
+        url: BASE_URL + 'ApiController/pilihWilayah',
+        type: 'POST',
+        dataType: 'json',
+        data: {idkelurahan: id},
+        success:function(data) {
+          for (var i =0; i < data.length; i++) {
+            $("#provinsi").val(data[i].idprovinsi);           
+            $("#kota").val(data[i].idkota);           
+            $("#kecamatan").val(data[i].idkecamatan);           
+            $("#kelurahan").val(data[i].idkelurahan);   
+            $("#wilayahinput").val(data[i].address); 
+            $('#suggestions').hide();  
+          }
+        }
+      })
     }
+  </script>
+  <script type="text/javascript">
+    var rupiah = document.getElementById('omset_sebulan');
+    var rupiah2 = document.getElementById('omset_setahun');
+    // var rupiah3 = document.getElementById('biaya_transport');
+    // var rupiah4 = document.getElementById('biaya_bahanbakar');
+    // var rupiah5 = document.getElementById('biaya_penjualan');
+    rupiah.addEventListener('keyup', function(e){
+      rupiah.value = formatRupiah(this.value);
+    });
+    rupiah2.addEventListener('keyup', function(e){
+      rupiah2.value = formatRupiah(this.value);
+    });
+    // rupiah3.addEventListener('keyup', function(e){
+    //   rupiah3.value = formatRupiah(this.value);
+    // });
+    // rupiah4.addEventListener('keyup', function(e){
+    //   rupiah4.value = formatRupiah(this.value);
+    // });
+    // rupiah5.addEventListener('keyup', function(e){
+    //   rupiah5.value = formatRupiah(this.value);
+    // });
+    function formatRupiah(angka, prefix){
+      var number_string = angka.replace(/[^,\d]/g, '').toString(),
+      split       = number_string.split(','),
+      sisa        = split[0].length % 3,
+      rupiah        = split[0].substr(0, sisa),
+      ribuan        = split[0].substr(sisa).match(/\d{3}/gi); 
+      if(ribuan){
+        separator = sisa ? '.' : '';
+        rupiah += separator + ribuan.join('.');
+      }
+      rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+      return prefix == undefined ? rupiah : (rupiah ? + rupiah : '');
+    }
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      var counter = 0;
+      $("#addMesin").on("click", function () {
+        var newRow = $("<tr>");
+        var cols = "";
+        cols += '<td>'+(counter+1)+'</td>';
+        cols += '<td><input type="text" class="form-control" name="jenis_mesin' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="merek' + counter + '"/></td>';
+        cols += '<td><input type="number" class="form-control" name="kuantitas' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control" name="harga_satuan' + counter + '"/></td>';
+        cols += '<td><input type="text" class="form-control harga_modal" name="harga_total' + counter + '"/></td>';
+        cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger"  value="Hapus"></td>';
+        newRow.append(cols);
+        $("table.mesin").append(newRow);
+        counter++;
+      });
+      $("table.mesin").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();       
+        counter -= 1
+      });
+
+      var counterP = 0;
+      $("#addProduksi").on("click", function () {
+        var newRow = $("<tr>");
+        var colsP = "";
+        colsP += '<td>'+(counterP+1)+'</td>';
+        colsP += '<td><input type="text" class="form-control" name="jenis_bahan' + counterP + '"/></td>';
+        colsP += '<td><input type="number" class="form-control" name="kuantitas' + counterP + '"/></td>';
+        colsP += '<td><input type="text" class="form-control" name="harga_satuan' + counterP + '"/></td>';
+        colsP += '<td><input type="text" class="form-control harga_modal" name="harga_total' + counterP + '"/></td>';
+        colsP += '<td><input type="button" class="ibtnDel btn btn-md btn-danger"  value="Hapus"></td>';
+        newRow.append(colsP);
+        $("table.produksi").append(newRow);
+        counterP++;
+      });
+
+      $("table.produksi").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();       
+        counterP -= 1
+      });
+
+      var counterPer = 0;
+      $("#addPeralatan").on("click", function () {
+        var newRow = $("<tr>");
+        var colsPer = "";
+        colsPer += '<td>'+(counterPer+1)+'</td>';
+        colsPer += '<td><input type="text" class="form-control" name="komoditi' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control" name="kapasitas_terpasang' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control harga_t" name="harga_terpasang' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control" name="kapasitas_produksi' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control harga_p" name="harga_produksi' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control" name="tahun' + counterPer + '"/></td>';
+        colsPer += '<td><input type="text" class="form-control" name="keterangan' + counterPer + '"/></td>';
+        colsPer += '<td><input type="button" class="ibtnDel btn btn-md btn-danger"  value="Hapus"></td>';
+        newRow.append(colsPer);
+        $("table.peralatan").append(newRow);
+        counterPer++;
+      });
+
+      $("table.peralatan").on("click", ".ibtnDel", function (event) {
+        $(this).closest("tr").remove();       
+        counterPer -= 1
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    function sum_modal() {
+      var mesin = document.getElementsByClassName('harga_modal').value;
+      var lain = document.getElementsByClassName('harga_lain').text;
+      var result = parseFloat(mesin) + parseFloat(lain);
+      if (!isNaN(result)) {
+        document.getElementById('total_modal').value = result;
+      }
+    }
+    $('.jumlah_total_modal').on('input','.harga_modal',function(){
+      var totalSum = 0;
+      $('.jumlah_total_modal .harga_modal').each(function(){
+        var inputVal = this.value.replace(',','');
+        if($.isNumeric(inputVal)){
+          totalSum+=parseFloat(inputVal);
+        }
+      });
+      $('#total_modal').val(totalSum.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+    });
+
+    $('.jumlah_total_lain').on('input','.harga_lain',function(){
+      var totalSum = 0;
+      $('.jumlah_total_lain .harga_lain').each(function(){
+        var inputVal = this.value.replace(',','');
+        if($.isNumeric(inputVal)){
+          totalSum+=parseFloat(inputVal);
+        }
+      });
+      $('#total').text(totalSum.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+    });
+
+    $('.jumlah_total_h').on('input','.harga_t',function(){
+      var totalSum = 0;
+      $('.jumlah_total_h .harga_t').each(function(){
+        var inputVal = this.value.replace(',','');
+        if($.isNumeric(inputVal)){
+          totalSum+=parseFloat(inputVal);
+        }
+      });
+      $('#sum_total_t').val(totalSum.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+    });
+
+    $('.jumlah_total_h').on('input','.harga_p',function(){
+      var totalSum = 0;
+      $('.jumlah_total_h .harga_p').each(function(){
+        var inputVal = this.value.replace(',','');
+        if($.isNumeric(inputVal)){
+          totalSum+=parseFloat(inputVal);
+        }
+      });
+      $('#sum_total_p').val(totalSum.toFixed(0).replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
+    });
   </script>
 </body>
 </html>

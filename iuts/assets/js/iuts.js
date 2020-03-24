@@ -2,6 +2,7 @@ const numberSteps = $('.ijin__step').length - 1;
 let disableButtons = false;
 const tick = '<div class="answer__tick"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></div>'; 
 let summary = '<div class="summary"><h1 class="judul-ijin">Permohonan Izin Usaha Toko Swalayan Berhasil Diajukan</h1><p>Nomor Token telah dikirimkan melalui email Anda <br> Silahkan Cek Email Anda</p><p>Perkiran Waktu Perizinan Selesai (0) Hari</p><div class="backkehalaman"><a onclick="backkehalaman();" href="javascript:void(0);" class="btn3d btn btn-danger btn-lg">Kembali Ke Halaman Utama</a></div></div>';
+let verif = '<div class="summary"><h1 class="judul-ijin" style="margin-bottom: 30px;">Verifikasi Akun</h1> <div class="form-group row"> <label for="token" class="col-md-6 col-form-label">Masukkan Token :</label> <div class="col-md-6"> <input type="text" class="form-control" name="token" id="token" placeholder="-"> </div> </div> <hr> <button type="submit" class="btn3d btn btn-danger btn-lg btn-block mt-20">Submit</button></div>'; 
 // var BASE_URL = 'http://localhost/rest-api-iuts/';
 var BASE_URL = 'https://rest-iuts.pkkmart.com/';
 
@@ -43,19 +44,19 @@ function statusKepemIMB() {
         $(".akteP").attr('style', 'display:none');
     // }else if($("#sistem_usaha option:selected").val() == "Waralaba" && $("#status_nib option:selected").val() == "Pelaku Waralaba") {
     //     $(".select-waralaba").removeAttr('style');
-    }else{
-        $(".statusP").removeAttr('style');
-        $(".jabatan_row").attr('style', 'display:none');
-        $(".npj").attr('style', 'display:none');
-        $(".nikPJ").attr('style', 'display:none');
-        $(".npwpPJ").attr('style', 'display:none');
-        $(".np").removeAttr('style');
-        $(".nikD").removeAttr('style');
-        $(".nibP").removeAttr('style');
-        $(".npwpP").removeAttr('style');
-        $(".namaPJ").removeAttr('style');
-        $(".akteP").removeAttr('style');
-    }
+}else{
+    $(".statusP").removeAttr('style');
+    $(".jabatan_row").attr('style', 'display:none');
+    $(".npj").attr('style', 'display:none');
+    $(".nikPJ").attr('style', 'display:none');
+    $(".npwpPJ").attr('style', 'display:none');
+    $(".np").removeAttr('style');
+    $(".nikD").removeAttr('style');
+    $(".nibP").removeAttr('style');
+    $(".npwpP").removeAttr('style');
+    $(".namaPJ").removeAttr('style');
+    $(".akteP").removeAttr('style');
+}
 }
 
 $("#status_nib").on("change", function() {
@@ -993,184 +994,184 @@ $('#btn-modalmaps').click(function(event) {
                 })
                 .then((result) => {
                     if (result.value) {
-            var datas = new FormData($(this)[0]);
-            $.ajax({
-                url: BASE_URL + "ApiController/ApiPajakNPWP",
-                type: 'POST',
-                dataType: 'json',
-                data : {nik:$('#nomorInKepen').val(),nopd:$('#nopd_bangunan').val(),jenispajak:null},
-                beforeSend:function() {
-                    $("#text-loader").html('Sedang Cek Data PBB Anda');
-                    $('#page-loader').fadeIn('slow');
-                },
-                success:function(data) {
-                    // cons);
-                    if (data.pesan == "Data Tidak ditemukan") {
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Tidak ada Data',
-                            showCancelButton: true
-                        });
-                    }else if(data.pesan == "Panjang Karakter Kurang dari 15"){
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                            showCancelButton: true
-                        });
-                    }else if(data.errorCode == "32"){
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                            showCancelButton: true
-                        });
-                    }else if(data.errorCode == "34"){
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                            showCancelButton: true
-                        });
-                    }else if(data.errorCode == "99"){
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                            showCancelButton: true
-                        });
-                    }else if(data.errorCode == "4"){
-                        $('#page-loader').fadeOut('slow');
-                        swal({
-                            type: 'error',
-                            title: 'Angka NIK / NPWP Kurang Dari 15',
-                            showCancelButton: true
-                        });
-                    }else{
-                        for (var i =0; i < data.length; i++) {
-                            if (data[i].JNS_PAJAK == "PBB" && data[i].NOPD == $('#nopd_bangunan').val()) {
-                                if (data[i].NILAI_TUNGGAKAN == 0) {
-                                    $.ajax({
-                                        url: BASE_URL + "ApiController/ApiPajakNPWP",
-                                        type: 'POST',
-                                        dataType: 'json',
-                                        data : {nik:$('#npwp').val()},
-                                        beforeSend:function() {
-                                            $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
-                                            $('#page-loader').fadeIn('slow');
-                                        },
-                                        success:function(response) {
-                                            var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
-                                            dataRegis[0].status_npwp = '1';
-                                            dataRegis[0].status_pbb = '1';
-                                            localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+                        var datas = new FormData($(this)[0]);
+                        $.ajax({
+                            url: BASE_URL + "ApiController/ApiPajakNPWP",
+                            type: 'POST',
+                            dataType: 'json',
+                            data : {nik:$('#nomorInKepen').val(),nopd:$('#nopd_bangunan').val(),jenispajak:null},
+                            beforeSend:function() {
+                                $("#text-loader").html('Sedang Cek Data PBB Anda');
+                                $('#page-loader').fadeIn('slow');
+                            },
+                            success:function(data) {
+                            // cons);
+                            if (data.pesan == "Data Tidak ditemukan") {
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Tidak ada Data',
+                                    showCancelButton: true
+                                });
+                            }else if(data.pesan == "Panjang Karakter Kurang dari 15"){
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                                    showCancelButton: true
+                                });
+                            }else if(data.errorCode == "32"){
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                    showCancelButton: true
+                                });
+                            }else if(data.errorCode == "34"){
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                    showCancelButton: true
+                                });
+                            }else if(data.errorCode == "99"){
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                    showCancelButton: true
+                                });
+                            }else if(data.errorCode == "4"){
+                                $('#page-loader').fadeOut('slow');
+                                swal({
+                                    type: 'error',
+                                    title: 'Angka NIK / NPWP Kurang Dari 15',
+                                    showCancelButton: true
+                                });
+                            }else{
+                                for (var i =0; i < data.length; i++) {
+                                    if (data[i].JNS_PAJAK == "PBB" && data[i].NOPD == $('#nopd_bangunan').val()) {
+                                        if (data[i].NILAI_TUNGGAKAN == 0) {
+                                            $.ajax({
+                                                url: BASE_URL + "ApiController/ApiPajakNPWP",
+                                                type: 'POST',
+                                                dataType: 'json',
+                                                data : {nik:$('#npwp').val()},
+                                                beforeSend:function() {
+                                                    $("#text-loader").html('Sedang Cek Data NPWP Usaha Anda');
+                                                    $('#page-loader').fadeIn('slow');
+                                                },
+                                                success:function(response) {
+                                                    var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                                    dataRegis[0].status_npwp = '1';
+                                                    dataRegis[0].status_pbb = '1';
+                                                    localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
 
-                                            if (response.pesan == "Data Tidak ditemukan") {
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Tidak ada Data',
-                                                    showCancelButton: true
-                                                });
-                                            }else if(response.pesan == "Panjang Karakter Kurang dari 15"){
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
-                                                    showCancelButton: true
-                                                });
-                                            }else if(response.errorCode == "32"){
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                    showCancelButton: true
-                                                });
-                                            }else if(response.errorCode == "34"){
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                    showCancelButton: true
-                                                });
-                                            }else if(response.errorCode == "99"){
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
-                                                    showCancelButton: true
-                                                });
-                                            }else if(response.errorCode == "4"){
-                                                $('#page-loader').fadeOut('slow');
-                                                swal({
-                                                    type: 'error',
-                                                    title: 'Angka NIK / NPWP Kurang Dari 15',
-                                                    showCancelButton: true
-                                                });
-                                            }else{
-                                                for (var i = 0; i < response.length; i++) {
-                                                    if (response[i].NOPD == $('#nomorObjekPajak').val() && response[i].NILAI_TUNGGAKAN == 0) {
-                                                        if (response[i].NILAI_TUNGGAKAN == 0) {
-                                                            var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
-                                                            dataRegis[0].jns_pajak = response[i].JNS_PAJAK;
-                                                            localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
-                                                            $.ajax({
-                                                                url: BASE_URL + 'ValidasiController/ValidasiIzin',
-                                                                type: 'POST',
-                                                                dataType: 'json',
-                                                                data:datas,
-                                                                contentType: false,
-                                                                cache: false,
-                                                                processData: false,
-                                                                beforeSend:function() {
-                                                                    $("#text-loader").html('Mohon Tunggu');
-                                                                    $('#page-loader').fadeIn('slow');
-                                                                },
-                                                                success:function(data) {
-                                                                    if (data.success) {
-                                                                        e.preventDefault();
-                                                                        $('.ijin').remove();
-                                                                        $(summary).appendTo('.container');
-                                                                        disableButtons=true;
-                                                                        $('.navigation__btn').addClass('navigation__btn--disabled');
-                                                                        $('#page-loader').fadeOut('slow'); 
-                                                                        swal({
-                                                                            type: 'success',
-                                                                            title: data.msg,
-                                                                            showCancelButton: true
-                                                                        });
-                                                                    }else{
-                                                                        $('#page-loader').fadeOut('slow');
-                                                                        swal({
-                                                                            type: 'error',
-                                                                            title: data.msg,
-                                                                            showCancelButton: true
-                                                                        });
-                                                                    }
-                                                                    $('#page-loader').fadeOut('slow');
-                                                                }
-                                                            });
-                                                        }else{
-                                                            $('#page-loader').fadeOut('slow');
-                                                            swal({
-                                                                type: 'error',
-                                                                title: 'PAJAK ANDA BELUM LUNAS',
-                                                                showCancelButton: true
-                                                            });
-                                                        }
-                                                    }else{
+                                                    if (response.pesan == "Data Tidak ditemukan") {
                                                         $('#page-loader').fadeOut('slow');
                                                         swal({
                                                             type: 'error',
-                                                            title: 'PAJAK ANDA BELUM LUNAS',
+                                                            title: 'Tidak ada Data',
                                                             showCancelButton: true
-                                                        });  
+                                                        });
+                                                    }else if(response.pesan == "Panjang Karakter Kurang dari 15"){
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'Maaf Panjang Angka NIK Kurang dari 15 Angka',
+                                                            showCancelButton: true
+                                                        });
+                                                    }else if(response.errorCode == "32"){
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                            showCancelButton: true
+                                                        });
+                                                    }else if(response.errorCode == "34"){
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                            showCancelButton: true
+                                                        });
+                                                    }else if(response.errorCode == "99"){
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'Server Pajak Sedang Sibuk, Silakan Kirim Ulang',
+                                                            showCancelButton: true
+                                                        });
+                                                    }else if(response.errorCode == "4"){
+                                                        $('#page-loader').fadeOut('slow');
+                                                        swal({
+                                                            type: 'error',
+                                                            title: 'Angka NIK / NPWP Kurang Dari 15',
+                                                            showCancelButton: true
+                                                        });
+                                                    }else{
+                                                        for (var i = 0; i < response.length; i++) {
+                                                            if (response[i].NOPD == $('#nomorObjekPajak').val() && response[i].NILAI_TUNGGAKAN == 0) {
+                                                                if (response[i].NILAI_TUNGGAKAN == 0) {
+                                                                    var dataRegis = JSON.parse(localStorage.getItem("dataPermohonan"));
+                                                                    dataRegis[0].jns_pajak = response[i].JNS_PAJAK;
+                                                                    localStorage.setItem("dataPermohonan", JSON.stringify(dataRegis));
+                                                                    $.ajax({
+                                                                        url: BASE_URL + 'ValidasiController/ValidasiIzin',
+                                                                        type: 'POST',
+                                                                        dataType: 'json',
+                                                                        data:datas,
+                                                                        contentType: false,
+                                                                        cache: false,
+                                                                        processData: false,
+                                                                        beforeSend:function() {
+                                                                            $("#text-loader").html('Mohon Tunggu');
+                                                                            $('#page-loader').fadeIn('slow');
+                                                                        },
+                                                                        success:function(data) {
+                                                                            if (data.success) {
+                                                                                e.preventDefault();
+                                                                                $('.ijin').remove();
+                                                                                $(summary).appendTo('.container');
+                                                                                disableButtons=true;
+                                                                                $('.navigation__btn').addClass('navigation__btn--disabled');
+                                                                                $('#page-loader').fadeOut('slow'); 
+                                                                                swal({
+                                                                                    type: 'success',
+                                                                                    title: data.msg,
+                                                                                    showCancelButton: true
+                                                                                });
+                                                                            }else{
+                                                                                $('#page-loader').fadeOut('slow');
+                                                                                swal({
+                                                                                    type: 'error',
+                                                                                    title: data.msg,
+                                                                                    showCancelButton: true
+                                                                                });
+                                                                            }
+                                                                            $('#page-loader').fadeOut('slow');
+                                                                        }
+                                                                    });
+                                                                }else{
+                                                                    $('#page-loader').fadeOut('slow');
+                                                                    swal({
+                                                                        type: 'error',
+                                                                        title: 'PAJAK ANDA BELUM LUNAS',
+                                                                        showCancelButton: true
+                                                                    });
+                                                                }
+                                                            }else{
+                                                                $('#page-loader').fadeOut('slow');
+                                                                swal({
+                                                                    type: 'error',
+                                                                    title: 'PAJAK ANDA BELUM LUNAS',
+                                                                    showCancelButton: true
+                                                                });  
+                                                            }
+                                                        }
                                                     }
                                                 }
-                                            }
-                                        }
-                                    })
+                                            })
 }else{
     $('#page-loader').fadeOut('slow');
     swal({
@@ -1184,8 +1185,8 @@ $('#btn-modalmaps').click(function(event) {
 }
 }
 })
-        }
-    });
+}
+});
 });
 
 function UpdatePajak(id,pbb,npwp,jenis) {
@@ -2315,6 +2316,9 @@ $(function() {
                 uploadFile.closest(".imgUpKTP").find('#img-KTP').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpNIB").find('#img-NIB').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpNPWP").find('#img-NPWP').css("background-image", "url("+this.result+")");
+                uploadFile.closest(".imgUpKK").find('#img-KK').css("background-image", "url("+this.result+")");
+                uploadFile.closest(".imgUpPasFoto").find('#img-PasFoto').css("background-image", "url("+this.result+")");
+                uploadFile.closest(".imgUpBerkas").find('#img-Berkas').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpLuar").find('#img-luar-bangunan').css("background-image", "url("+this.result+")");
                 uploadFile.closest(".imgUpDalam").find('#img-dalam-bangunan').css("background-image", "url("+this.result+")");
             }
@@ -2449,3 +2453,43 @@ document.querySelectorAll('.file-input.single').forEach(function(wrapperEl) {
 document.querySelectorAll('.file-input.multiple').forEach(function(wrapperEl) {
   new MultipleFileInput(wrapperEl)
 })
+
+$("#formiumk").submit(function (event) {
+    event.preventDefault();
+        swal({
+        title: "Daftar IUMK", 
+        text: "Apakah Data Yang Anda Masukkan Sudah Benar", 
+        type: "warning",
+        confirmButtonText: "Iya",
+        cancelButtonText: "Belum",
+        showCancelButton: true
+    })
+    .then((result) => {
+        if (result.value) {
+            var datas = new FormData($(this)[0]);
+            $.ajax({
+                url: BASE_URL + "ValidasiController/saveRegister",
+                type: 'POST',
+                dataType: 'json',
+                data : datas,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend:function() {
+                  $("#text-loader").html('Harap Tunggu');
+                  $('#page-loader').fadeIn('slow');
+                },
+                success:function(data) {
+                    localStorage.setItem("Email", $("#email").val());              
+                    e.preventDefault();
+                    $('#page-loader').fadeOut('slow');
+                    // $('.ijin').remove();
+                    // $(verif).appendTo('.container');
+                    // disableButtons=true;
+                    // $('.navigation__btn').addClass('navigation__btn--disabled');
+                    window.location.href = 'https://iuts.pkkmart.com/iuts/verifikasi.html';
+                }
+            });
+        }
+    });
+});
